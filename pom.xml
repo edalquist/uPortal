@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:merge="http://maven.apache.org/plugin-merge" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.jasig.parent</groupId>
-        <artifactId>jasig-parent</artifactId>
-        <version>32</version>
+        <groupId>edu.wisc.doit.code</groupId>
+        <artifactId>shared-tools-uw-parent</artifactId>
+        <version>1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jasig.portal</groupId>
+    <groupId>edu.wisc.my.portal</groupId>
     <artifactId>uportal-parent</artifactId>
     <version>4.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -18,8 +18,8 @@
     <url>${jasig-site-base}/uportal/${project.version}</url>
     
     <scm>
-        <connection>scm:git:git://github.com/Jasig/uPortal.git</connection>
-        <developerConnection>scm:git:git@github.com:Jasig/uPortal.git</developerConnection>
+        <connection>scm:git:dalquist@fender.doit.wisc.edu:/apps/my/git/uPortal.git</connection>
+        <developerConnection>scm:git:dalquist@fender.doit.wisc.edu:/apps/my/git/uPortal.git</developerConnection>
         <url>https://github.com/Jasig/uPortal</url>
     </scm>
 
@@ -44,6 +44,10 @@
     </ciManagement>
 
     <repositories>
+        <repository>
+            <id>code.doit-uw-releases</id>
+            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-releases/</url>
+        </repository>
         <repository>            
             <id>sonatype-nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
