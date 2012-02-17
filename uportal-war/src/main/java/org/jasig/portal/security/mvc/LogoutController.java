@@ -24,6 +24,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +58,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogoutController implements InitializingBean {
 
     private static final Log log = LogFactory.getLog(LogoutController.class);
+
+    private final Random rnd = new Random();
 
     private Map<String, String> redirectMap;
     private IPortalEventFactory portalEventFactory;
@@ -129,14 +132,15 @@ public class LogoutController implements InitializingBean {
         final String encodedRedirectURL = response.encodeRedirectURL(redirect);
         response.sendRedirect(encodedRedirectURL);
     }
-
+    
     @RequestMapping("/SilentLogout")
     public void handleSilentLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String redirect = this.getRedirectionUrl(request);
-        redirect = doLogout(request, redirect);
+        doLogout(request, null);
+        
+        final String redirect = this.silentLogoutUrl + "?nocache=" + Long.toHexString(rnd.nextLong());
 
         // Send the user back to the guest page
-        response.sendRedirect(this.silentLogoutUrl);
+        response.sendRedirect(redirect);
     }
 
     /**
