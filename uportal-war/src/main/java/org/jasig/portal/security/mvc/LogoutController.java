@@ -40,6 +40,7 @@ import org.jasig.portal.security.ISecurityContext;
 import org.jasig.portal.utils.ResourceLoader;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -52,7 +53,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version $Revision$
  */
 @Controller
-@RequestMapping("/Logout")
+@RequestMapping
 public class LogoutController implements InitializingBean {
 
     private static final Log log = LogFactory.getLog(LogoutController.class);
@@ -60,6 +61,7 @@ public class LogoutController implements InitializingBean {
     private Map<String, String> redirectMap;
     private IPortalEventFactory portalEventFactory;
     private IPersonManager personManager;
+    private String silentLogoutUrl;
 
     @Autowired
     public void setPersonManager(IPersonManager personManager) {
@@ -69,6 +71,11 @@ public class LogoutController implements InitializingBean {
     @Autowired
     public void setPortalEventFactory(IPortalEventFactory portalEventFactory) {
         this.portalEventFactory = portalEventFactory;
+    }
+    
+    @Value("${silentLogoutRedirect.root:/silent-logout}")
+    public void setSilentLogoutUrl(String silentLogoutUrl) {
+        this.silentLogoutUrl = silentLogoutUrl;
     }
 
     @Override
@@ -113,9 +120,31 @@ public class LogoutController implements InitializingBean {
      * @throws ServletException
      * @throws IOException
      */
-    @RequestMapping
+    @RequestMapping("/Logout")
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String redirect = this.getRedirectionUrl(request);
+        redirect = doLogout(request, redirect);
+
+        // Send the user back to the guest page
+        final String encodedRedirectURL = response.encodeRedirectURL(redirect);
+        response.sendRedirect(encodedRedirectURL);
+    }
+
+    @RequestMapping("/SilentLogout")
+    public void handleSilentLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String redirect = this.getRedirectionUrl(request);
+        redirect = doLogout(request, redirect);
+
+        // Send the user back to the guest page
+        response.sendRedirect(this.silentLogoutUrl);
+    }
+
+    /**
+     * Perform the logout
+     * 
+     * @return The redirect URL to use
+     */
+    private String doLogout(HttpServletRequest request, String redirect) {
         final HttpSession session = request.getSession(false);
 
         if (session != null) {
@@ -151,10 +180,7 @@ public class LogoutController implements InitializingBean {
                 }
             }
         }
-
-        // Send the user back to the guest page
-        final String encodedRedirectURL = response.encodeRedirectURL(redirect);
-        response.sendRedirect(encodedRedirectURL);
+        return redirect;
     }
 
     /**

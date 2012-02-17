@@ -45,6 +45,27 @@
             </list>
         </property>
     </bean>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${hibernate.connection.driver_class}" />
+        <property name="url" value="${hibernate.connection.url}" />
+        <property name="username" value="${hibernate.connection.username}" />
+        <property name="password" value="${hibernate.connection.password}" />
+        
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="50" />
+        <property name="maxIdle" value="50" />
+        <property name="maxWait" value="1000" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="300" />
+        <property name="logAbandoned" value="true" />
+        <property name="poolPreparedStatements" value="false" />
+
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="numTestsPerEvictionRun" value="10" />
+        <property name="minEvictableIdleTimeMillis" value="150000" />
+    </bean>
 
 </beans>
     

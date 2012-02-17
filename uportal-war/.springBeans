@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.7.1.201107082359-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[2.8.1.201111220115-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -10,7 +10,6 @@
 		<config>src/main/resources/properties/contexts/applicationContext.xml</config>
 		<config>src/main/resources/properties/contexts/cacheContext.xml</config>
 		<config>src/main/resources/properties/contexts/channelContainerContext.xml</config>
-		<config>src/main/resources/properties/contexts/checksContext.xml</config>
 		<config>src/main/resources/properties/contexts/datasourceContext.xml</config>
 		<config>src/main/resources/properties/contexts/flowsContext.xml</config>
 		<config>src/main/resources/properties/contexts/importExportContext.xml</config>
@@ -28,7 +27,6 @@
 		<config>src/main/resources/properties/contexts/schedulerContext.xml</config>
 		<config>src/main/resources/properties/contexts/securityContext.xml</config>
 		<config>src/main/resources/properties/contexts/servicesContext.xml</config>
-		<config>src/main/resources/properties/contexts/statsContext.xml</config>
 		<config>src/main/resources/properties/contexts/userContext.xml</config>
 		<config>src/main/resources/properties/contexts/views/mvcViews.xml</config>
 	</configs>
@@ -41,7 +39,6 @@
 				<config>src/main/resources/properties/contexts/applicationContext.xml</config>
 				<config>src/main/resources/properties/contexts/cacheContext.xml</config>
 				<config>src/main/resources/properties/contexts/channelContainerContext.xml</config>
-				<config>src/main/resources/properties/contexts/checksContext.xml</config>
 				<config>src/main/resources/properties/contexts/datasourceContext.xml</config>
 				<config>src/main/resources/properties/contexts/flowsContext.xml</config>
 				<config>src/main/resources/properties/contexts/importExportContext.xml</config>
@@ -59,10 +56,11 @@
 				<config>src/main/resources/properties/contexts/schedulerContext.xml</config>
 				<config>src/main/resources/properties/contexts/securityContext.xml</config>
 				<config>src/main/resources/properties/contexts/servicesContext.xml</config>
-				<config>src/main/resources/properties/contexts/statsContext.xml</config>
 				<config>src/main/resources/properties/contexts/userContext.xml</config>
 				<config>src/main/resources/properties/contexts/views/mvcViews.xml</config>
 			</configs>
+			<profiles>
+			</profiles>
 		</configSet>
 	</configSets>
 </beansProjectDescription>
