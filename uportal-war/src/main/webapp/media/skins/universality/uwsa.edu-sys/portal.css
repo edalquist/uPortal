@@ -1,0 +1,237 @@
+/**
+ * Licensed to Jasig under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work
+ * for additional information regarding copyright ownership.
+ * Jasig licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a
+ * copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/**
+ * uPORTAL PORTAL CSS
+ * These declarations are scoped for the portal, and not specifically for portlets.
+ * For portlet-specifc CSS, see "portlet.css" in the same directory.
+ * CSS specified at the portal scope will naturally cascade into portlets.
+ * This CSS begins with the Fluid Skinning System (FSS) specification and is followed by uPortal-specfic extensions and overrides.
+ * This CSS assumes the use of a CSS reset (by default the FSS "fss-reset.css") for browser normalization.
+ */
+ 
+/**
+ * uPORTAL DEVELOPMENT STANDARDS AND GUIDELINES
+ * For the standards and guidelines that govern the user interface of uPortal portlets including HTML, CSS, JavaScript, accessibilty, naming conventions, 3rd Party libraries (like jQuery and the Fluid Skinning System) and more, refer to:
+ * http://www.ja-sig.org/wiki/x/cQ
+ */
+ 
+/**
+ * ICONS
+ * This CSS uses the Silk icon set 1.3 by Mark James:
+ * http://www.famfamfam.com/lab/icons/silk/
+ * which is licensed under a Creative Commons Attribution 2.5 License:
+ * http://creativecommons.org/licenses/by/2.5/
+ * This icon set is free for use under the CCA 2.5 license, so long as there 
+ * is a link back to the author's site.  This reference is present in the 
+ * portal footer markup of the universality theme.
+ */
+
+/**
+ * Note: This campus skin inherits styles from the mum-system skin.
+ * Use this file to override style definitions.
+ */
+
+/**
+------------------------------------
+  Fluid Skinning System theme.
+------------------------------------
+ * The Fluid Skinning System is a group of CSS files with a specially designed modular structure and class-specific format.
+ * It is meant to work well as both a standalone CSS foundation for your site and Fluid Infusion components.
+ * In FSS, "themes" refer to the color schemes and "window dressings" for basic markup and FSS Helpers, such as Tabs, Widgets, Menus, etc.
+ * For more information on FSS themes, refer to:
+ * http://wiki.fluidproject.org/x/egNS
+ * The FSS theme created for uPortal is "fl-theme-uportal", and is a class of the <body> tag, used for namespacing.
+*/
+
+html {background: #903;}
+.fl-theme-mist a {color:#903 !important;}
+.fl-theme-mist a:hover {color:#903 !important;}
+
+/**
+------------------------------------
+  uPortal specific CSS.
+------------------------------------
+ * uPortal is namespaced with "up", a class of the <body> tag.
+ */
+
+ /* Header */
+.up #portalPageHeader {
+    background: #903;
+    background: -moz-linear-gradient(center top, #C1003F, #903 15%, #903 75%);
+    background: -webkit-gradient(linear, center bottom, center top, from(#903), color-stop(85%, #903), to(#C1003F));}
+/* Logo */
+.up #portalLogo a {width:415px;background-image: url(images/uwsa.gif);}
+
+/* Navigation */
+.up #portalNavigation {
+    background: #903 url("images/gallery_tab_bkd.png") top left repeat-x;
+    *background-position: 0% 90%;
+    background: -moz-linear-gradient(center top, #903 60%, #E9E4D3 40%);
+    background: -webkit-gradient(linear, center bottom, center top, from(#E9E4D3), color-stop(50%, #E9E4D3), color-stop(50%, #903), to(#903));}
+.up .focused #portalNavigation {
+    background: #903 url("images/gallery_tab_bkd_focused.png") top left repeat-x;
+    *background-position: 0% 60%;
+    background: -moz-linear-gradient(center top, #903 60%, #FFFAE6 40%);
+    background: -webkit-gradient(linear, center bottom, center top, from(#FFFAE6), color-stop(50%, #FFFAE6), color-stop(50%, #903), to(#903));}
+
+/* Customize Page Message */
+.up #portalPageBodyCustomizeMessageRowContents {
+    border: 1px solid #CCC; background-color: #F6F4F5; 
+    background-image: -moz-linear-gradient(100% 0% 270deg,#F6F4F5,#F6F4F5);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#F6F4F5),to(#F6F4F5));}
+.up #portalPageBodyCustomizeMessageRowContents h1 {color: #903;}
+
+/* Portlets */
+.up .up-portlet-wrapper {border-color: #CCC;}
+.up .dashboard .up-portlet-titlebar {background: #EBEBEB;}
+.up .dashboard .up-portlet-titlebar h2 a {color:#903 !important;}
+
+/* Footer */
+.up #portalPageFooter {background: #903;}
+
+/**
+------------------------------------
+  Menubutton.
+------------------------------------
+ * Styles included for the drop-down menus that render above portlets.
+ */
+
+/**
+ * .menubutton
+ * OVERRIDE: overrides the fl-widget implemenation inherited 
+ * from fl-theme-mist.
+ ---------------------------------------------------*/
+.fl-theme-mist .menubutton .widget-titlebar {border: 1px solid #CCC;}
+.fl-theme-mist .menubutton .widget-titlebar a, .fl-theme-mist .menubutton .widget-titlebar a:hover{color:#000;}
+ 
+ /**
+  * .widget-listmenu
+  * OVERRIDE: overrides the .fl-listmenu implemenation inherited 
+  * from fl-theme-mist.
+  ---------------------------------------------------*/
+.up .fl-theme-mist .menubutton .fl-widget {background:#F6F4F5;}
+.fl-theme-mist .menubutton .widget-listmenu {border: 1px solid #CCC;}
+.fl-theme-mist .menubutton .fl-listmenu li:hover, .fl-theme-mist .menubutton .fl-listmenu li a:hover {background:#F6F4F5;}
+ 
+/**
+ * .menubutton-active
+ * Selected state for menubutton.
+ ---------------------------------------------------*/
+.fl-theme-mist .menubutton-active .widget-titlebar{
+    background: #ffffff url("images/menubutton-select-bkd.png") bottom left repeat-x; border:1px solid #CCC;}
+/* ================================================ end: menubutton ===== */
+
+/**
+------------------------------------
+  Gallery.
+------------------------------------
+ * Styles that contorl the visual appearance of the portal customization panel. */
+
+/* general */
+.up .up-gallery .gallery-inner {background-color: #800029;}
+.up .up-gallery .content-wrapper .content-filters-wrapper .categories-column,
+.up .up-gallery .content-wrapper .content-filters-wrapper .packages-column {background:#903;}
+/* modal loaders */
+.up .up-gallery .gallery-loader {background-color: #800029;}
+/* menu items */
+.up .up-gallery .menu {background:#800029; border-color: #CCC;}
+.up .up-gallery .menu li {background:#903; border-color: #CCC;}
+.up .up-gallery .menu li.last {border-color: #CCC;}
+.up .up-gallery .menu li.active {background:#800029}
+.up .up-gallery .menu li span {color:#CCC;}
+.up .up-gallery .menu li.active span {background-color: #800029;}
+.up .up-gallery .menu li:hover {background-color:transparent;}
+.up .up-gallery .menu li.active:hover,
+.up .up-gallery .menu li.active:focus {background-color:#800029;}
+ /* close button */
+.up .up-gallery .close-button a {color: #903 !important;}
+.up .up-gallery .close-button:hover {color:#903 !important;}
+ /* add/use portlet filters */
+.up .up-gallery .categories-column h3 {background:#800029;}
+.up .up-gallery .content-filters-wrapper h3 span {border-color: #903; color: #CCC;}
+.up .up-gallery .content-filters-wrapper .active h3 span {background:#903; color:#F6F4F5;}
+.up .up-gallery .content-filters-wrapper h3 span:hover,
+.up .up-gallery .content-filters-wrapper h3 span:focus {background:#800029; color:#F6F4F5;}
+.up .up-gallery .content-filters-wrapper .active h3 span:hover,
+.up .up-gallery .content-filters-wrapper .active h3 span:focus {background:#903; color:#F6F4F5;}
+ /* categories */
+.up .up-gallery .categories li.active a {text-decoration: none; background-color: #800029;}
+ /* portlet List */
+.up .up-gallery .portlet-wrapper {border-color: #C1003F; background: #800029;}
+.up .up-gallery .portlet-wrapper:hover {border-color: #C1003F; background: #C1003F;}
+ /* add link */
+.up .up-gallery .portlet-thumb-link {color:#F6F4F5 !important;}
+ /* Drag Handle */
+.up .up-gallery .portlet-thumb-gripper {background-color: #903;}
+.up .up-gallery .add-content .portlet-thumb-gripper {background-color: #903;}
+/* temporary icon */
+.up-gallery .portlet-thumb-icon {background-image: url("images/applications-other.png");}
+/* dragging avatar */
+.up .portlet.ui-draggable-dragging {border-color: #C1003F; background: #FF0958;}
+.up .portlet.ui-draggable-dragging .portlet-thumb-gripper {background-color: #903;}
+/* drop target */
+.up .layout-draggable-drop-target {background: #903; border: 2px dotted #C1003F; color: #903;}
+/* package list */
+.up .up-gallery .package-wrapper {border-color: #C1003F; background: #800029;}
+.up .up-gallery .package-wrapper:hover {border-color: #C1003F;}
+/* subscribe link */
+.up .up-gallery .package-wrapper .package-link {color:#CCC !important; background: #903;}
+.up .up-gallery .package-wrapper .package-link:hover,
+.up .up-gallery .package-wrapper:hover .package-link {color:#F6F4F5 !important; background:#903;}
+/* skin list */
+.up .up-gallery .skins-wrapper  {border-color: #C1003F;}
+.up .up-gallery .skins-wrapper:hover {
+    border-color: #C1003F; background-color:#800029;
+    background-image:-moz-linear-gradient(90deg,#800029,#5B001E);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#800029), to(#5B001E));}
+.up .up-gallery .skins-wrapper.selected {
+    border-color: #C1003F; background:#800029;
+    background-image:-moz-linear-gradient(100% 0 270deg, #800029, #5B001E);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#800029), to(#5B001E));}
+/* layout list */
+.up .up-gallery .layout-wrapper  {border-color: #C1003F;}
+.up .up-gallery .layout-wrapper:hover {
+    border-color: #C1003F; background:#800029;
+    background-image:-moz-linear-gradient(90deg,#800029,#5B001E);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#800029), to(#5B001E));}
+.up .up-gallery .layout-wrapper.selected {
+    border-color: #C1003F; background:#800029;
+    background-image:-moz-linear-gradient(100% 0 270deg, #800029, #5B001E);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#800029), to(#5B001E));}
+ /* list pager */
+.up .up-gallery .pager-button-up,
+.up .up-gallery .pager-button-down {border-color: #C1003F;}
+.up .up-gallery .pager-button-up,
+.up .up-gallery .pager-button-down {
+    background-color:#800029; background-image:-moz-linear-gradient(90deg,#5B001E,#800029);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#5B001E), to(#800029));}
+.up .up-gallery .pager-button-up:hover,
+.up .up-gallery .pager-button-down:hover,
+.up .up-gallery .pager-button-up:focus,
+.up .up-gallery .pager-button-down:focus {
+    border-color: #C1003F; background-image:-moz-linear-gradient(90deg,#800029,#5B001E);
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#800029), to(#5B001E));}
+.up .up-gallery .pager-button-up.fl-pager-disabled,
+.up .up-gallery .pager-button-down.fl-pager-disabled,
+.up .up-gallery .pager-button-up.fl-pager-disabled:hover,
+.up .up-gallery .pager-button-down.fl-pager-disabled:hover,
+.up .up-gallery .pager-button-up.fl-pager-disabled:focus,
+.up .up-gallery .pager-button-down.fl-pager-disabled:focus {background:#800029; border-color:#C1003F;}
+/* ================================================ end: gallery ===== */

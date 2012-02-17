@@ -79,4 +79,5 @@
   <js>javascript/uportal/up-parameter-editor.js</js>
   <js>javascript/uportal/flyout-nav.js</js>
   <js>javascript/uportal/up-translator.js</js>
+  <js>javascript/uportal/jquery.browser-logger.js</js>
 </resources>
