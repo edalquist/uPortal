@@ -87,10 +87,14 @@
         <uportal.docbase>uPortal</uportal.docbase>
         <project-site-path>/uportal/${project.version}</project-site-path>
         
-        <!-- The JDBC Driver used by uPortal -->
+        <!-- The JDBC Driver used by uPortal 
         <jdbc.groupId>org.hsqldb</jdbc.groupId>
         <jdbc.artifactId>hsqldb</jdbc.artifactId>
         <jdbc.version>${hsqldb.version}</jdbc.version>
+        -->
+        <jdbc.groupId>com.oracle</jdbc.groupId>
+        <jdbc.artifactId>ojdbc6</jdbc.artifactId>
+        <jdbc.version>11.2.0.2.0</jdbc.version>
     
         <!--
          | Environment name and filters file for environment-specific build
@@ -173,7 +177,7 @@
         <org.springframework.webflow.version>2.3.0.RELEASE</org.springframework.webflow.version>
         <oro.version>2.0.8</oro.version>
         <persistence-api.version>1.0</persistence-api.version>
-        <person-directory.version>1.5.0-RC6</person-directory.version>
+        <person-directory.version>1.5.0</person-directory.version>
         <pluto.version>2.1.0-M2</pluto.version>
         <portlet-api.version>2.0</portlet-api.version>
         <quartz.version>1.8.4</quartz.version>
@@ -666,12 +670,12 @@
                 <version>${resource-server.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.jasig.service</groupId>
+                <groupId>org.jasig.service.persondir</groupId>
                 <artifactId>person-directory-api</artifactId>
                 <version>${person-directory.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.jasig.service</groupId>
+                <groupId>org.jasig.service.persondir</groupId>
                 <artifactId>person-directory-impl</artifactId>
                 <version>${person-directory.version}</version>
                 <exclusions>

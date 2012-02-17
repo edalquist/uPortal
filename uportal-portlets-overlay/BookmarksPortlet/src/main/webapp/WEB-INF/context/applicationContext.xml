@@ -117,11 +117,25 @@
     </bean>
     
     
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName"><value>${hibernate.connection.driver_class}</value></property>
-        <property name="url"><value>${hibernate.connection.url}</value></property>
-        <property name="username"><value>${hibernate.connection.username}</value></property>
-        <property name="password"><value>${hibernate.connection.password}</value></property>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${hibernate.connection.driver_class}" />
+        <property name="url" value="${hibernate.connection.url}" />
+        <property name="username" value="${hibernate.connection.username}" />
+        <property name="password" value="${hibernate.connection.password}" />
+        
+        <property name="validationQuery" value="SELECT 1 FROM DUAL" />
+        
+        <property name="initialSize" value="1" />
+        <property name="maxActive" value="50" />
+        <property name="maxIdle" value="50" />
+        <property name="minIdle" value="1" />
+        <property name="maxWait" value="1000" />
+
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="numTestsPerEvictionRun" value="10" />
+        <property name="minEvictableIdleTimeMillis" value="150000" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
     </bean>
     
     <!-- JMX Stats Exporting -->

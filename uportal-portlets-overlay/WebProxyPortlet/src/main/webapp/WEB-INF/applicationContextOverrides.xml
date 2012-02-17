@@ -37,6 +37,14 @@
     <bean id="jpaVendorAdapter" class="org.jasig.portal.spring.orm.jpa.HibernateJpaVendorAdapter">
         <property name="cacheProvider" ref="cacheProvider" />
     </bean>
+    
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/datasource.properties</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>
     

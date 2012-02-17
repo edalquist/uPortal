@@ -34,8 +34,8 @@
         <context:exclude-filter type="regex" expression="org\.jasig\.portal\.portlets\."/>
     </context:component-scan>
     
-    <context:property-placeholder location="classpath:/properties/rdbm.properties,classpath:/properties/portal.properties,classpath:/properties/security.properties"/>
-    
+    <context:property-placeholder location="classpath:/properties/rdbm.properties,classpath:/properties/portal.properties,classpath:/properties/security.properties,classpath:/properties/ldap.properties"/>
+
     <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" lazy-init="false" />
     
     <bean id="portalPropertyEditorRegistrar" class="org.jasig.portal.spring.properties.PortalPropertyEditorRegistrar">

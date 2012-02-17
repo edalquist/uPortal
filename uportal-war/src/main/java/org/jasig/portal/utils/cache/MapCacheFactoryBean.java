@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import org.apache.commons.lang.Validate;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
@@ -33,9 +34,10 @@ import org.springframework.beans.factory.config.AbstractFactoryBean;
  * @author Eric Dalquist
  * @version $Revision$
  */
-public class MapCacheFactoryBean extends AbstractFactoryBean<Map> {
+public class MapCacheFactoryBean extends AbstractFactoryBean<Map> implements BeanNameAware {
     private CacheFactory cacheFactory;
     private String cacheName;
+    private String beanName;
     
     /**
      * @return the cacheFactory
@@ -49,8 +51,13 @@ public class MapCacheFactoryBean extends AbstractFactoryBean<Map> {
     @Autowired
     public void setCacheFactory(CacheFactory cacheFactory) {
         this.cacheFactory = cacheFactory;
+        this.logger.debug(this.beanName + " had CacheFactory injected: " + this.cacheFactory);
     }
-
+    
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
+    }
     /**
      * @return the cacheName
      */
@@ -69,6 +76,8 @@ public class MapCacheFactoryBean extends AbstractFactoryBean<Map> {
      */
     @Override
     protected Map<Serializable, Object> createInstance() throws Exception {
+        this.logger.debug(this.beanName + " trying to create " + this.cacheName + " via factory " + this.cacheFactory);
+
         final Map<Serializable, Object> cache;
         if (this.cacheName != null) {
             cache = this.cacheFactory.getCache(this.cacheName);

@@ -26,23 +26,35 @@
            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
     <!--
-     | DataSource objects used by the portal should be configured 
+     | DataSource objects used by the portal should be configured here
      +-->
-
-    <bean id="PortalDb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <qualifier value="PortalDb"/>
-        <property name="driverClassName" value="${hibernate.connection.driver_class}" />
-        <property name="url" value="${hibernate.connection.url}" />
-        <property name="username" value="${hibernate.connection.username}" />
-        <property name="password" value="${hibernate.connection.password}" />
-        
+     
+    <!--  base pooled datasource with common configuration -->
+    <bean id="basePooledDataSource" class="org.apache.commons.dbcp.BasicDataSource" abstract="true" destroy-method="close">
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
         <property name="maxActive" value="50" />
-        <property name="maxIdle" value="10" />
+        <property name="maxIdle" value="50" />
         <property name="maxWait" value="1000" />
         <property name="removeAbandoned" value="true" />
         <property name="removeAbandonedTimeout" value="300" />
         <property name="logAbandoned" value="true" />
         <property name="poolPreparedStatements" value="false" />
+
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="numTestsPerEvictionRun" value="10" />
+        <property name="minEvictableIdleTimeMillis" value="150000" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
+    </bean>
+
+    <bean id="PortalDb" parent="basePooledDataSource">
+        <qualifier value="PortalDb"/>
+        <property name="driverClassName" value="${hibernate.connection.driver_class}" />
+        <property name="url" value="${hibernate.connection.url}" />
+        <property name="username" value="${hibernate.connection.username}" />
+        <property name="password" value="${hibernate.connection.password}" />
+        <property name="validationQuery" value="${PortalJdbcValidationQuery}" />
     </bean>
     <bean id="PortalDB.metadata" class="org.jasig.portal.rdbm.DatabaseMetaDataImpl">
         <constructor-arg index="0" ref="PortalDb" />
@@ -55,17 +67,121 @@
      | DataSource used to store raw portal event data, wrapper is used instead of alias so that Spring treats each
      | DataSource as unique.
      +-->
-    <bean id="RawEventsDB" class="org.jasig.portal.utils.DataSourceWrapper">
+    <bean id="RawEventsDB" parent="basePooledDataSource">
         <qualifier value="RawEventsDB" />
-        <constructor-arg ref="PortalDb" />
-    </bean>
-    
+        <property name="driverClassName" value="${RawEventsJdbcDriver}" />
+        <property name="url" value="${RawEventsJdbcUrl}" />
+        <property name="username" value="${RawEventsJdbcUser}" />
+        <property name="password" value="${RawEventsJdbcPassword}" />
+        <property name="validationQuery" value="${RawEventsJdbcValidationQuery}" />
+    </bean>    
     <!-- 
      | DataSource used to store aggregated portal event data, wrapper is used instead of alias so that Spring treats each
      | DataSource as unique.
      +-->
-    <bean id="AggrEventsDB" class="org.jasig.portal.utils.DataSourceWrapper">
+    <bean id="AggrEventsDB" parent="basePooledDataSource">
         <qualifier value="AggrEventsDB" />
-        <constructor-arg ref="PortalDb" />
+        <property name="driverClassName" value="${AggrEventsJdbcDriver}" />
+        <property name="url" value="${AggrEventsJdbcUrl}" />
+        <property name="username" value="${AggrEventsJdbcUser}" />
+        <property name="password" value="${AggrEventsJdbcPassword}" />
+        <property name="validationQuery" value="${AggrEventsJdbcValidationQuery}" />
+    </bean>    
+    
+    
+    
+    <!--
+     | DataSources for Person Directory & Portlets
+     | TODO sort out which are use where
+     +-->
+    
+    <bean id="CourseGuide" parent="basePooledDataSource">
+        <property name="driverClassName" value="${CgJdbcDriver}" />
+        <property name="url" value="${CgJdbcUrl}" />
+        <property name="username" value="${CgJdbcUser}" />
+        <property name="password" value="${CgJdbcPassword}" />
+        
+        <property name="validationQuery" value="${CgJdbcValidationQuery}" />
+    </bean>
+    
+    <bean id="ResourceBridge" parent="basePooledDataSource">
+        <property name="driverClassName" value="${RbJdbcDriver}" />
+        <property name="url" value="${RbJdbcUrl}" />
+        <property name="username" value="${RbJdbcUser}" />
+        <property name="password" value="${RbJdbcPassword}" />
+        
+        <property name="validationQuery" value="${RbJdbcValidationQuery}" />
+    </bean>
+    
+    <bean id="ResourceBridgeNg" parent="basePooledDataSource">
+        <property name="driverClassName" value="${RbNgJdbcDriver}" />
+        <property name="url" value="${RbNgJdbcUrl}" />
+        <property name="username" value="${RbNgJdbcUser}" />
+        <property name="password" value="${RbNgJdbcPassword}" />
+        
+        <property name="validationQuery" value="${RbNgJdbcValidationQuery}" />
+    </bean>
+    
+    <bean id="DataWarehouse" parent="basePooledDataSource">
+        <property name="driverClassName" value="${DwJdbcDriver}" />
+        <property name="url" value="${DwJdbcUrl}" />
+        <property name="username" value="${DwJdbcUser}" />
+        <property name="password" value="${DwJdbcPassword}" />
+        
+        <property name="validationQuery" value="${DwJdbcValidationQuery}" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=2000;oracle.net.READ_TIMEOUT=2000;oracle.jdbc.ReadTimeout=2000" />
+    </bean>
+    
+    <bean id="ISIS" parent="basePooledDataSource">
+        <property name="driverClassName" value="${IsisJdbcDriver}" />
+        <property name="url" value="${IsisJdbcUrl}" />
+        <property name="username" value="${IsisJdbcUser}" />
+        <property name="password" value="${IsisJdbcPassword}" />
+        
+        <property name="validationQuery" value="${IsisJdbcValidationQuery}" />
+        
+        <property name="logAbandoned" value="true" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="180" />
+    </bean>
+    
+    <bean id="JoinIn" parent="basePooledDataSource">
+        <property name="driverClassName" value="${JoinInJdbcDriver}" />
+        <property name="url" value="${JoinInJdbcUrl}" />
+        <property name="username" value="${JoinInJdbcUser}" />
+        <property name="password" value="${JoinInJdbcPassword}" />
+        
+        <property name="validationQuery" value="${JoinInJdbcValidationQuery}" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=2000;oracle.net.READ_TIMEOUT=2000;oracle.jdbc.ReadTimeout=2000" />
+    </bean>
+    
+    <bean id="SharedWebHosting" parent="basePooledDataSource">
+        <property name="driverClassName" value="${SharedWebHostingJdbcDriver}" />
+        <property name="url" value="${SharedWebHostingJdbcUrl}" />
+        <property name="username" value="${SharedWebHostingJdbcUser}" />
+        <property name="password" value="${SharedWebHostingJdbcPassword}" />
+        
+        <property name="validationQuery" value="${SharedWebHostingJdbcValidationQuery}" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=2000;oracle.net.READ_TIMEOUT=2000;oracle.jdbc.ReadTimeout=2000" />
+    </bean>
+    
+    <bean id="WebHosting" parent="basePooledDataSource">
+        <property name="driverClassName" value="${WebHostingJdbcDriver}" />
+        <property name="url" value="${WebHostingJdbcUrl}" />
+        <property name="username" value="${WebHostingJdbcUser}" />
+        <property name="password" value="${WebHostingJdbcPassword}" />
+        
+        <property name="validationQuery" value="${WebHostingJdbcValidationQuery}" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=2000;oracle.net.READ_TIMEOUT=2000;oracle.jdbc.ReadTimeout=2000" />
+    </bean>
+
+    <bean id="AdvisorNotesDataSource" parent="basePooledDataSource">
+        <property name="driverClassName" value="${AdvisorNotesDataSourceJdbcDriver}" />
+        <property name="url" value="${AdvisorNotesDataSourceJdbcUrl}" />
+        <property name="username" value="${AdvisorNotesDataSourceJdbcUser}" />
+        <property name="password" value="${AdvisorNotesDataSourceJdbcPassword}" />
+        
+        <property name="validationQuery" value="${AdvisorNotesDataSourceJdbcValidationQuery}" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=2000;oracle.net.READ_TIMEOUT=2000;oracle.jdbc.ReadTimeout=2000" />
     </bean>
 </beans>
