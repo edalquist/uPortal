@@ -22,6 +22,7 @@
             <groupId>${jdbc.groupId}</groupId>
             <artifactId>${jdbc.artifactId}</artifactId>
             <version>${jdbc.version}</version>
+            <scope>provided</scope> <!-- UW shares datasources across webapps :( -->
         </dependency>
         
         <dependency>
@@ -411,6 +412,11 @@
             <groupId>org.jasig.service</groupId>
             <artifactId>uportal-shibboleth-delegation-integration</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>edu.wisc</groupId>
+            <artifactId>authhub-client</artifactId>
+        </dependency>
 
         
         <!-- ===== Provided Dependencies ====================================== -->
@@ -476,6 +482,13 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- UW Specific Dependencies -->
+        <dependency>
+            <groupId>edu.wisc.my.service</groupId>
+            <artifactId>portal-abstraction-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
         
         <!-- ===== Runtime Dependencies ======================================= -->
         <dependency>
@@ -493,6 +506,19 @@
         <dependency>
             <groupId>jline</groupId>
             <artifactId>jline</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- UW Specific Dependencies -->
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-jgroupsreplication</artifactId>
             <scope>runtime</scope>
         </dependency>
         

@@ -61,7 +61,7 @@ UNIX:    ant.sh
 Using uPortal
 --------------------------------------------------------------------------------
 Once Tomcat is running you can access uPortal with your browser by entering:
-http://localhost:8080/uPortal/
+http://localhost:8080/portal/
 
 Logging in
 ----------

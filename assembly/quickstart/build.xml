@@ -37,7 +37,7 @@
 
 <echo>
 uPortal Quick-Start started, please wait 30 seconds before trying browsing to
-http://localhost:8080/uPortal
+http://localhost:8080/portal
 </echo>
     </target>
 

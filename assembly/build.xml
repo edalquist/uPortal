@@ -117,11 +117,12 @@
                     <param name="qs-file-ext" value="" />
                     <param name="exclude-svn" value="true" />
                 </antcall>
-        
+                <!--
                 <antcall target="qs-package">
                     <param name="qs-file-ext" value="-dev" />
                     <param name="exclude-svn" value="false" />
                 </antcall>
+                -->
             </then>
         </if>
     </target>

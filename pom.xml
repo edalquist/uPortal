@@ -199,6 +199,10 @@
         
         <!-- UW specific deps -->
         <uportal-shibboleth-delegation-integration.version>1.1.0</uportal-shibboleth-delegation-integration.version>
+        <authhub-client>0.0.2</authhub-client>
+        <portal-abstraction-api.version>1.1.2</portal-abstraction-api.version>
+        <ehcache-jgroups.version>1.4</ehcache-jgroups.version>
+        <jgroups.version>2.11.0.GA</jgroups.version>
         
         <project.build.sourceVersion>1.6</project.build.sourceVersion>
         <project.build.targetVersion>1.6</project.build.targetVersion>
@@ -967,6 +971,32 @@
                 <groupId>org.jasig.service</groupId>
                 <artifactId>uportal-shibboleth-delegation-integration</artifactId>
                 <version>${uportal-shibboleth-delegation-integration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.wisc</groupId>
+                <artifactId>authhub-client</artifactId>
+                <version>${authhub-client}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.wisc.my.service</groupId>
+                <artifactId>portal-abstraction-api</artifactId>
+                <version>${portal-abstraction-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-jgroupsreplication</artifactId>
+                <version>${ehcache-jgroups.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>jgroups</groupId>
+                        <artifactId>jgroups</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jgroups</groupId>
+                <artifactId>jgroups</artifactId>
+                <version>${jgroups.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
