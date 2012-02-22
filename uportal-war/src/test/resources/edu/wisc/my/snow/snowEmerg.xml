@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<declaredSnowEmergency xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="declaredSnowEmergency.xsd">
+    <status>true</status>
+    <link>http://www.cityofmadison.com/winter/</link>
+    <message>02/22/09 9:09 AM: City of Madison Declared snow emergency
+        continues thru 7AM 03/23/09. Park on odd side tonight. 261-9111 or
+        www.cityofmadison.com/winter for info.</message>
+    <endDateTime>02/23/2009 7:00 AM</endDateTime>
+</declaredSnowEmergency>

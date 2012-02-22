@@ -23,6 +23,6 @@
   <name>Advisor</name>
   <entity-type>org.jasig.portal.portlet.om.IPortletDefinition</entity-type>
   <creator>system</creator>
-  <description>Advisor Portlets</description>
+  <description>Modules for Academic and Professional Advisors</description>
   <children/>
 </group>

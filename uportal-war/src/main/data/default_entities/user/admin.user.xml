@@ -19,7 +19,11 @@
     under the License.
 
 -->
-<user xmlns="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns2="https://source.jasig.org/schemas/uportal/io/permission-owner" xmlns:ns3="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/portlet-definition" xmlns:ns5="https://source.jasig.org/schemas/uportal" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/portlet-type" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" username="admin" version="4.0" xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/user https://source.jasig.org/schemas/uportal/io/user/user-4.0.xsd">
+<user xmlns="https://source.jasig.org/schemas/uportal/io/user" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/user https://source.jasig.org/schemas/uportal/io/user/user-4.0.xsd"
+    username="admin" version="4.0">
+    
     <default-user>defaultTemplateUser</default-user>
     <password>(MD5)OP2Z89LDMIY6gHAwfoFPRSQWDl5Z16Vt</password>
     <attribute>
@@ -31,24 +35,135 @@
         <value>Administrator</value>
     </attribute>
     <attribute>
-        <name>mail</name>
-        <value>amy.administrator@university.edu</value>
-    </attribute>
-    <attribute>
-        <name>alternateEmailAddress</name>
-        <value>amy.webmaster@university.edu</value>
-        <value>amy.geologist@university.edu</value>
-    </attribute>
-    <attribute>
-        <name>telephoneNumber</name>
-        <value>(555) 555-5555</value>
-    </attribute>
-    <attribute>
         <name>title</name>
         <value>Portal Administrator</value>
     </attribute>
     <attribute>
-        <name>department</name>
-        <value>IT Services</value>
+        <name>wiscedupvi</name>
+        <value>admin</value>
+    </attribute>
+    <attribute>
+        <name>wwid</name>
+        <value>admin</value>
+    </attribute>
+    <attribute>
+        <name>cn</name>
+        <value>Administrator</value>
+    </attribute>
+    <attribute>
+        <name>wisceduudsdisplayname</name>
+        <value>Administrator</value>
+    </attribute>
+    <attribute>
+        <name>postaladdress</name>
+    </attribute>
+    <attribute>
+        <name>telephonenumber</name>
+    </attribute>
+    <attribute>
+        <name>wisceduportalactivated</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduudds</name>
+        <value>A123456</value>
+    </attribute>
+    <attribute>
+        <name>wiscedustudentstatus</name>
+    </attribute>
+    <attribute>
+        <name>wisceduwebmailinportal</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduwebcalinportal</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduadvisorflag</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduinstructorflag</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>ctcalxitemid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduwebspaceactive</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>mailhost</name>
+    </attribute>
+    <attribute>
+        <name>wisceduallemails</name>
+    </attribute>
+    <attribute>
+        <name>wisceduapptid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduappttype</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisisstudentemplid</name>
+    </attribute>
+    <attribute>
+        <name>wiscedustudentid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisisemplid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisisnonstudentemplid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisisinstructoremplid</name>
+    </attribute>
+    <attribute>
+        <name>wiscedustudentviewinportal</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduphotoid</name>
+    </attribute>
+    <attribute>
+        <name>wiscedumailplusemailaddress</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisugapplicant</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wisceduhrpersonid</name>
+    </attribute>
+    <attribute>
+        <name>wisceduwiscworldeligible</name>
+    </attribute>
+    <attribute>
+        <name>wiscedusalequityreport</name>
+    </attribute>
+    <attribute>
+        <name>wiscedustudentgroup</name>
+    </attribute>
+    <attribute>
+        <name>wiscedufrmrappointmntvwinprtl</name>
+    </attribute>
+    <attribute>
+        <name>postalcode</name>
+    </attribute>
+    <attribute>
+        <name>wisceduisgradapplicant</name>
+        <value>Y</value>
+    </attribute>
+    <attribute>
+        <name>wiscedudarsflag</name>
+    </attribute>
+    <attribute>
+        <name>wiscedudepartment</name>
+    </attribute>
+    <attribute>
+        <name>wisceduportalcsastudent</name>
     </attribute>
 </user>

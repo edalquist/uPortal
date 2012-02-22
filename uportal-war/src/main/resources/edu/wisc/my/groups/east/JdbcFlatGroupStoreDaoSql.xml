@@ -1,0 +1,55 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!--
+ | Contains SQL used by the JdbcFlatGroupStoreDao
+ +-->
+<properties>
+    <entry key="groupIdParam">groupId</entry>
+    <entry key="groupNameParam">groupName</entry>
+    <entry key="memberIdParam">memberId</entry>
+
+    <entry key="isMemberInGroupQuery">
+        SELECT COUNT(*)
+        FROM GROUP_MEMBERS_VW GROUP_MEMBERS LEFT JOIN GROUPS_VW GROUPS ON GROUP_MEMBERS.GROUP_ID = GROUPS.GROUP_ID
+        WHERE GROUPS.ACTIVE = 1 AND GROUPS.GROUP_ID = :groupId AND GROUP_MEMBERS.MEMBER_ID = :memberId
+    </entry>
+    <entry key="singleEntityGroupQuery">
+        SELECT GROUPS.GROUP_ID, GROUPS.GROUP_NAME AS NAME, GROUPS.DESCR, GROUPS.CREATED_BY
+        FROM GROUPS_VW GROUPS
+        WHERE GROUPS.ACTIVE = 1 AND GROUPS.GROUP_ID = :groupId
+    </entry>
+    <entry key="parentEntityGroupsQuery">
+        SELECT GROUPS.GROUP_ID, GROUPS.GROUP_NAME AS NAME, GROUPS.DESCR, GROUPS.CREATED_BY
+        FROM GROUP_MEMBERS_VW GROUP_MEMBERS LEFT JOIN GROUPS_VW GROUPS ON GROUP_MEMBERS.GROUP_ID = GROUPS.GROUP_ID
+        WHERE GROUPS.ACTIVE = 1 AND GROUP_MEMBERS.MEMBER_ID = :memberId
+    </entry>
+    <entry key="groupsQuery">
+        SELECT GROUPS.GROUP_ID, GROUPS.GROUP_NAME AS NAME, GROUPS.DESCR, GROUPS.CREATED_BY
+        FROM GROUPS_VW GROUPS
+        WHERE GROUPS.ACTIVE = 1
+    </entry>
+    <entry key="groupMembersQuery">
+        SELECT GROUP_MEMBERS.MEMBER_ID
+        FROM GROUP_MEMBERS_VW GROUP_MEMBERS LEFT JOIN GROUPS_VW GROUPS ON GROUP_MEMBERS.GROUP_ID = GROUPS.GROUP_ID
+        WHERE GROUPS.ACTIVE = 1 AND GROUPS.GROUP_ID = :groupId
+    </entry>
+    <entry key="searchForGroupName">
+        SELECT GROUPS.GROUP_ID
+        FROM GROUPS_VW GROUPS
+        WHERE GROUPS.ACTIVE = 1 AND GROUPS.GROUP_NAME = :groupName
+    </entry>
+    <entry key="searchForGroupNameLike">
+        SELECT GROUPS.GROUP_ID
+        FROM GROUPS_VW GROUPS
+        WHERE GROUPS.ACTIVE = 1 AND GROUPS.GROUP_NAME LIKE :groupName
+    </entry>
+    <entry key="searchForMemberName">
+        SELECT DISTINCT GROUP_MEMBERS.MEMBER_ID
+        FROM GROUP_MEMBERS_VW GROUP_MEMBERS LEFT JOIN GROUPS_VW GROUPS ON GROUP_MEMBERS.GROUP_ID = GROUPS.GROUP_ID
+        WHERE GROUP_MEMBERS.MEMBER_ID = :memberId AND GROUPS.ACTIVE = 1
+    </entry>
+    <entry key="searchForMemberNameLike">
+        SELECT DISTINCT GROUP_MEMBERS.MEMBER_ID
+        FROM GROUP_MEMBERS_VW GROUP_MEMBERS LEFT JOIN GROUPS_VW GROUPS ON GROUP_MEMBERS.GROUP_ID = GROUPS.GROUP_ID
+        WHERE GROUP_MEMBERS.MEMBER_ID LIKE :memberId AND GROUPS.ACTIVE = 1
+    </entry>
+</properties>

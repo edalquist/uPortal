@@ -1,0 +1,29 @@
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-0.crn">
+  <name>DoIT Help Desk EAST Support Group</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>system</creator>
+  <description>A group of system administrators with superuser capabilities</description>
+  <children>
+    <literal>cagrossp</literal>
+    <literal>ckcalderon</literal>
+    <literal>cmayeshi</literal>
+    <literal>ddavenpo</literal>
+    <literal>jbdietrich</literal>
+    <literal>jmolson9</literal>
+    <literal>jslaybaugh</literal>
+    <literal>jwdowns</literal>
+    <literal>laphilliph</literal>
+    <literal>msmith6</literal>
+    <literal>peterson5</literal>
+    <literal>rwrobleski</literal>
+    <literal>skinney</literal>
+  </children>
+</group>
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Administrators</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>Manually maintained groups with special administrative capabilities within the portal.</description>
+  <children>
+    <group>AT Support</group>
+    <group>Portal Administrators</group>
+    <group>Administrators - Course Guide</group>
+    <group>Administrators - Library</group>
+    <group>Administrators - RB Reports</group>
+    <group>Authors - Course Guide</group>
+    <group>Administrators - ISIS</group>
+    <group>Developers</group>
+    <group>Developers - Read Only</group>
+  </children>
+</group>

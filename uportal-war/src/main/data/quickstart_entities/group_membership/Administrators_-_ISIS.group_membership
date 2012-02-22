@@ -1,0 +1,53 @@
+
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Administrators - ISIS</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>system</creator>
+  <description>ISIS administrators</description>
+  <children>
+    <literal>aacuster</literal>
+    <literal>adapel</literal>
+    <literal>artallmadge</literal>
+    <literal>cjchapman</literal>
+    <literal>cjwise</literal>
+    <literal>clcampbell</literal>
+    <literal>crsteven</literal>
+    <literal>cwdvorak</literal>
+    <literal>daleszcz</literal>
+    <literal>dberge</literal>
+    <literal>dmmarkgr</literal>
+    <literal>dmmoy</literal>
+    <literal>genz</literal>
+    <literal>jaatkinson</literal>
+    <literal>jkhefty</literal>
+    <literal>jlbyersdent</literal>
+    <literal>jtknox</literal>
+    <literal>jwhelwig</literal>
+    <literal>kgunderson</literal>
+    <literal>kjgraham</literal>
+    <literal>klhanso2</literal>
+    <literal>knalling</literal>
+    <literal>lgardner2</literal>
+    <literal>lmhesse</literal>
+    <literal>lspak</literal>
+    <literal>luby</literal>
+    <literal>mahillst</literal>
+    <literal>mcglinn</literal>
+    <literal>mlpelkey</literal>
+    <literal>mstrouse</literal>
+    <literal>nvandall</literal>
+    <literal>ochen</literal>
+    <literal>pcstangl</literal>
+    <literal>phiavang</literal>
+    <literal>plweaver</literal>
+    <literal>rsgantzer</literal>
+    <literal>sedolfin</literal>
+    <literal>skog</literal>
+    <literal>swinicha</literal>
+    <literal>tggeis</literal>
+    <literal>tldolan</literal>
+    <literal>whitt</literal>
+    <literal>windell</literal>
+    <literal>xfcasto</literal>
+  </children>
+</group>

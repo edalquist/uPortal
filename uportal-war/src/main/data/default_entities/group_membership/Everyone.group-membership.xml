@@ -29,5 +29,9 @@
     <group>PAGS Root</group>
     <group>Guests</group>
     <group>Portal System</group>
+    <!-- mum group systems
+    <group>JoinIn Groups</group>
+    <group>Portal Support</group>
+    -->
   </children>
 </group>

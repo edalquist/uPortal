@@ -27,10 +27,11 @@
   <children>
     <group>Authenticated Users</group>
     <group>PAGS Root</group>
-    <group>Faculty</group>
     <group>Guests</group>
     <group>Portal System</group>
-    <group>Staff</group>
-    <group>Students</group>
+    <!-- mum group systems
+    <group>JoinIn Groups</group>
+    <group>Portal Support</group>
+    -->
   </children>
 </group>

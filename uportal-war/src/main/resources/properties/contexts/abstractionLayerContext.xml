@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    
+    <!-- 
+     | Coordinating class for the portal services APIs, also handles injecting itself into the PortalServicesLocator
+     +-->
+    <bean id="portalApiServices" class="edu.wisc.my.apilayer.impl.internal.PortalServicesImpl">
+        <property name="databaseServices" ref="portalApiDatabaseServices" />
+        <property name="ldapServices" ref="portalApiLdapServices" />
+        <property name="personServices" ref="portalApiPersonServices" />
+    </bean>
+    
+    <!-- 
+     | Below are the uPortal impls of the API layer interfaces
+     +-->
+    <bean id="portalApiDatabaseServices" class="edu.wisc.my.apilayer.impl.rdbm.DatabaseServicesImpl">
+        <property name="defaultDataSource" ref="PortalDb" />
+        <property name="defaultDatabaseMetadata" ref="PortalDB.metadata" />
+    </bean>
+
+    <bean id="portalApiLdapServices" class="edu.wisc.my.apilayer.impl.ldap.LdapServicesImpl">
+        <property name="defaultLdapServer" ref="defaultLdapServer" />
+    </bean>
+    
+    <bean id="portalApiPersonServices" class="edu.wisc.my.apilayer.impl.person.PersonServicesImpl">
+        <property name="personAttributeDao" ref="personAttributeDao" />
+    </bean>
+</beans>

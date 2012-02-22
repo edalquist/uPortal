@@ -50,7 +50,27 @@ This list of component group services is processed by the composite, or "root" s
     <internally_managed>false</internally_managed>
     <caching_enabled>true</caching_enabled>
   </service>
-
+  <!-- 
+  <service>
+    <name>JoinIn</name>
+    <service_factory>org.jasig.portal.groups.ReferenceIndividualGroupServiceFactory</service_factory>
+    <entity_store_factory>edu.wisc.my.groups.east.FlatGroupStoreFactory</entity_store_factory>
+    <group_store_factory>edu.wisc.my.groups.east.FlatGroupStoreFactory</group_store_factory>
+    <entity_searcher_factory>edu.wisc.my.groups.east.FlatGroupStoreFactory</entity_searcher_factory>
+    <internally_managed>false</internally_managed>
+    <caching_enabled>false</caching_enabled>
+  </service>
+  
+  <service>
+    <name>util</name>
+    <service_factory>org.jasig.portal.groups.ReferenceIndividualGroupServiceFactory</service_factory>
+    <entity_store_factory>edu.wisc.my.groups.util.UtilityGroupStoreFactory</entity_store_factory>
+    <group_store_factory>edu.wisc.my.groups.util.UtilityGroupStoreFactory</group_store_factory>
+    <entity_searcher_factory>edu.wisc.my.groups.util.UtilityGroupStoreFactory</entity_searcher_factory>
+    <internally_managed>false</internally_managed>
+    <caching_enabled>false</caching_enabled>
+  </service>
+ -->
 <!--  Uncomment to configure an LDAP group service component.  Be sure to edit LDAPGroupStoreConfig.xml with your values. -->
 <!--
   <service>

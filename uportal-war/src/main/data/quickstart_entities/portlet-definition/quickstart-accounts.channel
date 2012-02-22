@@ -1,0 +1,125 @@
+
+<channel-definition script="classpath://org/jasig/portal/io/import-channel_v3-2.crn">
+  <title>Quickstart Accounts</title>
+  <name>Quickstart Accounts</name>
+  <fname>quickstart-accounts</fname>
+  <desc></desc>
+  <type>Portlet</type>
+  <class>org.jasig.portal.channels.portlet.CSpringPortletAdaptor</class>
+  <timeout>500</timeout>
+  <hasedit>N</hasedit>
+  <hashelp>N</hashelp>
+  <hasabout>N</hasabout>
+  <secure>N</secure>
+  <locale>en_US</locale>
+  <categories>
+    <category>Administration</category>
+  </categories>
+  <groups>
+    <group>Everyone</group>
+  </groups>
+  <users/>
+  <parameters>
+    <parameter> 
+      <name>portletApplicationId</name>  
+      <value>/SimpleContentPortlet</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>showChrome</name>  
+      <value>true</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>isFrameworkPortlet</name>  
+      <value>false</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>highlight</name>  
+      <value>false</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>portletName</name>  
+      <value>advanced-cms</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>hideFromMobile</name>  
+      <value>false</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>alternate</name>  
+      <value>false</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>disableDynamicTitle</name>  
+      <value>true</value>  
+      <description></description>  
+      <ovrd>N</ovrd> 
+    </parameter>
+  </parameters>
+  <portletPreferences>
+    <portletPreference> 
+      <name>content</name>  
+      <read-only>false</read-only>  
+      <values>
+        <value>
+<![CDATA[
+  <div>To preview My UW-Madison, use one of these example accounts:</div>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <form action="/portal/Login" method="post">
+            <input value="admin" name="userName" type="hidden"/>
+            <input value="admin" name="password" type="hidden"/>
+            <input value="Login as a 'admin'" name="Login" class="uportal-button" type="submit"/>
+          </form>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <form action="/portal/Login" method="post">
+            <input value="staff" name="userName" type="hidden"/>
+            <input value="staff" name="password" type="hidden"/>
+            <input value="Login as an 'staff'" name="Login" class="uportal-button" type="submit"/>
+          </form>
+        </td>
+      </tr>
+       <tr>
+        <td>
+          <form action="/portal/Login" method="post">
+            <input value="student" name="userName" type="hidden"/>
+            <input value="student" name="password" type="hidden"/>
+            <input value="Login as an 'student'" name="Login" class="uportal-button" type="submit"/>
+          </form>
+        </td>
+      </tr>
+       <tr>
+        <td>
+          <form action="/portal/Login" method="post">
+            <input value="faculty" name="userName" type="hidden"/>
+            <input value="faculty" name="password" type="hidden"/>
+            <input value="Login as an 'faculty'" name="Login" class="uportal-button" type="submit"/>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+]]>
+        </value>
+      </values> 
+    </portletPreference>
+  </portletPreferences>
+</channel-definition>

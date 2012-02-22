@@ -734,5 +734,124 @@
         eternal="false" maxElementsInMemory="1500" overflowToDisk="false" diskPersistent="false"
         timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true"/>
 
+
+    <!-- ******************** UW Person Directory Caches ******************** -->
+        
+    <!-- 
+     | Caches queries against LDAP
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.ldap"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        
+    <!-- 
+     | Caches queries against AuthHub
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.authhub"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        
+    <!-- 
+     | Caches queries against the graduating senior data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        
+    <!-- 
+     | Caches queries against the graduating masters data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_masters"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        
+    <!-- 
+     | Caches queries against the graduating senior survey results data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior_survey"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        
+    <!-- 
+     | Caches queries against the heritage survey results data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.heritage_check"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+
+
+    <!-- ******************** UW Flat Group Store Caches ******************** -->
     
+    <!-- Flat Group Store -->
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.groupCache"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="300" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.groupMembershipCache"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="300" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.groupsCache"
+        eternal="false" maxElementsInMemory="1" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="300" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.parentGroupsCache"
+        eternal="false" maxElementsInMemory="5000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="300" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.isMemberInGroupCache"
+        eternal="false" maxElementsInMemory="5000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="300" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.groupSearchCache"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="120" timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.memberSearchCache"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="120" timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU" statistics="true" />
+        
+    <!-- Utility Group Store -->
+    <cache name="MADSION_SNOW_EMERGENCY"
+        eternal="false" maxElementsInMemory="1" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="60" memoryStoreEvictionPolicy="LFU" statistics="true" />
+        
+        
+    <!-- ******************** UW Access Denied Caches ******************** -->
+    
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord.groups"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord.attributes"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord.getByReferenceKey"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord.username"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessRecord.mostRecent"
+        eternal="false" maxElementsInMemory="100" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="60" timeToLiveSeconds="60" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    <cache name="edu.wisc.my.portlet.ad.om.AccessGroup"
+        eternal="false" maxElementsInMemory="5000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="1800" timeToLiveSeconds="1800" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+
 </ehcache>

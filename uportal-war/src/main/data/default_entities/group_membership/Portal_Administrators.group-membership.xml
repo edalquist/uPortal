@@ -26,6 +26,34 @@
   <description>Portal Administrators with superuser capabilities</description>
   <children>
     <literal>admin</literal>
-    <literal>admin-lo</literal>
+    <literal>bwu2</literal>
+    <literal>cpkennedy2</literal>
+    <literal>daconner</literal>
+    <literal>dalquist</literal>
+    <literal>dalquist@wisc.edu</literal>
+    <literal>dgertsch</literal>
+    <literal>dlhyland</literal>
+    <literal>ekrylova</literal>
+    <literal>genz</literal>
+    <literal>jcrucius</literal>
+    <literal>jfthomps</literal>
+    <literal>jfthomps@wisc.edu</literal>
+    <literal>jnweaver</literal>
+    <literal>jrhare</literal>
+    <literal>jtknox</literal>
+    <literal>jwhelwig</literal>
+    <literal>jwhelwig@wisc.edu</literal>
+    <literal>ldhanson2</literal>
+    <literal>lgardner2</literal>
+    <literal>mjadas</literal>
+    <literal>mrfarnham</literal>
+    <literal>npblair</literal>
+    <literal>ochen</literal>
+    <literal>rdlauer</literal>
+    <literal>rsgantzer</literal>
+    <literal>stratman</literal>
+    <literal>sundu</literal>
+    <literal>tkhill</literal>
+    <literal>xfcasto</literal>
   </children>
 </group>

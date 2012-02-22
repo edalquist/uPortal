@@ -1,0 +1,12 @@
+
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Administrators - RB Reports</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>persons with access to ResourceBridge Reports for Learn@UW and Library Course Page reports</description>
+  <children>
+    <literal>carozas</literal>
+    <literal>jaruenge</literal>
+    <literal>jbohrer</literal>
+  </children>
+</group>

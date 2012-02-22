@@ -29,5 +29,27 @@
     <group>Development</group>
     <group>Information</group>
     <group>uPortal</group>
+    <!-- from mum
+    <group>Help</group>
+    <group>Administration</group>
+    <group>Student Learning</group>
+    <group>Campus Apps</group>
+    <group>Notification</group>
+    <group>Academics</group>
+    <group>Advisor</group>
+    <group>Applications</group>
+    <group>CourseGuide</group>
+    <group>Development</group>
+    <group>Finances</group>
+    <group>Home</group>
+    <group>Instructor</group>
+    <group>Library</group>
+    <group>News</group>
+    <group>Research</group>
+    <group>Services</group>
+    <group>Test</group>
+    <group>Work</group>
+    <group>Student Services</group>
+    -->
   </children>
 </group>

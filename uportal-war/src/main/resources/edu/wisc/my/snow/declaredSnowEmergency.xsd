@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="declaredSnowEmergency">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean"/>
+				<xs:element name="link" type="xs:anyURI" fixed="http://www.cityofmadison.com/winter/"/>
+				<xs:element name="message" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="173"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element> 
+				<xs:element name="endDateTime" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="18"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element> 
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -26,10 +26,10 @@
     PAGSGroupStoreConfig.xml is used to configure the person attributes group store.
     See PAGSGroupStore.dtd for xml grammar.
 
-    To control the attributes that are available, see ../personDirectory.xml.
+    To control the attributes that are available, see personDirectoryContext.xml.
 
     Author: Dan Ellentuck, de3@columbia.edu
-    Version $Revision$
+    Version $Revision: 19776 $
 
     This sample configuration sets up 4 groups in the following relationship:
 
@@ -60,6 +60,8 @@
     <group-description>Root group for all PAGS groups.  Convenience for adding PAGS groups to a local group.</group-description>
     <members>
       <member-key>all_users</member-key>
+      <member-key>uw-madison</member-key>
+      <member-key>uw-system</member-key>
     </members>
   </group>
 
@@ -85,79 +87,1034 @@
   </group>
   
   <group>
-    <group-key>authenticated_users</group-key>
-    <group-name>Authenticated Users</group-name>
-    <group-description>All Authenticated Portal Users</group-description>
+    <group-key>uw-madison</group-key>
+    <group-name>UW-Madison</group-name>
+    <group-description>User's from the UW-Madison campus</group-description>
     <selection-test>
       <test-group>
         <test>
-          <attribute-name></attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.GuestUserTester</tester-class>
-          <test-value>false</test-value>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+    <members>
+      <member-key>portal-ineligible</member-key>
+      <member-key>not-portal-activated</member-key>
+      <member-key>portal-activated</member-key>
+    </members>
+  </group>
+  
+  <group>
+    <group-key>portal-ineligible</group-key>
+    <group-name>Portal Ineligible</group-name>
+    <group-description>UW-Madison Portal Ineligible Users</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduportalactivated</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wiscedustudentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduudds</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NoValuesTester</tester-class>
+          <test-value>testvalueignored</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduformerappointmentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduformerstudentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>        
+        <test>
+          <attribute-name>wiscedunewhireviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduisugapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduisgradapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduprofessionalapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduspecialapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.ValueMissingTester</tester-class>
+          <test-value>Y</test-value>
+        </test>        
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NegatedRegexTester</tester-class>
+          <test-value>^mum-lo-.*$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+      <group-key>not-portal-activated</group-key>
+      <group-name>Not Portal Activated</group-name>
+      <group-description>UW-Madison Users that are NOT portal activated, have a layout with only the desired error message</group-description>
+      <selection-test>
+        <test-group>
+          <test>
+            <attribute-name>wisceduportalactivated</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+            <test-value>Y</test-value>
+          </test>
+          <test>
+            <attribute-name>username</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+            <test-value>guest</test-value>
+          </test>
+          <test>
+            <attribute-name>username</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedRegexTester</tester-class>
+            <test-value>^mum-lo-.*$</test-value>
+          </test>
+        </test-group>
+      </selection-test>
+  </group>
+
+  <group>
+      <group-key>portal-activated</group-key>
+      <group-name>Portal Activated</group-name>
+      <group-description>Users that are portal activated, parent group of all others derived from UDS LDAP</group-description>
+      <selection-test>
+        <test-group>
+          <test>
+            <attribute-name>wisceduportalactivated</attribute-name>
+            <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+            <test-value>Y</test-value>
+          </test>
+        </test-group>
+      </selection-test>
+      <members>
+        <member-key>uw-madison-populations</member-key>
+        <member-key>uw-madison-roles</member-key>
+        <member-key>uw-madison-student-groups</member-key>
+      </members>
+  </group>
+  
+  <group>
+    <group-key>uw-madison-populations</group-key>
+    <group-name>UW-Madison - Populations</group-name>
+    <group-description>User Populations from the UW-Madison campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+    <members>
+        <member-key>applicant-undergraduate</member-key>
+        <member-key>applicant-graduate</member-key>
+        <member-key>applicant-professional</member-key>        
+        <member-key>applicant-special</member-key>
+        <member-key>facstaff</member-key>
+        <member-key>facstaff-former-appointment</member-key>
+        <member-key>facstaff-new-hire</member-key>
+        <member-key>student</member-key>
+        <member-key>former-student</member-key>        
+    </members>
+  </group>
+  
+  <group>
+    <group-key>uw-madison-roles</group-key>
+    <group-name>UW-Madison - Roles</group-name>
+    <group-description>User Roles from the UW-Madison campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+    <members>
+        <member-key>users-employee-heritage-questionnaire</member-key>
+        <member-key>users-advisors</member-key>
+        <member-key>users-instructors</member-key>
+        <member-key>users-salary-equity-report</member-key>
+        <member-key>users-email</member-key>
+        <member-key>users-calendar</member-key>
+        <member-key>users-mywebspace</member-key>
+        <member-key>users-friends-of-web-registration</member-key>    
+        <member-key>users-service-activation-required</member-key>   
+        <member-key>users-graduating-seniors</member-key>
+        <member-key>users-graduating-masters</member-key>
+        <member-key>users-graduating-seniors-without-questionnare-response</member-key>
+        <member-key>users-graduating-masters-without-questionnare-response</member-key>
+        <member-key>users-common-scholarship-application-student</member-key>  
+        <member-key>users-portal-activation-key-access</member-key>     
+    </members>
+  </group>
+  
+  <group>
+    <group-key>uw-madison-student-groups</group-key>
+    <group-name>UW-Madison - Student Groups</group-name>
+    <group-description>Student Groups from the UW-Madison campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+    <members>
+        <member-key>coe</member-key>
+        <member-key>l-and-s</member-key>
+        <member-key>als</member-key>
+        <member-key>biology</member-key>     
+    </members>
+  </group>
+
+  <!-- Primary populations -->
+  
+  <group>
+    <group-key>student</group-key>
+    <group-name>Student</group-name>
+    <group-description>Users that are students</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedustudentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
         </test>
       </test-group>
     </selection-test>
   </group>
   
-  <!--==================== Other Examples ====================-->
-
-
-<!--
-  Group 2: "Short First Names"
-  givenName has 5 or fewer characters
--->
-<!-- 
   <group>
-    <group-key>2</group-key>
-    <group-name>Short First Names</group-name>
-    <group-description>Portal users whose first names are between 1 and 5 characters long</group-description>
+    <group-key>former-student</group-key>
+    <group-name>Former Student</group-name>
+    <group-description>Users that are former students</group-description>
     <selection-test>
       <test-group>
         <test>
-          <attribute-name>givenName</attribute-name>
+          <attribute-name>wisceduformerstudentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>facstaff</group-key>
+    <group-name>Facstaff</group-name>
+    <group-description>Users that are faculty or staff</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduudds</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.AttributeExistsTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>facstaff-former-appointment</group-key>
+    <group-name>Facstaff - Former Appointment</group-name>
+    <group-description>Persons that recently held faculty and staff appointments</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduformerappointmentviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>facstaff-new-hire</group-key>
+    <group-name>Facstaff - New Hire</group-name>
+    <group-description>Persons that have been recently hired</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedunewhireviewinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-employee-heritage-questionnaire</group-key>
+    <group-name>Users - Employee Heritage Questionnaire</group-name>
+    <group-description>Faculty or Staff that need to take the employee heritage questionnaire</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduemphrtgquestreq</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>applicant-undergraduate</group-key>
+    <group-name>Applicant - Undergraduate</group-name>
+    <group-description>University Undergraduate Applicants</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisugapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>applicant-graduate</group-key>
+    <group-name>Applicant - Graduate</group-name>
+    <group-description>University Graduate Applicants</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisgradapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>applicant-professional</group-key>
+    <group-name>Applicant - Professional</group-name>
+    <group-description>University Professional Applicants</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduprofessionalapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>  
+
+  <group>
+    <group-key>applicant-special</group-key>
+    <group-name>Applicant - Special</group-name>
+    <group-description>University Special Applicants</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduspecialapplicant</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+    
+  <!-- Secondary groups, services, affiliations or roles -->
+  
+  
+  <group>
+    <group-key>users-advisors</group-key>
+    <group-name>Users - Advisors</group-name>
+    <group-description>Users that are advisors</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduadvisorflag</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-instructors</group-key>
+    <group-name>Users - Instructors</group-name>
+    <group-description>Users that are instructors</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduinstructorflag</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-salary-equity-report</group-key>
+    <group-name>Users - Salary Equity Report</group-name>
+    <group-description>Users in the Salary Equity Report group</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedusalequityreport</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-email</group-key>
+    <group-name>Users - Email</group-name>
+    <group-description>Users with access to WiscMail</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwebmailinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-calendar</group-key>
+    <group-name>Users - Calendar</group-name>
+    <group-description>Users with access to WiscCal</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwebcalinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-mywebspace</group-key>
+    <group-name>Users - MyWebSpace</group-name>
+    <group-description>Users with access to MyWebSpace</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwebspaceactive</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-friends-of-web-registration</group-key>
+    <group-name>Users - Friends of Web Registration</group-name>
+    <group-description>Friends of Web Registration</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedufowr</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-service-activation-required</group-key>
+    <group-name>Users - Service Activation Required</group-name>
+    <group-description>Users that need to activate services</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwiscworldeligible</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduwebmailinportal</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwebcalinportal</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduwiscworldeligible</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+      <test-group>
+        <test>
+          <attribute-name>wisceduwiscworldeligible</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduwebspaceactive</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>wiscalertstextmessaging</group-key>
+    <group-name>Users - WiscAlerts Text Messaging</group-name>
+    <group-description>Users that are eligible for WiscAlerts Text Messaging</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedutextalertinportal</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>coe</group-key>
+    <group-name>COE</group-name>
+    <group-description>College of Engineering members</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedustudentgroup</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>ENGR</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>l-and-s</group-key>
+    <group-name>L&amp;S</group-name>
+    <group-description>Dept of L&amp;S members</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedustudentgroup</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>L&amp;S</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>als</group-key>
+    <group-name>ALS</group-name>
+    <group-description>Dept of Agricultural Life Science members</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedustudentgroup</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>ALS</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <group>
+    <group-key>biology</group-key>
+    <group-name>Biology</group-name>
+    <group-description>Dept of Biology members</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduplan</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>112</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-graduating-seniors</group-key>
+    <group-name>Users - Graduating Seniors</group-name>
+    <group-description>Graduating Seniors</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisugradgraduating</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-graduating-masters</group-key>
+    <group-name>Users - Graduating Masters</group-name>
+    <group-description>Graduating Masters</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisgradgraduating</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-graduating-seniors-without-questionnare-response</group-key>
+    <group-name>Users - Graduating Seniors Without Questionnaire Response</group-name>
+    <group-description>Graduating Seniors that need to take a questionnaire</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisugradgraduating</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduisgradquestcomplete</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-graduating-masters-without-questionnare-response</group-key>
+    <group-name>Users - Graduating Masters Without Questionnaire Response</group-name>
+    <group-description>Graduating Masters that need to take a questionnaire</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduisgradgraduating</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+        <test>
+          <attribute-name>wisceduisgradquestcomplete</attribute-name>
+            <tester-class>edu.wisc.my.groups.pags.testers.NegatedStringTester</tester-class>
+          <test-value>true</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-common-scholarship-application-student</group-key>
+    <group-name>Users - Common Scholarship Application Student</group-name>
+    <group-description>Common Scholarship Application Student</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduportalcsastudent</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-portal-activation-key-access</group-key>
+    <group-name>Users - Portal Activation Key Access</group-name>
+    <group-description>Portal Activation Key Access</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wisceduportalactivationkeyaccess</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>users-student-ssn-update</group-key>
+    <group-name>Users - Student SSN Update</group-name>
+    <group-description>Student SSN Update</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>wiscedustudentssnupdate</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsIgnoreCaseTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+
+  <!-- System portal groups -->  
+
+  <group>
+    <group-key>uw-system</group-key>
+    <group-name>UW System</group-name>
+    <group-description>Users that are logging into the system portal</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>serverName</attribute-name>
           <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
-          <test-value>^.{1,5}$</test-value>
+          <test-value>^my.*\.wisconsin\.edu$</test-value>
         </test>
       </test-group>
     </selection-test>
     <members>
-      <member-key>3</member-key>
+      <member-key>system-portal-ineligible</member-key>
+      <member-key>uw-system-facstaff</member-key>
+      <member-key>uw-system-schools</member-key>
     </members>
   </group>
- -->
-
-<!--
-  Group 3: "Ds and Students"
-  givenName starts with D or equals "Student" since the results of the test-group elements are
-  OR-ed together.  HOWEVER, since this group is a member of group 2, members of this group must
-  also qualify as members of group 2, i.e., given name must have 5 or fewer characters.  As a
-  result, Student User should not show up as a member.
--->
-<!-- 
+  
   <group>
-    <group-key>3</group-key>
-    <group-name>Ds and Students</group-name>
-    <group-description>Portal users whose first names begin with D or equal Student</group-description>
+    <group-key>system-portal-ineligible</group-key>
+    <group-name>System Portal Ineligible</group-name>
+    <group-description>UW-System Portal Ineligible Users</group-description>
     <selection-test>
       <test-group>
         <test>
-          <attribute-name>givenName</attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
-          <test-value>^D.*$</test-value>
+          <attribute-name>eduWisconsinHRSEmplID</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NoValuesTester</tester-class>
+          <test-value>Y</test-value>
         </test>
-      </test-group>
-      <test-group>
         <test>
-          <attribute-name>givenName</attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.StringEqualsTester</tester-class>
-          <test-value>Student</test-value>
+          <attribute-name>eduWisconsinHRPersonID</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NoValuesTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.NegatedRegexTester</tester-class>
+          <test-value>^mum-lo-.*$</test-value>
         </test>
       </test-group>
     </selection-test>
   </group>
- -->
 
+  <group>
+    <group-key>uw-system-facstaff</group-key>
+    <group-name>UW System Facstaff</group-name>
+    <group-description>Users that are faculty or staff</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>hrPersonID</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.AttributeExistsTester</tester-class>
+          <test-value>Y</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-system-schools</group-key>
+    <group-name>UW System Schools</group-name>
+    <group-description>Logical parent group of all UW System School groups</group-description>
+    <members>
+      <member-key>uw-sys-colleges</member-key>
+      <member-key>uw-sys-eau-claire</member-key>
+      <member-key>uw-sys-extension</member-key>
+      <member-key>uw-sys-green-bay</member-key>
+      <member-key>uw-sys-la-crosse</member-key>
+      <member-key>uw-sys-milwaukee</member-key>
+      <member-key>uw-sys-oshkosh</member-key>
+      <member-key>uw-sys-parkside</member-key>
+      <member-key>uw-sys-plattevile</member-key>
+      <member-key>uw-sys-river-falls</member-key>
+      <member-key>uw-sys-system-administration</member-key>
+      <member-key>uw-sys-stevens-point</member-key>
+      <member-key>uw-sys-stout</member-key>
+      <member-key>uw-sys-superior</member-key>
+      <member-key>uw-sys-whitewater</member-key>
+      <member-key>uw-sys-madison</member-key>
+    </members>
+  </group>
 
+  <group>
+    <group-key>uw-sys-colleges</group-key>
+    <group-name>UW System-Colleges</group-name>
+    <group-description>Users from the UW-Colleges</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwc.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-eau-claire</group-key>
+    <group-name>UW System-Eau Claire</group-name>
+    <group-description>Users from the UW-Eau Claire campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwec.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-extension</group-key>
+    <group-name>UW System-Extension</group-name>
+    <group-description>Users from the UW-Extension</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwex.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-green-bay</group-key>
+    <group-name>UW System-Green Bay</group-name>
+    <group-description>Users from the UW-Green Bay campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwgb.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-la-crosse</group-key>
+    <group-name>UW System-La Crosse</group-name>
+    <group-description>Users from the UW-La Crosse campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwlax.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-milwaukee</group-key>
+    <group-name>UW System-Milwaukee</group-name>
+    <group-description>Users from the UW-Milwaukee campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwm.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-oshkosh</group-key>
+    <group-name>UW System-Oshkosh</group-name>
+    <group-description>Users from the UW-Oshkosh campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwosh.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-parkside</group-key>
+    <group-name>UW System-Parkside</group-name>
+    <group-description>Users from the UW-Parkside campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwp.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-platteville</group-key>
+    <group-name>UW System-Platteville</group-name>
+    <group-description>Users from the UW-Platteville campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwplatt.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-river-falls</group-key>
+    <group-name>UW System-River Falls</group-name>
+    <group-description>Users from the UW-River Falls campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwrf.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-system-administration</group-key>
+    <group-name>UW System-System Administration</group-name>
+    <group-description>Users from the UW-System Administration</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwsa.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-stevens-point</group-key>
+    <group-name>UW System-Stevens Point</group-name>
+    <group-description>Users from the UW-Stevens Point campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwsp.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-stout</group-key>
+    <group-name>UW System-Stout</group-name>
+    <group-description>Users from the UW-Stout campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwstout.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-superior</group-key>
+    <group-name>UW System-Superior</group-name>
+    <group-description>Users from the UW-Superior campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uwsuper.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-whitewater</group-key>
+    <group-name>UW System-Whitewater</group-name>
+    <group-description>Users from the UW-Whitewater campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@uww.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
+  <group>
+    <group-key>uw-sys-madison</group-key>
+    <group-name>UW System-Madison</group-name>
+    <group-description>User's from the UW-Madison campus</group-description>
+    <selection-test>
+      <test-group>
+        <test>
+          <attribute-name>username</attribute-name>
+          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
+          <test-value>^[^@]*@wisc.edu$</test-value>
+        </test>
+      </test-group>
+    </selection-test>
+  </group>
+  
 <!-- End Group declarations: -->
 
 </Group-Store>

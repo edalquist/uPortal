@@ -1,0 +1,59 @@
+
+<channel-definition script="classpath://org/jasig/portal/io/import-channel_v3-1.crn">
+  <title>My Bookmarks</title>
+  <name>My Bookmarks</name>
+  <fname>my-bookmarks</fname>
+  <desc>Personal bookmarks to your favorite web sites.</desc>
+  <type>Portlet</type>
+  <class>org.jasig.portal.channels.portlet.CSpringPortletAdaptor</class>
+  <timeout>10000</timeout>
+  <hasedit>N</hasedit>
+  <hashelp>N</hashelp>
+  <hasabout>N</hasabout>
+  <secure>N</secure>
+  <locale>en_US</locale>
+  <categories>
+    <category>Applications</category>
+  </categories>
+  <groups>
+    <group>Applicant - Undergraduate</group>
+    <group>Developers</group>
+    <group>Student</group>
+    <group>Facstaff - Former Appointment</group>
+    <group>Layout Owners</group>
+    <group>Facstaff</group>
+    <group>Developers - Read Only</group>
+    <group>UW System Facstaff</group>
+    <group>Applicant - Graduate</group>
+  </groups>
+  <users/>
+  <parameters>
+    <parameter> 
+      <name>disableDynamicTitle</name>  
+      <value>true</value>  
+      <description/>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>portletApplicationId</name>  
+      <value>/BookmarksPortlet</value>  
+      <description/>  
+      <ovrd>N</ovrd> 
+    </parameter>
+    <parameter> 
+      <name>portletName</name>  
+      <value>BookmarksPortlet</value>  
+      <description/>  
+      <ovrd>N</ovrd> 
+    </parameter>
+  </parameters>
+  <portletPreferences>
+    <portletPreference> 
+      <name>bookmarkSetName</name>  
+      <read-only>false</read-only>  
+      <values>
+        <value>MyBookmarks</value>
+      </values> 
+    </portletPreference>
+  </portletPreferences>
+</channel-definition>

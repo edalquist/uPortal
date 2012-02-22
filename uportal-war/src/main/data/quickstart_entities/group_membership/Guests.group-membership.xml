@@ -26,6 +26,6 @@
   <description>Unauthenticated users</description>
   <children>
     <literal>guest</literal>
-    <literal>guest-lo</literal>
+    <literal>mum-lo-public</literal>
   </children>
 </group>

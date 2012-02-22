@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+    
+    <bean id="edu.wisc.my.groups.util.UtilityGroupStoreLocator"
+            class="edu.wisc.my.groups.util.UtilityGroupStoreLocator">
+        <constructor-arg index="0" ref="utilityGroupStore" />
+    </bean>
+    
+    <bean id="utilityGroupStore" class="edu.wisc.my.groups.util.UtilityGroupStore">
+        <property name="utilityGroups">
+            <map>
+                <entry key="madisonSnow">
+                    <bean class="edu.wisc.my.groups.util.snow.MadisonSnowEmergencyGroup">
+                        <property name="name" value="Madison Snow Emergency" />
+                        <property name="description" value="All users are a member of this group if there is a snow emergency in Madison" />
+                        <property name="snowEmergencyDao" ref="snowEmergencyDao" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="snowEmergencyDao" class="edu.wisc.my.snow.SnowEmergencyDaoImpl">
+        <property name="snowEmergencyFeed" value="file:///my/up/extcontent/snow/snowEmergencyStatus.xml" />
+        <property name="feedDataCache" ref="madisonSnowEmergencyCache" />
+    </bean>
+    
+    <bean id="madisonSnowEmergencyCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager" ref="cacheManager" />
+        <property name="cacheName" value="MADSION_SNOW_EMERGENCY" />
+        <property name="cacheEntryFactory" ref="snowEmergencyDao" />
+    </bean>
+</beans>

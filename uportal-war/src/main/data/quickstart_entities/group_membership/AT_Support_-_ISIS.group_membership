@@ -1,0 +1,11 @@
+
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>AT Support - ISIS</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>RO &amp; ADI admins/developers</description>
+  <children>
+    <literal>genz</literal>
+    <literal>ochen</literal>
+  </children>
+</group>

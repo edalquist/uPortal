@@ -1,0 +1,4 @@
+
+<user script="classpath://org/jasig/portal/io/import-user_v3-2.crn" username="mum-lo-news">
+  <default-user>fragmentTemplate</default-user>
+</user>

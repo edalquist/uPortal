@@ -24,88 +24,217 @@
 
 
 <managedLayoutFragments xmlns:dlm="http://org.jasig.portal.layout.dlm.config">
-  <!-- IMPORTANT - dlm:property elements are no longer supported -->
-  <!-- 
-   | All property configuration has been moved into portal.properties
-   | defaultLayoutOwner     ->  org.jasig.portal.layout.dlm.defaultLayoutOwner
-   | allowExpandedContent   ->  org.jasig.portal.layout.dlm.allowExpandedContent
-   +-->
+
+  <dlm:property name='defaultLayoutOwner' value='fragmentTemplate'/>
+  <!--  <dlm:property name='layoutDecorator' value='someClass'/> -->
   
-  <dlm:fragment name='Guests' ownerID='guest-lo' precedence='80'>
+  <!-- Controls clearing of dlm fragment cache.  This allows changes  made to layout
+  owners to be reflected once the cache has been updated.  Specified in minutes. 
+  
+    <dlm:audience evaluatorFactory="org.jasig.portal.layout.dlm.providers.SubscribedTabEvaluatorFactory"/>
+  -->
+  
+  <dlm:property name='org.jasig.portal.layout.dlm.RDBMDistributedLayoutStore.fragment_cache_refresh' value="5"/>
+
+  <!-- Guest view tabs -->
+  <dlm:fragment name='Public' ownerID='mum-lo-public' precedence='15'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GuestUserEvaluatorFactory'/>
   </dlm:fragment>
   
-  <dlm:fragment name='All' ownerID='all-lo' precedence='80'>
+  <!-- Shown to users that are missing required account info -->
+  <dlm:fragment name='Access Denied' ownerID='mum-lo-access-denied' precedence='101'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+        <paren mode="OR">  
+          <attribute mode='memberOf' name='Not Portal Activated'/>
+          <attribute mode='memberOf' name='Portal Ineligible'/>
+          <attribute mode='memberOf' name='System Portal Ineligible'/>
+        </paren>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <!-- Optional tabs -->
+
+  <dlm:fragment name='Campus Apps' ownerID='mum-lo-campus-apps' precedence='15'>
+    <dlm:audience evaluatorFactory="org.jasig.portal.layout.dlm.providers.SubscribedTabEvaluatorFactory"/>
+  </dlm:fragment>
+
+  <dlm:fragment name='Course Guide' ownerID='mum-lo-cg' precedence='15'>
+    <dlm:audience evaluatorFactory="org.jasig.portal.layout.dlm.providers.SubscribedTabEvaluatorFactory"/>
+  </dlm:fragment>
+
+  <!--  My UW-Madison Fragments -->
+
+  <dlm:fragment name='Welcome' ownerID='mum-lo-welcome' precedence='100'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
       <paren mode="OR">     
-        <attribute mode='deepMemberOf' name='Everyone'/>
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>  
+        <attribute mode='memberOf' name='Facstaff'/>
+        <attribute mode='memberOf' name='Facstaff - New Hire'/>
+        <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
+      </paren>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <dlm:fragment name='Advising' ownerID='mum-lo-advising' precedence='90'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+      <paren mode="OR">     
+        <attribute mode='memberOf' name='Users - Advisors'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
 
-  <dlm:fragment name='Welcome' ownerID='welcome-lo' precedence='80'>
-    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.PersonEvaluatorFactory'>
-    <paren mode="AND">
-      <paren mode="NOT">
-        <attribute name="username" mode='equals' value='guest'/>
+  <dlm:fragment name='Teaching' ownerID='mum-lo-teaching' precedence='90'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+      <paren mode="OR">     
+        <attribute mode='memberOf' name='Users - Instructors'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
-      <paren mode="NOT">
-        <attribute name="username" mode='equals' value='admin'/>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <dlm:fragment name='Learning' ownerID='mum-lo-learning' precedence='90'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+      <paren mode="OR">     
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>  
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <dlm:fragment name='Academics' ownerID='mum-lo-academics' precedence='90'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>  
+      <paren mode="OR">   
+        <paren mode="AND">     
+          <paren mode="OR">     
+            <attribute mode='memberOf' name='Facstaff'/>
+            <attribute mode='memberOf' name='Facstaff - New Hire'/>
+            <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+          </paren>
+          <paren mode="NOT">
+            <paren mode="OR">
+              <attribute mode='memberOf' name='Users - Instructors'/>
+              <attribute mode='memberOf' name='Users - Advisors'/>
+              <attribute mode='memberOf' name='Student'/>
+              <attribute mode='memberOf' name='Former Student'/>  
+              <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+              <attribute mode='memberOf' name='Applicant - Graduate'/>
+              <attribute mode='memberOf' name='Applicant - Professional'/>        
+              <attribute mode='memberOf' name='Applicant - Special'/>
+            </paren>
+          </paren>
+        </paren>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
 
-  <dlm:fragment name='News' ownerID='news-lo' precedence='60' description="Current world news resources">
-    <dlm:audience evaluatorFactory="org.jasig.portal.layout.dlm.providers.SubscribedTabEvaluatorFactory"/>
-  </dlm:fragment>
-  
-  <dlm:fragment name='Entertainment' ownerID='ent-lo' precedence='60' description="Games, humor, and entertainment news">
-    <dlm:audience evaluatorFactory="org.jasig.portal.layout.dlm.providers.SubscribedTabEvaluatorFactory"/>
-  </dlm:fragment>
-  
-  <dlm:fragment name='Academics' ownerID='academics-lo' precedence='50'>
-    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+  <dlm:fragment name='Student Services' ownerID='mum-lo-student-services' precedence='80'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>  
       <paren mode="OR">     
-        <attribute mode='memberOf' name='Students'/>
-        <attribute mode='memberOf' name='Faculty'/>
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>        
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='Administrators - ISIS'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
   
-  <dlm:fragment name='Campus' ownerID='campus-lo' precedence='40'>
+  <dlm:fragment name='Research' ownerID='mum-lo-research' precedence='40'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
       <paren mode="OR">     
-        <attribute mode='memberOf' name='Students'/>
-        <attribute mode='memberOf' name='Faculty'/>
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>        
+        <attribute mode='memberOf' name='Facstaff'/>
+        <attribute mode='memberOf' name='Facstaff - New Hire'/>
+        <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
   
-  <dlm:fragment name='Staff' ownerID='staff-lo' precedence='50'>
+  <dlm:fragment name='Services' ownerID='mum-lo-services' precedence='70'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
       <paren mode="OR">     
-        <attribute mode='memberOf' name='Staff'/>
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>          
+        <attribute mode='memberOf' name='Facstaff'/>
+        <attribute mode='memberOf' name='Facstaff - New Hire'/>
+        <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
   
-  <dlm:fragment name='Admin' ownerID='admin-lo' precedence='50'>
+  <dlm:fragment name='Work Record' ownerID='mum-lo-work-record' precedence='60'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
       <paren mode="OR">     
+        <attribute mode='memberOf' name='Facstaff'/>
+        <attribute mode='memberOf' name='Facstaff - New Hire'/>
+        <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
+      </paren>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <dlm:fragment name='News' ownerID='mum-lo-news' precedence='50'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+      <paren mode="OR">     
+        <attribute mode='memberOf' name='Student'/>
+        <attribute mode='memberOf' name='Former Student'/>  
+        <attribute mode='memberOf' name='Facstaff'/>
+        <attribute mode='memberOf' name='Facstaff - New Hire'/>
+        <attribute mode='memberOf' name='Facstaff - Former Appointment'/>
+        <attribute mode='memberOf' name='Applicant - Undergraduate'/>
+        <attribute mode='memberOf' name='Applicant - Graduate'/>
+        <attribute mode='memberOf' name='Applicant - Professional'/>        
+        <attribute mode='memberOf' name='Applicant - Special'/>
+        <attribute mode='memberOf' name='AT Support - East'/>
+      </paren>
+    </dlm:audience>
+  </dlm:fragment>
+  
+  <dlm:fragment name='Admin' ownerID='mum-lo-admin' precedence='10'>
+    <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
+      <paren mode="OR">     
+        <attribute mode='memberOf' name='Developers'/>
         <attribute mode='memberOf' name='Portal Administrators'/>
-        <attribute mode='memberOf' name='Portal Developers'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
 
-  <dlm:fragment name='Developer' ownerID='developer-lo' precedence='40'>
+  <!--  My UW System Fragments -->
+
+  <dlm:fragment name='System Employee' ownerID='mum-lo-system-employee' precedence='10'>
     <dlm:audience evaluatorFactory='org.jasig.portal.layout.dlm.providers.GroupMembershipEvaluatorFactory'>
       <paren mode="OR">     
-        <attribute mode='memberOf' name='Portal Developers'/>
+        <attribute mode='memberOf' name='UW System Facstaff'/>
       </paren>
     </dlm:audience>
   </dlm:fragment>
-  
+
 </managedLayoutFragments>
 

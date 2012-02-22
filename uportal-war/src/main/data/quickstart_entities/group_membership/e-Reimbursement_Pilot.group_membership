@@ -1,0 +1,7 @@
+
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-0.crn">
+  <name>e-Reimbursement Pilot</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>null</description>
+</group>

@@ -27,6 +27,6 @@
   <children>
     <group>Fragment Owners</group>
     <group>Portal Administrators</group>
-    <group>Portal Developers</group>
+    <group>Developers</group>
   </children>
 </group>

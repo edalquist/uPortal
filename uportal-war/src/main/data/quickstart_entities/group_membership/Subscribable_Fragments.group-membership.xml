@@ -25,7 +25,5 @@
   <creator>system</creator>
   <description>These are fragment layout owner accounts</description>
   <children>
-    <literal>ent-lo</literal>
-    <literal>news-lo</literal>
   </children>
 </group>

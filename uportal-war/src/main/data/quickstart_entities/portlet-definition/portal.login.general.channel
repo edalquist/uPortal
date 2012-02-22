@@ -1,0 +1,29 @@
+
+<channel-definition script="classpath://org/jasig/portal/io/import-channel_v3-1.crn">
+  <title>Login</title>
+  <name>Login</name>
+  <fname>portal/login/general</fname>
+  <desc>uPortal Login Channel</desc>
+  <type>Custom</type>
+  <class>org.jasig.portal.channels.CLogin</class>
+  <timeout>10000</timeout>
+  <hasedit>N</hasedit>
+  <hashelp>Y</hashelp>
+  <hasabout>Y</hasabout>
+  <secure>N</secure>
+  <locale>en_US</locale>
+  <categories/>
+  <groups>
+    <group>Everyone</group>
+  </groups>
+  <users/>
+  <parameters>
+    <parameter> 
+      <name>disableDynamicTitle</name>  
+      <value>true</value>  
+      <description/>  
+      <ovrd>N</ovrd> 
+    </parameter>
+  </parameters>
+  <portletPreferences/>
+</channel-definition>
