@@ -19,13 +19,12 @@
     under the License.
 
 -->
-<user xmlns="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns2="https://source.jasig.org/schemas/uportal/io/permission-owner"
-    xmlns:ns3="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/portlet-definition"
-    xmlns:ns5="https://source.jasig.org/schemas/uportal" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/portlet-type"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" username="fragmentTemplate" version="4.0"
-    xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/user https://source.jasig.org/schemas/uportal/io/user/user-4.0.xsd">
+<template-user 
+    xmlns="https://source.jasig.org/schemas/uportal/io/user" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/user https://source.jasig.org/schemas/uportal/io/user/user-4.0.xsd"
+    username="fragmentTemplate" version="4.0" />
     <default-user>defaultTemplateUser</default-user>
-    <password>(MD5)TcJ+RAxMebVLfq2+xF1YY4Mv5dRGo7Rg</password>
     <attribute>
         <name>givenName</name>
         <value>Fragment</value>
