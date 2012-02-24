@@ -30,7 +30,7 @@
      +-->
      
     <!--  base pooled datasource with common configuration -->
-    <bean id="basePooledDataSource" class="org.apache.commons.dbcp.BasicDataSource" abstract="true" destroy-method="close">
+    <bean id="basePooledDataSource" class="org.jasig.portal.utils.LoggingBasicDataSource" abstract="true" destroy-method="close">
         <property name="initialSize" value="1" />
         <property name="minIdle" value="1" />
         <property name="maxActive" value="50" />
@@ -40,7 +40,7 @@
         <property name="removeAbandonedTimeout" value="300" />
         <property name="logAbandoned" value="true" />
         <property name="poolPreparedStatements" value="false" />
-
+        
         <property name="testWhileIdle" value="true" />
         <property name="timeBetweenEvictionRunsMillis" value="60000" />
         <property name="numTestsPerEvictionRun" value="10" />
