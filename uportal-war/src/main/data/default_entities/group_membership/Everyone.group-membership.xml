@@ -26,12 +26,10 @@
   <description>All Users</description>
   <children>
     <group>Authenticated Users</group>
-    <group>PAGS Root</group>
     <group>Guests</group>
-    <group>Portal System</group>
-    <!-- mum group systems
+    <group>PAGS Root</group>
     <group>JoinIn Groups</group>
+    <group>Portal System</group>
     <group>Portal Support</group>
-    -->
   </children>
 </group>
