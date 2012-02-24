@@ -147,6 +147,13 @@
             <artifactId>person-directory-api</artifactId>
             <scope>compile</scope>
         </dependency>
+        
+        <!-- UW Specific Dependencies -->
+        <dependency>
+            <groupId>edu.wisc.my.service</groupId>
+            <artifactId>portal-abstraction-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
