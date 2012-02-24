@@ -19,7 +19,6 @@
   <groups>
     <group>Developers</group>
     <group>Layout Owners</group>
-    <group>Developers - Read Only</group>
     <group>Portal Administrators</group>
   </groups>
   <users/>

@@ -25,25 +25,27 @@
   <creator>system</creator>
   <description>All channel categories</description>
   <children>
-    <group>Help</group>
-    <group>Administration</group>
-    <group>Student Learning</group>
-    <group>Campus Apps</group>
-    <group>Notification</group>
     <group>Academics</group>
+    <group>Administration</group>
     <group>Advisor</group>
     <group>Applications</group>
+    <group>Campus Apps</group>
     <group>CourseGuide</group>
     <group>Development</group>
     <group>Finances</group>
+    <group>Help</group>
     <group>Home</group>
+    <group>Information</group>
     <group>Instructor</group>
     <group>Library</group>
     <group>News</group>
+    <group>Notification</group>
     <group>Research</group>
     <group>Services</group>
-    <group>Test</group>
-    <group>Work</group>
+    <group>Student Learning</group>
     <group>Student Services</group>
+    <group>Test</group>
+    <group>uPortal</group>
+    <group>Work</group>
   </children>
 </group>

@@ -20,9 +20,13 @@
 
 -->
 <group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
-  <name>Testing</name>
-  <entity-type>org.jasig.portal.portlet.om.IPortletDefinition</entity-type>
+  <name>Fragment Owners</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
   <creator>system</creator>
-  <description>Testing Portlets</description>
-  <children/>
+  <description>These are fragment layout owner accounts</description>
+  <children>
+    <literal>fragmentTemplate</literal>
+    <group>Subscribable Fragments</group>
+    <group>Madison Subscribable Fragments</group>
+  </children>
 </group>
