@@ -822,6 +822,11 @@
     <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.memberSearchCache"
         eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
         timeToIdleSeconds="120" timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU" statistics="true" />
+    
+    <cache name="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION"
+        eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="60" timeToLiveSeconds="60" memoryStoreEvictionPolicy="LFU" statistics="true" />
+
         
     <!-- Utility Group Store -->
     <cache name="MADSION_SNOW_EMERGENCY"

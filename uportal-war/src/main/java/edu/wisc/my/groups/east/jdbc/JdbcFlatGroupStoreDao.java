@@ -67,7 +67,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         this.searchForMemberNameLike = loader.getString("searchForMemberNameLike");
     }
 
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.isMemberInGroupCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.isMemberInGroupCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public boolean isMemberInGroup(long groupId, String memberId) {
         final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
         
@@ -85,7 +86,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         }
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public IEntityGroup getGroup(long groupId) {
         final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
         
@@ -106,7 +108,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         } 
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.parentGroupsCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.parentGroupsCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntityGroup> getParentGroups(String memberId) {
         final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
         
@@ -123,7 +126,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         }
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupsCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupsCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntityGroup> getGroups() {
         final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
         
@@ -137,7 +141,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         }
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupMembershipCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupMembershipCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntity> getGroupMembers(long groupId) {
         final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
         
@@ -154,7 +159,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         }
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupSearchCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupSearchCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Collection<EntityIdentifier> searchForGroups(String nameQuery, SearchType searchType) {
         final String searchForGroupQuery;
         
@@ -198,7 +204,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         }
     }
     
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.memberSearchCache")
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.memberSearchCache", 
+            exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Collection<EntityIdentifier> searchForMembers(String idQuery, SearchType searchType) {
         final String searchForMemberQuery;
         
