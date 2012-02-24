@@ -305,7 +305,7 @@
                     <value> 
                         SELECT USER_NAME
                         FROM UP_USER
-                        WHERE {0} AND ROWNUM &lt;= 100
+                        WHERE {0}
                     </value>
                 </constructor-arg>
                 <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
