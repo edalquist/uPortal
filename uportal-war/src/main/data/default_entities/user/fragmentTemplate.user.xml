@@ -23,7 +23,7 @@
     xmlns="https://source.jasig.org/schemas/uportal/io/user" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/user https://source.jasig.org/schemas/uportal/io/user/user-4.0.xsd"
-    username="fragmentTemplate" version="4.0" />
+    username="fragmentTemplate" version="4.0" >
     <default-user>defaultTemplateUser</default-user>
     <attribute>
         <name>givenName</name>
@@ -33,4 +33,4 @@
         <name>sn</name>
         <value>Template</value>
     </attribute>
-</user>
+</template-user>

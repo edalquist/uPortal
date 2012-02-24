@@ -4,8 +4,4 @@
   <entity-type>org.jasig.portal.security.IPerson</entity-type>
   <creator>system</creator>
   <description>These are fragment layout owner accounts that can be subscribed to buy UW-Madison users</description>
-  <children>
-    <literal>mum-lo-campus-apps</literal>
-    <literal>mum-lo-cg</literal>
-  </children>
 </group>
