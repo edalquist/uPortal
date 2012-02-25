@@ -1113,6 +1113,8 @@
                     <version>2.3.2</version>
                     <configuration>
                         <encoding>${project.build.sourceEncoding}</encoding>
+                        <source>${project.build.sourceVersion}</source>
+                        <target>${project.build.targetVersion}</target>
                     </configuration>
                 </plugin>
                 <plugin>
