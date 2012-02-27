@@ -18,8 +18,8 @@
     <url>${jasig-site-base}/uportal/${project.version}</url>
     
     <scm>
-        <connection>scm:git:dalquist@fender.doit.wisc.edu:/apps/my/git/uPortal.git</connection>
-        <developerConnection>scm:git:dalquist@fender.doit.wisc.edu:/apps/my/git/uPortal.git</developerConnection>
+        <connection>scm:git:git@github.com:Wisc-Portal-Branding/uPortal.git</connection>
+        <developerConnection>scm:git:git@github.com:Wisc-Portal-Branding/uPortal.git</developerConnection>
         <url>https://github.com/Jasig/uPortal</url>
     </scm>
 
