@@ -173,7 +173,6 @@ table.purpose-layout td {margin:0; padding:0;}
 
 /* Header */
 #portalPageHeader {position:relative;}
-#portalPageBar {padding:0.5em 0;}
 #portalPageBar h2 {margin:0; padding:0.5em 0 0 1em; position:absolute; top:0; left:0;}
 #portalPageBarLinks ul,
 #portalPageBarLinks li {margin:0; padding:0; display:inline;}
