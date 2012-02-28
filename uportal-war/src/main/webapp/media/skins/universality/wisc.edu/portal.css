@@ -465,7 +465,7 @@ html {background:#ebe8df;}
 .up .up-gallery .pager-button-down.fl-pager-disabled:focus {background:#300000; border-color:#660000; cursor: pointer;}
 
 /* disable 'Colors' and 'Use It' tabs */
-.up .up-gallery .skin-link {display: none;}
+/*.up .up-gallery .skin-link {display: none;}*/
 .up .up-gallery .use-content-link {display: none;}
 /* ================================================ end: gallery ===== */
 
