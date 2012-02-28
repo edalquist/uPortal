@@ -259,6 +259,19 @@
   </xsl:template>
   <!-- ========================================================= -->
   
+  <!-- ========== TEMPLATE: PORTAL PAGE BAR LINK QUICK LINKS ========== -->
+  <!-- ========================================================== -->
+  <!--
+    | This template renders major app links into the portal page bar.
+    | WiscMail, WiscCal, Student Center, My WebSpace, Learn@UW 
+  -->
+  <xsl:template name="portal.page.bar.link.quicklinks">
+    <xsl:if test="$AUTHENTICATED='true'">
+      <xsl:call-template name="quicklinks.static.page.bar.links"/>
+    </xsl:if>
+  </xsl:template>
+  <!-- ========================================================== -->
+  
   
   <!-- ========== TEMPLATE: LOGO ========== -->
   <!-- ==================================== -->

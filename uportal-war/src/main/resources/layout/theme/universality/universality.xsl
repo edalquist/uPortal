@@ -87,6 +87,7 @@
   <xsl:import href="columns.xsl" />     <!-- Templates for column structure -->
   <xsl:import href="content.xsl" />     <!-- Templates for content structure (i.e. portlets) -->
   <xsl:import href="preferences.xsl" /> <!-- Templates for preferences-specific structures -->
+  <xsl:import href="serviceLinks.xsl" />  <!-- Templates for UI components (login, web search, etc.) -->
   <!-- ============================= -->
 
   
@@ -473,27 +474,53 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="portal.page.bar.links.block">
-  	<!-- Home Link -->
-  	<xsl:call-template name="portal.page.bar.link.home" />
-    <!-- Home Link -->
+  	<!-- Use this standard set of links if not using wisc.edu skin-->
+    <xsl:if test="$INSTITUTION != 'wisc.edu'">
+        
+        <!-- Admin Link -->
+        <xsl:if test="$INSTITUTION != 'uportal'">
+            <xsl:call-template name="portal.page.bar.link.admin" />
+        </xsl:if>
+        <!-- Admin Link -->
+        
+        <!-- Sitemap Link -->
+        <xsl:call-template name="portal.page.bar.link.sitemap" />
+        <!-- Sitemap Link -->
+        
+        <!-- Help Link -->
+        <span><a href="{$BASE_ACTION_URL}?uP_fname=myuw-system-help"><span>Help</span></a></span>
+        <!-- <xsl:call-template name="portal.page.bar.link.help" /> -->
+        <!-- Help Link -->
     
-    <!-- Admin Link -->
-    <xsl:if test="$INSTITUTION != 'uportal'">
-  		<xsl:call-template name="portal.page.bar.link.admin" />
     </xsl:if>
-    <!-- Admin Link -->
+    <!-- Use this set of links if using wisc.edu skin-->
+    <!-- See template above for common options used outside of wisc.edu skin -->
+    <xsl:if test="$INSTITUTION = 'wisc.edu'">
+        
+        <!-- Admin Link -->
+        <xsl:if test="$INSTITUTION != 'uportal'">
+            <xsl:call-template name="portal.page.bar.link.admin" />
+        </xsl:if>
+        <!-- Admin Link -->
+      
+        <!-- Major App Quicklinks -->
+        <xsl:if test="$AUTHENTICATED='true'">
+            <xsl:call-template name="portal.page.bar.link.quicklinks"/>
+        </xsl:if>
+      <!-- Major App Quicklinks -->
+      
+        <!-- wisc.edu Help -->
+        <span><a href="{$BASE_ACTION_URL}?uP_fname=myuw-help"><span>Help</span></a></span>
+        <!-- wisc.edu Help -->
+        
+        
+        <!-- Sign in Link -->
+        <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='wisc.edu'"> <!-- Link only displays if the user is NOT logged in. -->
+            <span><a href="https://my.wisc.edu/" title="Sign in to My UW-Madison"><span>Sign in</span></a></span>
+        </xsl:if>
+        <!-- Sign in Link -->
     
-    <!-- Sitemap Link -->
-  	<xsl:call-template name="portal.page.bar.link.sitemap" />
-    <!-- Sitemap Link -->
-    
-    <!-- Help Link -->
-  	<xsl:call-template name="portal.page.bar.link.help" />
-    <!-- Help Link -->
-    
-    <!-- Logout Link -->
-  	<xsl:call-template name="portal.page.bar.link.logout" />
-    <!-- Logout Link -->
+    </xsl:if>
     
   </xsl:template>
   <!-- =========================================================== -->
