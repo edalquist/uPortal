@@ -161,7 +161,7 @@
       <xsl:when test="$SKIN='university' or $SKIN='university-div1' or $SKIN='university-div2'">university</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
       <xsl:when test="$SKIN='coal'">coal</xsl:when>
       <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
-	  <xsl:when test="$SKIN='hc'">hc</xsl:when>
+	    <xsl:when test="$SKIN='hc'">hc</xsl:when>
       <xsl:otherwise>uportal</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -185,6 +185,9 @@
   <xsl:param name="subscriptionsSupported">true</xsl:param>
   <xsl:param name="uP_productAndVersion">uPortal</xsl:param>
   <xsl:param name="UP_VERSION"><xsl:value-of select="$uP_productAndVersion"/></xsl:param>
+  <xsl:param name="baseActionURL">render.userLayoutRootNode.uP</xsl:param>
+  <xsl:variable name="BASE_ACTION_URL"><xsl:value-of select="$baseActionURL"/></xsl:variable>
+  <xsl:param name="HOME_ACTION_URL"><xsl:value-of select="$BASE_ACTION_URL"/>?uP_root=root&amp;uP_reload_layout=true&amp;uP_sparam=targetRestriction&amp;targetRestriction=no targetRestriction parameter&amp;uP_sparam=targetAction&amp;targetAction=no targetAction parameter&amp;uP_sparam=selectedID&amp;selectedID=&amp;uP_cancel_targets=true&amp;uP_sparam=mode&amp;mode=view</xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
   <xsl:param name="PORTAL_VIEW">
   	<xsl:choose>
@@ -868,53 +871,20 @@
   -->
   <xsl:template name="footer.block">
 
-    <xsl:if test="$INSTITUTION='uportal' or $INSTITUTION='coal' or $INSTITUTION='ivy' or $INSTITUTION='hc'">
-      <!-- Footer Links -->
-      <div id="portalPageFooterLinks">
-        <a href="http://www.jasig.org/" target="_blank" title="{upMsg:getMessage('go.to.jasig.site', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('jasig.org', $USER_LANG)"/>
-          <!--<xsl:value-of select="jasig.org"/>-->
-        </a>
-        <xsl:call-template name="portal.pipe"/>
-        <a href="http://www.jasig.org/uportal" target="_blank" title="{upMsg:getMessage('go.to.uportal.site', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('uportal.org', $USER_LANG)"/>
-          <!--<xsl:value-of select="uportal.org"/>-->
-        </a>
-        <xsl:call-template name="portal.pipe"/>
-        <a href="http://www.jasig.org/uportal/download" target="_blank" title="{upMsg:getMessage('go.to.uportal.download.site', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('download.uportal', $USER_LANG)"/>
-        </a>
-        <xsl:call-template name="portal.pipe"/>
-        <a href="http://www.jasig.org/uportal/community" target="_blank" title="{upMsg:getMessage('go.to.uportal.community.page', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('uportal.community', $USER_LANG)"/>
-        </a>
-        <xsl:call-template name="portal.pipe"/>
-        <a href="http://www.jasig.org/uportal/privacy" target="_blank" title="{upMsg:getMessage('view.uportal.privacy.policy', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('privacy.policy', $USER_LANG)"/>
-        </a>
-        <xsl:call-template name="portal.pipe"/>
-        <a href="http://www.jasig.org/uportal/accessibility" target="_blank" title="{upMsg:getMessage('view.uportal.accessibility.information', $USER_LANG)}">
-          <xsl:value-of select="upMsg:getMessage('uportal.accessibility', $USER_LANG)"/>
-        </a>
-      </div>
-      
-      <!-- uPortal Product Version -->
-      <div id="portalProductAndVersion">
-        <p><a href="http://www.jasig.org/uportal" title="Powered by ${UP_VERSION}" target="_blank">Powered by <xsl:value-of select="$UP_VERSION"/></a>, an open-source project by <a href="http://www.jasig.org" title="Jasig.org - Open for Higher Education">Jasig</a></p>
-        <!-- It's a good idea to leave this in the markup, that way anyone who may be supporting your portal can get to this information quickly by simply using a browser.  If you don't want the statement to visibly render in the page, use CSS to make it invisible. -->
-      </div>
-      
-      <!-- Copyright -->
-      <div id="portalCopyright">
-        <p><a href="http://www.jasig.org/uportal/about/license" title="uPortal" target="_blank">uPortal</a> is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0" target="_blank">Apache License, Version 2.0</a> as approved by the Open Source Initiative (OSI), an <a href="http://www.opensource.org/docs/osd" title="OSI-certified" target="_blank">OSI-certified</a> ("open") and <a href="http://www.gnu.org/licenses/license-list.html" title="Gnu/FSF-recognized" target="_blank">Gnu/FSF-recognized</a> ("free") license.</p>
-      </div>
-      
-      <!-- Icon Set Attribution -->
-      <div id="silkIconsAttribution">
-        <p><a href="http://www.famfamfam.com/lab/icons/silk/" title="Silk icon set 1.3" target="_blank">Silk icon set 1.3</a> courtesy of Mark James.</p>
-        <!-- Silk icon set 1.3 by Mark James [ http://www.famfamfam.com/lab/icons/silk/ ], which is licensed under a Creative Commons Attribution 2.5 License. [ http://creativecommons.org/licenses/by/2.5/ ].  This icon set is free for use under the CCA 2.5 license, so long as there is a link back to the author's site.  If the Silk icons are used, this reference must be present in the markup, though not necessarily visible in the rendered page.  If you don't want the statement to visibly render in the page, use CSS to make it invisible. -->
-      </div>
-    	
+    <xsl:if test="$INSTITUTION != 'ivy' and $INSTITUTION != 'wisc.edu'">
+        <!-- Footer Links -->
+        <div id="portalPageFooterLinks">
+          <span>&#169; 2011, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
+          <span><a href="{$BASE_ACTION_URL}?uP_fname=feedback"><span>Feedback</span></a></span>
+        </div>
+      </xsl:if>
+
+      <xsl:if test="$INSTITUTION = 'wisc.edu'">
+        <!-- Footer Links -->
+        <div id="portalPageFooterLinks">
+          <span>&#169; 2011, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span>
+          <span><a href="{$BASE_ACTION_URL}?uP_fname=feedback"><br/><span>Feedback</span></a></span>
+        </div>
     </xsl:if>
     
   </xsl:template>
