@@ -163,6 +163,7 @@
       <xsl:when test="$SKIN='coal'">coal</xsl:when>
       <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
 	    <xsl:when test="$SKIN='hc'">hc</xsl:when>
+	    <xsl:when test="$SKIN='wisc.edu'">wisc.edu</xsl:when>
       <xsl:otherwise>uportal</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
