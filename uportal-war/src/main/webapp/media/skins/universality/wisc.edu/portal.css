@@ -130,7 +130,7 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
  Set the left width to the width of your logo (plus logo margins).
  This margin prevents it from colliding with the logo if the browser window is shrunk down. 
 */
-.up #portalWelcome {position:absolute; top:95px; right:14px; left:auto; font-weight:bold; font-size:12px; color:#fff; text-shadow: 1px 1px 1px #000; padding-right: 0;}
+.up #portalWelcome {position:absolute; top:95px; right:40px; left:auto; font-weight:bold; font-size:12px; color:#fff; text-shadow: 1px 1px 1px #000; padding-right: 0;}
 .up .not-logged-in #portalWelcome {right:47px; top:81px}
 .up #portalWelcome .logout-label {}
 .up #portalWelcome a {color:#fff !important; text-decoration:none;}

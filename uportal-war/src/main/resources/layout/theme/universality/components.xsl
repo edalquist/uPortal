@@ -527,6 +527,31 @@
   </xsl:template>
   <!-- ========================================== -->
   
+  <!-- ========== TEMPLATE: UW SEARCH ========== -->
+  <!-- ========================================== -->
+  <!--
+   | 
+  -->
+  <xsl:template name="portal.search">
+    <div id="webSearchContainer" class="fl-widget">
+        <xsl:variable name="searchUrl">
+            <xsl:call-template name="portalUrl">
+                <xsl:with-param name="url">
+                    <url:portal-url type="ACTION">
+                        <url:fname>search</url:fname>
+                        <url:portlet-url state="MAXIMIZED" />
+                    </url:portal-url>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <form method="post" action="{$searchUrl}">
+            <input id="webSearchInput" type="text" value="" name="query"></input>
+            <input id="webSearchSubmit" type="submit" value="Search"></input>
+        </form>
+    </div>
+  </xsl:template>
+  <!-- ========================================== -->
+  
   
   <!-- ========== TEMPLATE: BREADCRUMB ========== -->
   <!-- ========================================== -->

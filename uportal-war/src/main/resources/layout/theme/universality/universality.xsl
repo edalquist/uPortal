@@ -436,7 +436,13 @@
     <xsl:call-template name="logo"/>
     
     <!-- Web Search -->
-    <xsl:call-template name="web.search"/>
+    <xsl:call-template name="portal.search"/>
+    
+    <!-- Login Channel -->
+    <xsl:if test="$AUTHENTICATED='true'">
+    	<xsl:call-template name="welcome"/> <!-- This login call is needed to render the welcome/logout statement into the header. -->
+    </xsl:if>
+    <!-- Login Channel -->
     
     <!-- Quicklinks
     <xsl:call-template name="quicklinks"/> -->
@@ -457,11 +463,7 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="portal.page.bar.title.block">
-    <!-- Login Channel -->
-    <xsl:if test="$AUTHENTICATED='true'">
-    	<xsl:call-template name="welcome"/> <!-- This login call is needed to render the welcome/logout statement into the header. -->
-    </xsl:if>
-    <!-- Login Channel -->
+
   </xsl:template>
   <!-- =========================================================== -->
     
@@ -573,6 +575,14 @@
     	<p>CUSTOM CONTENTS.</p>
     </div>
     -->
+    
+    <!-- Login Channel -->
+    <xsl:if test="$AUTHENTICATED='true'">
+    	<xsl:call-template name="welcome"/> <!-- This login call is needed to render the welcome/logout statement into the header. -->
+    </xsl:if>
+    <!-- Login Channel -->
+    
+    <xsl:call-template name="portal.search"/>
   </xsl:template>
   <!-- ==================================================== -->
     
@@ -599,25 +609,8 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="portal.page.bar.links.focused.block">
-  	<!-- Home Link -->
-  	<xsl:call-template name="portal.page.bar.link.home"/>
-    <!-- Home Link -->
-    
-    <!-- Admin Link
-  	<xsl:call-template name="portal.page.bar.link.admin"/> -->
-    <!-- Admin Link -->
-    
-    <!-- Sitemap Link
-  	<xsl:call-template name="portal.page.bar.link.sitemap"/> -->
-    <!-- Sitemap Link -->
-    
-    <!-- Help Link -->
-  	<xsl:call-template name="portal.page.bar.link.help" />
-    <!-- Help Link -->
-    
-    <!-- Logout Link -->
-  	<xsl:call-template name="portal.page.bar.link.logout" />
-    <!-- Logout Link -->
+    <!-- UW uses the same set of links for both normal and focused -->
+    <xsl:call-template name="portal.page.bar.links.block"/>
   </xsl:template>
   <!-- =================================================================== -->
   
