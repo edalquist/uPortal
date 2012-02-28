@@ -181,7 +181,7 @@
   -->
   <xsl:template name="portal.page.bar.link.admin">
   	<xsl:if test="upAuth:canRender($USER_ID, 'portlet-admin')">
-    	<li class="link-admin">
+    	<span id="portalPageBar_admin">
     	  <xsl:variable name="portletAdminUrl">
             <xsl:call-template name="portalUrl">
                 <xsl:with-param name="url">
@@ -195,7 +195,8 @@
     	  <a href="{$portletAdminUrl}" title="{upMsg:getMessage('go.to.portlet.manager', $USER_LANG)}">
           <span><xsl:value-of select="upMsg:getMessage('portlet.manager', $USER_LANG)"/></span>
         </a>
-      </li>
+        <xsl:call-template name="portal.pipe" />
+      </span>
     </xsl:if>
   </xsl:template>
   <!-- ========================================================== -->
