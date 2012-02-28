@@ -368,18 +368,26 @@
   <!--
    | This template renders links for CAS login.
   -->
-  <xsl:template name="welcome">  
+  <xsl:template name="welcome">
+    <!-- ========== wisc.edu ADDED LINK TO LOGIN IN PLACE OF WELCOME MESSAGE WHEN UNATHENTICATED ========== -->
+    <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='wisc.edu'"> <!-- Link only displays if the user is NOT logged in. -->
+      <xsl:call-template name="myuw.login.link" />
+    </xsl:if>
+     
     <xsl:if test="$AUTHENTICATED='true'"> <!-- Welcome only displays if the user is logged in. -->
       <div id="portalWelcome">
-        <xsl:choose>
-          <xsl:when test="$userImpersonating = 'true'">
-            <xsl:value-of select="upMsg:getMessage('you.are.idswapped.as', $USER_LANG)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="upMsg:getMessage('you.are.signed.in.as', $USER_LANG)"/>
-          </xsl:otherwise>
-        </xsl:choose>
-        &#160;<span class="user-name"><xsl:value-of select="$USER_NAME"/></span>
+        <p>
+          <xsl:choose>
+            <xsl:when test="$userImpersonating = 'true'">
+              <xsl:value-of select="upMsg:getMessage('you.are.idswapped.as', $USER_LANG)"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="upMsg:getMessage('you.are.signed.in.as', $USER_LANG)"/>
+            </xsl:otherwise>
+          </xsl:choose>
+          &#160;<span class="user-name"><xsl:value-of select="$USER_NAME"/></span>
+          <span class="logout-label"><a href="{$CONTEXT_PATH}/Logout" title="To log off and exit the portal">Sign Out</a></span>
+        </p>
       </div>
     </xsl:if>
   </xsl:template>

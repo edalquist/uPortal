@@ -380,6 +380,9 @@ table.purpose-layout td {margin:0; padding:0;}
 #skinList h2 {display:inline; margin-left:0.5em;}
 #skinList .fl-widget-content {padding:1em;}
 
+/* Welcome & Sign Out */
+#portalWelcome {position:absolute; top:3em; left:195px;} /* Keep the top value relative to the text size so that the top position remains good when the browser text size is increased. Set the left width to the width of your logo (plus logo margins). This margin prevents it from colliding with the logo if the browser window is shrunk down. */
+#portalWelcome .logout-label {padding-left: 0.5em;} /* Gives a bit of space between the welcome statement and the logout link. */
 
 /* 
 ------------------------------------
