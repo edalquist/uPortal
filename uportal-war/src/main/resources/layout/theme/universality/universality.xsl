@@ -599,25 +599,8 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="portal.page.bar.links.focused.block">
-  	<!-- Home Link -->
-  	<xsl:call-template name="portal.page.bar.link.home"/>
-    <!-- Home Link -->
-    
-    <!-- Admin Link
-  	<xsl:call-template name="portal.page.bar.link.admin"/> -->
-    <!-- Admin Link -->
-    
-    <!-- Sitemap Link
-  	<xsl:call-template name="portal.page.bar.link.sitemap"/> -->
-    <!-- Sitemap Link -->
-    
-    <!-- Help Link -->
-  	<xsl:call-template name="portal.page.bar.link.help" />
-    <!-- Help Link -->
-    
-    <!-- Logout Link -->
-  	<xsl:call-template name="portal.page.bar.link.logout" />
-    <!-- Logout Link -->
+    <!-- UW uses the same set of links for both normal and focused -->
+    <xsl:call-template name="portal.page.bar.links.block"/>
   </xsl:template>
   <!-- =================================================================== -->
   
