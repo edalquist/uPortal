@@ -329,10 +329,14 @@ table.purpose-layout td {margin:0; padding:0;}
 
 
 /* Customize Page Message */
-#portalPageBodyCustomizeMessageRow {background: transparent; padding-top: 4px; margin-bottom: 1em;}
-#portalPageBodyCustomizeMessageRowContents {background-color: #FFF; padding: 10px 20px;}
+#portalPageBodyCustomizeMessageRow {background: transparent; padding-top: 4px; margin: 0 1.5em 1em 1.5em;}
+#portalPageBodyCustomizeMessageRowContents {
+    padding: 10px 20px; border: 1px solid #900;
+    background-color: #FFF; 
+    background-image: -moz-linear-gradient(100% 0% 270deg,#FFFFFF,#dec6a4);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#FFFFFF),to(#dec6a4));
+    -moz-box-shadow: 0px 0px 5px #B2B2B2; -webkit-box-shadow: 0px 0px 5px #B2B2B2; box-shadow: 0px 0px 5px #B2B2B2;}
 #portalPageBodyCustomizeMessageRowContents h1 {margin: 0 0 .3em 0; font-weight: normal; border: none;}
-#portalPageBodyCustomizeMessageRowContents .fl-font-blue {font-weight: bold;}
 
 
 /* Quick Links */

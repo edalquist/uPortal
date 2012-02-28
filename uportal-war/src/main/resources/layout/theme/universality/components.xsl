@@ -593,8 +593,8 @@
    | render when no portlets have been added to a users layout.
   -->
   <xsl:template name="page.customize.message">
-      <h1><xsl:value-of select="upMsg:getMessage('customize.this.page', $USER_LANG)"/></h1>
-      <p><xsl:value-of select="upMsg:getMessage('customize.this.page.description', $USER_LANG)"/></p>
+    <h1><strong>Customize</strong> this page.</h1>
+    <span>You can <strong>Add Stuff</strong> and change the page <strong>Layout</strong>.</span>
   </xsl:template>
   <!-- ========================================== -->
   
