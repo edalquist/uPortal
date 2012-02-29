@@ -154,7 +154,7 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 /* !!!!!!!!!!!!    wisc.edu ACTIVATED    !!!!!!!!!!!!!!!!!*/
 .up #webSearchContainer select {display:inline;}
 .up #webSearchContainer label {display:none;}
-.up #webSearchContainer #webSearchSubmit:hover {cursor:pointer; color:#990000;}
+.up #webSearchContainer #webSearchSubmit:hover {cursor:pointer;}
 
 /* Custom UW Search */
 .search-portlet .uwGoogle .result_url {
