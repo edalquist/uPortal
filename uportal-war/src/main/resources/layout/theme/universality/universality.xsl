@@ -130,8 +130,14 @@
   -->
   <xsl:param name="userImpersonating">false</xsl:param>
   <xsl:param name="skin">uportal3</xsl:param>
+  <xsl:param name="skinOverride" />
+  <xsl:variable name="SKIN">
+    <xsl:choose>
+        <xsl:when test="not($skinOverride)"><xsl:value-of select="$skin"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="$skinOverride"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:param name="CONTEXT_PATH">/NOT_SET</xsl:param>
-  <xsl:variable name="SKIN" select="$skin"/>
   <xsl:variable name="MEDIA_PATH">media/skins/universality</xsl:variable>
   <xsl:variable name="ABSOLUTE_MEDIA_PATH" select="concat($CONTEXT_PATH,'/',$MEDIA_PATH)"/>
   <xsl:variable name="SKIN_RESOURCES_PATH" select="concat('/',$MEDIA_PATH,'/',$SKIN,'/skin.xml')"/>
@@ -162,9 +168,8 @@
       <xsl:when test="$SKIN='university' or $SKIN='university-div1' or $SKIN='university-div2'">university</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
       <xsl:when test="$SKIN='coal'">coal</xsl:when>
       <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
-	    <xsl:when test="$SKIN='hc'">hc</xsl:when>
-	    <xsl:when test="$SKIN='wisc.edu'">wisc.edu</xsl:when>
-      <xsl:otherwise>uportal</xsl:otherwise>
+	  <xsl:when test="$SKIN='hc'">hc</xsl:when>
+      <xsl:otherwise><xsl:value-of select="$SKIN"/></xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
   
@@ -680,10 +685,47 @@
     	<p>CUSTOM CONTENTS.</p>
     </div>
     -->
-    <!-- Tips -->
+    <!-- Tips
     <div id="portalContentTopBlock">
         <xsl:copy-of select="//channel/parameter[@name = 'role' and @value = 'tips']/parent::*"/>
-    </div>
+    </div>    
+    -->
+    
+    <!--wisc.edu CUSTOM TOP BLOCK CONTENT. Includes markup for Quicklinks, Favorites, and Customize dropdowns -->
+    <xsl:if test="$INSTITUTION = 'wisc.edu' or substring-after($INSTITUTION, '.') = 'edu-sys'">
+        <div id="portalContentTopBlock" class="ui-helper-clearfix">
+            <div id="portalContentTopBlockInnerLeft" class="fl-force-left ui-helper-clearfix">
+                <xsl:copy-of select="//channel/parameter[@name = 'role' and @value = 'tips']/parent::*"/>
+            </div>
+            <div id="portalContentTopBlockInnerRight" class="fl-force-right ui-helper-clearfix">
+                <!-- Fragment Administration -->
+                <xsl:copy-of select="//channel[@fname = 'fragment-admin']"/>
+                <!-- UW don't want exit in this block
+                <xsl:copy-of select="//channel[@fname = 'fragment-admin-exit']"/>
+                -->
+                
+                <!-- Administration Links - ->
+                <xsl:call-template name="administration.menu.links"/>
+                <!- - Administration Links -->
+                
+                <!-- Quicklinks NOT USED AT UW
+                <xsl:call-template name="quicklinks.menu.links"/> -->
+                <!-- Quicklinks -->
+                
+                <!-- Favorites STILL NOT DEVELOPED ON THE BACKEND FOR WISCONSIN. The XSL template should be modeled after name="quicklinks.menu.links" to ensure proper rendering 
+                <xsl:call-template name="quickfavorites"/>-->
+                <!-- Favorites -->     
+                
+                <!-- CUSTOMIZE LINKS: For these links to function, AJAX must be enabled by setting the USE_AJAX parameter above to 'true'. 
+                <xsl:if test="$PORTAL_VIEW != 'focused'">
+                    <xsl:call-template name="customize.menu.links"/>
+                </xsl:if>
+                CUSTOMIZE LINKS -->
+            </div>
+        </div>
+        
+        <xsl:apply-templates select="//channel[starts-with(@fname, 'portal-notification-')]" mode="portalNotification"/>
+    </xsl:if>
   </xsl:template>
   <!-- ================================================= -->
   
