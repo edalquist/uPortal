@@ -23,7 +23,10 @@
 <resources xmlns="http://www.jasig.org/uportal/web/skin"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.jasig.org/uportal/web/skin https://source.jasig.org/sandbox/resource-aggregator/tags/resource-aggregator-parent-1.0.0/resource-aggregator-api/src/main/resources/skin-configuration.xsd">
-  
+
+ <!-- For printing of portal pages. Common to all skins using the universality theme -->
+ <css>css/gallery.css</css>  
+
   <!-- For printing of portal pages. Common to all skins using the universality theme -->
   <css>css/print.css</css>
   
