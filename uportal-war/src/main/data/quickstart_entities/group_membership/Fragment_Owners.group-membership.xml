@@ -28,5 +28,19 @@
     <literal>fragmentTemplate</literal>
     <group>Subscribable Fragments</group>
     <group>Madison Subscribable Fragments</group>
+    <literal>mum-lo-academics</literal>
+    <literal>mum-lo-access-denied</literal>
+    <literal>mum-lo-admin</literal>
+    <literal>mum-lo-advising</literal>
+    <literal>mum-lo-learning</literal>
+    <literal>mum-lo-news</literal>
+    <literal>mum-lo-public</literal>
+    <literal>mum-lo-research</literal>
+    <literal>mum-lo-services</literal>
+    <literal>mum-lo-student-services</literal>
+    <literal>mum-lo-system-employee</literal>
+    <literal>mum-lo-teaching</literal>
+    <literal>mum-lo-welcome</literal>
+    <literal>mum-lo-work-record</literal>
   </children>
 </group>

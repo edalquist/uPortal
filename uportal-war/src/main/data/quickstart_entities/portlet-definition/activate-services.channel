@@ -17,7 +17,7 @@
   </categories>
   <groups>
     <group>Users - Service Activation Required</group>
-    <group>Layout Owners</group>
+    <group>Fragment Owners</group>
   </groups>
   <users/>
   <parameters>
