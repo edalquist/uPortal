@@ -187,9 +187,6 @@
   <xsl:param name="subscriptionsSupported">true</xsl:param>
   <xsl:param name="uP_productAndVersion">uPortal</xsl:param>
   <xsl:param name="UP_VERSION"><xsl:value-of select="$uP_productAndVersion"/></xsl:param>
-  <xsl:param name="baseActionURL">render.userLayoutRootNode.uP</xsl:param>
-  <xsl:variable name="BASE_ACTION_URL"><xsl:value-of select="$baseActionURL"/></xsl:variable>
-  <xsl:param name="HOME_ACTION_URL"><xsl:value-of select="$BASE_ACTION_URL"/>?uP_root=root&amp;uP_reload_layout=true&amp;uP_sparam=targetRestriction&amp;targetRestriction=no targetRestriction parameter&amp;uP_sparam=targetAction&amp;targetAction=no targetAction parameter&amp;uP_sparam=selectedID&amp;selectedID=&amp;uP_cancel_targets=true&amp;uP_sparam=mode&amp;mode=view</xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
   <xsl:param name="PORTAL_VIEW">
   	<xsl:choose>
@@ -491,7 +488,16 @@
         <!-- Sitemap Link -->
         
         <!-- Help Link -->
-        <span><a href="{$BASE_ACTION_URL}?uP_fname=myuw-system-help"><span>Help</span></a></span>
+        <xsl:variable name="myuwSystemHelpUrl">
+          <xsl:call-template name="portalUrl">
+              <xsl:with-param name="url">
+                  <url:portal-url>
+                      <url:fname>myuw-system-help</url:fname>
+                  </url:portal-url>
+              </xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <span><a href="{$myuwSystemHelpUrl}"><span>Help</span></a></span>
         <!-- <xsl:call-template name="portal.page.bar.link.help" /> -->
         <!-- Help Link -->
     
@@ -513,7 +519,16 @@
       <!-- Major App Quicklinks -->
       
         <!-- wisc.edu Help -->
-        <span><a href="{$BASE_ACTION_URL}?uP_fname=myuw-help"><span>Help</span></a></span>
+        <xsl:variable name="myuwHelpUrl">
+          <xsl:call-template name="portalUrl">
+              <xsl:with-param name="url">
+                  <url:portal-url>
+                      <url:fname>myuw-help</url:fname>
+                  </url:portal-url>
+              </xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <span><a href="{$myuwHelpUrl}"><span>Help</span></a></span>
         <!-- wisc.edu Help -->
         
         
@@ -891,22 +906,21 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="footer.block">
+    <xsl:variable name="feedbackUrl">
+      <xsl:call-template name="portalUrl">
+          <xsl:with-param name="url">
+              <url:portal-url>
+                  <url:fname>feedback</url:fname>
+              </url:portal-url>
+          </xsl:with-param>
+      </xsl:call-template>
+    </xsl:variable>
 
-    <xsl:if test="$INSTITUTION != 'ivy' and $INSTITUTION != 'wisc.edu'">
-        <!-- Footer Links -->
-        <div id="portalPageFooterLinks">
-          <span>&#169; 2011, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
-          <span><a href="{$BASE_ACTION_URL}?uP_fname=feedback"><span>Feedback</span></a></span>
-        </div>
-      </xsl:if>
-
-      <xsl:if test="$INSTITUTION = 'wisc.edu'">
-        <!-- Footer Links -->
-        <div id="portalPageFooterLinks">
-          <span>&#169; 2011, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span>
-          <span><a href="{$BASE_ACTION_URL}?uP_fname=feedback"><br/><span>Feedback</span></a></span>
-        </div>
-    </xsl:if>
+    <!-- Footer Links -->
+    <div id="portalPageFooterLinks">
+      <span>&#169; 2012, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
+      <span><a href="{$feedbackUrl}"><span>Feedback</span></a></span>
+    </div>
     
   </xsl:template>
   <!-- ============================================ -->
