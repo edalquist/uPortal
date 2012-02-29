@@ -350,7 +350,7 @@ table.purpose-layout td {margin:0; padding:0;}
 #portalPageHeader #webSearchContainer h2 {display:none;}
 #portalPageHeader #webSearchContainer input,
 #portalPageHeader #webSearchContainer select {float:left; margin-left:0.3em;}
-
+#webSearchInput {background-image: none !important;}
 
 /* Tooltip */
 #tooltip h3, #tooltip div { margin: 0; }
