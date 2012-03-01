@@ -114,11 +114,16 @@
             <ul id="portalNavigationList" class="fl-tabs flc-reorderer-column">
               <xsl:for-each select="tab">
                 <xsl:if test="$USE_TAB_GROUPS!='true' or self::node()[@tabGroup=$ACTIVE_TAB_GROUP]">
-                 <xsl:apply-templates select=".">
-                   <xsl:with-param name="CONTEXT" select="$CONTEXT"/>
-                 </xsl:apply-templates>
+                  <xsl:apply-templates select=".">
+                    <xsl:with-param name="CONTEXT" select="$CONTEXT"/>
+                  </xsl:apply-templates>
                 </xsl:if>
               </xsl:for-each>
+              <xsl:if test="$AUTHENTICATED='true' and $USE_ADD_TAB='true' and not(//focused)">
+                  <li class="portal-navigation portal-navigation-add">
+                    <a href="javascript:;" title="{upMsg:getMessage('add.tab', $USER_LANG)}" class="portal-navigation-link"><span>+</span></a>
+                  </li>
+              </xsl:if>
             </ul>
             
             <xsl:if test="$USE_SUBNAVIGATION_ROW='true'">
@@ -128,9 +133,6 @@
                   <xsl:with-param name="TAB_POSITION" select="count(tab[@activeTab='true']/preceding-sibling::tab) + 1"/>
                 </xsl:call-template>
               </div>
-            </xsl:if>
-            <xsl:if test="$AUTHENTICATED='true' and $USE_ADD_TAB='true' and not(//focused)">
-                <a href="javascript:;" title="{upMsg:getMessage('add.tab', $USER_LANG)}" class="portal-navigation-add"><xsl:value-of select="upMsg:getMessage('add.tab', $USER_LANG)"/></a>
             </xsl:if>
           </div>
         </div>
@@ -146,7 +148,7 @@
                     <xsl:value-of select="upMsg:getMessage('navigation', $USER_LANG)"/>
                 </h2>
                 <xsl:if test="$AUTHENTICATED='true' and $USE_ADD_TAB='true' and not(//focused)">
-                    <a href="javascript:;" title="upMsg:getMessage('add.tab', $USER_LANG)" class="portal-navigation-add"><xsl:value-of select="upMsg:getMessage('add.tab', $USER_LANG)"/></a>
+                    <a href="javascript:;" title="upMsg:getMessage('add.tab', $USER_LANG)" class="portal-navigation-add"><span>+</span></a>
                 </xsl:if>
           	</div>
             <div class="fl-widget-content">
