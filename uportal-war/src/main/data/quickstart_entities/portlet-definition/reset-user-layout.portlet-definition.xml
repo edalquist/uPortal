@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<portlet-definition xmlns="https://source.jasig.org/schemas/uportal/io/portlet-definition" xmlns:ns2="https://source.jasig.org/schemas/uportal" xmlns:ns3="https://source.jasig.org/schemas/uportal/io/portlet-type" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns5="https://source.jasig.org/schemas/uportal/io/event-aggregation" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns7="https://source.jasig.org/schemas/uportal/io/permission-owner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/portlet-definition https://source.jasig.org/schemas/uportal/io/portlet-definition/portlet-definition-4.0.xsd">
+    <title>Reset User Layout</title>
+    <name>Reset User Layout</name>
+    <fname>reset-user-layout</fname>
+    <desc>Provides a means reset a user's layout.</desc>
+    <type>Portlet</type>
+    <timeout>30000</timeout>
+    <portlet-descriptor>
+        <ns2:isFramework>true</ns2:isFramework>
+        <ns2:portletName>ResetUserLayout</ns2:portletName>
+    </portlet-descriptor>
+    <category>Administration</category>
+    <group>Portal Administrators</group>
+    <parameter>
+        <name>hashelp</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>locale</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasabout</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>secure</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasedit</name>
+        <value>false</value>
+    </parameter>
+</portlet-definition>

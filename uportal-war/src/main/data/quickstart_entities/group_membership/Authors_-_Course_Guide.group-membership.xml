@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Authors - Course Guide</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jtaucremann</creator>
+  <description>Non-Instructors with administrative access to BSCG Authoring functions</description>
+  <children/>
+</group>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Administrators - Campus Course Guide</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>system</creator>
+  <description>Campus Course Guide Admins</description>
+  <children>
+    <literal>adapel</literal>
+    <literal>jaatkinson</literal>
+    <literal>ldhanson2</literal>
+    <literal>lmhesse</literal>
+    <literal>ochen</literal>
+    <literal>xfcasto</literal>
+  </children>
+</group>

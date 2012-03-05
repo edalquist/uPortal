@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>Madison Subscribable Fragments</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>system</creator>
+  <description>These are fragment layout owner accounts that can be subscribed to buy UW-Madison users</description>
+  <children/>
+</group>

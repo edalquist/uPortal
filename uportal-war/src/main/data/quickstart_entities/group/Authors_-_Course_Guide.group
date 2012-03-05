@@ -1,7 +1,0 @@
-
-<group script="classpath://org/jasig/portal/io/import-group_v2-6.crn">
-  <name>Authors - Course Guide</name>
-  <entity-type>org.jasig.portal.security.IPerson</entity-type>
-  <creator>jtaucremann</creator>
-  <description>Non-Instructors with administrative access to BSCG Authoring functions</description>
-</group>

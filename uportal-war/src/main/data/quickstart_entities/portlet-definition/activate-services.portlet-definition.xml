@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<portlet-definition xmlns="https://source.jasig.org/schemas/uportal/io/portlet-definition" xmlns:ns2="https://source.jasig.org/schemas/uportal" xmlns:ns3="https://source.jasig.org/schemas/uportal/io/portlet-type" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns5="https://source.jasig.org/schemas/uportal/io/event-aggregation" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns7="https://source.jasig.org/schemas/uportal/io/permission-owner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/portlet-definition https://source.jasig.org/schemas/uportal/io/portlet-definition/portlet-definition-4.0.xsd">
+    <title>Activate Services</title>
+    <name>Activate Services</name>
+    <fname>activate-services</fname>
+    <desc>Notification that individuals need to modify their NetID account to activate essential UW services.</desc>
+    <type>Portlet</type>
+    <timeout>3000</timeout>
+    <portlet-descriptor>
+        <ns2:webAppName>/XMLTransformPortlet</ns2:webAppName>
+        <ns2:portletName>XMLTransformPortlet</ns2:portletName>
+    </portlet-descriptor>
+    <category>Home</category>
+    <group>Users - Service Activation Required</group>
+    <group>Fragment Owners</group>
+    <parameter>
+        <name>disableDynamicTitle</name>
+        <value>true</value>
+    </parameter>
+    <parameter>
+        <name>hashelp</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>locale</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasabout</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>secure</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasedit</name>
+        <value>false</value>
+    </parameter>
+    <portlet-preference>
+        <name>xmlPath</name>
+        <readOnly>false</readOnly>
+        <value>CLASSPATH</value>
+    </portlet-preference>
+    <portlet-preference>
+        <name>xmlUri</name>
+        <readOnly>false</readOnly>
+        <value>/edu/wisc/my/activateServices/activateServices.xhtml</value>
+    </portlet-preference>
+    <portlet-preference>
+        <name>xslPath</name>
+        <readOnly>false</readOnly>
+        <value>CLASSPATH</value>
+    </portlet-preference>
+    <portlet-preference>
+        <name>xslUri</name>
+        <readOnly>false</readOnly>
+        <value>/edu/wisc/my/portlet/xslt/xhtml.xsl</value>
+    </portlet-preference>
+</portlet-definition>

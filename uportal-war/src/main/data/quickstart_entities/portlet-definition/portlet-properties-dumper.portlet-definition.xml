@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<portlet-definition xmlns="https://source.jasig.org/schemas/uportal/io/portlet-definition" xmlns:ns2="https://source.jasig.org/schemas/uportal" xmlns:ns3="https://source.jasig.org/schemas/uportal/io/portlet-type" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns5="https://source.jasig.org/schemas/uportal/io/event-aggregation" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns7="https://source.jasig.org/schemas/uportal/io/permission-owner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/portlet-definition https://source.jasig.org/schemas/uportal/io/portlet-definition/portlet-definition-4.0.xsd">
+    <title>Portlet Properties Dumper</title>
+    <name>Portlet Properties Dumper</name>
+    <fname>portlet-properties-dumper</fname>
+    <desc>Displays generic properties available to a portlet.</desc>
+    <type>Portlet</type>
+    <timeout>10000</timeout>
+    <portlet-descriptor>
+        <ns2:webAppName>/TestingPortlets</ns2:webAppName>
+        <ns2:portletName>PropertiesDumperPortlet</ns2:portletName>
+    </portlet-descriptor>
+    <category>Development</category>
+    <category>Test</category>
+    <group>Developers</group>
+    <group>Portal Administrators</group>
+    <group>Fragment Owners</group>
+    <parameter>
+        <name>disableDynamicTitle</name>
+        <value>true</value>
+    </parameter>
+    <parameter>
+        <name>hashelp</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>locale</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasabout</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>secure</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasedit</name>
+        <value>false</value>
+    </parameter>
+</portlet-definition>

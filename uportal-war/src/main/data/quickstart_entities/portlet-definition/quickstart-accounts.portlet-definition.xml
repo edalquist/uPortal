@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<portlet-definition xmlns="https://source.jasig.org/schemas/uportal/io/portlet-definition" xmlns:ns2="https://source.jasig.org/schemas/uportal" xmlns:ns3="https://source.jasig.org/schemas/uportal/io/portlet-type" xmlns:ns4="https://source.jasig.org/schemas/uportal/io/stylesheet-descriptor" xmlns:ns5="https://source.jasig.org/schemas/uportal/io/event-aggregation" xmlns:ns6="https://source.jasig.org/schemas/uportal/io/user" xmlns:ns7="https://source.jasig.org/schemas/uportal/io/permission-owner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="https://source.jasig.org/schemas/uportal/io/portlet-definition https://source.jasig.org/schemas/uportal/io/portlet-definition/portlet-definition-4.0.xsd">
+    <title>Quickstart Accounts</title>
+    <name>Quickstart Accounts</name>
+    <fname>quickstart-accounts</fname>
+    <desc></desc>
+    <type>Portlet</type>
+    <timeout>500</timeout>
+    <portlet-descriptor>
+        <ns2:webAppName>/SimpleContentPortlet</ns2:webAppName>
+        <ns2:portletName>advanced-cms</ns2:portletName>
+    </portlet-descriptor>
+    <category>Administration</category>
+    <group>Everyone</group>
+    <parameter>
+        <name>alternate</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>disableDynamicTitle</name>
+        <value>true</value>
+    </parameter>
+    <parameter>
+        <name>hashelp</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>showChrome</name>
+        <value>true</value>
+    </parameter>
+    <parameter>
+        <name>locale</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasabout</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>secure</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>highlight</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hideFromMobile</name>
+        <value>false</value>
+    </parameter>
+    <parameter>
+        <name>hasedit</name>
+        <value>false</value>
+    </parameter>
+    <portlet-preference>
+        <name>content</name>
+        <readOnly>false</readOnly>
+        <value>
+
+  &lt;div&gt;To preview My UW-Madison, use one of these example accounts:&lt;/div&gt;
+  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;form action=&quot;/portal/Login&quot; method=&quot;post&quot;&gt;
+            &lt;input value=&quot;admin&quot; name=&quot;userName&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;admin&quot; name=&quot;password&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;Login as a 'admin'&quot; name=&quot;Login&quot; class=&quot;uportal-button&quot; type=&quot;submit&quot;/&gt;
+          &lt;/form&gt;
+        &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+        &lt;td&gt;
+          &lt;form action=&quot;/portal/Login&quot; method=&quot;post&quot;&gt;
+            &lt;input value=&quot;staff&quot; name=&quot;userName&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;staff&quot; name=&quot;password&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;Login as an 'staff'&quot; name=&quot;Login&quot; class=&quot;uportal-button&quot; type=&quot;submit&quot;/&gt;
+          &lt;/form&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+       &lt;tr&gt;
+        &lt;td&gt;
+          &lt;form action=&quot;/portal/Login&quot; method=&quot;post&quot;&gt;
+            &lt;input value=&quot;student&quot; name=&quot;userName&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;student&quot; name=&quot;password&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;Login as an 'student'&quot; name=&quot;Login&quot; class=&quot;uportal-button&quot; type=&quot;submit&quot;/&gt;
+          &lt;/form&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+       &lt;tr&gt;
+        &lt;td&gt;
+          &lt;form action=&quot;/portal/Login&quot; method=&quot;post&quot;&gt;
+            &lt;input value=&quot;faculty&quot; name=&quot;userName&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;faculty&quot; name=&quot;password&quot; type=&quot;hidden&quot;/&gt;
+            &lt;input value=&quot;Login as an 'faculty'&quot; name=&quot;Login&quot; class=&quot;uportal-button&quot; type=&quot;submit&quot;/&gt;
+          &lt;/form&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+        </value>
+    </portlet-preference>
+</portlet-definition>

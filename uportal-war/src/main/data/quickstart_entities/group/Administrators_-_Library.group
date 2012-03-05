@@ -1,7 +1,0 @@
-
-<group script="classpath://org/jasig/portal/io/import-group_v2-6.crn">
-  <name>Administrators - Library</name>
-  <entity-type>org.jasig.portal.security.IPerson</entity-type>
-  <creator>jtaucremann</creator>
-  <description>Librarians with access to 'Library Reserves by Department' module and East support</description>
-</group>

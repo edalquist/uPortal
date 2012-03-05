@@ -1,8 +1,0 @@
-
-<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
-  <name>Student Learning</name>
-  <entity-type>org.jasig.portal.channel.IChannelDefinition</entity-type>
-  <creator>jfthomps</creator>
-  <description>null</description>
-  <children/>
-</group>

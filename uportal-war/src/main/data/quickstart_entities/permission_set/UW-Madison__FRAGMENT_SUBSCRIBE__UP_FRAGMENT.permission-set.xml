@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permission-set script="classpath://org/jasig/portal/io/import-permission_set_v3-1.crn">
+  <owner>UP_FRAGMENT</owner>
+  <principal-type>org.jasig.portal.groups.IEntityGroup</principal-type>
+  <principal>
+                                                <group>UW-Madison</group>
+                                            </principal>
+  <activity>FRAGMENT_SUBSCRIBE</activity>
+  <target permission-type="GRANT">
+                                                        <group>Madison Subscribable Fragments</group>
+                                                    </target>
+</permission-set>

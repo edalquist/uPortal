@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>AT Support</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>null</description>
+  <children>
+    <group>AT Support - East</group>
+    <group>AT Support - ISIS</group>
+    <group>AT Support - Portal</group>
+  </children>
+</group>

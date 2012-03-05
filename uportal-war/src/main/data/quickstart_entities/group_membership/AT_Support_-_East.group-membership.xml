@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group script="classpath://org/jasig/portal/io/import-group_membership_v3-2.crn">
+  <name>AT Support - East</name>
+  <entity-type>org.jasig.portal.security.IPerson</entity-type>
+  <creator>jwhelwig</creator>
+  <description>East team</description>
+  <children>
+    <literal>cpkennedy2</literal>
+    <literal>ekrylova</literal>
+    <literal>mrfarnham</literal>
+  </children>
+</group>
