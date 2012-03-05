@@ -232,7 +232,7 @@ table.purpose-layout td {margin:0; padding:0;}
 #portalSidebar #portalNavigationInner {padding:0; background-color: transparent;}
 #portalSidebar .fl-widget .fl-listmenu li.fl-activemenu .portal-subnav-list a {padding-left:40px; padding-bottom: 7px; background-position:1.7em 0.5em; font-size: 83%;}
 /* Sidebar Navigation: Icons */
-#portalSidebar #portalNavigation .portal-navigation-add,
+
 #portalSidebar #portalNavigation .portal-navigation-delete,
 #portalSidebar #portalNavigation .portal-navigation-gripper {display: none;}
 #portalSidebar #portalNavigation .active .portal-navigation-gripper {display: block; position: absolute; text-decoration: none; border: none;}
