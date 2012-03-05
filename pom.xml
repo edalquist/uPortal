@@ -1143,6 +1143,7 @@
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <localCheckout>true</localCheckout>
+                        <tagNameFormat>myuw-@{project.version}</tagNameFormat>
                     </configuration>
                 </plugin>
                 <plugin>
