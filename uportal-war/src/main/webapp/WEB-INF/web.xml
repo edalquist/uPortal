@@ -231,16 +231,21 @@
             <param-value>IdP Public Keys</param-value>
         </init-param>
     </filter>
-    
-    <filter-mapping>
-        <filter-name>SamlAssertionFilter</filter-name>
-        <servlet-name>Login</servlet-name>
-    </filter-mapping>
 
     <!-- MUST BE THE FIRST FILTER -->
     <filter-mapping>
         <filter-name>OpenEntityManagerInViewFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>SamlAssertionFilter</filter-name>
+        <servlet-name>Login</servlet-name>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>requestAttributeSourceFilter</filter-name>
+        <servlet-name>Login</servlet-name>
     </filter-mapping>
     
     <!--
@@ -282,11 +287,6 @@
         <filter-name>RequestContextFilter</filter-name>
         <servlet-name>*</servlet-name>
         <url-pattern>*</url-pattern>
-    </filter-mapping>
-    
-    <filter-mapping>
-        <filter-name>requestAttributeSourceFilter</filter-name>
-        <url-pattern>/Login</url-pattern>
     </filter-mapping>
 
     <!-- Temporarily commenting out this filter for development purposes -->
