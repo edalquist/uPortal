@@ -240,12 +240,12 @@
     
     <filter-mapping>
         <filter-name>SamlAssertionFilter</filter-name>
-        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </filter-mapping>
     
     <filter-mapping>
         <filter-name>requestAttributeSourceFilter</filter-name>
-        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </filter-mapping>
     
     <!--
