@@ -94,113 +94,119 @@
       </xsl:choose>
     </xsl:variable>
     
-    <!-- Tests for optional portlet parameter removeFromLayout which can be used to not render a portlet in the layout.  The main use case for this function is to have a portlet be a quicklink and then remove it from otherwise rendering. -->
+    <!-- Tests for optional portlet parameter removeFromLayout which can be used to not render a portlet in the layout. The main use case for this function is to have a portlet be a quicklink and then remove it from otherwise rendering. -->
     <xsl:if test="not(./parameter[@name='removeFromLayout']/@value='true') and not(./parameter[@name='PORTLET.removeFromLayout']/@value='true')">
     
-    <!-- ****** PORTLET CONTAINER ****** -->
-    <div id="portlet_{@ID}" class="fl-widget up-portlet-wrapper {@fname} {$PORTLET_LOCKED} {$DELETABLE} {$PORTLET_CHROME} {$PORTLET_ALTERNATE} {$PORTLET_HIGHLIGHT}"> <!-- Main portlet container.  The unique ID is needed for drag and drop.  The portlet fname is also written into the class attribute to allow for unique rendering of the portlet presentation. -->
-          
-        <!-- PORTLET CHROME CHOICE -->
+      <!-- PORTLET CONTAINER  -->
+      <div id="portlet_{@ID}" class="fl-widget up-portlet-wrapper {@fname} {$PORTLET_LOCKED} {$DELETABLE} {$PORTLET_CHROME} {$PORTLET_ALTERNATE} {$PORTLET_HIGHLIGHT}"> 
         <xsl:choose>
-          <!-- ***** REMOVE CHROME ***** -->
-          <xsl:when test="parameter[@name = 'showChrome']/@value = 'false'">
-              <!-- ****** START: PORTLET CONTENT ****** -->
-              <div id="portletContent_{@ID}" class="up-portlet-content-wrapper"> <!-- Portlet content container. -->
-                <div class="up-portlet-content-wrapper-inner">  <!-- Inner div for additional presentation/formatting options. -->
-                  <xsl:call-template name="portlet-content"/>
-                </div>
-              </div>
-          </xsl:when>
-        
-          <!-- ***** RENDER CHROME ***** -->
-          <xsl:otherwise>
-            <div class="up-portlet-wrapper-inner">
-            <!-- ****** PORTLET TOP BLOCK ****** -->
-            <xsl:call-template name="portlet.top.block"/> <!-- Calls a template of institution custom content from universality.xsl. -->
-            <!-- ****** PORTLET TOP BLOCK ****** -->
-            
-            <!-- ****** PORTLET TITLE AND TOOLBAR ****** -->
-            <div id="toolbar_{@ID}" class="fl-widget-titlebar up-portlet-titlebar"> <!-- Portlet toolbar. -->
-              <xsl:if test="$USE_PORTLET_MINIMIZE_CONTENT='true'">
-	              <xsl:if test="not(//focused)">
-	            	<xsl:choose>
-	            	  <xsl:when test="@windowState='minimized'"> <!-- Return from Minimized. -->
-				        <xsl:variable name="portletReturnUrl">
-				          <xsl:call-template name="portalUrl">
-				            <xsl:with-param name="url">
-				                <url:portal-url>
-				                    <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
-				                    <url:portlet-url state="NORMAL" copyCurrentRenderParameters="true" />
-				                </url:portal-url>
-				            </xsl:with-param>
-				          </xsl:call-template>
-				        </xsl:variable>
-				        <a href="{$portletReturnUrl}" title="{upMsg:getMessage('return.to.dashboard.view', $USER_LANG)}" class="up-portlet-control show-content">
-				        	<xsl:if test="$USE_PORTLET_CONTROL_ICONS='true'">
-				          		<span class="icon"></span>
-				          	</xsl:if>
-				        	<span class="label"><xsl:value-of select="upMsg:getMessage('return.to.dashboard', $USER_LANG)"/></span>
-				        </a>
-				      </xsl:when>
-				      <xsl:otherwise>
-				      	<xsl:variable name="portletMinUrl">
-				          <xsl:call-template name="portalUrl">
-				            <xsl:with-param name="url">
-				                <url:portal-url>
-				                    <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
-				                    <url:portlet-url state="MINIMIZED" copyCurrentRenderParameters="true" />
-				                </url:portal-url>
-				            </xsl:with-param>
-				          </xsl:call-template>
-				        </xsl:variable>
-				        <a href="{$portletMinUrl}" title="{upMsg:getMessage('enter.minimized.mode.for.this.portlet', $USER_LANG)}" class="up-portlet-control hide-content">
-				        	<xsl:if test="$USE_PORTLET_CONTROL_ICONS='true'">
-				          		<span class="icon"></span>
-				          	</xsl:if>
-				          	<span class="label"><xsl:value-of select="upMsg:getMessage('minimize', $USER_LANG)"/></span>
-				        </a>
-				      </xsl:otherwise>
-				    </xsl:choose>
-				  </xsl:if>
-			  </xsl:if>
-              <h2> <!-- Portlet title. -->
-                <xsl:variable name="portletMaxUrl">
-                  <xsl:call-template name="portalUrl">
-                    <xsl:with-param name="url">
-                        <url:portal-url>
-                            <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
-                            <url:portlet-url state="MAXIMIZED" copyCurrentRenderParameters="true" />
-                        </url:portal-url>
-                    </xsl:with-param>
-                  </xsl:call-template>
-                </xsl:variable>
-                <a name="{@ID}" id="{@ID}" href="{$portletMaxUrl}"> <!-- Reference anchor for page focus on refresh and link to focused view of channel. -->
-                  {up-portlet-title(<xsl:value-of select="@ID" />)}
-                </a>
-              </h2>
-              <xsl:call-template name="controls"/>
-            </div>
-            
-            <!-- ****** PORTLET CONTENT ****** -->
-            <div id="portletContent_{@ID}" class="fl-widget-content fl-fix up-portlet-content-wrapper"> <!-- Portlet content container. -->
-              <div class="up-portlet-content-wrapper-inner">  <!-- Inner div for additional presentation/formatting options. -->
+
+          <!-- PORTLET CHROME -->
+          <xsl:when test="parameter[@name = 'showChrome']/@value = 'false'"> <!-- no chrome -->
+            <div id="portletContent_{@ID}" class="up-portlet-content-wrapper">
+              <div class="up-portlet-content-wrapper-inner">
                 <xsl:call-template name="portlet-content"/>
               </div>
             </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="up-portlet-wrapper-inner">
             
-            <!-- ****** PORTLET BOTTOM BLOCK ****** -->
-            <xsl:call-template name="portlet.bottom.block"/> <!-- Calls a template of institution custom content from universality.xsl. -->
-            <!-- ****** PORTLET BOTTOM BLOCK ****** -->
+              <!-- PORTLET TOP -->
+              <xsl:call-template name="portlet.top.block"/>
+
+              <!-- PORTLET TITLEBAR -->
+              <div id="toolbar_{@ID}" class="fl-widget-titlebar up-portlet-titlebar">
+                <h2>
+                  <xsl:variable name="portletMaxUrl">
+                    <xsl:call-template name="portalUrl">
+                      <xsl:with-param name="url">
+                          <url:portal-url>
+                            <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
+                            <url:portlet-url state="MAXIMIZED" copyCurrentRenderParameters="true" />
+                          </url:portal-url>
+                      </xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <a name="{@ID}" id="{@ID}" href="{$portletMaxUrl}">
+                    {up-portlet-title(<xsl:value-of select="@ID" />)}
+                  </a>
+                </h2>
+                
+                <!-- PORTLET ICONS -->
+                <xsl:call-template name="controls"/>
+              </div>
+          
+              <!-- PORTLET CONTENT -->
+              <div id="portletContent_{@ID}" class="fl-widget-content fl-fix up-portlet-content-wrapper">
+                <div class="up-portlet-content-wrapper-inner">
+                  <xsl:call-template name="portlet-content"/>
+                </div>
+              </div>
+          
+              <!-- PORTLET BOTTOM -->
+              <xsl:call-template name="portlet.bottom.block"/>
             </div>
           </xsl:otherwise>
         </xsl:choose>
-
-    </div>
+      </div>
     
     </xsl:if>
   
   </xsl:template>
   <!-- ======================================= -->
+  
+  <!-- ========== TEMPLATE: PORTLET MINIMIZE ========== -->
+  <xsl:template name="portlet-minimize">
+    <xsl:if test="$USE_PORTLET_MINIMIZE_CONTENT='true' and not(//focused)">
+  	  <xsl:choose>
+    	  <xsl:when test="@windowState='minimized'"> <!-- minimized state -->
+	        <xsl:variable name="portletReturnUrl">
+	          <xsl:call-template name="portalUrl">
+	            <xsl:with-param name="url">
+	                <url:portal-url>
+                    <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
+                    <url:portlet-url state="NORMAL" copyCurrentRenderParameters="true" />
+	                </url:portal-url>
+	            </xsl:with-param>
+	          </xsl:call-template>
+	        </xsl:variable>
+          <a href="{$portletReturnUrl}" 
+            title="{upMsg:getMessage('return.to.dashboard.view', $USER_LANG)}" 
+            class="up-portlet-control show-content">
+        	  <xsl:if test="$USE_PORTLET_CONTROL_ICONS='true'">
+          		<span class="icon"></span>
+          	</xsl:if>
+        	  <span class="label">
+        	    <xsl:value-of select="upMsg:getMessage('return.to.dashboard', $USER_LANG)"/>
+        	  </span>
+          </a>
+        </xsl:when>
+        <xsl:otherwise>
+    	    <xsl:variable name="portletMinUrl"> <!-- expanded state -->
+            <xsl:call-template name="portalUrl">
+              <xsl:with-param name="url">
+                <url:portal-url>
+                  <url:layoutId><xsl:value-of select="@ID"/></url:layoutId>
+                  <url:portlet-url state="MINIMIZED" copyCurrentRenderParameters="true" />
+                </url:portal-url>
+              </xsl:with-param>
+            </xsl:call-template>
+          </xsl:variable>
+          <a href="{$portletMinUrl}" 
+            title="{upMsg:getMessage('enter.minimized.mode.for.this.portlet', $USER_LANG)}" 
+            class="up-portlet-control hide-content">
+	        	<xsl:if test="$USE_PORTLET_CONTROL_ICONS='true'">
+          	  <span class="icon"></span>
+	          </xsl:if>
+		        <span class="label">
+		          <xsl:value-of select="upMsg:getMessage('minimize', $USER_LANG)"/>
+		        </span>
+	        </a>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template>
   
   <!-- ========== TEMPLATE: PORLET CONTENT ========== -->
   <!-- ============================================== -->
@@ -406,6 +412,9 @@
             <span class="label"><xsl:value-of select="upMsg:getMessage('edit.permissions', $USER_LANG)"/></span>
         </a>
       </xsl:if>
+      
+      <!-- Minimize -->
+      <xsl:call-template name="portlet-minimize"/>
     </div>
   </xsl:template>
   <!-- ========== TEMPLATE: PORTLET CONTROLS ========== -->
