@@ -403,14 +403,20 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="header.guest.block">
+    <!-- Portal Page Bar -->
+    <xsl:call-template name="portal.page.bar"/>
+    
   	<!-- Skip Navigation -->
     <xsl:call-template name="skip.nav"/>
     
   	<!-- Logo -->
     <xsl:call-template name="logo"/>
     
-    <!-- Login -->
-  	<xsl:call-template name="login"/>
+    <!-- Web Search -->
+    <xsl:call-template name="portal.search"/>
+    
+    <!-- Login 
+  	<xsl:call-template name="login"/> -->
   </xsl:template>
   <!-- ================================================== -->
   
