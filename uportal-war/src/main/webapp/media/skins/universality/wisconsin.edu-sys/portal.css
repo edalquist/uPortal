@@ -206,10 +206,11 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up #portalNavigation .fl-tabs .portal-navigation-delete span {display: block; width: 16px; height: 16px; overflow: hidden;}
 .up #portalNavigation .fl-tabs .portal-navigation-delete span {visibility: hidden;}
 /* Gripper Tab Icon */
-.up #portalNavigation .fl-tabs .portal-navigation-gripper,
-.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper {position: absolute; top: 0px; left: 2px; cursor: move; background: transparent url("images/gripper.png") 0px 0px no-repeat; padding: 0 0;}
-.up #portalNavigation .fl-tabs .portal-navigation-gripper,
-.up #portalNavigation .fl-tabs .portal-navigation-gripper span {display: block; width: 16px; height: 16px; overflow: hidden;}
+.up #portalNavigation .fl-tabs .portal-navigation-gripper {position: absolute; top: 0px; left: 2px; cursor: move; background: transparent url("images/gripper.png") 0px 0px no-repeat; padding: 0 !important;}
+.up #portalNavigation .fl-tabs li.portal-navigation a.portal-navigation-gripper,
+.up #portalNavigation .fl-tabs li.portal-navigation a.portal-navigation-gripper span {display: none; width: 16px; height: 16px; overflow: hidden;}
+.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper,
+.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper span {display: inline-block !important;}
 .up #portalNavigation .fl-tabs .portal-navigation-gripper span {visibility: hidden;}
 /* Flyout Navigation */
 .up #portalNavigation ul {margin:0px;}
