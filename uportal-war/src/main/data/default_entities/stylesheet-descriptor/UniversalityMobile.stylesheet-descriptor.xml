@@ -4,6 +4,12 @@
     <description>Renders DLMTabsColumns as xhtml for a mobile device</description>
     <uri>classpath:/layout/theme/muniversality/muniversality.xsl</uri>
     <stylesheet-parameter>
+        <name>view</name>
+        <default-value>grid</default-value>
+        <scope>PERSISTENT</scope>
+        <description>Home screen view type</description>
+    </stylesheet-parameter>
+    <stylesheet-parameter>
         <name>dashboardForcedWindowState</name>
         <default-value>MINIMIZED</default-value>
         <scope>REQUEST</scope>

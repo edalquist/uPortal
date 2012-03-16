@@ -4,7 +4,7 @@
     <parent>
         <groupId>edu.wisc.my.portal</groupId>
         <artifactId>uportal-parent</artifactId>
-        <version>4.0.3.12-SNAPSHOT</version>
+        <version>4.0.4.1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -22,6 +22,7 @@
         <module>jasig-widget-portlets</module>
         <module>pluto-testsuite</module>
         <module>NewsReaderPortlet</module>
+        <module>NotificationPortlet</module>
         <module>SimpleContentPortlet</module>
         <module>WeatherPortlet</module>
         <module>WebProxyPortlet</module>

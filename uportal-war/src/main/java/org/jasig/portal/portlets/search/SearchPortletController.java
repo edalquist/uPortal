@@ -136,7 +136,7 @@ public class SearchPortletController {
         synchronized (org.springframework.web.portlet.util.PortletUtils.getSessionMutex(session)) {
             searchResultsCache = (Map<String, PortalSearchResults>)session.getAttribute(SEARCH_RESULTS_CACHE_NAME);
             if (searchResultsCache == null) {
-                searchResultsCache = CacheBuilder.newBuilder().maximumSize(50).<String, PortalSearchResults>build().asMap();
+                searchResultsCache = CacheBuilder.newBuilder().maximumSize(50).<String, PortalSearchResults>build().asMap(); 
                 session.setAttribute(SEARCH_RESULTS_CACHE_NAME, searchResultsCache);
             }
         }

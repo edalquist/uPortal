@@ -14,7 +14,7 @@
     <group>Everyone</group>
     <parameter>
         <name>editable</name>
-        <value>true</value>
+        <value>false</value>
     </parameter>
     <portlet-preference>
         <name>configuredUrl</name>
