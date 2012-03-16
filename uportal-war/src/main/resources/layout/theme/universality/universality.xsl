@@ -192,6 +192,7 @@
   <xsl:param name="subscriptionsSupported">true</xsl:param>
   <xsl:param name="uP_productAndVersion">uPortal</xsl:param>
   <xsl:param name="UP_VERSION"><xsl:value-of select="$uP_productAndVersion"/></xsl:param>
+  <xsl:param name="SERVER_NAME"></xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
   <xsl:param name="PORTAL_VIEW">
   	<xsl:choose>
@@ -967,7 +968,15 @@
     <!-- Footer Links -->
     <div id="portalPageFooterLinks">
       <span>&#169; 2012, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
-      <span><a href="{$feedbackUrl}"><span>Feedback</span></a></span>
+      <span>
+        <a href="{$feedbackUrl}"><span>Feedback</span></a>
+        <span> - </span>
+        <span><xsl:value-of select="$SERVER_NAME"/></span>
+        <xsl:if test="upGroup:isUserDeepMemberOfGroupName($USER_ID, 'Portal Support') or upGroup:isUserDeepMemberOfGroupName($USER_ID, 'Portal System')">
+          <span> - </span>
+          <span><xsl:value-of select="$UP_VERSION"/></span>
+        </xsl:if>
+      </span>
     </div>
     
   </xsl:template>

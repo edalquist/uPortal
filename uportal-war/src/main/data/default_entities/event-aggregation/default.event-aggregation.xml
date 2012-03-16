@@ -27,4 +27,175 @@
         <start>--10-01</start>
         <end>--01-01</end>
     </quarter-details>
+    <!-- Generated from our old stats DB via:
+          select '<term-details><name>' || ACADEMIC_TERM_DESCR || '</name><start>' || to_char(min(FULL_DATE), 'YYYY-MM-DD') || '</start><end>' || to_char(max(FULL_DATE + 1), 'YYYY-MM-DD') || '</end></term-details>' as TERM_DETAIL
+          from DATE_DIMENSION_T
+          group by ACADEMIC_TERM_DESCR
+          order by min(FULL_DATE)
+     -->
+    <term-details>
+      <name>Spring 2005-2006</name>
+      <start>2006-03-26</start>
+      <end>2006-05-15</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2006</name>
+      <start>2006-05-15</start>
+      <end>2006-08-28</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2006-2007</name>
+      <start>2006-08-28</start>
+      <end>2006-12-25</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2006-2007</name>
+      <start>2006-12-25</start>
+      <end>2007-05-21</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2007</name>
+      <start>2007-05-21</start>
+      <end>2007-08-27</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2007-2008</name>
+      <start>2007-08-27</start>
+      <end>2007-12-24</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2007-2008</name>
+      <start>2007-12-24</start>
+      <end>2008-05-19</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2008</name>
+      <start>2008-05-19</start>
+      <end>2008-08-25</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2008-2009</name>
+      <start>2008-08-25</start>
+      <end>2008-12-22</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2008-2009</name>
+      <start>2008-12-22</start>
+      <end>2009-05-18</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2009</name>
+      <start>2009-05-18</start>
+      <end>2009-08-24</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2009-2010</name>
+      <start>2009-08-24</start>
+      <end>2009-12-25</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2009-2010</name>
+      <start>2009-12-25</start>
+      <end>2010-05-17</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2010</name>
+      <start>2010-05-17</start>
+      <end>2010-08-23</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2010-2011</name>
+      <start>2010-08-23</start>
+      <end>2010-12-24</end>
+    </term-details>
+    <term-details>
+      <name>Winter 2010-2011</name>
+      <start>2010-12-24</start>
+      <end>2010-12-25</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2010-2011</name>
+      <start>2010-12-25</start>
+      <end>2011-05-16</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2011</name>
+      <start>2011-05-16</start>
+      <end>2011-08-29</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2011-2012</name>
+      <start>2011-08-29</start>
+      <end>2011-12-24</end>
+    </term-details>
+    <term-details>
+      <name>Winter 2011-2012</name>
+      <start>2011-12-24</start>
+      <end>2012-02-13</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2011-2012</name>
+      <start>2012-02-13</start>
+      <end>2012-05-21</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2012</name>
+      <start>2012-05-21</start>
+      <end>2012-08-27</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2012-2013</name>
+      <start>2012-08-27</start>
+      <end>2012-12-24</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2012-2013</name>
+      <start>2012-12-24</start>
+      <end>2013-05-20</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2013</name>
+      <start>2013-05-20</start>
+      <end>2013-08-26</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2013-2014</name>
+      <start>2013-08-26</start>
+      <end>2013-12-23</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2013-2014</name>
+      <start>2013-12-23</start>
+      <end>2014-05-19</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2014</name>
+      <start>2014-05-19</start>
+      <end>2014-08-25</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2014-2015</name>
+      <start>2014-08-25</start>
+      <end>2014-12-22</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2014-2015</name>
+      <start>2014-12-22</start>
+      <end>2015-05-18</end>
+    </term-details>
+    <term-details>
+      <name>Summer 2015</name>
+      <start>2015-05-18</start>
+      <end>2015-08-24</end>
+    </term-details>
+    <term-details>
+      <name>Fall 2015-2016</name>
+      <start>2015-08-24</start>
+      <end>2015-12-25</end>
+    </term-details>
+    <term-details>
+      <name>Spring 2015-2016</name>
+      <start>2015-12-25</start>
+      <end>2016-01-01</end>
+    </term-details>
 </event-aggregation>
