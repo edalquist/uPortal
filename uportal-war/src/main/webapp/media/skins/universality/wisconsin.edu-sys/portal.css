@@ -193,6 +193,8 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up #portalNavigation .fl-tabs .portal-navigation.fl-activeTab:hover {
     background: #FFF; background: -moz-linear-gradient(center top, #FFFFFF, #FFFFFF, #FFFFFF);
     background: -webkit-gradient(linear, center bottom, center top, from(#FFFFFF), color-stop(50%, #FFFFFF), to(#FFFFFF));}
+/* Edit tab */
+.up #portalNavigation .fl-tabs .portal-navigation .fl-inlineEdit-edit {margin: 1px 0;}
 /* Add tab */
 .up #portalNavigation .portal-navigation-add {position:static; top: auto; right: auto; height: auto; display: inline-block; *display: inline; margin-left: 10px; padding: 5px 10px;
     -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
