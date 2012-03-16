@@ -357,9 +357,11 @@ html {background: #9C3908;}
 .up .dashboard .up-portlet-controls {top:2px; padding-right:0.5em;}
 .up .up-portlet-controls .up-portlet-control {display:block; float:right; height:16px; width:16px; padding:0; font-size:90%; background:transparent url(images/portlet_icons_flat.png) no-repeat 0 0;}
 /* icons */
-.up .up-portlet-controls .minimize {background-position:-128px 0px;}
+.up .up-portlet-controls .hide-content {background-position:-128px 0;}
+.up .up-portlet-controls .hide-content:hover {background-position:-128px -16px;}
+.up .up-portlet-controls .show-content {background-position:-112px 0;}
+.up .up-portlet-controls .show-content:hover {background-position:-112px -16px;}
 .up .up-portlet-controls .return {background-position:-112px 0px;}
-.up .up-portlet-controls .minimize:hover {background-position:-128px -16px;}
 .up .up-portlet-controls .return:hover {background-position:-112px -16px;}
 .up .up-portlet-controls .focus:hover {background-position:0 -16px;}
 .up .up-portlet-controls .edit {background-position:-16px 0;}
