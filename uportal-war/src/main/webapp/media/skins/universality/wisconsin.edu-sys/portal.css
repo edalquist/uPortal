@@ -220,8 +220,6 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 /* Navigation: avatar */
 .fl-reorderer-header-avatar {background-color: #FFF; border-color: #280F02;}
 .fl-reorderer-header-avatar .portal-navigation-link {color: #222222 !important;}
-/* Navigation: dropMarker */
-.fl-reorderer-header-dropMarker {border-color: #280F02 !important; background-color: #280F02 !important; padding: .3em .31em !important; filter:alpha(opacity=90) !important; opacity:.9 !important;}
 
 /* !!!!!!!!!!!!    wisc.edu CUSTOM TOP CONTENT BLOCK    !!!!!!!!!!!!!!!!!
 */
