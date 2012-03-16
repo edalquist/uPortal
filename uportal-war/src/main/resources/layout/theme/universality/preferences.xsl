@@ -369,7 +369,7 @@
                 <div class="fl-col-side fl-force-left menu-wrapper">
                     <ul class="menu" role="menu">
                         <li class="add-content-link active" role="tab">
-                            <a href="javascript:;"><span><xsl:value-of select="upMsg:getMessage('add.stuff', $USER_LANG)"/></span></a>
+                            <a href="javascript:;"><span>Modules</span></a>
                         </li>
                         <li class="use-content-link" role="tab">
                             <a href="javascript:;"><span><xsl:value-of select="upMsg:getMessage('use.it', $USER_LANG)"/></span></a>
