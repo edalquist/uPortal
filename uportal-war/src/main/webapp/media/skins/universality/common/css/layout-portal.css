@@ -273,6 +273,7 @@ table.purpose-layout td {margin:0; padding:0;}
 /* Navigation */
 #portalNavigationInner {position: relative;}
 /* Navigation: Icons (common) */
+#portalNavigation .fl-tabs li.portal-navigation .fl-inlineEdit-editModeInstruction {display: none !important;}
 #portalNavigation .portal-navigation-gripper { display: none }
 #portalNavigation .portal-navigation-add,
 #portalNavigation .portal-navigation-delete,
@@ -414,8 +415,6 @@ table.purpose-layout td {margin:0; padding:0;}
 .fl-reorderer-header-avatar .portal-navigation-delete {top: 0px; right: 0px; cursor: pointer; background: transparent url("../images/remove.png") 0px 0px no-repeat;}
 .fl-reorderer-header-avatar .portal-navigation-gripper {top: 0px; left: 0px; cursor: move; background: transparent url("../images/gripper.png") 0px 0px no-repeat;}
 .fl-reorderer-header-avatar .portal-flyout-container{display: none !important;}
-/* Drop Marker */
-.fl-reorderer-header-dropMarker { + display: block; float:left; + border: 1px solid #d26600 !important; background-color: #F68922 !important; margin: 0 2px !important; filter:alpha(opacity=80) !important; opacity:.8 !important; padding: .5em .31em !important; *display: inline !important; *height: 10px; *padding: 0em .13em !important; *zoom: 1 !important;}
 
 /* Fluid Layout Customizer (Sidebar: drag and drop) */
 /* Avatar Icons (common) */
@@ -440,3 +439,7 @@ table.purpose-layout td {margin:0; padding:0;}
 #guestLocaleSelection .portlet .portlet-form { background-color: #fff; border: none; width: auto; }
 #guestLocaleSelection .portlet .portlet-form li { margin:0 0 5px 30px; }
 #guestLocaleSelection .portlet .portlet-form form .buttons { margin: 0 0 0 50px; }
+
+
+/* Wisc uP4 */
+.fl-reorderer-header-dropMarker {border-color: #300000 !important; background-color: #300000 !important; padding: 4px 5px !important; display: inline !important; top: 1px;}

@@ -193,6 +193,8 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up #portalNavigation .fl-tabs .portal-navigation.fl-activeTab:hover {
     background: #FFF; background: -moz-linear-gradient(center top, #FFFFFF, #FFFFFF, #FFFFFF);
     background: -webkit-gradient(linear, center bottom, center top, from(#FFFFFF), color-stop(50%, #FFFFFF), to(#FFFFFF));}
+/* Edit tab */
+.up #portalNavigation .fl-tabs .portal-navigation .fl-inlineEdit-edit {margin: 1px 0;}
 /* Add tab */
 .up #portalNavigation .portal-navigation-add {position:static; top: auto; right: auto; height: auto; display: inline-block; *display: inline; margin-left: 10px; padding: 5px 10px;
     -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
@@ -204,10 +206,11 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up #portalNavigation .fl-tabs .portal-navigation-delete span {display: block; width: 16px; height: 16px; overflow: hidden;}
 .up #portalNavigation .fl-tabs .portal-navigation-delete span {visibility: hidden;}
 /* Gripper Tab Icon */
-.up #portalNavigation .fl-tabs .portal-navigation-gripper,
-.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper {position: absolute; top: 0px; left: 2px; cursor: move; background: transparent url("images/gripper.png") 0px 0px no-repeat; padding: 0 0;}
-.up #portalNavigation .fl-tabs .portal-navigation-gripper,
-.up #portalNavigation .fl-tabs .portal-navigation-gripper span {display: block; width: 16px; height: 16px; overflow: hidden;}
+.up #portalNavigation .fl-tabs .portal-navigation-gripper {position: absolute; top: 0px; left: 2px; cursor: move; background: transparent url("images/gripper.png") 0px 0px no-repeat; padding: 0 !important;}
+.up #portalNavigation .fl-tabs li.portal-navigation a.portal-navigation-gripper,
+.up #portalNavigation .fl-tabs li.portal-navigation a.portal-navigation-gripper span {display: none; width: 16px; height: 16px; overflow: hidden;}
+.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper,
+.up #portalNavigation .fl-tabs > .fl-tabs-active > .portal-navigation-gripper span {display: inline-block !important;}
 .up #portalNavigation .fl-tabs .portal-navigation-gripper span {visibility: hidden;}
 /* Flyout Navigation */
 .up #portalNavigation ul {margin:0px;}
@@ -220,8 +223,6 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 /* Navigation: avatar */
 .fl-reorderer-header-avatar {background-color: #FFF; border-color: #280F02;}
 .fl-reorderer-header-avatar .portal-navigation-link {color: #222222 !important;}
-/* Navigation: dropMarker */
-.fl-reorderer-header-dropMarker {border-color: #280F02 !important; background-color: #280F02 !important; padding: .3em .31em !important; filter:alpha(opacity=90) !important; opacity:.9 !important;}
 
 /* !!!!!!!!!!!!    wisc.edu CUSTOM TOP CONTENT BLOCK    !!!!!!!!!!!!!!!!!
 */
@@ -357,9 +358,11 @@ html {background: #9C3908;}
 .up .dashboard .up-portlet-controls {top:2px; padding-right:0.5em;}
 .up .up-portlet-controls .up-portlet-control {display:block; float:right; height:16px; width:16px; padding:0; font-size:90%; background:transparent url(images/portlet_icons_flat.png) no-repeat 0 0;}
 /* icons */
-.up .up-portlet-controls .minimize {background-position:-128px 0px;}
+.up .up-portlet-controls .hide-content {background-position:-128px 0;}
+.up .up-portlet-controls .hide-content:hover {background-position:-128px -16px;}
+.up .up-portlet-controls .show-content {background-position:-112px 0;}
+.up .up-portlet-controls .show-content:hover {background-position:-112px -16px;}
 .up .up-portlet-controls .return {background-position:-112px 0px;}
-.up .up-portlet-controls .minimize:hover {background-position:-128px -16px;}
 .up .up-portlet-controls .return:hover {background-position:-112px -16px;}
 .up .up-portlet-controls .focus:hover {background-position:0 -16px;}
 .up .up-portlet-controls .edit {background-position:-16px 0;}
