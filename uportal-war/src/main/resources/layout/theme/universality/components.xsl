@@ -386,7 +386,7 @@
               <xsl:value-of select="upMsg:getMessage('you.are.signed.in.as', $USER_LANG)"/>
             </xsl:otherwise>
           </xsl:choose>
-          &#160;<span class="user-name"><xsl:value-of select="$USER_NAME"/></span>
+          &#160;<span class="user-name"><xsl:value-of select="$USER_NAME"/></span>.
           <span class="logout-label"><a href="{$CONTEXT_PATH}/Logout" title="To log off and exit the portal">Sign Out</a></span>
         </p>
       </div>
