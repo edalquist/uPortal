@@ -193,6 +193,7 @@
   <xsl:param name="uP_productAndVersion">uPortal</xsl:param>
   <xsl:param name="UP_VERSION"><xsl:value-of select="$uP_productAndVersion"/></xsl:param>
   <xsl:param name="SERVER_NAME"></xsl:param>
+  <xsl:param name="STATS_SESSION_ID"></xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
   <xsl:param name="PORTAL_VIEW">
   	<xsl:choose>
@@ -976,7 +977,10 @@
           <span> - </span>
           <span><xsl:value-of select="$UP_VERSION"/></span>
         </xsl:if>
-      </span>
+      </span><br />
+      <xsl:if test="$AUTHENTICATED='true'">
+        <span><xsl:value-of select="$STATS_SESSION_ID"/></span>
+      </xsl:if>
     </div>
     
   </xsl:template>
