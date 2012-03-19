@@ -139,6 +139,11 @@
                     <list>
                         <bean class="org.jasig.portal.rendering.xslt.ThemeStylesheetDescriptorTransformerConfigurationSource" />
                         <bean class="org.jasig.portal.rendering.xslt.UserAttributeSkinMappingTransformerConfigurationSource">
+                            <property name="stylesheetDescriptorNames">
+                                <set>
+                                    <value>DLMXHTML</value>
+                                </set>
+                            </property>
                             <property name="skinAttributeName" value="serverName" />
                             <property name="attributeToSkinMap">
                                 <map>
@@ -147,6 +152,11 @@
                             </property>
                         </bean>
                         <bean class="org.jasig.portal.rendering.xslt.UserGroupSkinMappingTransformerConfigurationSource">
+                            <property name="stylesheetDescriptorNames">
+                                <set>
+                                    <value>DLMXHTML</value>
+                                </set>
+                            </property>
                             <property name="groupToSkinMap">
                                 <map>
                                     <entry key="pags.uw-sys-colleges" value="uwc.edu-sys" />
