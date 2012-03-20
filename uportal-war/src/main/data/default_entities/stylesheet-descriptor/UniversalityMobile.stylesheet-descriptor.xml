@@ -5,7 +5,7 @@
     <uri>classpath:/layout/theme/muniversality/muniversality.xsl</uri>
     <stylesheet-parameter>
         <name>view</name>
-        <default-value>grid</default-value>
+        <default-value>list</default-value>
         <scope>PERSISTENT</scope>
         <description>Home screen view type</description>
     </stylesheet-parameter>
