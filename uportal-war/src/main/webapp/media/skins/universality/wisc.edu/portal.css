@@ -235,7 +235,7 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 
 /* Flyout Navigation */
 .up #portalNavigation ul {margin:0px;}
-.up #portalNavigation .portal-flyout-container .portal-subnav-list li {display:list-item;}
+.up #portalNavigation .portal-flyout-container .portal-subnav-list li {display:list-item; white-space: normal;}
 .up #portalNavigation .portal-flyout-container {position:absolute; min-width:250px; padding:0 3px 3px 0; background:transparent url(../common/images/drop_shadow.png) bottom right no-repeat;}
 .up #portalNavigation .portal-flyout-container-inner {padding:2px; background-color:#f1e8da;}
 .up #portalNavigation .portal-flyout-container .portal-subnav-list .portal-subnav {margin:3px 10px 3px 10px; border-bottom:1px solid #f1e8da;}
