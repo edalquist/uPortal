@@ -101,7 +101,7 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up-portlet-content-wrapper h1,.up-portlet-content-wrapper h2,.up-portlet-content-wrapper h3, .focused .up-portlet-wrapper-inner h2 {font-family:"Myriad Pro","Lucida Grande","Lucida Sans Unicode",sans-serif;}
 .up #portalPage {background-color:#fff;}
 .up #portalPage.detached { min-width: 0; }
-.up .portal-page-column-inner {/*padding-left:1.5em;*/}
+.up .portal-page-column-inner {padding:0 5px;}
 .up .focused .portal-page-column.single {clear:both;}
 
 /* Portal Page Bar */
@@ -312,7 +312,7 @@ html {background:#ebe8df;}
 /* Columns */
 .up #portalPageBodyColumns.fl-col-flex,
 .up .layout-1-columns .portal-page-column.fl-col-flex {padding:0;} /* Removes default padding from FSS  */
-.up #portalPageBodyColumns {padding: 0 20px;} /* Adds padding to columns to match header padding */
+.up #portalPageBodyColumns {padding: 0 10px;} /* Adds padding to columns to match header padding */
 /* Sidebar */
 .up #portalSidebar {background:#336699 url(../common/images/rounded_corner_bottomleft.png) bottom left no-repeat;}
 .up #portalSidebarInner {background:transparent url(../common/images/rounded_corner_bottomright.png) bottom right no-repeat;}
