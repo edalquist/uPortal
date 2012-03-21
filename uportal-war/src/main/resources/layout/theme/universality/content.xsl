@@ -335,6 +335,8 @@
       	  	<span class="label"><xsl:value-of select="upMsg:getMessage('print', $USER_LANG)"/></span>
         </a>
       </xsl:if>
+			<!-- Minimize -->
+      <xsl:call-template name="portlet-minimize"/>
       <xsl:if test="not(//focused) and @windowState!='minimized'"> <!-- Focus. -->
         <xsl:variable name="portletMaxUrl">
           <xsl:call-template name="portalUrl">
@@ -412,9 +414,6 @@
             <span class="label"><xsl:value-of select="upMsg:getMessage('edit.permissions', $USER_LANG)"/></span>
         </a>
       </xsl:if>
-      
-      <!-- Minimize -->
-      <xsl:call-template name="portlet-minimize"/>
     </div>
   </xsl:template>
   <!-- ========== TEMPLATE: PORTLET CONTROLS ========== -->
