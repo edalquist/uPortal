@@ -706,8 +706,9 @@
                 <xsl:copy-of select="//channel/parameter[@name = 'role' and @value = 'tips']/parent::*"/>
             </div>
             <div id="portalContentTopBlockInnerRight" class="fl-force-right ui-helper-clearfix">
-                <!-- Fragment Administration -->
+                <!-- Fragment Administration 
                 <xsl:copy-of select="//channel[@fname = 'fragment-admin']"/>
+                -->
                 <!-- UW don't want exit in this block
                 <xsl:copy-of select="//channel[@fname = 'fragment-admin-exit']"/>
                 -->
