@@ -63,7 +63,7 @@
         <div class="fl-fix fl-col-mixed fl-col-mixed2 pane add-content">
             <div class="fl-col-fixed fl-force-left content-filters-wrapper">
                 <div class="categories-column active">
-                    <h3 class="portlet-list-link"><span>Add Modules</span></h3>
+                    <h3 class="portlet-list-link"><span>Modules</span></h3>
                     <div class="categories-wrapper active">
                        <div class="portlet-search-view">
                             <form class="portlet-search-form">
@@ -369,7 +369,7 @@
                 <div class="fl-col-side fl-force-left menu-wrapper">
                     <ul class="menu" role="menu">
                         <li class="add-content-link active" role="tab">
-                            <a href="javascript:;"><span>Modules</span></a>
+                            <a href="javascript:;"><span>Add Modules</span></a>
                         </li>
                         <li class="use-content-link" role="tab">
                             <a href="javascript:;"><span><xsl:value-of select="upMsg:getMessage('use.it', $USER_LANG)"/></span></a>
