@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd" version="1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd
+    http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+
+    <portlet>
+        <portlet-name>AuthenticatedWebProxy</portlet-name>
+        <portlet-class>edu.wisc.my.webproxy.portlet.WebProxyPortlet</portlet-class>
+        <expiration-cache>-1</expiration-cache>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>edit</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <supported-locale>en-US</supported-locale>
+        <portlet-info>
+            <title>Web Proxy Portlet</title>
+            <short-title>Web Proxy</short-title>
+            <keywords>Web, Proxy, Clipping, HTTP, HTTPS</keywords>
+        </portlet-info>
+    </portlet>
+
+    <custom-portlet-mode>
+        <description>Allows the portlet to render a preferences edit UI during publishing</description>
+        <portlet-mode>config</portlet-mode>
+    </custom-portlet-mode>
+    
+    <custom-window-state>
+        <description>Gives a portlet full control over the output being rendered, allows binary output</description>
+        <window-state>EXCLUSIVE</window-state>
+    </custom-window-state>
+	
+     
+    <!-- The section below is kept synchronized with uPortal/webpages/WEB-INF/portlet.xml --> 
+    <!-- Used eduPerson attributes -->
+    <user-attribute>
+        <name>cn</name>
+    </user-attribute>
+    
+    <user-attribute>
+        <name>displayName</name>
+    </user-attribute>
+    
+    <user-attribute>
+        <name>givenName</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>mail</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>postalAddress</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>postalCode</name>
+    </user-attribute>
+    
+    <user-attribute>
+        <name>sn</name>
+    </user-attribute>
+	
+    <user-attribute>
+        <name>telephoneNumber</name>
+    </user-attribute>  
+
+    <user-attribute>
+        <name>uid</name>
+    </user-attribute>        
+      
+    <!-- Begin UW specific user-attributes -->
+    <!-- Keep these in alphebetical order, as found in personDirectoryContext.xml -->
+    <user-attribute>
+        <name>ctcalxitemid</name>
+    </user-attribute>
+    
+    <user-attribute>
+        <name>mailhost</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduadvisorflag</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduallemails</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduapptid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduappttype</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduacadcareer</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedudarsflag</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedudepartment</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduformerappointmentviewinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduformerstudentviewinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduhrpersonid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduinstructorflag</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisgradapplicant</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisgradquestcomplete</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisgradgraduating</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisisemplid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisisinstructoremplid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisisnonstudentemplid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisisstudentemplid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisugapplicant</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduisugradgraduating</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedumailplusemailaddress</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedumajor</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedunewhireviewinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduphotoid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduportalactivated</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduportalactivationkeyaccess</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduportalcsastudent</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduprofessionalapplicant</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedupvi</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedusalequityreport</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduspecialapplicant</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedustudentgroup</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedustudentid</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedustudentssnupdate</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedustudentstatus</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedustudentviewinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wiscedutextalertinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduudds</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduudsdisplayname</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduwebcalinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduwebmailinportal</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduwebspaceactive</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wisceduwiscworldeligible</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>wwid</name>
+    </user-attribute>
+      
+    <!-- Begin UW-System specific user-attributes -->
+    <!-- Keep these in alphebetical order --> 
+     <user-attribute>
+        <name>eduWisconsinOIMUserID</name>
+    </user-attribute>  
+    
+    <user-attribute>
+        <name>eduWisconsinUDDS</name>
+    </user-attribute>    
+    
+    <user-attribute>
+        <name>eppn</name>
+    </user-attribute>  
+    
+    <user-attribute>
+        <name>hrPersonID</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>middleName</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>spvi</name>
+    </user-attribute>  
+
+    <user-attribute>
+        <name>telephoneNumberExtension</name>
+    </user-attribute>    
+    <!-- Keep these in alphebetical order -->
+    
+    <!-- Begin HttpServletRequest user-attributes -->
+    <!-- Keep these in alphebetical order -->
+    <user-attribute>
+        <name>remoteUser</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>serverName</name>
+    </user-attribute>
+
+      
+    <!-- Begin additional user-attributes from other DAOs in personDirectoryContext.xml -->
+
+    <user-attribute>
+        <name>wisceduemphrtgquestreq</name>
+    </user-attribute>    
+    
+    
+    <!-- For Shib Proxy-Auth Support -->
+    <user-attribute>
+        <name>idpPublicKeys</name>
+    </user-attribute>
+
+    <user-attribute>
+        <name>samlAssertion</name>
+    </user-attribute>
+</portlet-app>
+
