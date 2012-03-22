@@ -101,7 +101,6 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up-portlet-content-wrapper h1,.up-portlet-content-wrapper h2,.up-portlet-content-wrapper h3, .focused .up-portlet-wrapper-inner h2 {font-family:"Myriad Pro","Lucida Grande","Lucida Sans Unicode",sans-serif;}
 .up #portalPage {background-color:#fff;}
 .up #portalPage.detached { min-width: 0; }
-.up .portal-page-column-inner {padding:0 5px;}
 .up .focused .portal-page-column.single {clear:both;}
 
 /* Portal Page Bar */
@@ -304,15 +303,28 @@ html {background:#ebe8df;}
 .up .sidebar-right-300 #portalPageBodyTitleRow {background:transparent url(images/page_corner_topright.png) top right no-repeat;}
 .up #portalPageBody {background:#ebe8df url(images/wisc.edu_portal_body_bkg.png) top left repeat-x;}
 .up #portalPageBodyTitleRow h1 {padding:0.2em 0 0.2em 0.5em; color:#333; font-size:200%; border:none;}
-.up #portalPageBodyInner {padding:1em .5em;}
+.up #portalPageBodyInner {padding:1em 25px;}
 /* Focused */
 .up #portalPageBodyBreadcrumb {font-size:90%; color:#ddd;}
 .up #portalPageBodyBreadcrumb a {font-weight:normal;}
 
 /* Columns */
 .up #portalPageBodyColumns.fl-col-flex,
-.up .layout-1-columns .portal-page-column.fl-col-flex {padding:0;} /* Removes default padding from FSS  */
-.up #portalPageBodyColumns {padding: 0 10px;} /* Adds padding to columns to match header padding */
+.up .layout-1-columns .portal-page-column.fl-col-flex {/*padding:0;*/} /* Removes default padding from FSS  */
+.up #portalPageBodyColumns {/*padding: 0 10px;*/ overflow: hidden;} /* Adds padding to columns to match header padding */
+.up .portal-page-column-inner {padding:0;}
+
+.up .columns-2 .column-1 .portal-page-column-inner, 
+.up .columns-3 .column-1 .portal-page-column-inner, 
+.up .columns-4 .column-1 .portal-page-column-inner, 
+.up .columns-3 .column-2 .portal-page-column-inner, 
+.up .columns-4 .column-2 .portal-page-column-inner, 
+.up .columns-4 .column-3 .portal-page-column-inner {margin-right: 15px;}
+	
+.up .columns-2 .column-2 .portal-page-column-inner, 
+.up .columns-3 .column-3 .portal-page-column-inner, 
+.up .columns-4 .column-4 .portal-page-column-inner {margin-left: 0;}
+
 /* Sidebar */
 .up #portalSidebar {background:#336699 url(../common/images/rounded_corner_bottomleft.png) bottom left no-repeat;}
 .up #portalSidebarInner {background:transparent url(../common/images/rounded_corner_bottomright.png) bottom right no-repeat;}
@@ -667,3 +679,6 @@ html {background:#ebe8df;}
 
 /* jQuery tooltip */
 #tooltip {background-color: #fffbbf; color: #344461; border: thin solid #b1c6f2;}
+
+td.east-carerra-body img {
+}
