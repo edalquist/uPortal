@@ -477,6 +477,9 @@ html {background:#ebe8df;}
 /* disable 'Colors' and 'Use It' tabs */
 /*.up .up-gallery .skin-link {display: none;}*/
 .up .up-gallery .use-content-link {display: none;}
+
+/* Remove portlet icons */
+.up .up-gallery .portlet-thumb-icon {display:none;}
 /* ================================================ end: gallery ===== */
 
 
