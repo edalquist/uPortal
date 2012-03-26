@@ -47,12 +47,18 @@
 	
 	.portlet-wrapper-titlebar {
 		border-color	: $c2dark;
-		background		: $c2;
+		background		: #990000;
 		color			: $white;
+		height          : 48px;
 		@include text-shadow();
-		@include gradient($c2light, $c2dark);
-		
-		@include button(portal-nav);
+		@include button(wisc-nav);
+
+		h1.title {
+		  text-indent: -5000px;
+		  background: url(images/wisc/logo-home.png) no-repeat top center;
+		  margin: 0;
+		  height: 48px;
+		}
 	}
 	
 	.portlet-titlebar {
@@ -61,7 +67,7 @@
 		color			: $white;
 		@include text-shadow();
 		@include gradient($c1, $c1darker);
-		
+
 		@include button(portlet-nav);
 	}
 	
