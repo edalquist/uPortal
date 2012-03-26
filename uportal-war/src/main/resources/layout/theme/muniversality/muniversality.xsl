@@ -159,6 +159,23 @@
         <xsl:otherwise>dashboard</xsl:otherwise>
     </xsl:choose>
 </xsl:variable>
+  
+<!-- 
+ | The unofficial "theme-switcher".
+ | The INSTITUTION variable can be used to make logical tests and configure the theme on a per skin basis.
+ | Allows the the theme to configure differently for a skin or group of skins, yet not break for other skins that might require a different configuration.
+ | The implementation is hard-coded, but it works.
+ | May require the addition of an xsl:choose statement around parameters, vairables, and template calls.
+-->
+<xsl:variable name="INSTITUTION">
+  <xsl:choose>
+    <xsl:when test="$SKIN='coal'">coal</xsl:when>
+    <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
+    <xsl:when test="$SKIN='hc'">hc</xsl:when>
+    <xsl:when test="$SKIN='wisc.edu' or $SKIN='wisc.edu-sys'">madison</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
+    <xsl:otherwise>system</xsl:otherwise>
+  </xsl:choose>
+</xsl:variable>
 <!-- ======================================== -->
 
 
@@ -232,7 +249,7 @@
 | Template contents can be any valid XSL or XHTML.
 -->
 <xsl:template name="page.title">
-   <title><xsl:value-of select="upMsg:getMessage('portal.page.title', $USER_LANG)" /></title>
+   <title><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)" /></title>
 </xsl:template>
 <!-- ========================================================================= -->
 
@@ -249,7 +266,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="description" content="{upMsg:getMessage('portal.page.meta.description', $USER_LANG)}" />
+    <meta name="description" content="{upMsg:getMessage(concat($INSTITUTION, '_portal.page.meta.description'), $USER_LANG)}" />
     <meta name="keywords" content="{upMsg:getMessage('portal.page.meta.keywords', $USER_LANG)}" />
 </xsl:template>
 <!-- ========================================================================= -->

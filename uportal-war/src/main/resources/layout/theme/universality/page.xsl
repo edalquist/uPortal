@@ -88,10 +88,10 @@
         <title>
           <xsl:choose>
             <xsl:when test="//focused">
-            	<xsl:value-of select="upMsg:getMessage('portal.name', $USER_LANG)" />: {up-portlet-title(<xsl:value-of select="//focused/channel/@ID" />)}
+            	<xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.name'), $USER_LANG)" />: {up-portlet-title(<xsl:value-of select="//focused/channel/@ID" />)}
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="upMsg:getMessage('portal.name', $USER_LANG)" />: <xsl:value-of select="/layout/navigation/tab[@activeTab='true']/@name"/>
+                <xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.name'), $USER_LANG)" />: <xsl:value-of select="/layout/navigation/tab[@activeTab='true']/@name"/>
             </xsl:otherwise>
           </xsl:choose>
         </title>
@@ -100,7 +100,7 @@
         	<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
         	<meta http-equiv="pragma" content="no-cache" />
         </xsl:if>
-        <meta name="description" content="{upMsg:getMessage('portal.page.meta.description', $USER_LANG)}" />
+        <meta name="description" content="{upMsg:getMessage(concat($INSTITUTION, '_portal.page.meta.description'), $USER_LANG)}" />
         <meta name="keywords" content="{upMsg:getMessage('portal.page.meta.keywords', $USER_LANG)}" />
         <xsl:if test="$PORTAL_SHORTCUT_ICON != ''">
         	<link rel="shortcut icon" href="{$PORTAL_SHORTCUT_ICON}" type="image/x-icon" />

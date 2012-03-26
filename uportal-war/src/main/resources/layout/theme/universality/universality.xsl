@@ -165,11 +165,11 @@
   -->
   <xsl:variable name="INSTITUTION">
     <xsl:choose>
-      <xsl:when test="$SKIN='university' or $SKIN='university-div1' or $SKIN='university-div2'">university</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
       <xsl:when test="$SKIN='coal'">coal</xsl:when>
       <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
 	  <xsl:when test="$SKIN='hc'">hc</xsl:when>
-      <xsl:otherwise><xsl:value-of select="$SKIN"/></xsl:otherwise>
+      <xsl:when test="$SKIN='wisc.edu' or $SKIN='wisc.edu-sys'">madison</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
+      <xsl:otherwise>system</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
   
@@ -565,9 +565,9 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="logo.block">
-  	<img src="{$SKIN_PATH}/images/portal_logo.png" alt="{upMsg:getMessage('portal.page.title', $USER_LANG)}"/>
+    <img src="{$SKIN_PATH}/images/portal_logo.png" alt="{upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)}"/>
     <!-- Text only: 
-    <span><xsl:value-of select="upMsg:getMessage('portal.page.title', $USER_LANG)"/></span> -->
+    <span><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)"/></span> -->
   </xsl:template>
   <!-- ========================================== -->
   
@@ -625,7 +625,7 @@
   -->
   <xsl:template name="portal.page.bar.title.focused.block">
   	<!-- Text:
-    <span><xsl:value-of select="upMsg:getMessage('portal.page.title', $USER_LANG)"/></span> -->
+    <span><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)"/></span> -->
   </xsl:template>
   <!-- =================================================================== -->
   
@@ -652,11 +652,11 @@
    | Template contents can be any valid XSL or XHTML.
   -->
   <xsl:template name="logo.focused.block">
-  	<img src="{$SKIN_PATH}/images/portal_logo.png" alt="{upMsg:getMessage('portal.page.title', $USER_LANG)}"/>
+    <img src="{$SKIN_PATH}/images/portal_logo.png" alt="{upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)}"/>
   	<!-- Text:
-    <span><xsl:value-of select="upMsg:getMessage('portal.page.title', $USER_LANG)"/></span> -->
+    <span><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)"/></span> -->
     <!-- Slim version of logo:
-    <img src="{$SKIN_PATH}/images/portal_logo_slim.png" alt="{upMsg:getMessage('portal.page.title', $USER_LANG)}"/>  -->
+    <img src="{$SKIN_PATH}/images/portal_logo_slim.png" alt="{upMsg:getMessage(concat($INSTITUTION, '_portal.page.title'), $USER_LANG)}"/>  -->
   </xsl:template>
   <!-- ================================================== -->
   
