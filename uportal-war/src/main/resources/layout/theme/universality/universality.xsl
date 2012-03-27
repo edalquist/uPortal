@@ -546,7 +546,7 @@
         
         
         <!-- Sign in Link -->
-        <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='wisc.edu'"> <!-- Link only displays if the user is NOT logged in. -->
+        <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='madison'"> <!-- Link only displays if the user is NOT logged in. -->
             <span><a href="https://my.wisc.edu/" title="Sign in to My UW-Madison"><span>Sign in</span></a></span>
         </xsl:if>
         <!-- Sign in Link -->
