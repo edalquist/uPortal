@@ -94,11 +94,10 @@
 			border-top		: 1px solid $c1light;
 			background		: $c1;
 			color			: $white;
-			@include gradient($c1dark, $c1light);
-			-moz-box-shadow: 0 0 5px #999;
-			-webkit-box-shadow: 0 0 5px #999;
-			box-shadow: 0 0 5px #999;
+            @include gradient(#CEC1AD, #b0a28d);
 			z-index: 1;
+			text-shadow: none;
+			font-weight: normal !important;
 			
 			.ui-grid-a {
 				.ui-block-b {
