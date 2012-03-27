@@ -29,6 +29,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.portlet.Event;
 import javax.servlet.http.HttpServletRequest;
@@ -42,11 +43,14 @@ import org.apache.pluto.container.om.portlet.ContainerRuntimeOption;
 import org.apache.pluto.container.om.portlet.PortletDefinition;
 import org.jasig.portal.portlet.om.IPortletDefinition;
 import org.jasig.portal.portlet.om.IPortletDefinitionParameter;
+import org.jasig.portal.portlet.om.IPortletDescriptorKey;
 import org.jasig.portal.portlet.om.IPortletEntity;
 import org.jasig.portal.portlet.om.IPortletEntityId;
 import org.jasig.portal.portlet.om.IPortletWindow;
 import org.jasig.portal.portlet.om.IPortletWindowId;
 import org.jasig.portal.portlet.registry.IPortletWindowRegistry;
+import org.jasig.portal.portlet.rendering.worker.IPortletExecutionContext;
+import org.jasig.portal.portlet.rendering.worker.IPortletExecutionInterceptor;
 import org.jasig.portal.portlet.rendering.worker.IPortletExecutionWorker;
 import org.jasig.portal.portlet.rendering.worker.IPortletFailureExecutionWorker;
 import org.jasig.portal.portlet.rendering.worker.IPortletRenderExecutionWorker;
@@ -62,6 +66,10 @@ import org.springframework.util.Assert;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+
 /**
  * Handles the asynchronous execution of portlets, handling execution errors and publishing
  * events about the execution.
@@ -71,7 +79,7 @@ import org.springframework.web.util.WebUtils;
  */
 @Service("portletExecutionManager")
 public class PortletExecutionManager extends HandlerInterceptorAdapter
-        implements ApplicationEventPublisherAware, IPortletExecutionManager {
+        implements ApplicationEventPublisherAware, IPortletExecutionManager, IPortletExecutionInterceptor {
     
     private static final long DEBUG_TIMEOUT = TimeUnit.HOURS.toMillis(1);
     private static final String PORTLET_HEADER_RENDERING_MAP = PortletExecutionManager.class.getName() + ".PORTLET_HEADER_RENDERING_MAP";
@@ -93,7 +101,15 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
 
     private ApplicationEventPublisher applicationEventPublisher;
     
+    private final LoadingCache<IPortletDescriptorKey, AtomicInteger> executionCount = CacheBuilder.newBuilder().build(new CacheLoader<IPortletDescriptorKey, AtomicInteger>() {
+        @Override
+        public AtomicInteger load(IPortletDescriptorKey key) throws Exception {
+            return new AtomicInteger();
+        }
+    });
     private boolean ignoreTimeouts = false;
+    private int extendedTimeoutExecutions = 5;
+    private long extendedTimeoutMultiplier = 20;
     private int maxEventIterations = 100;
     private IPortletWindowRegistry portletWindowRegistry;
     private IPortletEventCoordinationService eventCoordinationService;
@@ -209,6 +225,27 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
             }
         }
         
+    }
+    
+
+    @Override
+    public void preSubmit(HttpServletRequest request, HttpServletResponse response, IPortletExecutionContext context) {
+    }
+
+    @Override
+    public void preExecution(HttpServletRequest request, HttpServletResponse response, IPortletExecutionContext context) {
+    }
+
+    @Override
+    public void postExecution(HttpServletRequest request, HttpServletResponse response, IPortletExecutionContext context, Exception e) {
+        final IPortletWindowId portletWindowId = context.getPortletWindowId();
+        final IPortletWindow portletWindow = this.portletWindowRegistry.getPortletWindow(request, portletWindowId);
+        final IPortletEntity portletEntity = portletWindow.getPortletEntity();
+        final IPortletDefinition portletDefinition = portletEntity.getPortletDefinition();
+        final IPortletDescriptorKey portletDescriptorKey = portletDefinition.getPortletDescriptorKey();
+        
+        final AtomicInteger counter = this.executionCount.getUnchecked(portletDescriptorKey);
+        counter.incrementAndGet();
     }
 
     /* (non-Javadoc)
@@ -706,6 +743,19 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         return defaultPortletUrl;
     }
     
+    protected final long getModifiedTimeout(IPortletDefinition portletDefinition, HttpServletRequest request, long timeout) {
+        final IPortletDescriptorKey portletDescriptorKey = portletDefinition.getPortletDescriptorKey();
+        final AtomicInteger counter = this.executionCount.getUnchecked(portletDescriptorKey);
+        final int executionCount = counter.get();
+        
+        if (executionCount > extendedTimeoutExecutions) {
+            return timeout;
+        }
+        
+        System.out.printf("Modifying timeout for %40s from %7s to %8s on execution %2s\n", portletDescriptorKey.toString(), timeout, timeout * extendedTimeoutMultiplier, executionCount);
+        return timeout * extendedTimeoutMultiplier;
+    }
+    
     protected long getPortletActionTimeout(IPortletWindowId portletWindowId, HttpServletRequest request) {
         if (this.ignoreTimeouts) {
             return DEBUG_TIMEOUT;
@@ -714,10 +764,10 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         final IPortletDefinition portletDefinition = getPortletDefinition(portletWindowId, request);
         final Integer actionTimeout = portletDefinition.getActionTimeout();
         if (actionTimeout != null) {
-            return actionTimeout;
+            return getModifiedTimeout(portletDefinition, request, actionTimeout);
         }
         
-        return portletDefinition.getTimeout();
+        return getModifiedTimeout(portletDefinition, request, portletDefinition.getTimeout());
     }
     
     protected long getPortletEventTimeout(IPortletWindowId portletWindowId, HttpServletRequest request) {
@@ -728,10 +778,10 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         final IPortletDefinition portletDefinition = getPortletDefinition(portletWindowId, request);
         final Integer eventTimeout = portletDefinition.getEventTimeout();
         if (eventTimeout != null) {
-            return eventTimeout;
+            return getModifiedTimeout(portletDefinition, request, eventTimeout);
         }
         
-        return portletDefinition.getTimeout();
+        return getModifiedTimeout(portletDefinition, request, portletDefinition.getTimeout());
     }
     
     protected long getPortletRenderTimeout(IPortletWindowId portletWindowId, HttpServletRequest request) {
@@ -742,10 +792,10 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         final IPortletDefinition portletDefinition = getPortletDefinition(portletWindowId, request);
         final Integer renderTimeout = portletDefinition.getRenderTimeout();
         if (renderTimeout != null) {
-            return renderTimeout;
+            return getModifiedTimeout(portletDefinition, request, renderTimeout);
         }
         
-        return portletDefinition.getTimeout();
+        return getModifiedTimeout(portletDefinition, request, portletDefinition.getTimeout());
     }
     
     protected long getPortletResourceTimeout(IPortletWindowId portletWindowId, HttpServletRequest request) {
@@ -756,10 +806,10 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         final IPortletDefinition portletDefinition = getPortletDefinition(portletWindowId, request);
         final Integer resourceTimeout = portletDefinition.getResourceTimeout();
         if (resourceTimeout != null) {
-            return resourceTimeout;
+            return getModifiedTimeout(portletDefinition, request, resourceTimeout);
         }
         
-        return portletDefinition.getTimeout();
+        return getModifiedTimeout(portletDefinition, request, portletDefinition.getTimeout());
     }
 
     protected IPortletDefinition getPortletDefinition(IPortletWindowId portletWindowId, HttpServletRequest request) {
