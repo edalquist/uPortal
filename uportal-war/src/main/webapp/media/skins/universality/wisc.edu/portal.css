@@ -303,7 +303,7 @@ html {background:#ebe8df;}
 .up .sidebar-right-300 #portalPageBodyTitleRow {background:transparent url(images/page_corner_topright.png) top right no-repeat;}
 .up #portalPageBody {background:#ebe8df url(images/wisc.edu_portal_body_bkg.png) top left repeat-x;}
 .up #portalPageBodyTitleRow h1 {padding:0.2em 0 0.2em 0.5em; color:#333; font-size:200%; border:none;}
-.up #portalPageBodyInner {padding:1em 25px;}
+.up #portalPageBodyInner {padding:25px 25px 1em 25px;}
 /* Focused */
 .up #portalPageBodyBreadcrumb {font-size:90%; color:#ddd;}
 .up #portalPageBodyBreadcrumb a {font-weight:normal;}

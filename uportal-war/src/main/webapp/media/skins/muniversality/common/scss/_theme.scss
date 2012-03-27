@@ -25,7 +25,6 @@
 	}
 	
 	.dashboard {
-		border: 1px solid $c1dark;
 		color: $white;
 		text-shadow: 0 1px 0 $black;
 		background: $bgc url("images/bg_320x480_flat.png") 0 25px no-repeat;
@@ -40,7 +39,6 @@
 	}
 	
 	.focused {
-		border: 1px solid $gray;
 		color: $text;
 		text-shadow: 0 1px 0 $white;
 		background: $graylighter;
@@ -49,12 +47,18 @@
 	
 	.portlet-wrapper-titlebar {
 		border-color	: $c2dark;
-		background		: $c2;
+		background		: #990000;
 		color			: $white;
+		height          : 48px;
 		@include text-shadow();
-		@include gradient($c2light, $c2dark);
-		
-		@include button(portal-nav);
+		@include button(wisc-nav);
+
+		h1.title {
+		  text-indent: -5000px;
+		  background: url(images/wisc/logo-home.png) no-repeat top center;
+		  margin: 0;
+		  height: 48px;
+		}
 	}
 	
 	.portlet-titlebar {
@@ -63,7 +67,7 @@
 		color			: $white;
 		@include text-shadow();
 		@include gradient($c1, $c1darker);
-		
+
 		@include button(portlet-nav);
 	}
 	
@@ -90,11 +94,10 @@
 			border-top		: 1px solid $c1light;
 			background		: $c1;
 			color			: $white;
-			@include gradient($c1dark, $c1light);
-			-moz-box-shadow: 0 0 5px #999;
-			-webkit-box-shadow: 0 0 5px #999;
-			box-shadow: 0 0 5px #999;
+            @include gradient(#CEC1AD, #b0a28d);
 			z-index: 1;
+			text-shadow: none;
+			font-weight: normal !important;
 			
 			.ui-grid-a {
 				.ui-block-b {

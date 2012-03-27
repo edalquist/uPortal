@@ -652,6 +652,8 @@ html {background: #9C3908;}
 .up .up-gallery .pager-button-down.fl-pager-disabled:hover,
 .up .up-gallery .pager-button-up.fl-pager-disabled:focus,
 .up .up-gallery .pager-button-down.fl-pager-disabled:focus {background:#280F02; border-color:#803006; cursor: pointer;}
+
+.up .up-gallery .portlet-thumb-icon {display: none;}
 /* ================================================ end: gallery ===== */
 
 
