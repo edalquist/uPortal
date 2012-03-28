@@ -751,8 +751,10 @@ public class PortletExecutionManager extends HandlerInterceptorAdapter
         if (executionCount > extendedTimeoutExecutions) {
             return timeout;
         }
-        
-        System.out.printf("Modifying timeout for %40s from %7s to %8s on execution %2s\n", portletDescriptorKey.toString(), timeout, timeout * extendedTimeoutMultiplier, executionCount);
+
+        if (logger.isDebugEnabled()) {
+            logger.debug(String.format("Modifying timeout for %40s from %7s to %8s on execution %2s\n", portletDescriptorKey.toString(), timeout, timeout * extendedTimeoutMultiplier, executionCount));
+        }
         return timeout * extendedTimeoutMultiplier;
     }
     
