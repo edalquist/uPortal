@@ -412,7 +412,6 @@ html {background: #9C3908;}
 .up #portalPageFooter a:hover {color: #FFF !important; text-decoration: underline;}
 
 /* disable 'Colors' and 'Use It' tabs */
-.up .up-gallery .skin-link {display: none;}
 .up .up-gallery .use-content-link {display: none;}
 
 /* Fluid Layout Customizer (drag and drop) */
