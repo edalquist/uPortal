@@ -488,7 +488,7 @@
   -->
   <xsl:template name="portal.page.bar.links.block">
   	<!-- Use this standard set of links if not using wisc.edu skin-->
-    <xsl:if test="$INSTITUTION != 'wisc.edu'">
+    <xsl:if test="$INSTITUTION != 'madison'">
         
         <!-- Admin Link -->
         <xsl:if test="$INSTITUTION != 'uportal'">
@@ -517,7 +517,7 @@
     </xsl:if>
     <!-- Use this set of links if using wisc.edu skin-->
     <!-- See template above for common options used outside of wisc.edu skin -->
-    <xsl:if test="$INSTITUTION = 'wisc.edu'">
+    <xsl:if test="$INSTITUTION = 'madison'">
         
         <!-- Admin Link -->
         <xsl:if test="$INSTITUTION != 'uportal'">
@@ -700,7 +700,7 @@
     -->
     
     <!--wisc.edu CUSTOM TOP BLOCK CONTENT. Includes markup for Quicklinks, Favorites, and Customize dropdowns -->
-    <xsl:if test="$INSTITUTION = 'wisc.edu' or substring-after($INSTITUTION, '.') = 'edu-sys'">
+    <xsl:if test="$INSTITUTION = 'madison' or $INSTITUTION = 'system'">
         <div id="portalContentTopBlock" class="ui-helper-clearfix">
             <div id="portalContentTopBlockInnerLeft" class="fl-force-left ui-helper-clearfix">
                 <xsl:copy-of select="//channel/parameter[@name = 'role' and @value = 'tips']/parent::*"/>
