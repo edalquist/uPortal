@@ -33,6 +33,7 @@
     <context:component-scan base-package="org.jasig.portal">
         <context:exclude-filter type="regex" expression="org\.jasig\.portal\.portlets\."/>
     </context:component-scan>
+    <context:component-scan base-package="edu.wisc.my.portlet.ad" />
     
     <context:property-placeholder location="classpath:/properties/rdbm.properties,classpath:/properties/portal.properties,classpath:/properties/security.properties,classpath:/properties/ldap.properties"/>
 

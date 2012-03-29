@@ -24,6 +24,52 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
  version="2.0">
+    
+    <portlet>
+        <portlet-name>AccessDenied</portlet-name>
+        <display-name xml:lang="en">Access Denied</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>classpath:/properties/contexts/portlet/AccessDenied-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <portlet-info>
+            <title>Access Denied</title>
+        </portlet-info>
+        <portlet-preferences>
+          <preference>
+            <name>accessDeniedMessage</name>
+            <value><![CDATA[
+<p style="color: rgb(255, 0, 0); font-weight: bold;">
+  Your account is not eligible for access to UW-Madison
+</p>
+<p>
+  The system recognizes your credentials however your account is either not configured or not
+  eligible to access UW-Madison. Applicants, students, faculty, and staff at UW-Madison are
+  eligible for UW-Madison. If you believe that you are eligible for this service, see
+  <a href="https://login.wisc.edu/redirect/help-inactive">https://login.wisc.edu/redirect/help-inactive</a>.</p>
+<p>
+<span>Help Desk Reference Key: </span><span style="font-weight: bold;">REFERENCE_KEY</span></p>
+
+<h3>Other resources:</h3>
+<ul>
+  <li><a href="http://helpdesk.wisc.edu/page.php?id=2502" target="myuwHelp">My UW - Portal Browser Settings</a></li>  
+  <li><a href="http://kb.wisc.edu/helpdesk/search.php?cat=2" target="myuwHelp">My UW Help Desk</a></li>  
+</ul>
+<div>
+  <a href="/portal/Logout">Click here to return to the login page</a>.
+</div>
+]]></value>
+          </preference>
+        </portlet-preferences>
+    </portlet>
+    
     <portlet>
         <portlet-name>AttributeSwapperPortlet</portlet-name>
         <display-name xml:lang="en">Attribute Swapper Portlet</display-name>
