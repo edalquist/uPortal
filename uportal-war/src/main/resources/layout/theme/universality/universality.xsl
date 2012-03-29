@@ -234,6 +234,14 @@
   </xsl:variable>
   
   
+  <!-- ****** UW Service Link Parameters ****** -->
+  <xsl:param name="WISCCAL_URL">#</xsl:param>
+  <xsl:param name="WISCMAIL_URL">#</xsl:param>
+  <xsl:param name="MYWEBSPACE_URL">#</xsl:param>
+  <xsl:param name="LEARNAUW_URL">#</xsl:param>
+  <xsl:param name="LOGIN_URL">#</xsl:param>
+  
+  
   <!-- ****** INSTITUTION SETTINGS ****** -->
   <!-- 
    | GREEN
@@ -547,7 +555,7 @@
         
         <!-- Sign in Link -->
         <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='madison'"> <!-- Link only displays if the user is NOT logged in. -->
-            <span><a href="https://my.wisc.edu/" title="Sign in to My UW-Madison"><span>Sign in</span></a></span>
+            <span><a href="{$LOGIN_URL}" title="Sign in to My UW-Madison"><span>Sign in</span></a></span>
         </xsl:if>
         <!-- Sign in Link -->
     
@@ -980,7 +988,7 @@
         </xsl:if>
       </span><br />
       <xsl:if test="$AUTHENTICATED='true'">
-        <span><xsl:value-of select="$STATS_SESSION_ID"/></span>
+        <span>Session Key: </span><span><xsl:value-of select="$STATS_SESSION_ID"/></span>
       </xsl:if>
     </div>
     
