@@ -190,6 +190,12 @@
                                     <entry key="EXTERNAL_LOGIN_URL" value="${org.jasig.portal.channels.CLogin.CasLoginUrl:}" />
                                     <entry key="useTabGroups" value="${org.jasig.portal.layout.useTabGroups}"/>
                                     <entry key="UP_VERSION" value="${org.jasig.portal.version}"/>
+                                    
+                                    <entry key="WISCCAL_URL" value="${edu.wisc.my.wisccalUrl}"/>
+                                    <entry key="WISCMAIL_URL" value="${edu.wisc.my.wiscmailUrl}"/>
+                                    <entry key="MYWEBSPACE_URL" value="${edu.wisc.my.mywebspaceUrl}"/>
+                                    <entry key="LEARNAUW_URL" value="${edu.wisc.my.learnauwUrl}"/>
+                                    <entry key="LOGIN_URL" value="${edu.wisc.my.loginUrl}"/>
                                 </map>
                             </property>
                             <property name="parameterExpressions">

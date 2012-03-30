@@ -371,10 +371,6 @@
   -->
   <xsl:template name="welcome">
     <!-- ========== wisc.edu ADDED LINK TO LOGIN IN PLACE OF WELCOME MESSAGE WHEN UNATHENTICATED ========== -->
-    <xsl:if test="$AUTHENTICATED!='true' and $INSTITUTION='madison'"> <!-- Link only displays if the user is NOT logged in. -->
-      <xsl:call-template name="myuw.login.link" />
-    </xsl:if>
-     
     <xsl:if test="$AUTHENTICATED='true'"> <!-- Welcome only displays if the user is logged in. -->
       <div id="portalWelcome">
         <p>
