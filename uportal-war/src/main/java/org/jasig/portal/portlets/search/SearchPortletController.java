@@ -75,10 +75,7 @@ import com.google.common.cache.CacheBuilder;
 @Controller
 @RequestMapping("VIEW")
 public class SearchPortletController {
-    /**
-     * 
-     */
-    private static final String SEARCH_RESULTS_CACHE_NAME = "searchResultsCache";
+    private static final String SEARCH_RESULTS_CACHE_NAME = SearchPortletController.class.getName() + ".searchResultsCache";
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());    
     
@@ -140,6 +137,7 @@ public class SearchPortletController {
         // send a search query event
         response.setEvent(SearchConstants.SEARCH_REQUEST_QNAME, queryObj);
         response.setRenderParameter("queryId", queryId);
+        response.setRenderParameter("query", query);
     }
 
     
@@ -166,7 +164,7 @@ public class SearchPortletController {
                 searchResultList.addAll(serviceResults.getSearchResult());
             }
             catch (Exception e) {
-                //TODO
+                logger.warn(searchService.getClass() + " threw an exception when searching, it will be ignored. " + searchQuery, e);
             }
         }
         

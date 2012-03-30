@@ -25,7 +25,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jasig.portal.services.HttpClientManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 
 import edu.wisc.my.snow.om.DeclaredSnowEmergency;
@@ -39,6 +39,7 @@ public class SnowEmergencyDaoImpl implements SnowEmergencyDao, CacheEntryFactory
     
     private Resource snowEmergencyFeed;
     private Ehcache feedDataCache;
+    private HttpClient httpClient;
     
     public Resource getSnowEmergencyFeed() {
         return this.snowEmergencyFeed;
@@ -51,6 +52,11 @@ public class SnowEmergencyDaoImpl implements SnowEmergencyDao, CacheEntryFactory
     
     public void setFeedDataCache(Ehcache feedDataCache) {
         this.feedDataCache = feedDataCache;
+    }
+
+    @Autowired
+    public void setHttpClient(HttpClient httpClient) {
+        this.httpClient = httpClient;
     }
 
     @Override
@@ -97,8 +103,6 @@ public class SnowEmergencyDaoImpl implements SnowEmergencyDao, CacheEntryFactory
         final String scheme = uri.getScheme();
         
         if (scheme.startsWith("http")) {
-            final HttpClient httpClient = HttpClientManager.getNewHTTPClient();
-            
             final GetMethod getMethod = new GetMethod(uri.toString());
             try {
                 final int result = httpClient.executeMethod(getMethod);

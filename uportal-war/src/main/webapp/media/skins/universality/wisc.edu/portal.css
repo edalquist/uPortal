@@ -156,11 +156,11 @@ form input[type="button"],form input[type="submit"],form input[type="reset"],for
 .up #webSearchContainer #webSearchSubmit:hover {cursor:pointer;}
 
 /* Custom UW Search */
-.search-portlet .uwGoogle .result_url {
+.search-portlet .googleAjax .result_url {
     color: #666666;
     font-size: 0.825em;
 }
-.search-portlet .uwGoogle .campus-search-result div {
+.search-portlet .googleAjax .campus-search-result div {
     line-height: 1.4;
 }
 .search-portlet .search-result {
