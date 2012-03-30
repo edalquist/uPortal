@@ -104,7 +104,7 @@
 
 /* Redefine: mist theme. */
 .fl-theme-mist .fl-tabs {padding: 0 0 0 0; text-align: left;}
-.fl-theme-mist .fl-tabs li {display: inline-block; position: relative; background-color: #EDEDED; padding: 5px 20px 5px 20px; border-left: 1px solid #EFEFEF; border-right: 1px solid #D3D3D3;
+.fl-theme-mist .fl-tabs li {display: inline-block; *display: inline; *vertical-align: middle; position: relative; background-color: #EDEDED; padding: 5px 20px 5px 20px; border-left: 1px solid #EFEFEF; border-right: 1px solid #D3D3D3;
     border-top: 1px solid #D3D3D3; cursor: pointer; white-space: nowrap;}
 .fl-theme-mist .fl-tabs li:hover {background-color: #DADADA;}
 .fl-theme-mist .fl-tabs li.fl-tabs-active,
