@@ -1074,9 +1074,17 @@ public class RDBMDistributedLayoutStore extends RDBMUserLayoutStore {
 
     }
 
-    private Cache<Tuple<String, String>, Document> layoutCache;
+    private final ThreadLocal<Cache<Tuple<String, String>, Document>> layoutCacheHolder = new ThreadLocal<Cache<Tuple<String, String>, Document>>();
     public void setLayoutImportExportCache(Cache<Tuple<String, String>, Document> layoutCache) {
-        this.layoutCache = layoutCache;
+        if (layoutCache == null) {
+            layoutCacheHolder.remove();
+        }
+        else {
+            this.layoutCacheHolder.set(layoutCache);
+        }
+    }
+    public Cache<Tuple<String, String>, Document> getLayoutImportExportCache() {
+        return layoutCacheHolder.get();
     }
 
     /**
@@ -1094,9 +1102,10 @@ public class RDBMDistributedLayoutStore extends RDBMUserLayoutStore {
         Document layoutDoc;
         Tuple<String, String> key = null;
             
-        if (this.layoutCache != null) {
+        final Cache<Tuple<String, String>, Document> layoutCache = getLayoutImportExportCache();
+        if (layoutCache != null) {
             key = new Tuple<String, String>(person.getUserName(), profile.getProfileFname());
-            layoutDoc = this.layoutCache.getIfPresent(key);
+            layoutDoc = layoutCache.getIfPresent(key);
             if (layoutDoc != null) {
                 return (Document)layoutDoc.cloneNode(true);
             }
@@ -1106,8 +1115,8 @@ public class RDBMDistributedLayoutStore extends RDBMUserLayoutStore {
         Element layout = layoutDoc.getDocumentElement();
         layout.setAttribute(Constants.NS_DECL, Constants.NS_URI);
         
-        if (this.layoutCache != null && key != null) {
-            this.layoutCache.put(key, (Document)layoutDoc.cloneNode(true));
+        if (layoutCache != null && key != null) {
+            layoutCache.put(key, (Document)layoutDoc.cloneNode(true));
         }
         
         return layoutDoc;
