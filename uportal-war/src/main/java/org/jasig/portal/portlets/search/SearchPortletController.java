@@ -217,7 +217,7 @@ public class SearchPortletController {
 
         if (queryId != null) {
             final PortalSearchResults results = this.getPortalSearchResults(request, queryId);
-            model.put("results", results);
+            model.put("results", results.getResults());
         }
 
         final boolean isMobile = isMobile(request);

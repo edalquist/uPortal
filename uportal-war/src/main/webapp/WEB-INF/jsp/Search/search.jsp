@@ -59,13 +59,13 @@
                         
                         <div id="${n}_portal">
                             <div class="search-results">
-                                <c:forEach items="${ results.results }" var="type">
+                                <c:forEach items="${ results }" var="type">
                                     <!-- Display all non uwPerson/googleAjax results -->
                                     <c:if test="${ type.key != 'uwPerson' and type.key != 'uwPersonError' and type.key != 'googleAjax' }">
                                         <c:forEach items="${ type.value }" var="result">
                                             <div class="portlet-match search-result">
-                                                <div class="portlet_title result_title"><a class="portlet-match-link" href="${result.key}">${ result.value.title }</a></div>
-                                                <p class="portlet-match-description">${ result.value.summary }</p>
+                                                <div class="portlet_title result_title"><a class="portlet-match-link" href="${result.second}">${ result.first.title }</a></div>
+                                                <p class="portlet-match-description">${ result.first.summary }</p>
                                             </div>
                                         </c:forEach>
                                     </c:if>
@@ -75,16 +75,16 @@
                         
                         <div id="${n}_uwPerson" class="uwPerson">
                           <div class="search-results">
-                            <c:forEach items="${ results.results['uwPersonError'] }" var="result">
+                            <c:forEach items="${ results['uwPersonError'] }" var="result">
                               <div class="error-match">
-                                <div class="error-msg">${ result.value.title }</div>
+                                <div class="error-msg">${ result.first.title }</div>
                               </div>
                             </c:forEach>
-                            <c:forEach items="${ results.results['uwPerson'] }" var="result">
-                                <c:set var="summaryParts" value="${fn:split(result.value.summary, '|')}"/>
+                            <c:forEach items="${ results['uwPerson'] }" var="result">
+                                <c:set var="summaryParts" value="${fn:split(result.first.summary, '|')}"/>
                                 
                                 <div class="person-match search-result">
-                                  <div class="person_name result_title">${ result.value.title }</div>
+                                  <div class="person_name result_title">${ result.first.title }</div>
                                   <c:if test="${not empty summaryParts[0]}">
                                     <div class="person_email">
                                       <a class="person_email-link" href="mailto:${summaryParts[0]}">${summaryParts[0]}</a>
@@ -93,7 +93,7 @@
                                   <c:if test="${fn:length(summaryParts) gt 1 and not empty summaryParts[1]}">
                                     <div class="person_phone">${summaryParts[1]}</div>
                                     <div class="person_more">
-                                      <a class="person_more-link" href="${result.key}">More &raquo;</a>
+                                      <a class="person_more-link" href="${result.second}">More &raquo;</a>
                                     </div>
                                   </c:if>
                                 </div>
@@ -103,12 +103,12 @@
                         
                         <div id="${n}_googleAjax" class="googleAjax">
                           <div class="search-results">
-                            <c:forEach items="${ results.results['googleAjax'] }" var="result">
+                            <c:forEach items="${ results['googleAjax'] }" var="result">
                               <div class="campus-search-result search-result">
                                 <div>
-                                  <a class="result_link" href="${result.key}"><span class="result_title">${ result.value.title }</span></a>
+                                  <a class="result_link" href="${result.second}"><span class="result_title">${ result.first.title }</span></a>
                                 </div>
-                                <div class="result_excerpt">${ result.value.summary }</div>
+                                <div class="result_excerpt">${ result.first.summary }</div>
                               </div>
                             </c:forEach>
                           </div>

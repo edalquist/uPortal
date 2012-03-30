@@ -20,12 +20,13 @@ package org.jasig.portal.portlets.search;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import org.jasig.portal.search.SearchResult;
+import org.jasig.portal.utils.Tuple;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -42,27 +43,27 @@ public class PortalSearchResults implements Serializable {
 
     private static final List<String> DEFAULT_TYPES = Arrays.asList("Default");
     
-    //Map of <result type, <url, result>>
-    private final LoadingCache<String, ConcurrentMap<String, SearchResult>> results;
+    //Map of <result type, <result, url>>
+    private final LoadingCache<String, List<Tuple<SearchResult, String>>> results;
     
     public PortalSearchResults() {
-        this.results = CacheBuilder.newBuilder().<String, ConcurrentMap<String, SearchResult>>build(new CacheLoader<String, ConcurrentMap<String, SearchResult>>() {
+        this.results = CacheBuilder.newBuilder().<String, List<Tuple<SearchResult, String>>>build(new CacheLoader<String, List<Tuple<SearchResult, String>>>() {
             @Override
-            public ConcurrentMap<String, SearchResult> load(String key) throws Exception {
-                return new ConcurrentHashMap<String, SearchResult>();
+            public List<Tuple<SearchResult, String>> load(String key) throws Exception {
+                return Collections.synchronizedList(new LinkedList<Tuple<SearchResult,String>>());
             }
         });
     }
     
-    public ConcurrentMap<String, ConcurrentMap<String, SearchResult>> getResults() {
+    public ConcurrentMap<String, List<Tuple<SearchResult, String>>> getResults() {
         return this.results.asMap();
     }
     
     public void addPortletSearchResults(String url, SearchResult result) {
         final List<String> types = this.getTypes(result);
         for (final String type : types) {
-            final Map<String, SearchResult> typeResults = this.results.getUnchecked(type);
-            typeResults.put(url, result);
+            final List<Tuple<SearchResult, String>> typeResults = this.results.getUnchecked(type);
+            typeResults.add(new Tuple<SearchResult, String>(result, url));
         }
     }
     
