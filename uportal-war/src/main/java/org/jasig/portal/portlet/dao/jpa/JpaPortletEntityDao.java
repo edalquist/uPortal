@@ -169,7 +169,7 @@ public class JpaPortletEntityDao extends BaseJpaDao implements IPortletEntityDao
     }
 
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletEntity getPortletEntity(IPortletEntityId portletEntityId) {
         Validate.notNull(portletEntityId, "portletEntityId can not be null");
         
@@ -194,7 +194,7 @@ public class JpaPortletEntityDao extends BaseJpaDao implements IPortletEntityDao
      * @see org.jasig.portal.dao.portlet.IPortletEntityDao#getPortletEntity(java.lang.String, int)
      */
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletEntity getPortletEntity(String layoutNodeId, int userId) {
         Validate.notNull(layoutNodeId, "portletEntity can not be null");
         
@@ -216,7 +216,7 @@ public class JpaPortletEntityDao extends BaseJpaDao implements IPortletEntityDao
      * @see org.jasig.portal.dao.portlet.IPortletEntityDao#getPortletEntities(org.jasig.portal.om.portlet.IPortletDefinitionId)
      */
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public Set<IPortletEntity> getPortletEntities(IPortletDefinitionId portletDefinitionId) {
         Validate.notNull(portletDefinitionId, "portletEntity can not be null");
         
@@ -233,7 +233,7 @@ public class JpaPortletEntityDao extends BaseJpaDao implements IPortletEntityDao
      * @see org.jasig.portal.portlet.dao.IPortletEntityDao#getPortletEntitiesForUser(int)
      */
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public Set<IPortletEntity> getPortletEntitiesForUser(int userId) {
         final TypedQuery<PortletEntityImpl> query = this.createCachedQuery(this.findEntitiesForUserIdQuery);
         query.setParameter(this.userIdParameter, userId);

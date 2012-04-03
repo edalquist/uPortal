@@ -174,7 +174,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
     
  
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletDefinition getPortletDefinition(IPortletDefinitionId portletDefinitionId) {
         Validate.notNull(portletDefinitionId, "portletDefinitionId can not be null");
         
@@ -185,7 +185,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
     }
     
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletDefinition getPortletDefinition(String portletDefinitionIdString) {
         Validate.notNull(portletDefinitionIdString, "portletDefinitionIdString can not be null");
         
@@ -196,7 +196,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
     }
 
 	@Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletDefinition getPortletDefinitionByFname(String fname) {
 	    final TypedQuery<PortletDefinitionImpl> query = this.createCachedQuery(this.findDefinitionByFnameQuery);
         query.setParameter(this.fnameParameter, fname);
@@ -206,7 +206,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
 	}
 
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public IPortletDefinition getPortletDefinitionByName(String name) {
         final TypedQuery<PortletDefinitionImpl> query = this.createCachedQuery(this.findDefinitionByNameQuery);
         query.setParameter(this.nameParameter, name);
@@ -216,7 +216,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
     }
     
     @Override
-    @Transactional(readOnly=true)
+//    @Transactional(readOnly=true)
     public List<IPortletDefinition> searchForPortlets(String term, boolean allowPartial) {
         final CriteriaQuery<PortletDefinitionImpl> criteriaQuery;
         if (allowPartial) {
@@ -252,7 +252,7 @@ public class JpaPortletDefinitionDao extends BaseJpaDao implements IPortletDefin
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+//	@Transactional(readOnly=true)
     public List<IPortletDefinition> getPortletDefinitions() {
 	    final TypedQuery<PortletDefinitionImpl> query = this.createCachedQuery(this.findAllPortletDefinitions);
         
