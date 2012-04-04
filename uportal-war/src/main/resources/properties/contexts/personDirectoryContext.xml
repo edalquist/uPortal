@@ -331,8 +331,7 @@
     
     <!-- Where non-local attribute DAOs go -->
     
-    <bean id="userAttributeCacheKeyGenerator" class="org.jasig.services.persondir.support.AttributeBasedCacheKeyGenerator">
-        <property name="useAllAttributes" value="true" />
+    <bean id="userAttributeCacheKeyGenerator" class="org.jasig.portal.utils.cache.PersonDirectoryCacheKeyGenerator">
         <property name="ignoreEmptyAttributes" value="true" />
     </bean>
     
