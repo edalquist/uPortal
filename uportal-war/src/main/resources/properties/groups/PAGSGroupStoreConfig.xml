@@ -235,15 +235,6 @@
     <group-key>uw-madison-populations</group-key>
     <group-name>UW-Madison - Populations</group-name>
     <group-description>User Populations from the UW-Madison campus</group-description>
-    <selection-test>
-      <test-group>
-        <test>
-          <attribute-name>username</attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
-          <test-value>^[^@]*$</test-value>
-        </test>
-      </test-group>
-    </selection-test>
     <members>
         <member-key>applicant-undergraduate</member-key>
         <member-key>applicant-graduate</member-key>
@@ -261,15 +252,6 @@
     <group-key>uw-madison-roles</group-key>
     <group-name>UW-Madison - Roles</group-name>
     <group-description>User Roles from the UW-Madison campus</group-description>
-    <selection-test>
-      <test-group>
-        <test>
-          <attribute-name>username</attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
-          <test-value>^[^@]*$</test-value>
-        </test>
-      </test-group>
-    </selection-test>
     <members>
         <member-key>users-employee-heritage-questionnaire</member-key>
         <member-key>users-advisors</member-key>
@@ -296,9 +278,9 @@
     <selection-test>
       <test-group>
         <test>
-          <attribute-name>username</attribute-name>
-          <tester-class>org.jasig.portal.groups.pags.testers.RegexTester</tester-class>
-          <test-value>^[^@]*$</test-value>
+          <attribute-name>wiscedustudentgroup</attribute-name>
+          <tester-class>edu.wisc.my.groups.pags.testers.AttributeExistsTester</tester-class>
+          <test-value>Y</test-value>
         </test>
       </test-group>
     </selection-test>
