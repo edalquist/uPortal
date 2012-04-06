@@ -15,6 +15,7 @@
   
   <!-- Links to major apps displayed in the page bar -->  
   <xsl:template name="quicklinks.static.page.bar.links">
+    <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     <xsl:if test="upGroup:isUserDeepMemberOf($USER_ID, 'pags.users-email')">
       <span id="portalPageBar_wiscmail">
         <a target="_new_wiscmail" href="{$WISCMAIL_URL}" title="WiscMail" role="menuitem">  <!-- Navigation item link. -->
@@ -22,6 +23,7 @@
         </a>
         <xsl:call-template name="portal.pipe" />
       </span>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
     <xsl:if test="upGroup:isUserDeepMemberOf($USER_ID, 'pags.users-calendar')">
       <span id="portalPageBar_wisccal">
@@ -30,6 +32,7 @@
         </a>
         <xsl:call-template name="portal.pipe" />
       </span>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
     <xsl:if test="upGroup:isUserDeepMemberOf($USER_ID, 'pags.applicant-undergraduate') or upGroup:isUserDeepMemberOf($USER_ID, 'pags.applicant-graduate') or upGroup:isUserDeepMemberOf($USER_ID, 'pags.student') or upGroup:isUserDeepMemberOfGroupName($USER_ID, 'AT Support') or upGroup:isUserDeepMemberOfGroupName($USER_ID, 'Administrators - ISIS')">
       <span id="portalPageBar_studentcenter">
@@ -48,8 +51,9 @@
         <a href="javascript: window.open('{$studentCenterUrl}','_new_studentcenter','toolbar=no,directories=no,menubar=yes,resizable=yes,dependent=no,width=800,height=800'); void('');" title="Student&#160;Center" role="menuitem">            <!-- Navigation item link. -->
           <span>Student&#160;Center</span>
         </a>
-          <xsl:call-template name="portal.pipe" />
+        <xsl:call-template name="portal.pipe" />
       </span>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
     <xsl:if test="upGroup:isUserDeepMemberOf($USER_ID, 'pags.users-mywebspace')">
       <span id="portalPageBar_mywebspace">
@@ -58,6 +62,7 @@
         </a>
           <xsl:call-template name="portal.pipe" />
       </span>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
     <xsl:if test="upGroup:isUserDeepMemberOf($USER_ID, 'pags.student') or upGroup:isUserDeepMemberOf($USER_ID, 'pags.facstaff')">
       <span id="portalPageBar_learnatuw">
@@ -66,6 +71,7 @@
         </a>
           <xsl:call-template name="portal.pipe" />
       </span>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
     <span id="portalPageBar_mybookmarks">
         <xsl:variable name="bookmarksUrl">

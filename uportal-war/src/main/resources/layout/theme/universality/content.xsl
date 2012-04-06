@@ -98,6 +98,7 @@
     <xsl:if test="not(./parameter[@name='removeFromLayout']/@value='true') and not(./parameter[@name='PORTLET.removeFromLayout']/@value='true')">
     
       <!-- PORTLET CONTAINER  -->
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
       <div id="portlet_{@ID}" class="fl-widget up-portlet-wrapper {@fname} {$PORTLET_LOCKED} {$DELETABLE} {$PORTLET_CHROME} {$PORTLET_ALTERNATE} {$PORTLET_HIGHLIGHT}"> 
         <xsl:choose>
 
@@ -150,7 +151,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </div>
-    
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </xsl:if>
   
   </xsl:template>

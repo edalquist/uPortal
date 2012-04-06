@@ -98,6 +98,7 @@
           <!-- ****** PORTAL PAGE BAR TITLE BLOCK ****** -->
         </xsl:otherwise>
       </xsl:choose>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
       <div id="portalPageBarLinks">
       	<ul class="utilities">
 	      	<xsl:choose>
@@ -114,6 +115,7 @@
 	        </xsl:choose>
         </ul>
       </div>
+      <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
     </div>
   </xsl:template>
   <!-- =============================================== -->
@@ -373,6 +375,7 @@
     <!-- ========== wisc.edu ADDED LINK TO LOGIN IN PLACE OF WELCOME MESSAGE WHEN UNATHENTICATED ========== -->
     <xsl:if test="$AUTHENTICATED='true'"> <!-- Welcome only displays if the user is logged in. -->
       <div id="portalWelcome">
+        <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
         <p>
           <xsl:choose>
             <xsl:when test="$userImpersonating = 'true'">
@@ -385,6 +388,7 @@
           &#160;<span class="user-name"><xsl:value-of select="$USER_NAME"/></span>.
           <span class="logout-label"><a href="{$CONTEXT_PATH}/Logout" title="To log off and exit the portal">Sign Out</a></span>
         </p>
+        <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
       </div>
     </xsl:if>
   </xsl:template>

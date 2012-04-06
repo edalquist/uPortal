@@ -988,7 +988,9 @@
         </xsl:if>
       </span><br />
       <xsl:if test="$AUTHENTICATED='true'">
+        <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
         <span>Session Key: </span><span><xsl:value-of select="$STATS_SESSION_ID"/></span>
+        <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
       </xsl:if>
     </div>
     
