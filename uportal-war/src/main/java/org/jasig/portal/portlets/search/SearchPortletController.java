@@ -22,6 +22,7 @@ package org.jasig.portal.portlets.search;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -76,6 +77,7 @@ import com.google.common.cache.CacheBuilder;
 @RequestMapping("VIEW")
 public class SearchPortletController {
     private static final String SEARCH_RESULTS_CACHE_NAME = SearchPortletController.class.getName() + ".searchResultsCache";
+    private static final String SEARCH_HANDLED_CACHE_NAME = SearchPortletController.class.getName() + ".searchHandledCache";
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());    
     
@@ -151,9 +153,26 @@ public class SearchPortletController {
         final Event event = request.getEvent();
         final SearchRequest searchQuery = (SearchRequest)event.getValue();
         
+        //Map used to track searches that have been handled, used so that one search doesn't get duplicate results
+        ConcurrentMap<String, Boolean> searchHandledCache;
+        final PortletSession session = request.getPortletSession();
+        synchronized (org.springframework.web.portlet.util.PortletUtils.getSessionMutex(session)) {
+            searchHandledCache = (ConcurrentMap<String, Boolean>)session.getAttribute(SEARCH_HANDLED_CACHE_NAME, PortletSession.APPLICATION_SCOPE);
+            if (searchHandledCache == null) {
+                searchHandledCache = CacheBuilder.newBuilder().maximumSize(20).expireAfterAccess(5, TimeUnit.MINUTES).<String, Boolean>build().asMap(); 
+                session.setAttribute(SEARCH_HANDLED_CACHE_NAME, searchHandledCache, PortletSession.APPLICATION_SCOPE);
+            }
+        }
+        
+        final String queryId = searchQuery.getQueryId();
+        if (searchHandledCache.putIfAbsent(queryId, Boolean.TRUE) != null) {
+            //Already handled this search request
+            return;
+        }
+        
         //Create the results
         final SearchResults results = new SearchResults();
-        results.setQueryId(searchQuery.getQueryId());
+        results.setQueryId(queryId);
         results.setWindowId(request.getWindowID());
         final List<SearchResult> searchResultList = results.getSearchResult();
         
