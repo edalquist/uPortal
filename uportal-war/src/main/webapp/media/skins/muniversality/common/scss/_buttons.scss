@@ -51,14 +51,6 @@ $btn-active-selector: ".ui-btn-active";
 		a.ui-link-inherit {
 			color		: $white;
 		}
-	} @else if $type == wisc-nav {
-	    border-color    : $c3dark;
-	    background      : #B69E8C;   
-	    color           : $white;
-	    @include gradient(#B69E8C, #785D51);
-	    a.ui-link-inherit {
-			color		: $white;
-		}
 	} @else {
 		border-color	: $graylight;
 		background		: $graylightest;
@@ -97,14 +89,6 @@ $btn-active-selector: ".ui-btn-active";
 		@include text-shadow(dark);
 		@include gradient($c3lighter, $c3dark);
 		a.ui-link-inherit { 
-			color		: $white;
-		}
-    } @else if $type == wisc-nav {
-	    border-color    : $c3dark;
-	    background      : #B69E8C;   
-	    color           : $white;
-	    @include gradient(#775C4E, #785D51);
-	    a.ui-link-inherit {
 			color		: $white;
 		}
 	} @else {
@@ -146,14 +130,6 @@ $btn-active-selector: ".ui-btn-active";
 		a.ui-link-inherit {
 			color		: $white;
 		}
-    } @else if $type == wisc-nav {
-        border-color    : $c3dark;
-        background      : #B69E8C;   
-        color           : $white;
-        @include gradient(#775C4E, #785D51);
-        a.ui-link-inherit {
-            color		: $white;
-		}
 	} @else {
 		border-color	: $c1darker;
 		background		: $graylighter;
@@ -190,5 +166,8 @@ $btn-active-selector: ".ui-btn-active";
 	}
 	#{$btn-down-selector} {
 		@include button-down($type);
+	}
+	#{$btn-active-selector} {
+		@include button-active();
 	}
 }
