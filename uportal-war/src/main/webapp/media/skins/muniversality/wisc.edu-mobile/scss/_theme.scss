@@ -82,10 +82,14 @@
 		}
 		
 		.ui-li-divider {
-			border-color	: $c1dark;
-			border-top		: 1px solid $c1light;
-			background		: $c1;
-			color			    : #831E24;
+      position: relative;
+      padding-top: 29px;
+      padding-bottom: 34px;
+      padding-left: 92px;
+			border-color: $c1dark;
+			border-top: 1px solid $c1light;
+			background: $c1;
+			color: #831E24;
       @include gradient(#FFFFFF, #F1F2F1);
 			z-index: 1;
 			text-shadow: none;
@@ -96,6 +100,17 @@
 					text-align: right;
 				}
 			}
+		}
+		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student", "Services", "Work", "News", "Research", "Portal" {
+		  .ui-li-divider span.tab-icon-#{$tab} {
+  		  background: url("images/icon-default.png") no-repeat top left;
+  		  display: block;
+  		  height: 72px;
+  		  width: 72px;
+  		  position: absolute;
+  		  top: 5px;
+  		  left: 10px;
+  		}
 		}
 		
 		.utilities {
@@ -122,6 +137,8 @@
 	.ui-icon-phone {
 		background-image: url(images/icons/phone-18x18.png);
 	}
+	
+	
 }
 
 /* retina icons */
