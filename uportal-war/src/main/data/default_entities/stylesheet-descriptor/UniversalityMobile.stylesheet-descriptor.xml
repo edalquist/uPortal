@@ -17,7 +17,7 @@
     </stylesheet-parameter>
     <stylesheet-parameter>
         <name>skin</name>
-        <default-value>iphone</default-value>
+        <default-value>wisc.edu-mobile</default-value>
         <scope>PERSISTENT</scope>
         <description>Skin name</description>
     </stylesheet-parameter>

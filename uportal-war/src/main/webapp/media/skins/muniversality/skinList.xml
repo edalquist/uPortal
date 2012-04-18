@@ -23,10 +23,10 @@
 <skins>
   
   <skin>
-    <skin-key>iphone</skin-key>
-    <skin-name>iphone</skin-name>
+    <skin-key>wisc.edu-mobile</skin-key>
+    <skin-name>UW Mobile</skin-name>
     <skin-description>
-      iPhone theme and skin.
+      Custom mobile skin for University of Wisconsin-Madison
     </skin-description>
   </skin>
   
