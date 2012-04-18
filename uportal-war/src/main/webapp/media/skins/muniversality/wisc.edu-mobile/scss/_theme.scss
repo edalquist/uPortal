@@ -47,7 +47,7 @@
 	
 	.portlet-wrapper-titlebar {
 		border-color	: $c2dark;
-		background		: #990000;
+		background		: #831E24;
 		color			: $white;
 		@include text-shadow();
 		@include button(wisc-nav);
@@ -85,8 +85,8 @@
 			border-color	: $c1dark;
 			border-top		: 1px solid $c1light;
 			background		: $c1;
-			color			: $white;
-            @include gradient(#CEC1AD, #b0a28d);
+			color			    : #831E24;
+      @include gradient(#FFFFFF, #F1F2F1);
 			z-index: 1;
 			text-shadow: none;
 			font-weight: normal !important;
