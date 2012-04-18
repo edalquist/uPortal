@@ -29,9 +29,6 @@
   
   <!-- Modified jQuery Mobile theme for uMobile. Decided not to use the jQuery Mobile's A,B,C,D,E color scheme setup. -->
   <css>jquerymobile/jqm.theme.css</css>
-
-  <!-- Visual style for the mobile portal. -->
-  <css>portal.css</css>
   
   <!-- Visual style for portlet content.
   <css>portlet.css</css> -->
