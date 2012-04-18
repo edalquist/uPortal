@@ -49,16 +49,8 @@
 		border-color	: $c2dark;
 		background		: #990000;
 		color			: $white;
-		height          : 48px;
 		@include text-shadow();
 		@include button(wisc-nav);
-
-		h1.title {
-		  text-indent: -5000px;
-		  background: url(images/wisc/logo-home.png) no-repeat top center;
-		  margin: 0;
-		  height: 48px;
-		}
 	}
 	
 	.portlet-titlebar {
