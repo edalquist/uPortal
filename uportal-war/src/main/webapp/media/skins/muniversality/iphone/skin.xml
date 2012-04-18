@@ -27,7 +27,7 @@
   <parameter name="fss-theme">fl-theme-iphone</parameter>
 
   <css import="true">../common/common_skin.xml</css>
-  <css import="true">../common/portal.css</css>
+  <css>../common/portal.css</css>
 
   <!-- Default jqueryui css -->
   <!--css included="plain">/ResourceServingWebapp/rs/jqueryui/1.8/theme/smoothness/jquery-ui-1.8-smoothness.css</css>
