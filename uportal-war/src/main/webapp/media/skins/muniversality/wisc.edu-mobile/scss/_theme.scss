@@ -57,34 +57,38 @@
 		@include gradient($graylightest, $graylighter);
 	}
 	
-	.uw-titlebar-wrapper {
+	.secondary-titlebar {
 	    background: #990000;
-	    padding-bottom: 15px;
         position: relative;
+        border-top: 1px solid #8D2D2E;
         border-bottom: 1px solid #6B3C42;
+        height: 42px;
         
         h2.portlet-title {
+            line-height: 42px; // vertical centering
             text-shadow: none;
             font-weight: bold;
             font-size: 16px;
             text-align: center;
             margin: 0;
-            padding-top: 12px;
             color: $white;
         }
 	}
 	
-	.uw-crest a {
-        display: block;
-        text-indent: -5000px;
-        background: url("images/uw_crest.png") no-repeat top left;
-        height: 47px;
-        width: 31px;
-        position: absolute;
+	.uw-crest {
+	    position: absolute;
         left: 10px;
-        top: 5px;
+        top: -40px;
         z-index: 3000;
-	}
+        
+    	a {
+            display: block;
+            text-indent: -5000px;
+            background: url("images/uw_crest.png") no-repeat top left;
+            height: 47px;
+            width: 31px;
+    	}
+    }
 	
 	.portlet-wrapper-titlebar {
 		background-color: #6E0000;

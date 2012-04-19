@@ -61,12 +61,12 @@
   <xsl:variable name="basePortalUrl">
       <xsl:call-template name="portalUrl" />
   </xsl:variable>
-  <div class="uw-titlebar-wrapper">
+  <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
+      <h1 class="title">My UW-Madison</h1>
+      <xsl:call-template name="mobile.auth.link"/>
+  </div>
+  <div class="secondary-titlebar">
     <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
-    <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
-        <h1 class="title">My UW-Madison</h1>
-        <xsl:call-template name="mobile.auth.link"/>
-    </div>
   </div>
 </xsl:template>
     
@@ -211,18 +211,18 @@
 | Only those with knowledge of xsl should configure this template.
 -->
 <xsl:template name="mobile.header.focused">
-    <xsl:variable name="basePortalUrl">
-        <xsl:call-template name="portalUrl" />
-    </xsl:variable>
-    <xsl:if test="not(//content/focused/@detached = 'true')">
-      <div class="uw-titlebar-wrapper">
-        <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
-        <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-position="inline">
-            <h1 class="title">My UW-Madison</h1>
-        </div>
-        <h2 class="portlet-title"><xsl:value-of select="//content/focused/channel/@name" /></h2>
-      </div>
-    </xsl:if>
+  <xsl:variable name="basePortalUrl">
+      <xsl:call-template name="portalUrl" />
+  </xsl:variable>
+  <xsl:if test="not(//content/focused/@detached = 'true')">
+    <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-position="inline">
+        <h1 class="title">My UW-Madison</h1>
+    </div>
+    <div class="secondary-titlebar">
+      <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
+      <h2 class="portlet-title"><xsl:value-of select="//content/focused/channel/@name" /></h2>
+    </div>
+  </xsl:if>
 </xsl:template>
 <!-- ========================================================================= -->
 
