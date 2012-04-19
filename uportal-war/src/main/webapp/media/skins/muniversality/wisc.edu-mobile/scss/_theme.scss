@@ -46,17 +46,17 @@
 	}
 	
 	.portlet-wrapper-titlebar {
-		border-color	: $c2dark;
-		background		: #831E24;
+		border-color: $c2dark;
+		background: #831E24;
 		color			: $white;
 		@include text-shadow();
 		@include button(wisc-nav);
 	}
 	
 	.portlet-titlebar {
-		border-color	: $c1darker;
-		background		: $c1dark;
-		color			: $white;
+		border-color: $c1darker;
+		background: $c1dark;
+		color: $white;
 		@include text-shadow();
 		@include gradient($c1, $c1darker);
 
