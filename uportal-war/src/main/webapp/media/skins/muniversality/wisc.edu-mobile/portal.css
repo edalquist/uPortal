@@ -551,20 +551,15 @@ mathematical calculations. */
 }
 .up .badge.unread-item,
 .up .portlet-content .ui-listview .ui-li-count {
-  background: #4682b4;
+  background: #6e0000;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #699bc4, #38678f);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #699bc4), color-stop(1, #38678f));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#699bc4', EndColorStr='#38678f')";
+  background-image: -moz-linear-gradient(top, #a10000, #3b0000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a10000), color-stop(1, #3b0000));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a10000', EndColorStr='#3b0000')";
 }
 .up .badge.read-item {
   /* Uses default badge style. */
-}
-.up .portal-nav .badge.new-item {
-  -moz-box-shadow: 0px 2px 2px black;
-  -webkit-box-shadow: 0px 2px 2px black;
-  box-shadow: 0px 2px 2px black;
 }
 .up .portlet-content .ui-listview .ui-li-count {
   padding: 0.2em 10px;
@@ -598,6 +593,16 @@ mathematical calculations. */
 .up .dashboard .ui-br {
   border-bottom: 1px solid rgba(130, 130, 130, 0.3);
 }
+.up .dashboard .ui-li-divider {
+  position: relative;
+  padding-top: 29px;
+  padding-bottom: 34px;
+  padding-left: 92px;
+  text-shadow: none;
+  font-size: 16px;
+  font-weight: normal;
+  color: #831E24;
+}
 .up .focused {
   color: #444444;
   text-shadow: 0 1px 0 white;
@@ -607,10 +612,23 @@ mathematical calculations. */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5', EndColorStr='#dcdcdc')";
 }
 .up .uw-titlebar-wrapper {
-  border-bottom: 15px solid #A9212C;
+  background: #990000;
+  padding-bottom: 15px;
   position: relative;
+  border-bottom: 1px solid #6B3C42;
 }
-.up .uw-crest {
+.up .uw-titlebar-wrapper h2.portlet-title {
+  text-shadow: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+  padding-top: 12px;
+  color: white;
+}
+.up .uw-crest a {
+  display: block;
+  text-indent: -5000px;
   background: url("images/uw_crest.png") no-repeat top left;
   height: 47px;
   width: 31px;
@@ -620,7 +638,7 @@ mathematical calculations. */
   z-index: 3000;
 }
 .up .portlet-wrapper-titlebar {
-  background-color: #831E24;
+  background-color: #6E0000;
   color: white;
   text-shadow: 0 -1px 1px black;
   border-bottom: 1px solid #662423;
@@ -658,47 +676,55 @@ mathematical calculations. */
 .up .portlet-wrapper-titlebar .ui-btn-down-a a.ui-link-inherit, .up .portlet-wrapper-titlebar .ui-btn-down-b a.ui-link-inherit, .up .portlet-wrapper-titlebar .ui-btn-down-c a.ui-link-inherit, .up .portlet-wrapper-titlebar .ui-btn-down-d a.ui-link-inherit, .up .portlet-wrapper-titlebar .ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
+.up .portlet-wrapper-titlebar h1 {
+  font-size: 18px;
+  margin-bottom: 0.5em;
+  text-shadow: none;
+}
 .up .portlet-titlebar {
-  border-color: #294d6b;
-  background: #38678f;
+  border: none;
+  background: #a9a9a9;
   color: white;
-  text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #4682b4, #294d6b);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4682b4), color-stop(1, #294d6b));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#4682b4', EndColorStr='#294d6b')";
 }
 .up .portlet-titlebar .ui-btn-up-a, .up .portlet-titlebar .ui-btn-up-b, .up .portlet-titlebar .ui-btn-up-c, .up .portlet-titlebar .ui-btn-up-d, .up .portlet-titlebar .ui-btn-up-e {
-  border-color: #294d6b;
-  background: #4682b4;
+  border-color: #767676;
+  background: #a9a9a9;
   color: white;
-  background-image: -moz-linear-gradient(top, #4682b4, #294d6b);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4682b4), color-stop(1, #294d6b));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#4682b4', EndColorStr='#294d6b')";
+  text-shadow: 0 -1px 1px black;
+  background-image: -moz-linear-gradient(top, #a9a9a9, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a9a9a9), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a9a9a9', EndColorStr='#5c5c5c')";
 }
 .up .portlet-titlebar .ui-btn-up-a a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-b a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-c a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-d a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-e a.ui-link-inherit {
   color: white;
 }
 .up .portlet-titlebar .ui-btn-hover-a, .up .portlet-titlebar .ui-btn-hover-b, .up .portlet-titlebar .ui-btn-hover-c, .up .portlet-titlebar .ui-btn-hover-d, .up .portlet-titlebar .ui-btn-hover-e {
-  border-color: #08180f;
-  background: #699bc4;
+  border-color: #5c5c5c;
+  background: #5c5c5c;
   color: white;
-  background-image: -moz-linear-gradient(top, #8db3d3, #294d6b);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8db3d3), color-stop(1, #294d6b));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#8db3d3', EndColorStr='#294d6b')";
+  text-shadow: 0 -1px 1px black;
+  background-image: -moz-linear-gradient(top, #5c5c5c, black);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5c5c5c), color-stop(1, black));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#5c5c5c', EndColorStr='black')";
 }
 .up .portlet-titlebar .ui-btn-hover-a a.ui-link-inherit, .up .portlet-titlebar .ui-btn-hover-b a.ui-link-inherit, .up .portlet-titlebar .ui-btn-hover-c a.ui-link-inherit, .up .portlet-titlebar .ui-btn-hover-d a.ui-link-inherit, .up .portlet-titlebar .ui-btn-hover-e a.ui-link-inherit {
   color: white;
 }
 .up .portlet-titlebar .ui-btn-down-a, .up .portlet-titlebar .ui-btn-down-b, .up .portlet-titlebar .ui-btn-down-c, .up .portlet-titlebar .ui-btn-down-d, .up .portlet-titlebar .ui-btn-down-e {
-  border-color: #294d6b;
-  background: #4682b4;
+  border-color: #5c5c5c;
+  background: #5c5c5c;
   color: white;
-  background-image: -moz-linear-gradient(top, #294d6b, #4682b4);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #294d6b), color-stop(1, #4682b4));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#294d6b', EndColorStr='#4682b4')";
+  text-shadow: 0 -1px 1px black;
+  background-image: -moz-linear-gradient(top, black, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, black), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='black', EndColorStr='#5c5c5c')";
 }
 .up .portlet-titlebar .ui-btn-down-a a.ui-link-inherit, .up .portlet-titlebar .ui-btn-down-b a.ui-link-inherit, .up .portlet-titlebar .ui-btn-down-c a.ui-link-inherit, .up .portlet-titlebar .ui-btn-down-d a.ui-link-inherit, .up .portlet-titlebar .ui-btn-down-e a.ui-link-inherit {
   color: white;
+}
+.up .portlet-titlebar h2 {
+  font-weight: normal !important;
+  text-shadow: none;
 }
 .up .portlet-content .titlebar .title, .up .portlet-content .titlebar .subtitle {
   margin: 0;
@@ -731,7 +757,7 @@ mathematical calculations. */
   color: #5c5c5c;
 }
 .up .portlet-content .ui-btn-down-a, .up .portlet-content .ui-btn-down-b, .up .portlet-content .ui-btn-down-c, .up .portlet-content .ui-btn-down-d, .up .portlet-content .ui-btn-down-e {
-  border-color: #294d6b;
+  border-color: #080000;
   background: #dcdcdc;
   color: #444444;
   text-shadow: 0 1px 1px white;
@@ -748,20 +774,14 @@ mathematical calculations. */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#fcfcfc', EndColorStr='#ededed')";
 }
 .up .portlet-content .ui-li-divider {
-  position: relative;
-  padding-top: 29px;
-  padding-bottom: 34px;
-  padding-left: 92px;
-  border-color: #38678f;
-  border-top: 1px solid #699bc4;
-  background: #4682b4;
-  color: #831E24;
+  border-color: #c3c3c3;
+  border-top: 1px solid #c3c3c3;
+  background: #a9a9a9;
+  text-shadow: none;
   background-image: -moz-linear-gradient(top, white, #f1f2f1);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #f1f2f1));
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#f1f2f1')";
   z-index: 1;
-  text-shadow: none;
-  font-size: 16px;
 }
 .up .portlet-content .ui-li-divider .ui-grid-a .ui-block-b {
   text-align: right;
@@ -862,37 +882,37 @@ mathematical calculations. */
   color: #831E24;
 }
 .up .portlet-content .utilities .ui-btn-up-a, .up .portlet-content .utilities .ui-btn-up-b, .up .portlet-content .utilities .ui-btn-up-c, .up .portlet-content .utilities .ui-btn-up-d, .up .portlet-content .utilities .ui-btn-up-e {
-  border-color: #143f27;
-  background: #21653f;
+  border-color: #767676;
+  background: #a9a9a9;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #2e8b57, #143f27);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2e8b57), color-stop(1, #143f27));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#2e8b57', EndColorStr='#143f27')";
+  background-image: -moz-linear-gradient(top, #a9a9a9, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a9a9a9), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a9a9a9', EndColorStr='#5c5c5c')";
 }
 .up .portlet-content .utilities .ui-btn-up-a a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-b a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-c a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-d a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-e a.ui-link-inherit {
   color: white;
 }
 .up .portlet-content .utilities .ui-btn-hover-a, .up .portlet-content .utilities .ui-btn-hover-b, .up .portlet-content .utilities .ui-btn-hover-c, .up .portlet-content .utilities .ui-btn-hover-d, .up .portlet-content .utilities .ui-btn-hover-e {
-  border-color: #143f27;
-  background: #2e8b57;
+  border-color: #5c5c5c;
+  background: #5c5c5c;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #3ab26f, #143f27);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3ab26f), color-stop(1, #143f27));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3ab26f', EndColorStr='#143f27')";
+  background-image: -moz-linear-gradient(top, #5c5c5c, black);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5c5c5c), color-stop(1, black));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#5c5c5c', EndColorStr='black')";
 }
 .up .portlet-content .utilities .ui-btn-hover-a a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-hover-b a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-hover-c a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-hover-d a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-hover-e a.ui-link-inherit {
   color: white;
 }
 .up .portlet-content .utilities .ui-btn-down-a, .up .portlet-content .utilities .ui-btn-down-b, .up .portlet-content .utilities .ui-btn-down-c, .up .portlet-content .utilities .ui-btn-down-d, .up .portlet-content .utilities .ui-btn-down-e {
-  border-color: #08180f;
-  background: #21653f;
+  border-color: #5c5c5c;
+  background: #5c5c5c;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #143f27, #2e8b57);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #143f27), color-stop(1, #2e8b57));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#143f27', EndColorStr='#2e8b57')";
+  background-image: -moz-linear-gradient(top, black, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, black), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='black', EndColorStr='#5c5c5c')";
 }
 .up .portlet-content .utilities .ui-btn-down-a a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-b a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-c a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-d a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-e a.ui-link-inherit {
   color: white;
