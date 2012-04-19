@@ -114,6 +114,11 @@
 		    font-weight: normal !important;
 		    text-shadow: none;
 		}
+	    form {
+	        position: absolute;
+	        right: 10px;
+	        top: 5px;
+	    }
 	}
 	
 	.portlet-content {
