@@ -46,18 +46,18 @@
 	}
 	
 	.uw-titlebar-wrapper {
-	  border-bottom: 15px solid #A9212C;
-	  position: relative;
+        border-bottom: 15px solid #A9212C;
+        position: relative;
 	}
 	
 	.uw-crest {
-	  background: url("images/uw_crest.png") no-repeat top left;
-	  height: 47px;
-	  width: 31px;
-	  position: absolute;
-	  left: 10px;
-	  top: 5px;
-	  z-index: 3000;
+        background: url("images/uw_crest.png") no-repeat top left;
+        height: 47px;
+        width: 31px;
+        position: absolute;
+        left: 10px;
+        top: 5px;
+        z-index: 3000;
 	}
 	
 	.portlet-wrapper-titlebar {
@@ -65,7 +65,7 @@
 		color: $white;
 		@include text-shadow();
 		@include button(wisc-nav);
-	  border-bottom: 1px solid #662423;
+        border-bottom: 1px solid #662423;
 	}
 	
 	.portlet-titlebar {
@@ -97,15 +97,15 @@
 		}
 		
 		.ui-li-divider {
-      position: relative;
-      padding-top: 29px;
-      padding-bottom: 34px;
-      padding-left: 92px;
+            position: relative;
+            padding-top: 29px;
+            padding-bottom: 34px;
+            padding-left: 92px;
 			border-color: $c1dark;
 			border-top: 1px solid $c1light;
 			background: $c1;
 			color: #831E24;
-      @include gradient(#FFFFFF, #F1F2F1);
+            @include gradient(#FFFFFF, #F1F2F1);
 			z-index: 1;
 			text-shadow: none;
 			font-size: 16px;
@@ -117,20 +117,20 @@
 			}
 		}
 		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student", "Services", "Work", "News", "Research", "Portal" {
-		  .ui-li-divider span.tab-icon-#{$tab} {
-  		  background: url("images/icon-default.png") no-repeat top left;
-  		  display: block;
-  		  height: 72px;
-  		  width: 72px;
-  		  position: absolute;
-  		  top: 5px;
-  		  left: 10px;
-  		}
+            .ui-li-divider span.tab-icon-#{$tab} {
+                background: url("images/icon-default.png") no-repeat top left;
+                display: block;
+                height: 72px;
+                width: 72px;
+                position: absolute;
+                top: 5px;
+                left: 10px;
+            }
 		}
 		.ui-li-heading {
-		  font-size: 14px;
-		  font-weight: normal;
-		  color: #831E24;
+            font-size: 14px;
+            font-weight: normal;
+            color: #831E24;
 		}
 		
 		.utilities {
