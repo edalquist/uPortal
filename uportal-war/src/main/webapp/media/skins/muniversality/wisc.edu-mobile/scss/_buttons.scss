@@ -42,11 +42,11 @@ $btn-active-selector: ".ui-btn-active";
 			color		: $white;
 		}
 	} @else if $type == utility {
-		border-color	: $c3dark;
-		background		: $c3;
+		border-color	: $graydarker;
+		background		: $gray;
 		color			: $white;
 		@include text-shadow(dark);
-		@include gradient($c3light, $c3dark);
+		@include gradient($gray, $graydarkest);
 		a.ui-link-inherit {
 			color		: $white;
 		}
@@ -90,11 +90,11 @@ $btn-active-selector: ".ui-btn-active";
 			color		: $white;
 		}
 	} @else if $type == utility {
-		border-color	: $c3dark;
-		background		: $c3light;
+		border-color	: $graydarkest;
+		background		: $graydarkest;
 		color			: $white;
 		@include text-shadow(dark);
-		@include gradient($c3lighter, $c3dark);
+		@include gradient($graydarkest, black);
 		a.ui-link-inherit { 
 			color		: $white;
 		}
@@ -137,11 +137,11 @@ $btn-active-selector: ".ui-btn-active";
 			color		: $white;
 		}
 	} @else if $type == utility {
-		border-color	: $c3darker;
-		background		: $c3;
+		border-color	: $graydarkest;
+		background		: $graydarkest;
 		color			: $white;
 		@include text-shadow(dark);
-		@include gradient($c3dark, $c3light);
+		@include gradient(black, $graydarkest);
 		a.ui-link-inherit {
 			color		: $white;
 		}
