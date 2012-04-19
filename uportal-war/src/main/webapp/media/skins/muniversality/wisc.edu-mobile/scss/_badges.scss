@@ -37,9 +37,6 @@
 	.badge.read-item {
 		/* Uses default badge style. */
 	}
-	.portal-nav .badge.new-item {
-		@include box-shadow($xpos:0px);
-	}
 	.portlet-content .ui-listview .ui-li-count {
 		padding: 0.2em 10px;
 	}
