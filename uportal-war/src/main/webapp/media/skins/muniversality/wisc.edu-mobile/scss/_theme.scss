@@ -35,7 +35,18 @@
 			font-weight: bold;
 			text-decoration: none;
 		}
-		.ui-br { border-bottom: 1px solid rgba(130,130,130,.3); }
+		.ui-br { 
+		    border-bottom: 1px solid rgba(130,130,130,.3);
+		}
+		.ui-li-divider {
+		    position: relative;
+            padding-top: 29px;
+            padding-bottom: 34px;
+            padding-left: 92px;
+            text-shadow: none;
+			font-size: 16px;
+			color: #831E24;
+		}
 	}
 	
 	.focused {
@@ -97,18 +108,12 @@
 		}
 		
 		.ui-li-divider {
-            position: relative;
-            padding-top: 29px;
-            padding-bottom: 34px;
-            padding-left: 92px;
-			border-color: $c1dark;
-			border-top: 1px solid $c1light;
-			background: $c1;
-			color: #831E24;
+			border-color: $graylight;
+			border-top: 1px solid $graylight;
+			background: $gray;
+            text-shadow: none;
             @include gradient(#FFFFFF, #F1F2F1);
 			z-index: 1;
-			text-shadow: none;
-			font-size: 16px;
 			
 			.ui-grid-a {
 				.ui-block-b {
