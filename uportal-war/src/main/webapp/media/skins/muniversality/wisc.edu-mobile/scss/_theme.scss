@@ -45,12 +45,27 @@
 		@include gradient($graylightest, $graylighter);
 	}
 	
+	.uw-titlebar-wrapper {
+	  border-bottom: 15px solid #A9212C;
+	  position: relative;
+	}
+	
+	.uw-crest {
+	  background: url("images/uw_crest.png") no-repeat top left;
+	  height: 47px;
+	  width: 31px;
+	  position: absolute;
+	  left: 10px;
+	  top: 5px;
+	  z-index: 3000;
+	}
+	
 	.portlet-wrapper-titlebar {
-		border-color: $c2dark;
-		background: #831E24;
-		color			: $white;
+		background-color: #831E24;
+		color: $white;
 		@include text-shadow();
 		@include button(wisc-nav);
+	  border-bottom: 1px solid #662423;
 	}
 	
 	.portlet-titlebar {

@@ -58,10 +58,13 @@
 | Only those with knowledge of xsl should configure this template.
 -->
 <xsl:template name="mobile.header">
+  <div class="uw-titlebar-wrapper">
+    <div class="uw-crest"></div>
     <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
         <h1 class="title">My UW-Madison</h1>
         <xsl:call-template name="mobile.auth.link"/>
     </div>
+  </div>
 </xsl:template>
     
 <xsl:template name="mobile.auth.link">
