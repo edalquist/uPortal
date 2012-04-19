@@ -93,7 +93,7 @@
       @include gradient(#FFFFFF, #F1F2F1);
 			z-index: 1;
 			text-shadow: none;
-			font-weight: normal !important;
+			font-size: 16px;
 			
 			.ui-grid-a {
 				.ui-block-b {
@@ -111,6 +111,11 @@
   		  top: 5px;
   		  left: 10px;
   		}
+		}
+		.ui-li-heading {
+		  font-size: 14px;
+		  font-weight: normal;
+		  color: #831E24;
 		}
 		
 		.utilities {
