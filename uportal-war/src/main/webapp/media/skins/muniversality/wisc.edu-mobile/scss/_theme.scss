@@ -80,13 +80,15 @@
 	}
 	
 	.portlet-titlebar {
-		border-color: $c1darker;
-		background: $c1dark;
+        border: none;
+		background: $gray;
 		color: $white;
-		@include text-shadow();
-		@include gradient($c1, $c1darker);
-
-		@include button(portlet-nav);
+		@include button(utility);
+		
+		h2 {
+		    font-weight: normal !important;
+		    text-shadow: none;
+		}
 	}
 	
 	.portlet-content {
