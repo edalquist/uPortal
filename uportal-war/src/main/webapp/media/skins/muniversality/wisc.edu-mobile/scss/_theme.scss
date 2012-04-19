@@ -57,11 +57,24 @@
 	}
 	
 	.uw-titlebar-wrapper {
-        border-bottom: 15px solid #A9212C;
+	    background: #A9212C;
+	    padding-bottom: 15px;
         position: relative;
+        
+        h2.portlet-title {
+            text-shadow: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+            padding-top: 12px;
+            color: $white;
+        }
 	}
 	
-	.uw-crest {
+	.uw-crest a {
+        display: block;
+        text-indent: -5000px;
         background: url("images/uw_crest.png") no-repeat top left;
         height: 47px;
         width: 31px;
@@ -77,6 +90,12 @@
 		@include text-shadow();
 		@include button(wisc-nav);
         border-bottom: 1px solid #662423;
+        
+        h1 {
+            font-size: 18px;
+            margin-bottom: 0.5em;
+            text-shadow: none;
+        }
 	}
 	
 	.portlet-titlebar {
