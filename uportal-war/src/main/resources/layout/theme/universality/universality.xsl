@@ -190,8 +190,7 @@
   <xsl:param name="userName">Guest User</xsl:param>
   <xsl:param name="USER_NAME"><xsl:value-of select="$userName"/></xsl:param>
   <xsl:param name="subscriptionsSupported">true</xsl:param>
-  <xsl:param name="uP_productAndVersion">uPortal</xsl:param>
-  <xsl:param name="UP_VERSION"><xsl:value-of select="$uP_productAndVersion"/></xsl:param>
+  <xsl:param name="UP_VERSION">uPortal</xsl:param>
   <xsl:param name="SERVER_NAME"></xsl:param>
   <xsl:param name="STATS_SESSION_ID"></xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
@@ -974,6 +973,11 @@
           </xsl:with-param>
       </xsl:call-template>
     </xsl:variable>
+
+    <!-- Site Map
+    <div id="portalPageFooterNav">
+        <xsl:copy-of select="//channel/parameter[@name = 'role' and @value = 'footerNav']/parent::*"/>
+    </div>  -->
 
     <!-- Footer Links -->
     <div id="portalPageFooterLinks">

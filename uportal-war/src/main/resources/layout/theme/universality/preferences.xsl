@@ -444,7 +444,7 @@
                     portalContext: '<xsl:value-of select="$CONTEXT_PATH"/>',
                     layoutPersistenceUrl: '<xsl:value-of select="$CONTEXT_PATH"/>/api/layout',
                     messages: {
-                        persistenceError: '<xsl:value-of select="upMsg:getMessage('error.persisting.layout.change', $USER_LANG)"/>',
+                        persistenceError: '<xsl:value-of select="upMsg:getMessage('error.persisting.layout.change', $USER_LANG)"/>'
                     }
                 }
             );
