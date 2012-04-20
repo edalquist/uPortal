@@ -611,20 +611,27 @@ mathematical calculations. */
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), color-stop(1, #dcdcdc));
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5', EndColorStr='#dcdcdc')";
 }
-.up .uw-titlebar-wrapper {
+.up .secondary-titlebar {
   background: #990000;
-  padding-bottom: 15px;
   position: relative;
+  border-top: 1px solid #8D2D2E;
   border-bottom: 1px solid #6B3C42;
+  height: 40px;
 }
-.up .uw-titlebar-wrapper h2.portlet-title {
+.up .secondary-titlebar h2.portlet-title {
+  line-height: 40px;
   text-shadow: none;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
   margin: 0;
-  padding-top: 12px;
   color: white;
+}
+.up .uw-crest {
+  position: absolute;
+  left: 10px;
+  top: -40px;
+  z-index: 3000;
 }
 .up .uw-crest a {
   display: block;
@@ -632,10 +639,6 @@ mathematical calculations. */
   background: url("images/uw_crest.png") no-repeat top left;
   height: 47px;
   width: 31px;
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  z-index: 3000;
 }
 .up .portlet-wrapper-titlebar {
   background-color: #6E0000;
@@ -725,6 +728,11 @@ mathematical calculations. */
 .up .portlet-titlebar h2 {
   font-weight: normal !important;
   text-shadow: none;
+}
+.up .portlet-titlebar form {
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }
 .up .portlet-content .titlebar .title, .up .portlet-content .titlebar .subtitle {
   margin: 0;
