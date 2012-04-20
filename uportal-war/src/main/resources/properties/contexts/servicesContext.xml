@@ -66,12 +66,46 @@
     
     <util:list id="searchServices">
         <bean class="org.jasig.portal.portlets.search.portletregistry.PortletRegistrySearchService"/>
+        
+        <!-- Uncomment and fill in your Google Custom Search ID to use -->
         <bean class="org.jasig.portal.portlets.search.google.GoogleCustomSearchService">
-            <!-- TODO make into property -->
             <property name="customSearchId" value="001601028090761970182:2g0iwqsnk2m" />
         </bean>
+         
+        <!-- Uncomment and fill in your Google Search Appliance URL and Site to use
+        <bean class="org.jasig.portal.portlets.search.gsa.GsaSearchService">
+            <property name="baseUrl" value="http://search.example.com"/>
+            <property name="site" value="Site"/>
+        </bean>
+        -->
+
         <bean class="edu.wisc.my.portlets.search.people.PeopleSearchService" />
     </util:list>
+    
+    <!-- 
+     | Maps search resultType strings to tabs that are displayed in the results. If a resultType is not
+     | mapped below its results go in the default tab.
+     |
+     | The key is the Messages.properties key to use for the result tab name 
+     +-->
+    <util:map id="searchTabs">
+        <entry key="uwPerson.results">
+            <list>
+                <value>uwPerson</value>
+            </list>
+        </entry>
+        <entry key="uwPersonError.results">
+            <list>
+                <value>uwPersonError</value>
+            </list>
+        </entry>
+        <entry key="googleInstitution.results">
+            <list>
+                <value>googleCustom</value>
+                <value>googleAppliance</value>
+            </list>
+        </entry>
+    </util:map>
 
     <bean id="permissionTargetProviderRegistry" class="org.jasig.portal.permission.target.PermissionTargetProviderRegistryImpl">
         <property name="providers">

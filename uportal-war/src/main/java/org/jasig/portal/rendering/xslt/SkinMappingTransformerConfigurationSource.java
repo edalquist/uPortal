@@ -139,7 +139,7 @@ public abstract class SkinMappingTransformerConfigurationSource extends Transfor
     
 
     protected boolean shouldOverrideSkin(HttpServletRequest request) {
-        if (this.stylesheetDescriptorNames == null && this.stylesheetDescriptorNames.isEmpty()) {
+        if (this.stylesheetDescriptorNames == null || this.stylesheetDescriptorNames.isEmpty()) {
             return true;
         }
         

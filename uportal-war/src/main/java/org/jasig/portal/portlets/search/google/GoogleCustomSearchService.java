@@ -59,7 +59,7 @@ public class GoogleCustomSearchService implements IPortalSearchService {
     
     private String resultSize = "large";
     private String customSearchId;
-    private String resultType = "googleAjax";
+    private String resultType = "googleCustom";
     
     private RestOperations restOperations;
     
