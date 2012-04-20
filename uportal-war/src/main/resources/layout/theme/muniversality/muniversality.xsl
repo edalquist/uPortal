@@ -283,9 +283,11 @@
 | Template contents can be any valid XSL or XHTML.
 -->
 <xsl:template name="footer">
-    <!--<p>
-    	<a href="http://www.jasig.org/uportal/about/license">uPortal is licensed under the Apache License, Version 2.0</a>
-    </p>-->
+  <div class="ui-footer" data-role="footer">
+    <p>&#169; 2012 UW System Board of Regents</p>
+    <p><a href="#">Contact us</a> for assistance</p>
+    <p><a href="#">Switch to Full Site</a></p>
+  </div>
 </xsl:template>
 <!-- ========================================================================= -->
 
@@ -353,6 +355,7 @@
                         <xsl:call-template name="logo" />
                     </xsl:otherwise>
                 </xsl:choose>
+                
                 <xsl:call-template name="footer" />
             </div>
         </body>

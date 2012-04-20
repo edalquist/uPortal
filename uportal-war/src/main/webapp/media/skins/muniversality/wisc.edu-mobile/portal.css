@@ -925,6 +925,10 @@ mathematical calculations. */
 .up .portlet-content .utilities .ui-btn-down-a a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-b a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-c a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-d a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
+.up .portal-nav,
+.up .portlet {
+  margin-bottom: 55px;
+}
 .up .portal-nav .portlet .icon {
   /*border: 1px solid $c1darkest;
   background: $c1;
@@ -936,6 +940,24 @@ mathematical calculations. */
 }
 .up .ui-icon-phone {
   background-image: url(images/icons/phone-18x18.png);
+}
+.up .ui-footer {
+  background: #6E0000;
+  text-align: center;
+  padding: 5px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.up .ui-footer p {
+  font-size: 10px;
+  color: #eee;
+  text-shadow: none;
+  line-height: 1.5;
+}
+.up .ui-footer a:link, .up .ui-footer a:visited {
+  text-decoration: underline;
+  color: white;
 }
 
 /* retina icons */
