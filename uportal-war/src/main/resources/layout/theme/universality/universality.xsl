@@ -993,8 +993,13 @@
       </span><br />
       <xsl:if test="$AUTHENTICATED='true'">
         <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
-        <span>Session Key: </span><span><xsl:value-of select="$STATS_SESSION_ID"/></span>
+        <span>Session Key: </span><span><xsl:value-of select="$STATS_SESSION_ID"/></span><br/>
         <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
+        <span>
+            <a href="{$CONTEXT_PATH}/Login?profile=mobile" title="{upMsg:getMessage('switch.to.mobile', $USER_LANG)}">
+              <span><xsl:value-of select="upMsg:getMessage('switch.to.mobile', $USER_LANG)"/></span>
+            </a>
+        </span>
       </xsl:if>
     </div>
     

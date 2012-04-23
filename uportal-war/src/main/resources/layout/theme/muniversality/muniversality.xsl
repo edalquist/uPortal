@@ -286,7 +286,7 @@
   <div class="ui-footer" data-role="footer">
     <p>&#169; 2012 UW System Board of Regents</p>
     <p><a href="#">Contact us</a> for assistance</p>
-    <p><a href="#">Switch to Full Site</a></p>
+    <p><a href="{$CONTEXT_PATH}/Login?profile=desktop">Switch to Full Site</a></p>
   </div>
 </xsl:template>
 <!-- ========================================================================= -->
