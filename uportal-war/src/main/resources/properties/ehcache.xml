@@ -87,7 +87,9 @@
      +-->
     <cache name="org.jasig.portal.security.provider.AuthorizationImpl.AUTH_PRINCIPAL_CACHE"
         eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="900" timeToLiveSeconds="0" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="900" timeToLiveSeconds="0" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" />
+    </cache>
     
     <!-- 
      | Caches containing group keys for a permissions target
@@ -105,7 +107,9 @@
      +-->
     <cache name="org.jasig.portal.security.provider.AuthorizationImpl.PRINCIPAL_HAS_PERMISSION"
         eternal="false" maxElementsInMemory="50000" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="60" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="0" timeToLiveSeconds="60" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" />
+    </cache>
     
     
     <!-- 
@@ -142,7 +146,9 @@
      +-->
     <cache name="org.jasig.portal.layout.dlm.LAYOUT_CACHE"
         eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="900" timeToLiveSeconds="7200" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="900" timeToLiveSeconds="7200" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" />
+    </cache>
         
     <!-- 
      | Caches layout node reference resolution, only used during import and export
@@ -206,7 +212,9 @@
      +-->
     <cache name="org.jasig.services.persondir.USER_INFO.merged"
         eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="5" timeToLiveSeconds="10" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="5" timeToLiveSeconds="10" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
         
     <!-- 
      | Caches queries against the local UP_USER table
@@ -215,16 +223,79 @@
      +-->
     <cache name="org.jasig.services.persondir.USER_INFO.up_user"
         eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+
+
+    <!-- ******************** UW Person Directory Caches ******************** -->
         
     <!-- 
-     | Caches queries against the local UP_PERSON_DIR table
+     | Caches queries against LDAP
      | - 1 x user
      | - not replicated - doesn't represent an updatable data store
      +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.up_person_dir"
+    <cache name="org.jasig.services.persondir.USER_INFO.ldap"
         eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
+    <!-- 
+     | Caches queries for the current post-graduation term
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.post_grad_survey_term"
+        eternal="false" maxElementsInMemory="10" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
+    <!-- 
+     | Caches queries against the graduating senior data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
+    <!-- 
+     | Caches queries against the graduating masters data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_masters"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
+    <!-- 
+     | Caches queries against the graduating senior survey results data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior_survey"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
+    <!-- 
+     | Caches queries against the heritage survey results data source
+     | - 1 x user
+     | - not replicated - doesn't represent an updatable data store
+     +-->
+    <cache name="org.jasig.services.persondir.USER_INFO.heritage_check"
+        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
+        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" >
+        <cacheEventListenerFactory class="org.jasig.portal.utils.cache.SpringCacheEventListenerFactory" properties="beanName=tagTrackingCacheEventListener" listenFor="local" />
+    </cache>
+        
         
 
     <!-- ******************** uPortal IBasicEntity Caches ******************** -->
@@ -779,64 +850,6 @@
     <cache name="AggregateEvents.org.jasig.portal.events.aggr.session.EventSessionImpl.Query" 
         eternal="false" maxElementsInMemory="1500" overflowToDisk="false" diskPersistent="false"
         timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true"/>
-
-
-    <!-- ******************** UW Person Directory Caches ******************** -->
-        
-    <!-- 
-     | Caches queries against LDAP
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.ldap"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
-    <!-- 
-     | Caches queries against AuthHub
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.authhub"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
-    <!-- 
-     | Caches queries against the graduating senior data source
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
-    <!-- 
-     | Caches queries against the graduating masters data source
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.graduating_masters"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
-    <!-- 
-     | Caches queries against the graduating senior survey results data source
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.graduating_senior_survey"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-        
-    <!-- 
-     | Caches queries against the heritage survey results data source
-     | - 1 x user
-     | - not replicated - doesn't represent an updatable data store
-     +-->
-    <cache name="org.jasig.services.persondir.USER_INFO.heritage_check"
-        eternal="false" maxElementsInMemory="500" overflowToDisk="false" diskPersistent="false" 
-        timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" statistics="true" />
-
 
     <!-- ******************** UW Flat Group Store Caches ******************** -->
     
