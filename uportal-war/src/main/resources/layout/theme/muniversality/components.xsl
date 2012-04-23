@@ -160,6 +160,9 @@
             <xsl:variable name="tabName">
               <xsl:value-of select="upElemTitle:getTitle(@ID, $USER_LANG, @name)"/>
             </xsl:variable>
+            <xsl:variable name="tabIconClass">
+              <xsl:value-of select="substring-before($tabName,' ')"/>
+            </xsl:variable>
             <li data-role="list-divider">
               <span class="tab-icon-{$tabName}"></span>
               <xsl:value-of select="$tabName"/>
