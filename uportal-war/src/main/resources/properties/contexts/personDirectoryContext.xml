@@ -65,36 +65,36 @@
 
 
 
-	<!-- ********** Beans for Attributes from the HttpServletRequest **********-->
-	<!--
-	 | Merges attributes from the request with those from other DAOs
-	 +-->
-	<bean id="requestAttributeMergingDao"
-		class="org.jasig.services.persondir.support.MergingPersonAttributeDaoImpl">
-		<property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-		<property name="merger">
-			<bean
-				class="org.jasig.services.persondir.support.merger.ReplacingAttributeAdder" />
-		</property>
-		<property name="personAttributeDaos">
-			<list>
-				<ref bean="requestAttributesDao" />
-				<ref bean="cachingMergedPersonAttributeDao" />
-			</list>
-		</property>
-	</bean>
+    <!-- ********** Beans for Attributes from the HttpServletRequest **********-->
+    <!--
+     | Merges attributes from the request with those from other DAOs
+     +-->
+    <bean id="requestAttributeMergingDao"
+        class="org.jasig.services.persondir.support.MergingPersonAttributeDaoImpl">
+        <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
+        <property name="merger">
+            <bean
+                class="org.jasig.services.persondir.support.merger.ReplacingAttributeAdder" />
+        </property>
+        <property name="personAttributeDaos">
+            <list>
+                <ref bean="requestAttributesDao" />
+                <ref bean="cachingMergedPersonAttributeDao" />
+            </list>
+        </property>
+    </bean>
 
-	<!--
-	 | Servlet filter that creates an attribute for the serverName
-	 +
-	-->
-	<bean id="requestAttributeSourceFilter"
-		class="org.jasig.services.persondir.support.web.RequestAttributeSourceFilter">
-		<property name="additionalDescriptors" ref="requestAdditionalDescriptors" />
+    <!--
+     | Servlet filter that creates an attribute for the serverName
+     +
+    -->
+    <bean id="requestAttributeSourceFilter"
+        class="org.jasig.services.persondir.support.web.RequestAttributeSourceFilter">
+        <property name="additionalDescriptors" ref="requestAdditionalDescriptors" />
         <property name="usernameAttribute" value="remoteUser" />
         <property name="remoteUserAttribute" value="remoteUser" />
-		<property name="serverNameAttribute" value="serverName" />
-		<property name="processingPosition" value="BOTH" />
+        <property name="serverNameAttribute" value="serverName" />
+        <property name="processingPosition" value="BOTH" />
         <property name="headerAttributeMapping">
             <map>
                 <entry key="cn">
@@ -126,9 +126,9 @@
                 </entry>
             </map>
         </property>
-	</bean>
+    </bean>
 
-	<!--
+    <!--
      | Session-scoped descriptors object. One of these will exist for each user in their session. It will store the
      | attributes from the request set by the requestAttributeSourceFilter
      +-->
@@ -145,24 +145,24 @@
         </property>
     </bean>
 
-	<!--
-	 | The person attributes DAO that returns the attributes from the request. Uses a currentUserProvider since the
-	 | username may not always be provided by the request object.
-	 +-->
-	<bean id="requestAttributesDao"
-		class="org.jasig.services.persondir.support.AdditionalDescriptorsPersonAttributeDao">
-		<property name="descriptors" ref="requestAdditionalDescriptors" />
-		<property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-		<property name="currentUserProvider" ref="currentUserProvider" />
-	</bean>
+    <!--
+     | The person attributes DAO that returns the attributes from the request. Uses a currentUserProvider since the
+     | username may not always be provided by the request object.
+     +-->
+    <bean id="requestAttributesDao"
+        class="org.jasig.services.persondir.support.AdditionalDescriptorsPersonAttributeDao">
+        <property name="descriptors" ref="requestAdditionalDescriptors" />
+        <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
+        <property name="currentUserProvider" ref="currentUserProvider" />
+    </bean>
 
 
 
-	<!-- ********** Data source attribute DAOs **********-->
-	<!--
-	 | Merging DAOs that define the order that the data providing DAOs are called, results are cached by the outer
-	 | caching DAO 
-	 +-->
+    <!-- ********** Data source attribute DAOs **********-->
+    <!--
+     | Merging DAOs that define the order that the data providing DAOs are called, results are cached by the outer
+     | caching DAO 
+     +-->
     <bean id="cachingMergedPersonAttributeDao" class="org.jasig.services.persondir.support.CachingPersonAttributeDaoImpl">
         <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
         <property name="cacheNullResults" value="true" />

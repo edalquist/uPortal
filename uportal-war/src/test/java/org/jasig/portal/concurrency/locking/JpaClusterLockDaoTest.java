@@ -39,6 +39,7 @@ import org.jasig.portal.concurrency.CallableWithoutResult;
 import org.jasig.portal.test.BaseJpaDaoTest;
 import org.jasig.portal.test.ThreadGroupRunner;
 import org.jasig.portal.utils.threading.ThrowingRunnable;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.invocation.InvocationOnMock;
@@ -211,6 +212,7 @@ public class JpaClusterLockDaoTest extends BaseJpaDaoTest {
     }
     
     @Test
+    @Ignore
     public void testNotAbandoned() throws Exception  {
         //Used to make a 'mutable string'
         final AtomicReference<String> currentServer = new AtomicReference<String>("ServerA");
