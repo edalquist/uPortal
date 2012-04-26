@@ -283,10 +283,20 @@
 | Template contents can be any valid XSL or XHTML.
 -->
 <xsl:template name="footer">
+  <xsl:variable name="feedbackUrl">
+    <xsl:call-template name="portalUrl">
+        <xsl:with-param name="url">
+            <url:portal-url>
+                <url:fname>feedback</url:fname>
+            </url:portal-url>
+        </xsl:with-param>
+    </xsl:call-template>
+  </xsl:variable>
+    
   <div class="ui-footer" data-role="footer">
     <p>&#169; 2012 UW System Board of Regents</p>
-    <p><a href="#">Contact us</a> for assistance</p>
-    <p><a href="{$CONTEXT_PATH}/Login?profile=desktop">Switch to Full Site</a></p>
+    <p><a href="{$feedbackUrl}">Contact us</a> for assistance</p>
+    <p><a href="{$CONTEXT_PATH}/Login?profile=desktop"><xsl:value-of select="upMsg:getMessage('switch.to.desktop', $USER_LANG)"/></a></p>
   </div>
 </xsl:template>
 <!-- ========================================================================= -->

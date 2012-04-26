@@ -193,6 +193,7 @@
   <xsl:param name="UP_VERSION">uPortal</xsl:param>
   <xsl:param name="SERVER_NAME"></xsl:param>
   <xsl:param name="STATS_SESSION_ID"></xsl:param>
+  <xsl:param name="SESSION_PROFILE_FNAME"></xsl:param>
   <xsl:param name="EXTERNAL_LOGIN_URL"></xsl:param>
   <xsl:param name="PORTAL_VIEW">
   	<xsl:choose>
@@ -995,11 +996,13 @@
         <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
         <span>Session Key: </span><span><xsl:value-of select="$STATS_SESSION_ID"/></span><br/>
         <chunk-point/> <!-- Performance Optimization, see ChunkPointPlaceholderEventSource -->
-        <span>
-            <a href="{$CONTEXT_PATH}/Login?profile=mobile" title="{upMsg:getMessage('switch.to.mobile', $USER_LANG)}">
-              <span><xsl:value-of select="upMsg:getMessage('switch.to.mobile', $USER_LANG)"/></span>
-            </a>
-        </span>
+        <xsl:if test="$SESSION_PROFILE_FNAME != '' or upGroup:isUserDeepMemberOfGroupName($USER_ID, 'Portal Support') or upGroup:isUserDeepMemberOfGroupName($USER_ID, 'Portal System')">
+          <span>
+              <a href="{$CONTEXT_PATH}/Login?profile=mobile" title="{upMsg:getMessage('switch.to.mobile', $USER_LANG)}">
+                <span><xsl:value-of select="upMsg:getMessage('switch.to.mobile', $USER_LANG)"/></span>
+              </a>
+          </span>
+        </xsl:if>
       </xsl:if>
     </div>
     

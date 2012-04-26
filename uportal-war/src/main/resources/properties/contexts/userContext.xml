@@ -43,12 +43,14 @@
         <property name="defaultProfileName" value="default" />
         <property name="subMappers">
             <util:list>
-                <bean class="org.jasig.portal.layout.SessionAttributeProfileMapperImpl"
-                    p:mappings-ref="profileKeyMappings"/>
+                <ref bean="sessionAttributeProfileMapper" />
                 <ref bean="userAgentProfileMapper" />
             </util:list>
         </property>
     </bean>
+    
+    <bean id="sessionAttributeProfileMapper" class="org.jasig.portal.layout.SessionAttributeProfileMapperImpl"
+        p:mappings-ref="profileKeyMappings"/>
     
     <bean id="userAgentProfileMapper" class="org.jasig.portal.layout.UserAgentProfileMapper">
         <property name="mappings">
