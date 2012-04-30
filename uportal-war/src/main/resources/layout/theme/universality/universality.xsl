@@ -540,16 +540,25 @@
       <!-- Major App Quicklinks -->
       
         <!-- wisc.edu Help -->
-        <xsl:variable name="myuwHelpUrl">
-          <xsl:call-template name="portalUrl">
-              <xsl:with-param name="url">
-                  <url:portal-url>
-                      <url:fname>myuw-help</url:fname>
-                  </url:portal-url>
-              </xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <span><a href="{$myuwHelpUrl}"><span>Help</span></a></span>
+        <xsl:if test="$AUTHENTICATED='true'">
+          <xsl:variable name="myuwHelpUrl">
+            <xsl:call-template name="portalUrl">
+                <xsl:with-param name="url">
+                    <url:portal-url>
+                      <xsl:choose>
+                        <xsl:when test="$INSTITUTION='madison'">
+                          <url:fname>myuw-help</url:fname>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <url:fname>myuw-system-help</url:fname>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </url:portal-url>
+                </xsl:with-param>
+            </xsl:call-template>
+          </xsl:variable>
+          <span><a href="{$myuwHelpUrl}"><span>Help</span></a></span>
+        </xsl:if>
         <!-- wisc.edu Help -->
         
         
