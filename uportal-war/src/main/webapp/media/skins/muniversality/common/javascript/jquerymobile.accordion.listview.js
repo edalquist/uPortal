@@ -19,8 +19,9 @@
 (function($) {
    $.fn.jqmAccordion = function(options) {
      var settings = $.extend({
-       categoryShown: 'none',
-       listItem: '.ui-li-divider'
+       listItem: '.ui-li-divider',
+       slideUpSpeed: 150,
+       slideDownSpeed: 300
      }, options);  
 
      this.delegate(settings.listItem, 'click', function() {
@@ -30,10 +31,10 @@
            thisItem   = $this.nextUntil('.ui-li-divider');
            
        if ( itemIsOpen ) {
-         thisItem.slideUp(150);
+         thisItem.slideUp(settings.slideUpSpeed);
        } else {
-         otherItems.slideUp(150);
-         thisItem.slideDown(300);
+         otherItems.slideUp(settings.slideUpSpeed);
+         thisItem.slideDown(settings.slideDownSpeed);
        }
      });
      
