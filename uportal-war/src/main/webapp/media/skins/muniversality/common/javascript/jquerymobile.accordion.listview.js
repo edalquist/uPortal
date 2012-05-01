@@ -41,17 +41,17 @@
 
     this.delegate(opts.tab, 'click', function() {
       var $this      = $(this),
-          itemIsOpen = $this.next().is(':visible'),
-          otherItems = $this.parent().children().not(opts.tab),
-          thisItem   = $this.nextUntil(opts.tab);
+          tabIsOpen = $this.next().is(':visible'),
+          otherTabs = $this.parent().children().not(opts.tab),
+          thisTab   = $this.nextUntil(opts.tab);
           
-      if ( itemIsOpen && opts.closeTabs ) {
-        thisItem.slideUp(opts.slideUpSpeed);
-      } else if ( itemIsOpen ) {
+      if ( tabIsOpen && opts.closeTabs ) {
+        thisTab.slideUp(opts.slideUpSpeed);
+      } else if ( tabIsOpen ) {
         return; // do nothing
       } else {
-        otherItems.slideUp(opts.slideUpSpeed);
-        thisItem.slideDown(opts.slideDownSpeed);
+        otherTabs.slideUp(opts.slideUpSpeed);
+        thisTab.slideDown(opts.slideDownSpeed);
       }
     });
 
