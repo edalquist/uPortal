@@ -17,19 +17,27 @@
  * under the License.
  */
 (function($) {
- 	$.fn.jqmAccordion = function(options) {
- 		var settings = $.extend({
- 			'categoryShown': 'none'
- 		}, options);	
+   $.fn.jqmAccordion = function(options) {
+     var settings = $.extend({
+       categoryShown: 'none',
+       listItem: '.ui-li-divider'
+     }, options);  
 
- 		return this.delegate('.ui-li-divider', 'click', function() {
- 			var $this = $(this);
- 			if($this.next().is(':visible')) {
- 				return;
- 			}
- 			$('.ui-listview > .ui-li:not(.ui-li-divider)').slideUp(150);
- 			$this.nextUntil('.ui-li-divider').slideDown(300);
- 		});
- 	};
+     this.delegate(settings.listItem, 'click', function() {
+       var $this      = $(this),
+           itemIsOpen = $this.next().is(':visible'),
+           otherItems = $this.parent().children('.ui-li:not(.ui-li-divider)'),
+           thisItem   = $this.nextUntil('.ui-li-divider');
+           
+       if ( itemIsOpen ) {
+         thisItem.slideUp(150);
+       } else {
+         otherItems.slideUp(150);
+         thisItem.slideDown(300);
+       }
+     });
+     
+     return this;
+   };
 })( jQuery );
 
