@@ -43,7 +43,7 @@
       var $this      = $(this),
           itemIsOpen = $this.next().is(':visible'),
           otherItems = $this.parent().children().not(opts.tab),
-          thisItem   = $this.nextUntil('.ui-li-divider');
+          thisItem   = $this.nextUntil(opts.tab);
           
       if ( itemIsOpen && opts.closeTabs ) {
         thisItem.slideUp(opts.slideUpSpeed);
