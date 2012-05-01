@@ -17,28 +17,45 @@
  * under the License.
  */
 (function($) {
-   $.fn.jqmAccordion = function(options) {
-     var settings = $.extend({
-       listItem: '.ui-li-divider',
-       slideUpSpeed: 150,
-       slideDownSpeed: 300
-     }, options);  
+  $.fn.jqmAccordion = function(options) {
 
-     this.delegate(settings.listItem, 'click', function() {
-       var $this      = $(this),
-           itemIsOpen = $this.next().is(':visible'),
-           otherItems = $this.parent().children('.ui-li:not(.ui-li-divider)'),
-           thisItem   = $this.nextUntil('.ui-li-divider');
-           
-       if ( itemIsOpen ) {
-         thisItem.slideUp(settings.slideUpSpeed);
-       } else {
-         otherItems.slideUp(settings.slideUpSpeed);
-         thisItem.slideDown(settings.slideDownSpeed);
-       }
-     });
-     
-     return this;
-   };
+    var defaults = {
+      showTabByDefault: true,
+      tabIndexShown: 0,
+      tab: 'li[data-role=list-divider]',
+      slideUpSpeed: 150,
+      slideDownSpeed: 300,
+      closeTabs: false
+    };
+
+    var opts = $.extend(defaults, options);
+
+    if ( opts.showTabByDefault ) {
+      setTimeout(function () {
+        $(opts.tab)
+          .eq(opts.tabIndexShown)
+          .nextUntil(opts.tab)
+          .show();
+      }, 100); // wait for jquery mobile...
+    }
+
+    this.delegate(opts.tab, 'click', function() {
+      var $this      = $(this),
+          itemIsOpen = $this.next().is(':visible'),
+          otherItems = $this.parent().children().not(opts.tab),
+          thisItem   = $this.nextUntil('.ui-li-divider');
+          
+      if ( itemIsOpen && opts.closeTabs ) {
+        thisItem.slideUp(opts.slideUpSpeed);
+      } else if ( itemIsOpen ) {
+        return; // do nothing
+      } else {
+        otherItems.slideUp(opts.slideUpSpeed);
+        thisItem.slideDown(opts.slideDownSpeed);
+      }
+    });
+
+    return this;
+  };
 })( jQuery );
 
