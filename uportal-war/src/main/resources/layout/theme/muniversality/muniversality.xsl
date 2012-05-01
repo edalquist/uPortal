@@ -232,7 +232,10 @@
         
         <xsl:if test="$VIEW != 'grid'">
             up.jQuery(document).ready(function() {
-                up.jQuery('ul[data-role=listview].up-portal-nav').jqmAccordion();
+                up.jQuery('ul[data-role=listview].up-portal-nav').jqmAccordion({
+                    showTabByDefault: false,
+                    closeTabs: true
+                });
             });
         </xsl:if>
     </script>    
