@@ -160,11 +160,19 @@
             <xsl:variable name="tabName">
               <xsl:value-of select="upElemTitle:getTitle(@ID, $USER_LANG, @name)"/>
             </xsl:variable>
-            <xsl:variable name="tabIconClass">
-              <xsl:value-of select="substring-before($tabName,' ')"/>
+            <xsl:variable name="tabClassName">
+              <xsl:value-of select="translate($tabName,' ', '-')"/>
+              <!-- <xsl:choose>
+                <xsl:when test="contains($tabName, ' ')">
+                  <xsl:value-of select="substring-before($tabName,' ')"/>
+                </xsl:when>                
+                <xsl:otherwise>
+                  <xsl:value-of select="$tabName"/>
+                </xsl:otherwise>
+              </xsl:choose> -->
             </xsl:variable>
-            <li data-role="list-divider">
-              <span class="tab-icon-{$tabName}"></span>
+            <li data-role="list-divider" class="up-tab-{$tabClassName}">
+              <span class="up-tab-icon"></span>
               <xsl:value-of select="$tabName"/>
               <xsl:for-each select="channel">
                   <li>

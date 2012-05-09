@@ -152,7 +152,7 @@
 					text-align: right;
 				}
 			}
-			span { // default icon
+			.up-tab-icon { // default icon
     		    background: url("images/icon-default.png") no-repeat top left;
     		    display: block;
                 height: 72px;
@@ -161,8 +161,8 @@
                 top: 5px;
                 left: 10px;
     		}
-    		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student", "Services", "Work", "News", "Research" { 
-                span.tab-icon-#{$tab} { // custom wisc icons
+    		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
+                &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
                     background: url("images/icon-#{$tab}.png") no-repeat top left;
                     top: 10px;
                     left: 15px;
