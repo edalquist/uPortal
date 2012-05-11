@@ -17,11 +17,15 @@ import org.apache.commons.collections.CollectionUtils;
 import org.jasig.portal.EntityIdentifier;
 import org.jasig.portal.groups.IEntity;
 import org.jasig.portal.groups.IEntityGroup;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.googlecode.ehcache.annotations.Cacheable;
+import com.googlecode.ehcache.annotations.DecoratedCacheType;
 
 import edu.wisc.my.groups.SearchType;
 import edu.wisc.my.groups.east.FlatGroupStoreDao;
@@ -34,7 +38,9 @@ import edu.wisc.my.util.StringLoader;
  * @author Eric Dalquist
  * @version $Revision: 1.3 $
  */
-public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatGroupStoreDao {
+public class JdbcFlatGroupStoreDao implements FlatGroupStoreDao {
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    
     private final String groupIdParam;
     private final String groupNameParam;
     private final String memberIdParam;
@@ -49,6 +55,10 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
     private final String searchForMemberName;
     private final String searchForMemberNameLike;
     
+    private NamedParameterJdbcOperations namedParameterJdbcOperations;
+    private JdbcOperations jdbcOperations;
+    
+
     public JdbcFlatGroupStoreDao() {
         final StringLoader loader = new StringLoader("edu/wisc/my/groups/east/JdbcFlatGroupStoreDaoSql.xml");
         
@@ -66,18 +76,21 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
         this.searchForMemberName = loader.getString("searchForMemberName");
         this.searchForMemberNameLike = loader.getString("searchForMemberNameLike");
     }
+    
+    public void setJdbcOperations(JdbcOperations jdbcOperations) {
+        this.jdbcOperations = jdbcOperations;
+        this.namedParameterJdbcOperations = new NamedParameterJdbcTemplate(jdbcOperations);
+    }
 
-    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.isMemberInGroupCache", 
+    @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.isMemberInGroupCache",
             exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public boolean isMemberInGroup(long groupId, String memberId) {
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.groupIdParam, groupId);
         args.put(this.groupIdParam, memberId);
         
         try {
-            final int memberCount = simpleJdbcTemplate.queryForInt(this.isMemberInGroupQuery, args);
+            final int memberCount = namedParameterJdbcOperations.queryForInt(this.isMemberInGroupQuery, args);
             return memberCount == 1;
         }
         catch (DataAccessException dae) {
@@ -89,13 +102,11 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
     @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupCache", 
             exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public IEntityGroup getGroup(long groupId) {
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.groupIdParam, groupId);
         
         try {
-            final List<IEntityGroup> results = simpleJdbcTemplate.query(this.singleEntityGroupQuery, EntityGroupRowMapper.INSTANCE, args);
+            final List<IEntityGroup> results = namedParameterJdbcOperations.query(this.singleEntityGroupQuery, args, EntityGroupRowMapper.INSTANCE);
         
             if (CollectionUtils.isEmpty(results)) {
                 return null;
@@ -111,13 +122,11 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
     @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.parentGroupsCache", 
             exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntityGroup> getParentGroups(String memberId) {
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.memberIdParam, memberId);
         
         try {
-            final List<IEntityGroup> parentGroups = simpleJdbcTemplate.query(this.parentEntityGroupsQuery, EntityGroupRowMapper.INSTANCE, args);
+            final List<IEntityGroup> parentGroups = namedParameterJdbcOperations.query(this.parentEntityGroupsQuery, args, EntityGroupRowMapper.INSTANCE);
             return new LinkedHashSet<IEntityGroup>(parentGroups);
         }
         catch (DataAccessException dae) {
@@ -129,10 +138,8 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
     @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupsCache", 
             exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntityGroup> getGroups() {
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         try {
-            final List<IEntityGroup> groups = simpleJdbcTemplate.query(this.groupsQuery, EntityGroupRowMapper.INSTANCE);
+            final List<IEntityGroup> groups = jdbcOperations.query(this.groupsQuery, EntityGroupRowMapper.INSTANCE);
             return new LinkedHashSet<IEntityGroup>(groups);
         }
         catch (DataAccessException dae) {
@@ -144,13 +151,11 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
     @Cacheable(cacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.groupMembershipCache", 
             exceptionCacheName="edu.wisc.my.groups.east.FlatGroupStoreDao.EXCEPTION")
     public Set<IEntity> getGroupMembers(long groupId) {
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.groupIdParam, groupId);
         
         try {
-            final List<IEntity> groupMembers = simpleJdbcTemplate.query(this.groupMembersQuery, EntityRowMapper.INSTANCE, args);
+            final List<IEntity> groupMembers = namedParameterJdbcOperations.query(this.groupMembersQuery, args, EntityRowMapper.INSTANCE);
             return new LinkedHashSet<IEntity>(groupMembers);
         }
         catch (DataAccessException dae) {
@@ -189,13 +194,11 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
             }
         }
         
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.groupNameParam, nameQuery);
         
         try {
-            final List<EntityIdentifier> groupsIdentifiers = simpleJdbcTemplate.query(searchForGroupQuery, GroupEntityIdentifierRowMapper.INSTANCE, args);
+            final List<EntityIdentifier> groupsIdentifiers = namedParameterJdbcOperations.query(searchForGroupQuery, args, GroupEntityIdentifierRowMapper.INSTANCE);
             return groupsIdentifiers;
         }
         catch (DataAccessException dae) {
@@ -234,13 +237,11 @@ public class JdbcFlatGroupStoreDao extends SimpleJdbcDaoSupport implements FlatG
             }
         }
         
-        final SimpleJdbcTemplate simpleJdbcTemplate = this.getSimpleJdbcTemplate();
-        
         final Map<String, Object> args = new HashMap<String, Object>();
         args.put(this.memberIdParam, idQuery);
         
         try {
-            final List<EntityIdentifier> memberIdentifiers = simpleJdbcTemplate.query(searchForMemberQuery, MemberEntityIdentifierRowMapper.INSTANCE, args);
+            final List<EntityIdentifier> memberIdentifiers = namedParameterJdbcOperations.query(searchForMemberQuery, args, MemberEntityIdentifierRowMapper.INSTANCE);
             return memberIdentifiers;
         }
         catch (DataAccessException dae) {
