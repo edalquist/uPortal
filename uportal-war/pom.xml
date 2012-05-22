@@ -488,7 +488,6 @@
             <scope>provided</scope>
         </dependency>
         
-        
         <!-- ===== Runtime Dependencies ======================================= -->
         <dependency>
             <groupId>cglib</groupId>
@@ -687,7 +686,7 @@
                         <filter>${basedir}/../${filters.file}</filter>
                     </filters>
                     <attachClasses>true</attachClasses>
-                    <webXml>${project.build.directory}/pluto-resources/web.xml</webXml>
+                    <webXml>${war-plugin-webxml-source}</webXml>
                 </configuration>
             </plugin>
             <plugin>
@@ -767,19 +766,6 @@
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.bsc.maven</groupId>
-                                        <artifactId>maven-processor-plugin</artifactId>
-                                        <versionRange>[2.0.2,)</versionRange>
-                                        <goals>
-                                            <goal>process</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
                                 <pluginExecution>
                                   <pluginExecutionFilter>
                                     <groupId>
