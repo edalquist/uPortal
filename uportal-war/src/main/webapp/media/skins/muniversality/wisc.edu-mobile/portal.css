@@ -794,7 +794,7 @@ mathematical calculations. */
 .up .portlet-content .ui-li-divider .ui-grid-a .ui-block-b {
   text-align: right;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Welcome {
+.up .portlet-content .ui-li-divider .up-tab-icon {
   background: url("images/icon-default.png") no-repeat top left;
   display: block;
   height: 72px;
@@ -803,86 +803,50 @@ mathematical calculations. */
   top: 5px;
   left: 10px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Advising {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Welcome .up-tab-icon {
+  background: url("images/icon-Welcome.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Teaching {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Advising .up-tab-icon {
+  background: url("images/icon-Advising.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Learning {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Teaching .up-tab-icon {
+  background: url("images/icon-Teaching.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Student {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Learning .up-tab-icon {
+  background: url("images/icon-Learning.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Services {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Student-Services .up-tab-icon {
+  background: url("images/icon-Student-Services.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Work {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Services .up-tab-icon {
+  background: url("images/icon-Services.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-News {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Work-Record .up-tab-icon {
+  background: url("images/icon-Work-Record.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Research {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-News .up-tab-icon {
+  background: url("images/icon-News.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
-.up .portlet-content .ui-li-divider span.tab-icon-Portal {
-  background: url("images/icon-default.png") no-repeat top left;
-  display: block;
-  height: 72px;
-  width: 72px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
+.up .portlet-content .ui-li-divider.up-tab-Research .up-tab-icon {
+  background: url("images/icon-Research.png") no-repeat top left;
+  top: 10px;
+  left: 15px;
 }
 .up .portlet-content .ui-li-heading {
   font-size: 14px;

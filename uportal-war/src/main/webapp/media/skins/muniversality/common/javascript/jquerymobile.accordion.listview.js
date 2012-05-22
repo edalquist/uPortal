@@ -17,19 +17,45 @@
  * under the License.
  */
 (function($) {
- 	$.fn.jqmAccordion = function(options) {
- 		var settings = $.extend({
- 			'categoryShown': 'none'
- 		}, options);	
+  $.fn.jqmAccordion = function(options) {
 
- 		return this.delegate('.ui-li-divider', 'click', function() {
- 			var $this = $(this);
- 			if($this.next().is(':visible')) {
- 				return;
- 			}
- 			$('.ui-listview > .ui-li:not(.ui-li-divider)').slideUp(150);
- 			$this.nextUntil('.ui-li-divider').slideDown(300);
- 		});
- 	};
+    var defaults = {
+      showTabByDefault: true,
+      tabIndexShown: 0,
+      tab: 'li[data-role=list-divider]',
+      slideUpSpeed: 150,
+      slideDownSpeed: 300,
+      closeTabs: false
+    };
+
+    var opts = $.extend(defaults, options);
+
+    if ( opts.showTabByDefault ) {
+      setTimeout(function () {
+        $(opts.tab)
+          .eq(opts.tabIndexShown)
+          .nextUntil(opts.tab)
+          .show();
+      }, 100); // wait for jquery mobile...
+    }
+
+    this.delegate(opts.tab, 'click', function() {
+      var $this      = $(this),
+          tabIsOpen = $this.next().is(':visible'),
+          otherTabs = $this.parent().children().not(opts.tab),
+          thisTab   = $this.nextUntil(opts.tab);
+          
+      if ( tabIsOpen && opts.closeTabs ) {
+        thisTab.slideUp(opts.slideUpSpeed);
+      } else if ( tabIsOpen ) {
+        return; // do nothing
+      } else {
+        otherTabs.slideUp(opts.slideUpSpeed);
+        thisTab.slideDown(opts.slideDownSpeed);
+      }
+    });
+
+    return this;
+  };
 })( jQuery );
 

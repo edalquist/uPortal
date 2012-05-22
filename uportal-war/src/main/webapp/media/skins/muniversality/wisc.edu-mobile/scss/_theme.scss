@@ -152,18 +152,24 @@
 					text-align: right;
 				}
 			}
-		}
-		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student", "Services", "Work", "News", "Research", "Portal" {
-            .ui-li-divider span.tab-icon-#{$tab} {
-                background: url("images/icon-default.png") no-repeat top left;
-                display: block;
+			.up-tab-icon { // default icon
+    		    background: url("images/icon-default.png") no-repeat top left;
+    		    display: block;
                 height: 72px;
                 width: 72px;
                 position: absolute;
                 top: 5px;
                 left: 10px;
-            }
+    		}
+    		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
+                &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
+                    background: url("images/icon-#{$tab}.png") no-repeat top left;
+                    top: 10px;
+                    left: 15px;
+                }
+    		}
 		}
+
 		.ui-li-heading {
             font-size: 14px;
             font-weight: normal;
