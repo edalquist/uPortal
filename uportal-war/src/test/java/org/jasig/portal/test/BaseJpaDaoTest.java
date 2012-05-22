@@ -97,11 +97,11 @@ public abstract class BaseJpaDaoTest {
                     this.executeInTransaction(new CallableWithoutResult() {
                         @Override
                         protected void callWithoutResult() {
-                            logger.info("Purging all: " + entityClassName);
+//                            logger.info("Purging all: " + entityClassName);
                             
                             final Query query = entityManager.createQuery("SELECT e FROM " + entityClassName + " AS e");
                             final List<?> entities = query.getResultList();
-                            logger.info("Found " + entities.size() + " " + entityClassName + " to delete");
+//                            logger.info("Found " + entities.size() + " " + entityClassName + " to delete");
                             for (final Object entity : entities) {
                                 entityManager.remove(entity);
                             }              
@@ -109,7 +109,7 @@ public abstract class BaseJpaDaoTest {
                     });
                 }
                 catch (DataIntegrityViolationException e) {
-                    logger.info("Failed to delete " + entityClassName + ". Must be a dependency of another entity");
+//                    logger.info("Failed to delete " + entityClassName + ". Must be a dependency of another entity");
                     failedEntitieTypes.add(entityType);
                 }
             }
