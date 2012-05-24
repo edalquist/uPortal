@@ -19,8 +19,8 @@
 
 package org.jasig.portal.events.aggr.dao.jpa;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -47,7 +47,7 @@ public abstract class BaseAggregatedDimensionConfigImpl<D> implements BaseAggreg
     private final long entityVersion = -1;
     
     @Transient
-    private final Map<D, Boolean> includedCache = new ConcurrentHashMap<D, Boolean>();
+    private final Map<D, Boolean> includedCache = new HashMap<D, Boolean>();
     
     @PostUpdate
     @PostPersist
