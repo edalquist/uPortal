@@ -48,7 +48,7 @@
               </xsl:with-param>
           </xsl:call-template>
         </xsl:variable>
-        <a href="javascript: window.open('{$studentCenterUrl}','_new_studentcenter','toolbar=no,directories=no,menubar=yes,resizable=yes,dependent=no,width=800,height=800'); void('');" title="Student&#160;Center" role="menuitem">            <!-- Navigation item link. -->
+        <a href="javascript: window.open('{$studentCenterUrl}','_new_studentcenter','toolbar=no,directories=no,menubar=yes,resizable=yes,dependent=no,width=1000,height=1000'); void('');" title="Student&#160;Center" role="menuitem">            <!-- Navigation item link. -->
           <span>Student&#160;Center</span>
         </a>
         <xsl:call-template name="portal.pipe" />
