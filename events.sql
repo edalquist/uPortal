@@ -22,7 +22,10 @@ SELECT *
 FROM UP_LOGIN_EVENT_AGGREGATE LEA
 	LEFT JOIN UP_DATE_DIMENSION DD on LEA.DATE_DIMENSION_ID = DD.DATE_ID
 	LEFT JOIN UP_TIME_DIMENSION TD on LEA.TIME_DIMENSION_ID = TD.TIME_ID
-WHERE (DD.DD_DATE between to_date('2012/04/16', 'yyyy/mm/dd') and to_date('2012/04/16', 'yyyy/mm/dd')) and  LEA.AGGR_INTERVAL='FIVE_MINUTE' and LEA.AGGREGATED_GROUP_ID=791
+WHERE (( DD.DD_DATE BETWEEN To_date('2012/04/16', 'yyyy/mm/dd') AND 
+                            To_date('2012/04/16', 'yyyy/mm/dd') ) AND
+       ( DD.DD_DATE > To_date('2012/04/16', 'yyyy/mm/dd') OR TD.TD_TIME >= To_date('1970/01/01 09:04', 'yyyy/mm/dd HH24:MI') ) AND
+       ( DD.DD_DATE < To_date('2012/04/16', 'yyyy/mm/dd') OR TD.TD_TIME < To_date('1970/01/01 23:55', 'yyyy/mm/dd HH24:MI') )) and  LEA.AGGR_INTERVAL='FIVE_MINUTE' and LEA.AGGREGATED_GROUP_ID=791
 
 
 
