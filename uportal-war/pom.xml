@@ -686,7 +686,7 @@
                         <filter>${basedir}/../${filters.file}</filter>
                     </filters>
                     <attachClasses>true</attachClasses>
-                    <webXml>${war-plugin-webxml-source}</webXml>
+                    <webXml>${project.build.directory}/pluto-resources/web.xml</webXml>
                 </configuration>
             </plugin>
             <plugin>
