@@ -19,20 +19,17 @@
 
 package org.jasig.portal.events.aggr.session;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import javax.naming.CompositeName;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.jasig.portal.concurrency.CallableWithoutResult;
 import org.jasig.portal.events.LoginEvent;
@@ -41,7 +38,7 @@ import org.jasig.portal.events.aggr.groups.AggregatedGroupMapping;
 import org.jasig.portal.groups.ICompositeGroupService;
 import org.jasig.portal.groups.IEntityGroup;
 import org.jasig.portal.security.IPerson;
-import org.jasig.portal.test.BaseJpaDaoTest;
+import org.jasig.portal.test.BaseAggrEventsJpaDaoTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,19 +53,12 @@ import com.google.common.collect.ImmutableSet;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:jpaAggrEventsTestContext.xml")
-public class JpaEventSessionDaoTest extends BaseJpaDaoTest {
+public class JpaEventSessionDaoTest extends BaseAggrEventsJpaDaoTest {
     @Autowired
     private ICompositeGroupService compositeGroupService;
     @Autowired
     private EventSessionDao eventSessionDao;
 
-    @PersistenceContext(unitName = "uPortalAggrEventsPersistence")
-    private EntityManager entityManager;
-    
-    @Override
-    protected EntityManager getEntityManager() {
-        return this.entityManager;
-    }
 
     @Test
     public void testEventSessionDao() throws Exception {
@@ -100,10 +90,10 @@ public class JpaEventSessionDaoTest extends BaseJpaDaoTest {
         this.execute(new CallableWithoutResult() {
             @Override
             protected void callWithoutResult() {
-                final EventSession eventSession1 = eventSessionDao.getEventSession(eventSessionId1);
+                final EventSession eventSession1 = eventSessionDao.getEventSession(loginEvent1);
                 assertNull(eventSession1);
                 
-                final EventSession eventSession2 = eventSessionDao.getEventSession(eventSessionId2);
+                final EventSession eventSession2 = eventSessionDao.getEventSession(loginEvent2);
                 assertNull(eventSession2);
             }
         });
@@ -137,7 +127,7 @@ public class JpaEventSessionDaoTest extends BaseJpaDaoTest {
         this.execute(new CallableWithoutResult() {
             @Override
             protected void callWithoutResult() {
-                final EventSession eventSession = eventSessionDao.getEventSession(eventSessionId1);
+                final EventSession eventSession = eventSessionDao.getEventSession(loginEvent1);
                 assertNotNull(eventSession);
                 
                 assertEquals(eventSessionId1, eventSession.getEventSessionId());
@@ -150,14 +140,14 @@ public class JpaEventSessionDaoTest extends BaseJpaDaoTest {
         this.execute(new CallableWithoutResult() {
             @Override
             protected void callWithoutResult() {
-                eventSessionDao.purgeExpiredEventSessions();
+                eventSessionDao.purgeExpiredEventSessions(loginEvent1.getTimestampAsDate().plusYears(1));
             }
         });
         
         this.execute(new CallableWithoutResult() {
             @Override
             protected void callWithoutResult() {
-                final EventSession eventSession = eventSessionDao.getEventSession(eventSessionId1);
+                final EventSession eventSession = eventSessionDao.getEventSession(loginEvent1);
                 assertNull(eventSession);
             }
         });

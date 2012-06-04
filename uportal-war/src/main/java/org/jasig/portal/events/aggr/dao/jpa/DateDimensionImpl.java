@@ -61,7 +61,7 @@ import org.joda.time.LocalDate;
         allocationSize=1
     )
 @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class DateDimensionImpl implements DateDimension, Serializable {
     private static final long serialVersionUID = 1L;
    
@@ -214,7 +214,7 @@ public class DateDimensionImpl implements DateDimension, Serializable {
     }
     @Override
     public String toString() {
-        return "DateDimension [id=" + id + ", date=" + getDate() + ", week=" + week + ", quarter=" + quarter + ", term=" + term + "]";
+        return getDate().toString("yyyy-MM-dd ZZ");
     }
     
 }

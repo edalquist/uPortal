@@ -109,6 +109,11 @@
             <groupId>commons-pool</groupId>
             <artifactId>commons-pool</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>dom4j</groupId>
@@ -488,6 +493,13 @@
             <scope>provided</scope>
         </dependency>
         
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <!-- ===== Runtime Dependencies ======================================= -->
         <dependency>
             <groupId>cglib</groupId>
@@ -627,7 +639,7 @@
                         <configuration>
                             <outputDirectory>target/generated-sources/annotations</outputDirectory>
                             <optionMap>
-                                <ormXmlList>/properties/db/stats/orm.xml</ormXmlList>
+                                <fullyAnnotationConfigured>false</fullyAnnotationConfigured>
                                 <addGeneratedAnnotation>true</addGeneratedAnnotation>
                             </optionMap>
                         </configuration>

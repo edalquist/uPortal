@@ -23,8 +23,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -33,16 +31,16 @@ import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.jasig.portal.events.LoginEvent;
+import org.jasig.portal.events.PortalEvent;
 import org.jasig.portal.events.aggr.groups.AggregatedGroupLookupDao;
 import org.jasig.portal.events.aggr.groups.AggregatedGroupMapping;
-import org.jasig.portal.jpa.BaseJpaDao;
+import org.jasig.portal.jpa.BaseAggrEventsJpaDao;
 import org.joda.time.DateTime;
 import org.joda.time.ReadablePeriod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.base.Function;
 
@@ -51,14 +49,13 @@ import com.google.common.base.Function;
  * @version $Revision$
  */
 @Repository("eventSessionDao")
-public class JpaEventSessionDao extends BaseJpaDao implements EventSessionDao {
+public class JpaEventSessionDao extends BaseAggrEventsJpaDao implements EventSessionDao {
     private String deleteByEventSessionIdQuery;
     private CriteriaQuery<EventSessionImpl> findExpiredEventSessionsQuery;
     private CriteriaQuery<EventSessionImpl> findByEventSessionIdQuery;
     private ParameterExpression<String> eventSessionIdParameter;
     private ParameterExpression<DateTime> dateTimeParameter;
     
-    private EntityManager entityManager;
     private AggregatedGroupLookupDao aggregatedGroupLookupDao;
     private ReadablePeriod eventSessionDuration;
     
@@ -72,16 +69,6 @@ public class JpaEventSessionDao extends BaseJpaDao implements EventSessionDao {
         this.aggregatedGroupLookupDao = aggregatedGroupLookupDao;
     }
 
-    @PersistenceContext(unitName = "uPortalAggrEventsPersistence")
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return this.entityManager;
-    }
-    
     @Override
     public void afterPropertiesSet() throws Exception {
         this.eventSessionIdParameter = this.createParameterExpression(String.class, "eventSessionId");
@@ -123,27 +110,31 @@ public class JpaEventSessionDao extends BaseJpaDao implements EventSessionDao {
     }
     
 
-    @Transactional("aggrEvents")
+    @AggrEventsTransactional
     @Override
     public EventSession createEventSession(LoginEvent loginEvent) {
         final Set<AggregatedGroupMapping> groupMappings = new LinkedHashSet<AggregatedGroupMapping>();
         for (final String groupKey : loginEvent.getGroups()) {
             final AggregatedGroupMapping groupMapping = this.aggregatedGroupLookupDao.getGroupMapping(groupKey);
-            groupMappings.add(groupMapping);
+            if (groupMapping != null) {
+                groupMappings.add(groupMapping);
+            }
         }
         
-        final EventSessionImpl eventSession = new EventSessionImpl(loginEvent.getEventSessionId(), groupMappings);
+        final String eventSessionId = loginEvent.getEventSessionId();
+        final DateTime eventDate = loginEvent.getTimestampAsDate();
+        final EventSessionImpl eventSession = new EventSessionImpl(eventSessionId, eventDate, groupMappings);
         
-        this.entityManager.persist(eventSession);
+        this.getEntityManager().persist(eventSession);
         
         return eventSession;
     }
 
-    @Transactional("aggrEvents")
+    @AggrEventsTransactional
     @Override
-    public EventSession getEventSession(String eventSessionId) {
+    public EventSession getEventSession(PortalEvent event) {
         final TypedQuery<EventSessionImpl> query = this.createCachedQuery(this.findByEventSessionIdQuery);
-        query.setParameter(this.eventSessionIdParameter, eventSessionId);
+        query.setParameter(this.eventSessionIdParameter, event.getEventSessionId());
         
         final List<EventSessionImpl> results = query.getResultList();
         
@@ -152,27 +143,31 @@ public class JpaEventSessionDao extends BaseJpaDao implements EventSessionDao {
             return null;
         }
         
-        eventSession.recordAccess();
-        this.entityManager.persist(eventSession);
+        final DateTime eventDate = event.getTimestampAsDate();
+        eventSession.recordAccess(eventDate);
+        this.getEntityManager().persist(eventSession);
         
         return eventSession;
     }
 
-    @Transactional("aggrEvents")
+    @AggrEventsTransactional
     @Override
     public void deleteEventSession(String eventSessionId) {
-        final Query query = this.entityManager.createQuery(this.deleteByEventSessionIdQuery);
+        final Query query = this.getEntityManager().createQuery(this.deleteByEventSessionIdQuery);
         query.setParameter(this.eventSessionIdParameter.getName(), eventSessionId);
         query.executeUpdate();
     }
 
-    @Transactional("aggrEvents")
+    @AggrEventsTransactional
     @Override
-    public void purgeExpiredEventSessions() {
+    public int purgeExpiredEventSessions(DateTime lastAggregatedEventDate) {
         final TypedQuery<EventSessionImpl> query = this.createQuery(this.findExpiredEventSessionsQuery);
-        query.setParameter(this.dateTimeParameter, DateTime.now().minus(eventSessionDuration));
-        for (final EventSessionImpl eventSession : query.getResultList()) {
-            this.entityManager.remove(eventSession);
+        query.setParameter(this.dateTimeParameter, lastAggregatedEventDate.minus(eventSessionDuration));
+        final List<EventSessionImpl> resultList = query.getResultList();
+        for (final EventSessionImpl eventSession : resultList) {
+            this.getEntityManager().remove(eventSession);
         }
+        
+        return resultList.size();
     }
 }

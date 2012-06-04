@@ -41,25 +41,25 @@ import org.hibernate.annotations.NaturalId;
  */
 
 @Entity
-@Table(name = "UP_AGGREGATE_GROUP_MAPPING")
+@Table(name = "UP_AGGR_GROUP_MAPPING")
 @SequenceGenerator(
-        name="UP_AGGREGATE_GROUP_MAPPING_GEN",
-        sequenceName="UP_AGGREGATE_GROUP_MAPPING_SEQ",
+        name="UP_AGGR_GROUP_MAPPING_GEN",
+        sequenceName="UP_AGGR_GROUP_MAPPING_SEQ",
         allocationSize=10
     )
 @TableGenerator(
-        name="UP_AGGREGATE_GROUP_MAPPING_GEN",
-        pkColumnValue="UP_AGGREGATE_GROUP_MAPPING_PROP",
+        name="UP_AGGR_GROUP_MAPPING_GEN",
+        pkColumnValue="UP_AGGR_GROUP_MAPPING_PROP",
         allocationSize=10
     )
 @Immutable
 @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class AggregatedGroupMappingImpl implements AggregatedGroupMapping, Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(generator = "UP_AGGREGATE_GROUP_MAPPING_GEN")
+    @GeneratedValue(generator = "UP_AGGR_GROUP_MAPPING_GEN")
     @Column(name="ID")
     private final long id;
     

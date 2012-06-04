@@ -19,29 +19,23 @@
 
 package org.jasig.portal.concurrency.locking;
 
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.when;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.jasig.portal.IPortalInfoProvider;
 import org.jasig.portal.concurrency.locking.IClusterLockService.TryLockFunctionResult;
-import org.jasig.portal.test.BaseJpaDaoTest;
+import org.jasig.portal.test.BasePortalJpaDaoTest;
 import org.jasig.portal.test.ThreadGroupRunner;
 import org.jasig.portal.utils.threading.ThrowingRunnable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
@@ -55,9 +49,7 @@ import com.google.common.base.Function;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:jpaClusterLockDaoTestContext.xml")
-public class ClusterLockServiceImplTest extends BaseJpaDaoTest {
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
+public class ClusterLockServiceImplTest extends BasePortalJpaDaoTest {
     @Autowired
     @Qualifier("normal")
     private IClusterLockService clusterLockService;
@@ -68,14 +60,6 @@ public class ClusterLockServiceImplTest extends BaseJpaDaoTest {
     
     @Autowired
     private IPortalInfoProvider portalInfoProvider;
-    
-    @PersistenceContext(unitName = "uPortalPersistence")
-    private EntityManager entityManager;
-    
-    @Override
-    protected EntityManager getEntityManager() {
-        return this.entityManager;
-    }
 
     @Test
     public void testLocalTryLockFunction() throws InterruptedException  {
@@ -89,7 +73,7 @@ public class ClusterLockServiceImplTest extends BaseJpaDaoTest {
 
     private void testTryLockFunction(final IClusterLockService service) throws InterruptedException {
         reset(portalInfoProvider);
-        when(portalInfoProvider.getServerName()).thenReturn("ServerA");
+        when(portalInfoProvider.getUniqueServerName()).thenReturn("ServerA");
         
         final ThreadGroupRunner threadGroupRunner = new ThreadGroupRunner("ClusterLockServiceImplTest-", true);
         final String mutexName = "testLockFunction";
@@ -107,9 +91,9 @@ public class ClusterLockServiceImplTest extends BaseJpaDaoTest {
                     @Override
                     public Object call() throws Exception {
                         threadGroupRunner.tick(1);
-                        final TryLockFunctionResult<Object> result = service.doInTryLock(mutexName, new Function<String, Object>() {
+                        final TryLockFunctionResult<Object> result = service.doInTryLock(mutexName, new Function<ClusterMutex, Object>() {
                             @Override
-                            public Object apply(String input) {
+                            public Object apply(ClusterMutex input) {
                                 if (concurrent.getAndSet(true)) {
                                     fail("Only one thread should be in Function at a time");
                                 }
