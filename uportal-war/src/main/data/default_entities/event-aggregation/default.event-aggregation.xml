@@ -28,6 +28,146 @@
     version="4.0">
     <aggregated-group-config>
         <aggregator-type>org.jasig.portal.events.aggr.IPortalEventAggregator</aggregator-type>
+        <include>
+          <groupService>local</groupService>
+          <groupName>Administrators</groupName>
+        </include>
+        <include>
+          <groupService>local</groupService>
+          <groupName>Everyone</groupName>
+        </include>
+        <include>
+          <groupService>local</groupService>
+          <groupName>Guests</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Applicant - Graduate</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Applicant - Professional</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Applicant - Special</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Applicant - Undergraduate</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Facstaff</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Facstaff - Former Appointment</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Former Student</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Student</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Users - Advisors</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Users - Instructors</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW-Madison</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Portal Ineligible</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>Not Portal Activated</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>System Portal Ineligible</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System Facstaff</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Colleges</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Eau Claire</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Extension</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Green Bay</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-La Crosse</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Milwaukee</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Oshkosh</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Parkside</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Platteville</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-River Falls</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-System Administration</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Stevens Point</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Stout</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Superior</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Whitewater</groupName>
+        </include>
+        <include>
+          <groupService>pags</groupService>
+          <groupName>UW System-Madison</groupName>
+        </include>
     </aggregated-group-config>
     <aggregated-interval-config>
         <aggregator-type>org.jasig.portal.events.aggr.IPortalEventAggregator</aggregator-type>
