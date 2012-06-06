@@ -34,6 +34,7 @@ import javax.annotation.Resource;
 import javax.persistence.FlushModeType;
 
 import org.apache.commons.lang.mutable.MutableInt;
+import org.apache.commons.lang.mutable.MutableObject;
 import org.hibernate.Session;
 import org.jasig.portal.IPortalInfoProvider;
 import org.jasig.portal.concurrency.FunctionWithoutResult;
@@ -110,6 +111,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
     private ReadablePeriod aggregationDelay = Period.seconds(30);
     private ReadablePeriod purgeDelay = Period.days(1);
     private ReadablePeriod dimensionBuffer = Period.days(30);
+    private ReadablePeriod eventSessionDuration = Period.days(1);
     
 
     @Autowired
@@ -194,6 +196,11 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
             throw new IllegalArgumentException("dimensionBuffer must be at least 1 day. Is: " + new Period(dimensionBuffer).toStandardDays().getDays());
         }
         this.dimensionBuffer = dimensionBuffer;
+    }
+    
+    @Value("${org.jasig.portal.events.aggr.session.JpaEventSessionDao.eventSessionDuration:P1D}")
+    public void setEventSessionDuration(ReadablePeriod eventSessionDuration) {
+        this.eventSessionDuration = eventSessionDuration;
     }
 
     @Override
@@ -360,12 +367,13 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
                                 
                                 final DateTime lastEventDate = eventAggregatorStatus.getLastEventDate();
                                 if (lastEventDate != null) {
-                                    final int purgeCount = eventSessionDao.purgeExpiredEventSessions(lastEventDate);
+                                    final DateTime sessionPurgeDate = lastEventDate.minus(eventSessionDuration);
+                                    final int purgeCount = eventSessionDao.purgeEventSessionsBefore(sessionPurgeDate);
                                     
                                     if (logger.isInfoEnabled()) {
                                         final long runTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
-                                        logger.info("Purged {} event sessions before {} in {}ms - {} events/second", 
-                                                new Object[] { purgeCount, lastEventDate, runTime, purgeCount/(runTime/1000d) });
+                                        logger.info("Purged {} event sessions before {} in {}ms - {} sessions/second", 
+                                                new Object[] { purgeCount, sessionPurgeDate, runTime, purgeCount/(runTime/1000d) });
                                     }
                                 }
                             }
@@ -580,6 +588,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
         final Thread currentThread = Thread.currentThread();
         final String currentName = currentThread.getName();
         final MutableInt events = new MutableInt();
+        final MutableObject lastEventDate = new MutableObject();
         
         try {
             currentThread.setName(currentName + "-" + lastAggregated + "_" + newestEventTime);
@@ -588,7 +597,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
             
             //Do aggregation, capturing the start and end dates
             eventAggregatorStatus.setLastStart(DateTime.now());
-            portalEventDao.aggregatePortalEvents(lastAggregated, newestEventTime, this.eventAggregationBatchSize, new AggregateEventsHandler(events, eventAggregatorStatus));
+            portalEventDao.aggregatePortalEvents(lastAggregated, newestEventTime, this.eventAggregationBatchSize, new AggregateEventsHandler(events, lastEventDate, eventAggregatorStatus));
             eventAggregatorStatus.setLastEnd(new DateTime());
         }
         finally {
@@ -599,7 +608,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
         eventAggregationManagementDao.updateEventAggregatorStatus(eventAggregatorStatus);
         
         final boolean complete = this.eventAggregationBatchSize <= 0 || events.intValue() < this.eventAggregationBatchSize;
-        return new EventProcessingResult(events.intValue(), lastAggregated, newestEventTime, complete);
+        return new EventProcessingResult(events.intValue(), lastAggregated, (DateTime)lastEventDate.getValue(), complete);
     }
     
     static class EventProcessingResult {
@@ -665,6 +674,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
         //Event Aggregation Context - used by aggregators to track state
         private final EventAggregationContext eventAggregationContext = new EventAggregationContextImpl(); 
         private final MutableInt eventCounter;
+        private final MutableObject lastEventDate;
         private final IEventAggregatorStatus eventAggregatorStatus;
 
         //pre-compute the set of intervals that our event aggregators support and only bother tracking those
@@ -681,8 +691,9 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
         private final AggregatedGroupConfig defaultAggregatedGroupConfig;
         private final AggregatedIntervalConfig defaultAggregatedIntervalConfig;
         
-        private AggregateEventsHandler(MutableInt eventCounter, IEventAggregatorStatus eventAggregatorStatus) {
+        private AggregateEventsHandler(MutableInt eventCounter, MutableObject lastEventDate, IEventAggregatorStatus eventAggregatorStatus) {
             this.eventCounter = eventCounter;
+            this.lastEventDate = lastEventDate;
             this.eventAggregatorStatus = eventAggregatorStatus;
             this.defaultAggregatedGroupConfig = eventAggregationManagementDao.getDefaultAggregatedGroupConfig();
             this.defaultAggregatedIntervalConfig = eventAggregationManagementDao.getDefaultAggregatedIntervalConfig();
@@ -716,6 +727,7 @@ public class PortalEventAggregationManagerImpl extends BaseAggrEventsJpaDao impl
             }
             
             final DateTime eventDate = event.getTimestampAsDate();
+            this.lastEventDate.setValue(eventDate);
             
             //If no interval data yet populate it.
             if (this.currentIntervalInfo.isEmpty()) {
