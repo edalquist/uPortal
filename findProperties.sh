@@ -39,5 +39,5 @@ cat uportal-war/src/main/resources/properties/portal.properties | grep -v "^#[#|
 grep -Fvxf $PORTAL_PROPS $RESOLVED_PROPS > $MISSING_PROPS
 
 ## List the full property string found in the source 
-grep --color=never -f $MISSING_PROPS $PLACEHOLDERS_PROPS
+grep --color=never -f $MISSING_PROPS $PLACEHOLDERS_PROPS | sort -u
 
