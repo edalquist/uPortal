@@ -271,8 +271,6 @@
             portalShellBuildHelper.hibernateUpdate("db-hibernate-update",
                 '${schemaExportBean}',
                 Boolean.parseBoolean('${export}'),
-                Boolean.parseBoolean('${create}'),
-                Boolean.parseBoolean('${drop}'),
                 /${outputFileEscaped}/,
                 true);
         </echo>
