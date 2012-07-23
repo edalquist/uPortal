@@ -264,7 +264,6 @@ public class UserImporterExporter extends
 	    else {
 	        userType = new ExternalUser();
 	    }
-	    userType.setVersion("4.0");
 	    userType.setUsername(userName);
 	    userType.setDefaultUser(defaultUserName);
 	    

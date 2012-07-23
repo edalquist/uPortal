@@ -34,6 +34,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Version;
 
 import org.apache.commons.lang.Validate;
 import org.hibernate.annotations.Cache;
@@ -65,6 +66,10 @@ public class AggregatedGroupConfigImpl extends BaseAggregatedDimensionConfigImpl
     @Column(name = "ID")
     @SuppressWarnings("unused")
     private final long id;
+
+    @Version
+    @Column(name = "ENTITY_VERSION")
+    private final long entityVersion = -1;
     
     @NaturalId
     @Column(name = "AGGREGATOR_TYPE", nullable = false, updatable = false)
@@ -103,7 +108,10 @@ public class AggregatedGroupConfigImpl extends BaseAggregatedDimensionConfigImpl
         return this.aggregatorType;
     }
     
-    
+    @Override
+    public long getVersion() {
+        return this.entityVersion;
+    }
     
     @Override
     public Set<AggregatedGroupMapping> getIncluded() {

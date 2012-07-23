@@ -16,22 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-package org.jasig.portal.tools.dbloader;
-
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+package org.jasig.portal.version.om;
 
 /**
- * Provides hibernate configuration and service registry for a persistence unit
+ * Describes a version number, based on http://apr.apache.org/versioning.html
+ * <br/>
+ * Versions MUST implement equality as checking if the Major, Minor and Patch versions ALL match
+ * 
  * 
  * @author Eric Dalquist
- * @version $Revision$
  */
-public interface HibernateToolConfigurationSource {
+public interface Version extends Comparable<Version> {
+    /**
+     * @return The major part
+     */
+    int getMajor();
     
-    Configuration getConfiguration();
-
-    ServiceRegistry getServiceRegistry();
-
+    /**
+     * @return The minor part
+     */
+    int getMinor();
+    
+    /**
+     * @return The patch part
+     */
+    int getPatch();
+    
+    /**
+     * @return true if this version comes before the other version
+     */
+    boolean isBefore(Version other);
+    
+    /**
+     * @return true if this version comes after the other version
+     */
+    boolean isAfter(Version other);
 }

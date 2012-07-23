@@ -405,8 +405,6 @@ public class PortletDefinitionImporterExporter
     protected ExternalPortletDefinition convert(IPortletDefinition def) {
         ExternalPortletDefinition rep = new ExternalPortletDefinition();
          
-        rep.setVersion("4.0");
-         
         rep.setFname(def.getFName());
         rep.setDesc(def.getDescription());
         rep.setName(def.getName());

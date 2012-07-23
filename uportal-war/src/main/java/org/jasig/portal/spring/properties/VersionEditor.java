@@ -17,17 +17,18 @@
  * under the License.
  */
 
-package org.jasig.portal.dao.usertype;
+package org.jasig.portal.spring.properties;
 
-import org.jadira.usertype.spi.shared.AbstractSingleColumnUserType;
+import java.beans.PropertyEditorSupport;
+
+import org.jasig.portal.version.VersionUtils;
 
 /**
- * Uses Jackson to convert objects to/from JSON
- * 
  * @author Eric Dalquist
- * @version $Revision$
  */
-public class JacksonType extends AbstractSingleColumnUserType<Object, String, JacksonColumnMapper> {
-    private static final long serialVersionUID = 1L;
-
+public class VersionEditor extends PropertyEditorSupport {
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException {
+        this.setValue(VersionUtils.parseVersion(text));
+    }
 }

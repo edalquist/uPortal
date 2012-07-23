@@ -14,7 +14,7 @@
     <name>uPortal WAR</name>
     <description>The uPortal web application.</description>
     
-    <dependencies>    
+    <dependencies>  
         <!-- ***** Portal JDBC Driver *****
          | The groupId, artifactId and version are configured in the root POM.
          +-->
@@ -115,6 +115,11 @@
             <artifactId>commons-math3</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
@@ -224,6 +229,11 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-groovysh</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -243,12 +253,6 @@
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jasig.cas3.extensions</groupId>
-            <artifactId>clearpass-integration-uportal</artifactId>
-            <scope>runtime</scope>
         </dependency>
         
         <dependency>
@@ -503,13 +507,31 @@
         <!-- ===== Runtime Dependencies ======================================= -->
         <dependency>
             <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
+            <artifactId>cglib-nodep</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-jsr223</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
             <scope>runtime</scope>
         </dependency>
         
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jasig.cas3.extensions</groupId>
+            <artifactId>clearpass-integration-uportal</artifactId>
             <scope>runtime</scope>
         </dependency>
 
@@ -714,6 +736,14 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <baseOutputDirectory>${basedir}/src/main/webapp</baseOutputDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.jasig.resourceserver</groupId>
                 <artifactId>resource-server-plugin</artifactId>
                 <version>${resource-server.version}</version>
@@ -768,41 +798,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                  <pluginExecutionFilter>
-                                    <groupId>
-                                      org.codehaus.mojo.jspc
-                                    </groupId>
-                                    <artifactId>
-                                      jspc-maven-plugin
-                                    </artifactId>
-                                    <versionRange>
-                                      [2.0-alpha-3,)
-                                    </versionRange>
-                                    <goals>
-                                      <goal>compile</goal>
-                                    </goals>
-                                  </pluginExecutionFilter>
-                                  <action>
-                                    <ignore />
-                                  </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
     
     <profiles>
