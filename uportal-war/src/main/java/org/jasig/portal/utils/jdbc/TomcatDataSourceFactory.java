@@ -82,31 +82,31 @@ public class TomcatDataSourceFactory extends AbstractFactoryBean<DataSource>
 	
 				
 				this.objectName = ObjectName.getInstance(this.baseObjectName + this.poolConfiguration.getName());
-				logger.info("Registering DataSource in MBeanServer under name: " + this.objectName);
+				logger.info("Registering DataSource " + this.poolConfiguration.getName() + " in MBeanServer under name: " + this.objectName);
 				
 				final ObjectInstance instance = this.mBeanServer.registerMBean(
 						jmxPool, this.objectName);
 				this.objectName = instance.getObjectName();
 			}
 			catch (Exception e) {
-				logger.warn("Failed to register connection pool with MBeanServer. JMX information will not be available for:" + dataSource, e);
+				logger.warn("Failed to register connection pool with MBeanServer. JMX information will not be available for: " + this.poolConfiguration.getName(), e);
 			}
 		}
 		
 
 		if (dataSource.getValidationQuery() == null && this.delayedValidationQueryResolver != null) {
-			logger.info("Attempting to resolve validation query for " + dataSource);
+			logger.info("Attempting to resolve validation query for: " + this.poolConfiguration.getName());
 			try {
 				this.delayedValidationQueryResolver.registerValidationQueryCallback(dataSource, new FunctionWithoutResult<String>() {
 					@Override
 					protected void applyWithoutResult(String input) {
-						logger.info("Resolved validation query '" + input + "' for " + dataSource);
+						logger.info("Resolved validation query '" + input + "' for " + poolConfiguration.getName());
 						dataSource.setValidationQuery(input);
 					}
 				});
 			}
 			catch (Exception e) {
-				logger.warn("Failed to resolve validation query for:" + dataSource, e);
+				logger.warn("Failed to resolve validation query for: " + this.poolConfiguration.getName(), e);
 			}
 		}
 
