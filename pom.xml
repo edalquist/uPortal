@@ -154,6 +154,7 @@
         <easymock.version>3.1</easymock.version>
         <ejb3-persistence.version>1.0.1.GA</ejb3-persistence.version>
         <ehcache.version>2.5.3</ehcache.version>
+        <ehcache-jgroups3replication.version>1.7.1</ehcache-jgroups3replication.version>
         <ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
         <ehcache-web.version>2.0.4</ehcache-web.version>
         <guava.version>12.0.1</guava.version>
@@ -208,8 +209,6 @@
         <uportal-shibboleth-delegation-integration.version>1.1.0</uportal-shibboleth-delegation-integration.version>
         <authhub-client>0.0.2</authhub-client>
         <portal-abstraction-api.version>1.1.2</portal-abstraction-api.version>
-        <ehcache-jgroups.version>1.5</ehcache-jgroups.version>
-        <jgroups.version>2.11.0.GA</jgroups.version>
         
         <project.build.sourceVersion>1.6</project.build.sourceVersion>
         <project.build.targetVersion>1.6</project.build.targetVersion>
@@ -568,6 +567,11 @@
                 <groupId>org.apache.portals.pluto</groupId>
                 <artifactId>pluto-container-driver-api</artifactId>
                 <version>${pluto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasig.ehcache</groupId>
+                <artifactId>ehcache-jgroups3replication</artifactId>
+                <version>${ehcache-jgroups3replication.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jasig.portal</groupId>
@@ -1017,22 +1021,6 @@
                 <groupId>edu.wisc.my.service</groupId>
                 <artifactId>portal-abstraction-api</artifactId>
                 <version>${portal-abstraction-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.sf.ehcache</groupId>
-                <artifactId>ehcache-jgroupsreplication</artifactId>
-                <version>${ehcache-jgroups.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>jgroups</groupId>
-                        <artifactId>jgroups</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.jgroups</groupId>
-                <artifactId>jgroups</artifactId>
-                <version>${jgroups.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

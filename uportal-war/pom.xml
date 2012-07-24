@@ -549,8 +549,8 @@
         </dependency>
         
         <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-jgroupsreplication</artifactId>
+            <groupId>org.jasig.ehcache</groupId>
+            <artifactId>ehcache-jgroups3replication</artifactId>
             <scope>runtime</scope>
         </dependency>
         
