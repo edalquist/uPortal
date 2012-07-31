@@ -70,6 +70,10 @@
   <logger name="org.jasig.portal.utils.jdbc.DelayedValidationQueryResolverImpl" additivity="false" level="ERROR"/>
   <logger name="org.jasig.portal.utils.jdbc.TomcatDataSourceFactory" additivity="false" level="ERROR"/>
   
+  <!-- Hide fragment activation messages -->
+  <logger name="org.jasig.portal.layout.dlm.FragmentActivator" additivity="false" level="ERROR"/>
+  <logger name="org.jasig.portal.layout.dlm.LegacyConfigurationLoader" additivity="false" level="ERROR"/>
+  
   <!-- Hide some bad Hibernate log messages -->
   <logger name="org.hibernate.cfg.annotations.reflection.JPAOverriddenAnnotationReader" additivity="false" level="ERROR"/>
   <logger name="org.hibernate.ejb.metamodel.MetadataContext" additivity="false" level="FATAL"/>
