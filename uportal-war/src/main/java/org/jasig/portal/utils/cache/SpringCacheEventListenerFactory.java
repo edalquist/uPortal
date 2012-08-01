@@ -92,11 +92,13 @@ public class SpringCacheEventListenerFactory extends CacheEventListenerFactory i
                 if (cacheEventListener == null) {
                     //If no listener is found just use the noop listener
                     LOGGER.warn("No CacheEventListener bean found for name '" + beanName + "', using NOOP CacheEventListener instead.");
-                    this.delegate = NOOP_CACHE_EVENT_LISTENER;
+                    d = NOOP_CACHE_EVENT_LISTENER;
                 }
                 else {
-                    this.delegate = cacheEventListener;
+                    d = cacheEventListener;
                 }
+                
+                this.delegate = d;
             }
             return d;
         }
