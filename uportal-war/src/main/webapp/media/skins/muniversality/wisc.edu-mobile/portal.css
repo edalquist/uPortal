@@ -995,8 +995,7 @@ mathematical calculations. */
   max-height: 35px;
 }
 .up .feed p {
-  font-size: 11px;
-  color: #8f8f8f;
+  color: #5c5c5c;
   max-height: 40px;
 }
 .up .feed .ui-btn-inner, .up .feed .ui-li-heading, .up .feed .ui-btn-text, .up .feed .ui-li-desc {
