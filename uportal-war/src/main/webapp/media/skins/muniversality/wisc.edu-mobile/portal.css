@@ -683,6 +683,8 @@ mathematical calculations. */
 }
 .up .portlet-wrapper-titlebar h1 {
   font-size: 18px;
+  margin-right: 0;
+  margin-left: 0;
   margin-bottom: 0.5em;
   text-shadow: none;
 }
