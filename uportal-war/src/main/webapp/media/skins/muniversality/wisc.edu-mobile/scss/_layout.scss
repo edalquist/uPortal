@@ -28,4 +28,26 @@
 	.utilities {
 		margin-top: 2em;
 	}
+
+  /* fluid pager */
+  .view-pager {
+    padding-bottom: 18px;
+    
+    ul {
+      margin: 0;
+      overflow: hidden;
+    }
+    ul li {
+      list-style: none;
+      float: left;
+      margin-right: 10px;
+    }
+    ul li .ui-link:link,
+    ul li .ui-link:visited {
+      text-decoration: none;
+    }
+    ul li:last-child {
+      float: right;
+    }
+  }
 }
