@@ -388,24 +388,42 @@ a:hover {
 .up .utilities {
   margin-top: 2em;
 }
-.up .view-pager {
+.up .fl-pager .flc-pager-top,
+.up .fl-pager .fl-pager-data {
   padding-bottom: 18px;
 }
-.up .view-pager ul {
+.up .fl-pager .fl-pager-ui {
   margin: 0;
-  overflow: hidden;
+  position: relative;
+  text-align: center;
 }
-.up .view-pager ul li {
+.up .fl-pager .fl-pager-ui .flc-pager-links {
+  margin: 0;
+}
+.up .fl-pager .fl-pager-ui li {
   list-style: none;
-  float: left;
-  margin-right: 10px;
+  display: inline-block;
 }
-.up .view-pager ul li .ui-link:link,
-.up .view-pager ul li .ui-link:visited {
+.up .fl-pager .fl-pager-ui li a {
+  padding: 0 5px;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-previous,
+.up .fl-pager .fl-pager-ui .flc-pager-next {
+  position: absolute;
+  top: 0;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-previous {
+  left: 0;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-next {
+  right: 0;
+}
+.up .fl-pager .fl-pager-ui a:link,
+.up .fl-pager .fl-pager-ui a:visited {
   text-decoration: none;
 }
-.up .view-pager ul li:last-child {
-  float: right;
+.up .fl-pager .fl-pager-ui .flc-pager-summary {
+  display: none;
 }
 
 /*====================================*/

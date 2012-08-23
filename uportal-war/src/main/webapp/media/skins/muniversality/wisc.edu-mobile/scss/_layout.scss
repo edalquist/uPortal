@@ -30,24 +30,43 @@
 	}
 
   /* fluid pager */
-  .view-pager {
-    padding-bottom: 18px;
-    
-    ul {
+  .fl-pager {
+    .flc-pager-top,
+    .fl-pager-data {
+      padding-bottom: 18px;
+    }
+    .fl-pager-ui {
       margin: 0;
-      overflow: hidden;
+      position: relative;
+      text-align: center;
     }
-    ul li {
+    .fl-pager-ui .flc-pager-links {
+      margin: 0;
+    }
+    .fl-pager-ui li {
       list-style: none;
-      float: left;
-      margin-right: 10px;
+      display: inline-block;
     }
-    ul li .ui-link:link,
-    ul li .ui-link:visited {
+    .fl-pager-ui li a {
+      padding: 0 5px;
+    }
+    .fl-pager-ui .flc-pager-previous,
+    .fl-pager-ui .flc-pager-next {
+      position: absolute;
+      top: 0;
+    }
+    .fl-pager-ui .flc-pager-previous {
+      left: 0;
+    }
+    .fl-pager-ui .flc-pager-next {
+      right: 0;
+    }
+    .fl-pager-ui a:link,
+    .fl-pager-ui a:visited {
       text-decoration: none;
     }
-    ul li:last-child {
-      float: right;
+    .fl-pager-ui .flc-pager-summary {
+      display: none;
     }
   }
 }
