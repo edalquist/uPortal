@@ -43,6 +43,8 @@
                 <entry key="uPortal:section=Framework,name=uPortalLockExecutor" value-ref="uPortalLockExecutor" />
                 <entry key="uPortal:section=Framework,name=PortletThreadPool" value-ref="portletThreadPool" />
                 
+                <entry key="uPortal:section=LDAP,name=DefaultLdapContext" value-ref="defaultLdapContext" />
+                
                 <entry key="uPortal:section=Cache,name=CharacterDataEventCacheStats" value-ref="characterDataEventCacheStatsBean" />
                 
                 <entry key="uPortal:section=Hibernate,name=HibernateStatistics" value-ref="hibernateStatisticsMBean"/>
@@ -55,6 +57,7 @@
     <bean id="mbeanInfoAssembler" class="org.springframework.jmx.export.assembler.MethodExclusionMBeanInfoAssembler">
         <property name="ignoredMethodMappings">
             <props>
+                <prop key="uPortal:section=LDAP,name=DefaultLdapContext">getContextSource,getDirContextValidator,getReadOnlyContext,getReadWriteContext</prop>
             </props>
         </property>
     </bean>
