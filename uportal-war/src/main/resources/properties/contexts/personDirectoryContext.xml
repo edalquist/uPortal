@@ -79,7 +79,7 @@
         <property name="personAttributeDaos">
             <list>
                 <ref bean="requestAttributesDao" />
-                <ref bean="cachingMergedPersonAttributeDao" />
+                <ref bean="mergedPersonAttributeDao" />
             </list>
         </property>
     </bean>
@@ -163,7 +163,8 @@
      | Merging DAOs that define the order that the data providing DAOs are called, results are cached by the outer
      | caching DAO 
      +-->
-    <bean id="cachingMergedPersonAttributeDao" class="org.jasig.services.persondir.support.CachingPersonAttributeDaoImpl">
+    <bean id="mergedPersonAttributeDao"
+		class="org.jasig.services.persondir.support.CachingPersonAttributeDaoImpl">
         <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
         <property name="cacheNullResults" value="true" />
         <property name="userInfoCache">
@@ -195,7 +196,7 @@
                                     <property name="personAttributeDaos">
                                         <list>
                                             <ref bean="uPortalAccountUserSource"/>
-                                            <ref bean="cachinguPortalJdbcUserSource"/>
+                                            <ref bean="uPortalJdbcUserSource"/>
                                             <!-- <ref bean="cachingLdapPersonAttributeDao"/> -->
                                         </list>
                                     </property>
@@ -295,7 +296,8 @@
      | Looks in the base UP_USER table, doesn't find attributes but will ensure a result if it the user exists in the
      | portal database and is searched for by username, results are cached by the outer caching DAO
      +-->
-    <bean id="cachinguPortalJdbcUserSource" class="org.jasig.services.persondir.support.CachingPersonAttributeDaoImpl">
+    <bean id="uPortalJdbcUserSource"
+        class="org.jasig.services.persondir.support.CachingPersonAttributeDaoImpl">
         <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
         <property name="cacheNullResults" value="true" />
         <property name="userInfoCache">
@@ -341,6 +343,4 @@
     <bean id="userAttributeCacheKeyGenerator" class="org.jasig.portal.utils.cache.PersonDirectoryCacheKeyGenerator">
         <property name="ignoreEmptyAttributes" value="true" />
     </bean>
-    
-    <bean class="org.jasig.portal.user.UserAttributesCacheCleaner" />
 </beans>
