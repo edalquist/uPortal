@@ -351,11 +351,7 @@ h4, h5, h6 {
 }
 
 a, a:active, a:visited {
-  color: #607890;
-}
-
-a:hover {
-  color: #036;
+  color: #900;
 }
 
 /*====================================*/
@@ -726,6 +722,11 @@ mathematical calculations. */
   margin-bottom: 0.5em;
   text-shadow: none;
 }
+.up .portlet-wrapper-titlebar h1 a:link,
+.up .portlet-wrapper-titlebar h1 a:visited {
+  color: #fff;
+  text-decoration: none;
+}
 .up .portlet-titlebar {
   border: none;
   background: #a9a9a9;
@@ -964,6 +965,10 @@ mathematical calculations. */
 .up .ui-footer a:link, .up .ui-footer a:visited {
   text-decoration: underline;
   color: white;
+}
+.up .prose {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 /* retina icons */

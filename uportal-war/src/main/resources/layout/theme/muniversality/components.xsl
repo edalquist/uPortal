@@ -62,7 +62,7 @@
       <xsl:call-template name="portalUrl" />
   </xsl:variable>
   <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
-      <h1 class="title">My UW-Madison</h1>
+      <h1 class="title"><a href="{$basePortalUrl}">My UW-Madison</a></h1>
       <xsl:call-template name="mobile.auth.link"/>
   </div>
   <div class="secondary-titlebar">
