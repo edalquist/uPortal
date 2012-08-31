@@ -388,8 +388,9 @@ a, a:active, a:visited {
 .up .fl-pager .fl-pager-data {
   padding-bottom: 18px;
 }
-.up .fl-pager .fl-pager-ui {
-  margin: 0;
+.up .fl-pager .fl-pager-ui,
+.up .fl-pager .flc-pager-links {
+  margin: 0 auto;
   position: relative;
   text-align: center;
 }
@@ -402,6 +403,7 @@ a, a:active, a:visited {
 }
 .up .fl-pager .fl-pager-ui li a {
   padding: 0 5px;
+  display: block;
 }
 .up .fl-pager .fl-pager-ui .flc-pager-previous,
 .up .fl-pager .fl-pager-ui .flc-pager-next {
@@ -410,6 +412,7 @@ a, a:active, a:visited {
 }
 .up .fl-pager .fl-pager-ui .flc-pager-previous {
   left: 0;
+  background-position: -144px 0;
 }
 .up .fl-pager .fl-pager-ui .flc-pager-next {
   right: 0;
@@ -420,6 +423,25 @@ a, a:active, a:visited {
 }
 .up .fl-pager .fl-pager-ui .flc-pager-summary {
   display: none;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-next a,
+.up .fl-pager .fl-pager-ui .flc-pager-previous a {
+  background: #666666;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: url("../common/jquerymobile/images/icons-18-white-pack.png");
+  background-repeat: no-repeat;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  text-indent: -5000px;
+  width: 9px;
+  height: 18px;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-next a {
+  background-position: -108px 0;
+}
+.up .fl-pager .fl-pager-ui .flc-pager-previous a {
+  background-position: -144px 0;
 }
 
 /*====================================*/

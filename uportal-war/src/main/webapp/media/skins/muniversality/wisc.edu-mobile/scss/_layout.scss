@@ -35,8 +35,9 @@
     .fl-pager-data {
       padding-bottom: 18px;
     }
-    .fl-pager-ui {
-      margin: 0;
+    .fl-pager-ui,
+    .flc-pager-links {
+      margin: 0 auto;
       position: relative;
       text-align: center;
     }
@@ -49,6 +50,7 @@
     }
     .fl-pager-ui li a {
       padding: 0 5px;
+      display: block;
     }
     .fl-pager-ui .flc-pager-previous,
     .fl-pager-ui .flc-pager-next {
@@ -57,6 +59,7 @@
     }
     .fl-pager-ui .flc-pager-previous {
       left: 0;
+      background-position: -144px -0;
     }
     .fl-pager-ui .flc-pager-next {
       right: 0;
@@ -67,6 +70,27 @@
     }
     .fl-pager-ui .flc-pager-summary {
       display: none;
+    }
+    
+    // icons
+    .fl-pager-ui .flc-pager-next a,
+    .fl-pager-ui .flc-pager-previous a {
+      background: #666666;
+      background: rgba(0,0,0,.4);
+      background-image: url('../common/jquerymobile/images/icons-18-white-pack.png');
+      background-repeat: no-repeat;
+      -moz-border-radius: 9px;
+      -webkit-border-radius: 9px;
+      border-radius: 9px;
+      text-indent: -5000px;
+      width: 9px;
+      height: 18px;
+    }
+    .fl-pager-ui .flc-pager-next a {
+      background-position: -108px -0;
+    }
+    .fl-pager-ui .flc-pager-previous a {
+      background-position: -144px -0;
     }
   }
 }
