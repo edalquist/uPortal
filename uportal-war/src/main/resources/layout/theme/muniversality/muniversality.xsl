@@ -356,7 +356,11 @@
                 
                 <xsl:choose>
                     <xsl:when test="//focused">
-                        <xsl:call-template name="mobile.channel.content.focused" />
+                        <div class="portlet">
+                            <div class="portlet-content" data-role="content">
+                                <xsl:call-template name="mobile.channel.content.focused" />
+                            </div>
+                        </div>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
