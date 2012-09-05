@@ -59,11 +59,11 @@
 -->
 <xsl:template name="mobile.header">
   <xsl:variable name="basePortalUrl">
-      <xsl:call-template name="portalUrl" />
+    <xsl:call-template name="portalUrl" />
   </xsl:variable>
   <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
-      <h1 class="title"><a href="{$basePortalUrl}">My UW-Madison</a></h1>
-      <xsl:call-template name="mobile.auth.link"/>
+    <h1 class="title"><a href="{$basePortalUrl}">My UW-Madison</a></h1>
+    <xsl:call-template name="mobile.auth.link"/>
   </div>
   <div class="secondary-titlebar">
     <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
@@ -71,38 +71,43 @@
 </xsl:template>
     
 <xsl:template name="mobile.auth.link">
+  <div class="titlebar-icons">
     <xsl:choose>
         <xsl:when test="$AUTHENTICATED='true'">
-            <a href="{$CONTEXT_PATH}/Logout" title="{upMsg:getMessage('logout', $USER_LANG)}" class="ui-btn-right">
-                <span><xsl:value-of select="upMsg:getMessage('logout', $USER_LANG)"/></span>
-            </a>
-        </xsl:when>
-        <xsl:otherwise>
-            <a title="{upMsg:getMessage('home', $USER_LANG)}" class="ui-btn-right">
-                <xsl:attribute name="href">
-                    <xsl:choose>
-                        <xsl:when test="$EXTERNAL_LOGIN_URL != ''">
-                            <xsl:value-of select="$EXTERNAL_LOGIN_URL"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                        	<xsl:variable name="portletLoginUrl">
-                                <xsl:call-template name="portalUrl">
-                                    <xsl:with-param name="url">
-                                        <url:portal-url>
-                                            <url:fname>login</url:fname>
-                                            <url:portlet-url state="MAXIMIZED" />
-                                        </url:portal-url>
-                                    </xsl:with-param>
-                                </xsl:call-template>
-                        	</xsl:variable>
-                            <xsl:value-of select="$portletLoginUrl"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:attribute>
-                <span><xsl:value-of select="upMsg:getMessage('login', $USER_LANG)"/></span>
-            </a>
-        </xsl:otherwise>
-    </xsl:choose>        
+        <a href="{$CONTEXT_PATH}/p/search" title="{upMsg:getMessage('search', $USER_LANG)}" data-icon="search" data-role="button" data-iconpos="notext">
+          <xsl:value-of select="upMsg:getMessage('search', $USER_LANG)"/>
+        </a>
+        <a href="{$CONTEXT_PATH}/Logout" title="{upMsg:getMessage('logout', $USER_LANG)}" data-icon="power" data-role="button" data-iconpos="notext">
+          <xsl:value-of select="upMsg:getMessage('logout', $USER_LANG)"/>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <a title="{upMsg:getMessage('login', $USER_LANG)}" data-icon="lock" data-role="button" data-iconpos="notext">
+          <xsl:attribute name="href">
+            <xsl:choose>
+              <xsl:when test="$EXTERNAL_LOGIN_URL != ''">
+                <xsl:value-of select="$EXTERNAL_LOGIN_URL"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:variable name="portletLoginUrl">
+                  <xsl:call-template name="portalUrl">
+                      <xsl:with-param name="url">
+                          <url:portal-url>
+                              <url:fname>login</url:fname>
+                              <url:portlet-url state="MAXIMIZED" />
+                          </url:portal-url>
+                      </xsl:with-param>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:value-of select="$portletLoginUrl"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+          <xsl:value-of select="upMsg:getMessage('login', $USER_LANG)"/>
+        </a>
+      </xsl:otherwise>
+    </xsl:choose>
+  </div>      
 </xsl:template>
 <!-- ========================================================================= -->
 

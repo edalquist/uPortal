@@ -91,28 +91,36 @@
             width: 31px;
     	}
     }
-	
-	.portlet-wrapper-titlebar {
-		background-color: #6E0000;
-		color: $white;
-		@include text-shadow();
-		@include button(wisc-nav);
-        border-bottom: 1px solid #662423;
-        
-        h1 {
-            font-size: 18px;
-            margin-right: 0;
-            margin-left: 0;
-            margin-bottom: 0.5em;
-            text-shadow: none;
-        }
-        h1 a:link,
-        h1 a:visited {
-          color: #fff;
-          text-decoration: none;
-        }
-	}
-	
+
+  .portlet-wrapper-titlebar {
+    background-color: #6E0000;
+    color: $white;
+    @include text-shadow();
+    @include button(wisc-nav);
+    border-bottom: 1px solid #662423;
+
+    h1 {
+        font-size: 18px;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0.5em;
+        text-shadow: none;
+    }
+    h1 a:link,
+    h1 a:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+    .titlebar-icons {
+      position: absolute;
+      top: 8px;
+      right: 5px;
+    }
+    .titlebar-icons a {
+      margin-right: 5px;
+    }
+  }
+
 	.portlet-titlebar {
         border: none;
 		background: $gray;

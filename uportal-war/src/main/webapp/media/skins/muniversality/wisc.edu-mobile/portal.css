@@ -749,6 +749,14 @@ mathematical calculations. */
   color: #fff;
   text-decoration: none;
 }
+.up .portlet-wrapper-titlebar .titlebar-icons {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+}
+.up .portlet-wrapper-titlebar .titlebar-icons a {
+  margin-right: 5px;
+}
 .up .portlet-titlebar {
   border: none;
   background: #a9a9a9;
