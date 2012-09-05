@@ -39,16 +39,16 @@
 		    border-bottom: 1px solid rgba(130,130,130,.3);
 		}
 		.ui-li-divider {
-		    position: relative;
-            padding-top: 29px;
-            padding-bottom: 34px;
-            padding-left: 92px;
-            text-shadow: none;
-			font-size: 16px;
-            font-weight: normal;
-			color: #831E24;
-		}
-	}
+      position: relative;
+      padding-top: 29px;
+      padding-bottom: 34px;
+      padding-left: 92px;
+      text-shadow: none;
+      font-size: 16px;
+      font-weight: normal;
+      color: #831E24;
+    }
+  }
 	
 	.focused {
 		color: $text;
@@ -156,36 +156,40 @@
 			@include gradient(#fcfcfc, #ededed);
 		}
 		
-		.ui-li-divider {
-			border-color: $graylight;
-			border-top: 1px solid $graylight;
-			background: $gray;
-            text-shadow: none;
-            @include gradient(#FFFFFF, #F1F2F1);
-			z-index: 1;
-			
-			.ui-grid-a {
-				.ui-block-b {
-					text-align: right;
-				}
-			}
-			.up-tab-icon { // default icon
-    		    background: url("images/icon-default.png") no-repeat top left;
-    		    display: block;
-                height: 72px;
-                width: 72px;
-                position: absolute;
-                top: 5px;
-                left: 10px;
-    		}
-    		@each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
-                &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
-                    background: url("images/icon-#{$tab}.png") no-repeat top left;
-                    top: 10px;
-                    left: 15px;
-                }
-    		}
-		}
+    .ui-li-divider {
+      border-color: $graylight;
+      border-top: 1px solid $graylight;
+      background: $gray;
+      text-shadow: none;
+      @include gradient(#FFFFFF, #F1F2F1);
+      z-index: 1;
+      
+      &.up-tab-open {
+        @include gradient(#FFFFFF, #CCCCCC);
+      }
+
+      .ui-grid-a {
+        .ui-block-b {
+          text-align: right;
+        }
+      }
+      .up-tab-icon { // default icon
+        background: url("images/icon-default.png") no-repeat top left;
+        display: block;
+        height: 72px;
+        width: 72px;
+        position: absolute;
+        top: 5px;
+        left: 10px;
+      }
+      @each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
+        &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
+            background: url("images/icon-#{$tab}.png") no-repeat top left;
+            top: 10px;
+            left: 15px;
+        }
+      }
+    }
 
 		.ui-li-heading {
             font-size: 14px;

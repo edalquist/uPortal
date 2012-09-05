@@ -864,6 +864,11 @@ mathematical calculations. */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#f1f2f1')";
   z-index: 1;
 }
+.up .portlet-content .ui-li-divider.up-tab-open {
+  background-image: -moz-linear-gradient(top, white, #cccccc);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #cccccc));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#cccccc')";
+}
 .up .portlet-content .ui-li-divider .ui-grid-a .ui-block-b {
   text-align: right;
 }

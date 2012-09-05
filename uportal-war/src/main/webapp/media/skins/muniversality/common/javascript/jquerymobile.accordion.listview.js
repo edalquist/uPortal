@@ -47,11 +47,14 @@
 
        if ( tabIsOpen && opts.closeTabs ) {
          thisTab.slideUp(opts.slideUpSpeed);
+         $this.removeClass("up-tab-open");
        } else if ( tabIsOpen ) {
          return; // do nothing
        } else {
          otherTabs.slideUp(opts.slideUpSpeed);
          thisTab.slideDown(opts.slideDownSpeed);
+         $(opts.tab).removeClass("up-tab-open");
+         $this.addClass("up-tab-open");
        }
      });
 
