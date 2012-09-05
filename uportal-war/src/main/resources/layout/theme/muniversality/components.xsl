@@ -145,10 +145,10 @@
                         <xsl:otherwise><xsl:value-of select="$CONTEXT_PATH"/>/media/skins/icons/mobile/default.png</xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <a href="{$portletUrl}" title="To view {@name}">
+                <a href="{$portletUrl}" title="To view {@title}">
                     <span class="{$newItemCountClasses}">{up-portlet-new-item-count(<xsl:value-of select="@ID" />)}</span>
-                    <span class="icon"><img class="portlet-icon" src="{$iconUrl}" alt="{@name}"/></span>
-                    <span class="title"><xsl:value-of select="@name" /></span>
+                    <span class="icon"><img class="portlet-icon" src="{$iconUrl}" alt="{@title}"/></span>
+                    <span class="title"><xsl:value-of select="@title" /></span>
                 </a>
             </div>
         </xsl:for-each>
@@ -198,8 +198,8 @@
                           </xsl:choose>
                       </xsl:variable>
                       <xsl:variable name="newItemCountClasses">ui-li-count badge new-item up-new-item-count-{up-portlet-new-item-count(<xsl:value-of select="@ID" />)}</xsl:variable>
-                      <a href="{$portletUrl}" title="To view {@name}">
-                          <h3><xsl:value-of select="@name" /></h3>
+                      <a href="{$portletUrl}" title="To view {@title}">
+                          <h3><xsl:value-of select="@title" /></h3>
                           <span class="{$newItemCountClasses}">{up-portlet-new-item-count(<xsl:value-of select="@ID" />)}</span>
                       </a>
                   </li>
@@ -233,7 +233,7 @@
     </div>
     <div class="secondary-titlebar">
       <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
-      <h2 class="portlet-title"><xsl:value-of select="//content/focused/channel/@name" /></h2>
+      <h2 class="portlet-title"><xsl:value-of select="//content/focused/channel/@title" /></h2>
     </div>
   </xsl:if>
 </xsl:template>
