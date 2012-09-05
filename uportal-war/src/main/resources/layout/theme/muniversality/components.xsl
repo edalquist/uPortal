@@ -77,9 +77,6 @@
         <a href="{$CONTEXT_PATH}/p/search" title="{upMsg:getMessage('search', $USER_LANG)}" data-icon="search" data-role="button" data-iconpos="notext">
           <xsl:value-of select="upMsg:getMessage('search', $USER_LANG)"/>
         </a>
-        <a href="{$CONTEXT_PATH}/Logout" title="{upMsg:getMessage('logout', $USER_LANG)}" data-icon="power" data-role="button" data-iconpos="notext">
-          <xsl:value-of select="upMsg:getMessage('logout', $USER_LANG)"/>
-        </a>
       </xsl:when>
       <xsl:otherwise>
         <a title="{upMsg:getMessage('login', $USER_LANG)}" data-icon="lock" data-role="button" data-iconpos="notext">

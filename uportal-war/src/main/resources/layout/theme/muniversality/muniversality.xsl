@@ -300,7 +300,12 @@
     
   <div class="ui-footer" data-role="footer">
     <p>&#169; 2012 UW System Board of Regents</p>
-    <p><a href="{$feedbackUrl}">Contact us</a> for assistance</p>
+    <p>
+      <a href="{$feedbackUrl}">Contact us</a> for assistance 
+      <xsl:if test="$AUTHENTICATED='true'">
+        | <a href="{$CONTEXT_PATH}/Logout" title="Sign Out">Sign Out</a>
+      </xsl:if>
+    </p>
     <p><a href="{$CONTEXT_PATH}/Login?profile=desktop"><xsl:value-of select="upMsg:getMessage('switch.to.desktop', $USER_LANG)"/></a></p>
   </div>
 </xsl:template>
