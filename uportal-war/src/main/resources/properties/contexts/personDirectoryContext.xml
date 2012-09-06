@@ -179,44 +179,17 @@
                 <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
                 <property name="personAttributeDaos">
                     <list>
-                        <!-- Load all attributes from direct data-sources first -->
-                        <bean class="org.jasig.services.persondir.support.RegexGatewayPersonAttributeDao">
-                            <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-                            <property name="patterns">
-                                <map>
-                                    <entry key="username" value="^[^@]*$" />
-                                </map>
-                            </property>
-                            <property name="targetPersonAttributeDao">
-                                <bean class="org.jasig.services.persondir.support.MergingPersonAttributeDaoImpl">
-                                    <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-                                    <property name="merger">
-                                        <bean class="org.jasig.services.persondir.support.merger.ReplacingAttributeAdder" />
-                                    </property>
-                                    <property name="personAttributeDaos">
-                                        <list>
-                                            <ref bean="uPortalAccountUserSource"/>
-                                            <ref bean="uPortalJdbcUserSource"/>
-                                            <!-- <ref bean="cachingLdapPersonAttributeDao"/> -->
-                                        </list>
-                                    </property>
-                                </bean>
-                            </property>
-                        </bean>
+                        <!-- First stop to see if the user has ever logged in before -->
+                        <ref bean="uPortalJdbcUserSource"/>
                         
+                        <!-- Next look at locally managed accounts -->
+                        <ref bean="uPortalAccountUserSource"/>
+                                            
+                        <!-- Look at UW-Madison LDAP for attributes -->
                         <!-- 
-                         | Since the cachingPostGradSurveyTermAttributeSource always returns an attribute only run if
-                         | there is a username present (a user has been found)
-                         +
-                        <bean class="org.jasig.services.persondir.support.RegexGatewayPersonAttributeDao">
-                            <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-                            <property name="patterns">
-                                <map>
-                                    <entry key="username" value=".+" />
-                                </map>
-                            </property>
-                            <property name="targetPersonAttributeDao" ref="cachingPostGradSurveyTermAttributeSource" />
-                        </bean>
+                        <ref bean="ldapPersonAttributeDao"/>
+                        
+                        <ref bean="postGradSurveyTermAttributeSource"/>
                                             
                         <!- - 
                          | DAOs for the graduating senior attributes info, only run by the RegexGateway if the user
@@ -237,28 +210,16 @@
                                     <property name="personAttributeDaos">
                                         <list>
                                             <bean class="org.jasig.services.persondir.support.EchoPersonAttributeDaoImpl" />
-                                            <ref bean="cachingSeniorGraduationStatusAttributeSource"/>
-                                            <ref bean="cachingMastersGraduationStatusAttributeSource"/>
-                                            <ref bean="cachingGraduationSurveyStatusAttributeSource"/>
+                                            <ref bean="seniorGraduationStatusAttributeSource"/>
+                                            <ref bean="mastersGraduationStatusAttributeSource"/>
+                                            <ref bean="graduationSurveyStatusAttributeSource"/>
                                         </list>
                                     </property>
                                 </bean>
                             </property>
                         </bean>
                         
-                        <!- - 
-                         | DAOs for the heritage survey status attributes info, only run by the RegexGateway if the user
-                         | is a staff member
-                         +- ->
-                        <bean class="org.jasig.services.persondir.support.RegexGatewayPersonAttributeDao">
-                            <property name="usernameAttributeProvider" ref="usernameAttributeProvider" />
-                            <property name="patterns">
-                                <map>
-                                    <entry key="wisceduudds" value=".+" />
-                                </map>
-                            </property>
-                            <property name="targetPersonAttributeDao" ref="cachingHeritageCheckAttributeSource" />
-                        </bean>
+                        <ref bean="heritageCheckAttributeSource"/>
                         -->
                     </list>
                 </property>
