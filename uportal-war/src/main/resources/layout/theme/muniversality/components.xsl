@@ -62,7 +62,7 @@
     <xsl:call-template name="portalUrl" />
   </xsl:variable>
   <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-backbtn="false" data-position="inline">
-    <h1 class="title"><a href="{$basePortalUrl}">My UW-Madison</a></h1>
+    <h1 class="title"><a href="{$basePortalUrl}"><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.name'), $USER_LANG)" /></a></h1>
     <xsl:call-template name="mobile.auth.link"/>
   </div>
   <div class="secondary-titlebar">
@@ -234,7 +234,7 @@
   </xsl:variable>
   <xsl:if test="not(//content/focused/@detached = 'true')">
     <div class="titlebar portlet-wrapper-titlebar" data-role="header" data-position="inline">
-        <h1 class="title">My UW-Madison</h1>
+        <h1 class="title"><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.name'), $USER_LANG)" /></h1>
     </div>
     <div class="secondary-titlebar">
       <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
