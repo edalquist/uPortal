@@ -73,8 +73,13 @@
 <xsl:template name="mobile.auth.link">
   <div class="titlebar-icons">
     <xsl:choose>
-        <xsl:when test="$AUTHENTICATED='true'">
-        <a href="{$CONTEXT_PATH}/p/search" title="{upMsg:getMessage('search', $USER_LANG)}" data-icon="search" data-role="button" data-iconpos="notext">
+      <xsl:when test="$AUTHENTICATED='true'">
+        <xsl:variable name="searchUrl">
+          <url:portal-url>
+              <url:fname>search</url:fname>
+          </url:portal-url>
+        </xsl:variable>
+        <a href="{$searchUrl}" title="{upMsg:getMessage('search', $USER_LANG)}" data-icon="search" data-role="button" data-iconpos="notext">
           <xsl:value-of select="upMsg:getMessage('search', $USER_LANG)"/>
         </a>
       </xsl:when>
