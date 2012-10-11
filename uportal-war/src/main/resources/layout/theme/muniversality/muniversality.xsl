@@ -172,7 +172,7 @@
     <xsl:when test="$SKIN='coal'">coal</xsl:when>
     <xsl:when test="$SKIN='ivy'">ivy</xsl:when>
     <xsl:when test="$SKIN='hc'">hc</xsl:when>
-    <xsl:when test="$SKIN='wisc.edu' or $SKIN='wisc.edu-sys'">madison</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
+    <xsl:when test="$SKIN='wisc.edu-mobile' or $SKIN='wisc.edu-sys-mobile'">madison</xsl:when> <!-- Set all institution skins to a specific theme configuration  -->
     <xsl:otherwise>system</xsl:otherwise>
   </xsl:choose>
 </xsl:variable>
