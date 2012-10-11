@@ -301,8 +301,25 @@
   <div class="ui-footer" data-role="footer">
     <p>&#169; 2012 UW System Board of Regents</p>
     <p>
-      <a href="{$feedbackUrl}">Contact us</a> for assistance 
+      <a href="{$feedbackUrl}">Feedback</a> for assistance 
       <xsl:if test="$AUTHENTICATED='true'">
+      <xsl:variable name="myuwHelpUrl">
+          <xsl:call-template name="portalUrl">
+              <xsl:with-param name="url">
+                  <url:portal-url>
+                    <xsl:choose>
+                      <xsl:when test="$INSTITUTION='madison'">
+                        <url:fname>myuw-help</url:fname>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <url:fname>myuw-system-help</url:fname>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </url:portal-url>
+              </xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        | <a href="{$myuwHelpUrl}"><span>Help</span></a>
         | <a href="{$CONTEXT_PATH}/Logout" title="Sign Out">Sign Out</a>
       </xsl:if>
     </p>
