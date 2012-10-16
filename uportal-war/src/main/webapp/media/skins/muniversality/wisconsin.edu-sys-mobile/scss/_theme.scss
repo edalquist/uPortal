@@ -1,0 +1,272 @@
+/*====================================*/
+/* THEME */
+/*====================================*/
+/*
+ * uMobile CSS is built with SASS:
+ * http://sass-lang.com/
+ */
+
+/* Additional theme files boxed off for human use. */
+@import "colors";
+@import "buttons";
+@import "badges";
+
+.up {
+	
+	.ui-bar, .ui-li-divider {
+		border-width: 1px;
+		border-style: solid;
+		font-weight: bold;
+		text-shadow: 0 -1px 1px $black;
+		
+		input, select, textarea, button {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+	}
+	
+	.dashboard {
+		color: $white;
+		text-shadow: 0 1px 0 $black;
+		background: $bgc url("images/bg_320x480_flat.png") 0 25px no-repeat;
+		
+		.ui-link-inherit { color: $white; }
+		.ui-link { 
+			color: $white;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.ui-br { 
+		    border-bottom: 1px solid rgba(130,130,130,.3);
+		}
+		.ui-li-divider {
+      position: relative;
+      padding-top: 29px;
+      padding-bottom: 34px;
+      padding-left: 92px;
+      text-shadow: none;
+      font-size: 16px;
+      font-weight: normal;
+      color: #831E24;
+    }
+  }
+	
+	.focused {
+		color: $text;
+		text-shadow: 0 1px 0 $white;
+		background: $graylighter;
+		@include gradient($graylightest, $graylighter);
+	}
+	
+	.secondary-titlebar {
+	    background: #990000;
+        position: relative;
+        border-top: 1px solid #8D2D2E;
+        border-bottom: 1px solid #6B3C42;
+        height: 40px;
+        
+        h2.portlet-title {
+            line-height: 40px; // vertical centering
+            height: 40px;
+            overflow: hidden;
+            text-shadow: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+            color: $white;
+        }
+	}
+	
+	.uw-crest {
+	    position: absolute;
+        left: 10px;
+        top: -40px;
+        z-index: 3000;
+        
+    	a {
+            display: block;
+            text-indent: -5000px;
+            background: url("images/uw_crest.png") no-repeat top left;
+            height: 47px;
+            width: 31px;
+    	}
+    }
+
+  .portlet-wrapper-titlebar {
+    background-color: #6E0000;
+    color: $white;
+    @include text-shadow();
+    @include button(wisc-nav);
+    border-bottom: 1px solid #662423;
+
+    h1 {
+        font-size: 18px;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0.5em;
+        text-shadow: none;
+    }
+    h1 a:link,
+    h1 a:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+    .titlebar-icons {
+      position: absolute;
+      top: 8px;
+      right: 5px;
+    }
+    .titlebar-icons a {
+      margin-right: 5px;
+    }
+  }
+
+	.portlet-titlebar {
+        border: none;
+		background: $gray;
+		color: $white;
+		@include button(utility);
+		
+		h2 {
+		    font-weight: normal !important;
+		    text-shadow: none;
+		}
+	    form {
+	        position: absolute;
+	        right: 10px;
+	        top: 5px;
+	    }
+	}
+	
+	.portlet-content {
+		
+		.titlebar {
+			.title, .subtitle {
+				margin: 0;
+			}
+			.subtitle {
+				font-size: 100%;
+				color: $graydarker;		
+			}
+		}
+		
+		@include button();
+		
+		.ui-li {
+			@include gradient(#fcfcfc, #ededed);
+		}
+		
+    .ui-li-divider {
+      border-color: $graylight;
+      border-top: 1px solid $graylight;
+      background: $gray;
+      text-shadow: none;
+      @include gradient(#FFFFFF, #F1F2F1);
+      z-index: 1;
+      
+      &.up-tab-open {
+        @include gradient(#FFFFFF, #CCCCCC);
+      }
+
+      .ui-grid-a {
+        .ui-block-b {
+          text-align: right;
+        }
+      }
+      .up-tab-icon { // default icon
+        background: url("images/icon-default.png");
+        background-position: top left;
+        background-repeat: no-repeat;
+        display: block;
+        height: 72px;
+        width: 72px;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+      }
+      @each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
+        &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
+            background-image: url("images/icon-#{$tab}.png");
+        }
+      }
+      &.up-tab-Academics .up-tab-icon {
+        background-image: url("images/icon-Learning.png");
+      }
+    }
+
+		.ui-li-heading {
+            font-size: 14px;
+            font-weight: normal;
+            color: #831E24;
+		}
+		
+		.utilities {
+            @include button(utility);
+		}
+		
+	}
+	
+	.portal-nav,
+	.portlet {
+	    margin-bottom: 55px; // clears space for footer
+	}
+	
+	.portal-nav {
+		.portlet {
+			.icon {
+				/*border: 1px solid $c1darkest;
+				background: $c1;
+				@include gradient($c1, $c1dark);
+				@include rounded(5px);*/
+			}
+		}
+	}
+	/* icons */
+	.ui-icon-map {
+		background-image: url(images/icons/location-18x18.png);
+	}
+	
+	.ui-icon-phone {
+		background-image: url(images/icons/phone-18x18.png);
+	}
+	
+	.ui-footer {
+	    background: #6E0000;
+	    text-align: center;
+	    padding: 5px 0;
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    
+	    p {
+	        font-size: 10px;
+	        color: #eee;
+	        text-shadow: none;
+	        line-height: 1.5;
+	    }
+	    a:link, a:visited {
+	        text-decoration: underline;
+	        color: white;
+	    }
+	}
+	
+	.prose {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* retina icons */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.up {
+		.ui-icon-map {
+			background-image: url(images/icons/location-36x36.png);
+			background-size: 18px 18px;
+		}
+	
+		.ui-icon-phone {
+			background-image: url(images/icons/phone-36x36.png);
+			background-size: 18px 18px;
+		}
+	}
+}

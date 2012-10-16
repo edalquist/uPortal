@@ -1,0 +1,96 @@
+/*====================================*/
+/* LAYOUT */
+/*====================================*/
+/* 
+ * Layout formats page structural elements.
+ * Only CSS that affects the layout (positioning) of major elements should be listed here.  Such as:
+ *   display, position, float, clear, width, height, min-width, min-height, margin, border, padding, overflow
+ * CSS that sets the visual style of the portal (and portlets) is handled by individual themes.
+ */
+ 
+ .up {
+	.ui-content .ui-header {
+	    /*margin-top: -15px;
+	    margin-left: -15px;
+	    margin-bottom: 15px;
+	     width:320px;*/
+	}
+	
+	/* Temporarily hiding the new item count, as uMobile portlets don't support it */
+	.up-new-item-count-0 {
+		@include hidden();
+	}
+	
+	.logo {
+		margin-top: 10px;
+		text-align: center;
+	}
+	.utilities {
+		margin-top: 2em;
+	}
+
+  /* fluid pager */
+  .fl-pager {
+    .flc-pager-top,
+    .fl-pager-data {
+      padding-bottom: 18px;
+    }
+    .fl-pager-ui,
+    .flc-pager-links {
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+    .fl-pager-ui .flc-pager-links {
+      margin: 0;
+    }
+    .fl-pager-ui li {
+      list-style: none;
+      display: inline-block;
+    }
+    .fl-pager-ui li a {
+      padding: 0 5px;
+      display: block;
+    }
+    .fl-pager-ui .flc-pager-previous,
+    .fl-pager-ui .flc-pager-next {
+      position: absolute;
+      top: 0;
+    }
+    .fl-pager-ui .flc-pager-previous {
+      left: 0;
+      background-position: -144px -0;
+    }
+    .fl-pager-ui .flc-pager-next {
+      right: 0;
+    }
+    .fl-pager-ui a:link,
+    .fl-pager-ui a:visited {
+      text-decoration: none;
+    }
+    .fl-pager-ui .flc-pager-summary {
+      display: none;
+    }
+    
+    // icons
+    .fl-pager-ui .flc-pager-next a,
+    .fl-pager-ui .flc-pager-previous a {
+      background: #666666;
+      background: rgba(0,0,0,.4);
+      background-image: url('../common/jquerymobile/images/icons-18-white-pack.png');
+      background-repeat: no-repeat;
+      -moz-border-radius: 9px;
+      -webkit-border-radius: 9px;
+      border-radius: 9px;
+      text-indent: -5000px;
+      width: 9px;
+      height: 18px;
+    }
+    .fl-pager-ui .flc-pager-next a {
+      background-position: -108px -0;
+    }
+    .fl-pager-ui .flc-pager-previous a {
+      background-position: -144px -0;
+    }
+  }
+}

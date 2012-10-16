@@ -179,6 +179,49 @@
                                 </map>
                             </property>
                         </bean>
+                        <bean class="org.jasig.portal.rendering.xslt.UserAttributeSkinMappingTransformerConfigurationSource">
+                            <property name="stylesheetDescriptorNames">
+                                <set>
+                                    <value>UniversalityMobile</value>
+                                </set>
+                            </property>
+                            <property name="skinAttributeName" value="serverName" />
+                            <property name="attributeToSkinMap">
+                                <map>
+                                    <entry key=".*\.wisconsin\.edu" value="wisconsin.edu-sys-mobile" />
+                                </map>
+                            </property>
+                        </bean>
+                        <bean class="org.jasig.portal.rendering.xslt.UserGroupSkinMappingTransformerConfigurationSource">
+                            <property name="stylesheetDescriptorNames">
+                                <set>
+                                    <value>UniversalityMobile</value>
+                                </set>
+                            </property>
+                            <property name="groupToSkinMap">
+                                <map>
+                                <!-- 
+                                    <entry key="pags.uw-sys-colleges" value="uwc.edu-sys" />
+                                    <entry key="pags.uw-sys-eau-claire" value="uwec.edu-sys" />
+                                    <entry key="pags.uw-sys-extension" value="uwex.edu-sys" />
+                                    <entry key="pags.uw-sys-green-bay" value="uwgb.edu-sys" />
+                                    <entry key="pags.uw-sys-la-crosse" value="uwlax.edu-sys" />
+                                    <entry key="pags.uw-sys-milwaukee" value="uwm.edu-sys" />
+                                    <entry key="pags.uw-sys-oshkosh" value="uwosh.edu-sys" />
+                                    <entry key="pags.uw-sys-parkside" value="uwp.edu-sys" />
+                                    <entry key="pags.uw-sys-plattevile" value="uwplatt.edu-sys" />
+                                    <entry key="pags.uw-sys-river-falls" value="uwrf.edu-sys" />
+                                    <entry key="pags.uw-sys-system-administration" value="uwsa.edu-sys" />
+                                    <entry key="pags.uw-sys-stevens-point" value="uwsp.edu-sys" />
+                                    <entry key="pags.uw-sys-stout" value="uwstout.edu-sys" />
+                                    <entry key="pags.uw-sys-superior" value="uwsuper.edu-sys" />
+                                    <entry key="pags.uw-sys-whitewater" value="uww.edu-sys" />
+                                     -->
+                                    <entry key="pags.uw-sys-madison" value="wisc.edu-mobile" />
+                                    <entry key="pags.uw-madison" value="wisc.edu-mobile" />
+                                </map>
+                            </property>
+                        </bean>
                         <bean class="org.jasig.portal.rendering.xslt.ThemeStylesheetUserPreferencesTransformerConfigurationSource" />
                         <bean class="org.jasig.portal.rendering.xslt.StaticTransformerConfigurationSource">
                             <property name="parameters">
