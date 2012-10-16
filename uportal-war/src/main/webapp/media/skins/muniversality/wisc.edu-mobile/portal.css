@@ -510,7 +510,7 @@ mathematical calculations. */
 }
 .up.dashboard-list .dashboard .portal-nav .ui-listview li {
   border: none;
-  border-top: 1px solid #dcdcdc;
+  border-top: 1px solid gainsboro;
 }
 .up.dashboard-list .dashboard .portal-nav .ui-listview li:first {
   border: none;
@@ -592,9 +592,9 @@ mathematical calculations. */
   border-color: #c3c3c3;
   background: #cc0000;
   text-shadow: 0 1px 1px white;
-  background-image: -moz-linear-gradient(top, white, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #f5f5f5));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#f5f5f5')";
+  background-image: -moz-linear-gradient(top, white, whitesmoke);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, whitesmoke));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='whitesmoke')";
 }
 .up .badge.new-item {
   border-color: white;
@@ -662,10 +662,10 @@ mathematical calculations. */
 .up .focused {
   color: #444444;
   text-shadow: 0 1px 0 white;
-  background: #dcdcdc;
-  background-image: -moz-linear-gradient(top, #f5f5f5, #dcdcdc);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), color-stop(1, #dcdcdc));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5', EndColorStr='#dcdcdc')";
+  background: gainsboro;
+  background-image: -moz-linear-gradient(top, whitesmoke, gainsboro);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, whitesmoke), color-stop(1, gainsboro));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='whitesmoke', EndColorStr='gainsboro')";
 }
 .up .secondary-titlebar {
   background: #990000;
@@ -759,17 +759,17 @@ mathematical calculations. */
 }
 .up .portlet-titlebar {
   border: none;
-  background: #a9a9a9;
+  background: darkgrey;
   color: white;
 }
 .up .portlet-titlebar .ui-btn-up-a, .up .portlet-titlebar .ui-btn-up-b, .up .portlet-titlebar .ui-btn-up-c, .up .portlet-titlebar .ui-btn-up-d, .up .portlet-titlebar .ui-btn-up-e {
   border-color: #767676;
-  background: #a9a9a9;
+  background: darkgrey;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #a9a9a9, #5c5c5c);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a9a9a9), color-stop(1, #5c5c5c));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a9a9a9', EndColorStr='#5c5c5c')";
+  background-image: -moz-linear-gradient(top, darkgrey, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, darkgrey), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='darkgrey', EndColorStr='#5c5c5c')";
 }
 .up .portlet-titlebar .ui-btn-up-a a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-b a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-c a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-d a.ui-link-inherit, .up .portlet-titlebar .ui-btn-up-e a.ui-link-inherit {
   color: white;
@@ -816,35 +816,35 @@ mathematical calculations. */
 }
 .up .portlet-content .ui-btn-up-a, .up .portlet-content .ui-btn-up-b, .up .portlet-content .ui-btn-up-c, .up .portlet-content .ui-btn-up-d, .up .portlet-content .ui-btn-up-e {
   border-color: #c3c3c3;
-  background: #f5f5f5;
+  background: whitesmoke;
   color: #444444;
   text-shadow: 0 1px 1px white;
-  background-image: -moz-linear-gradient(top, white, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #f5f5f5));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#f5f5f5')";
+  background-image: -moz-linear-gradient(top, white, whitesmoke);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, whitesmoke));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='whitesmoke')";
 }
 .up .portlet-content .ui-btn-up-a a.ui-link-inherit, .up .portlet-content .ui-btn-up-b a.ui-link-inherit, .up .portlet-content .ui-btn-up-c a.ui-link-inherit, .up .portlet-content .ui-btn-up-d a.ui-link-inherit, .up .portlet-content .ui-btn-up-e a.ui-link-inherit {
   color: #5c5c5c;
 }
 .up .portlet-content .ui-btn-hover-a, .up .portlet-content .ui-btn-hover-b, .up .portlet-content .ui-btn-hover-c, .up .portlet-content .ui-btn-hover-d, .up .portlet-content .ui-btn-hover-e {
   border-color: #8f8f8f;
-  background: #dcdcdc;
+  background: gainsboro;
   text-shadow: 0 1px 1px white;
-  background-image: -moz-linear-gradient(top, #f5f5f5, #dcdcdc);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), color-stop(1, #dcdcdc));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5', EndColorStr='#dcdcdc')";
+  background-image: -moz-linear-gradient(top, whitesmoke, gainsboro);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, whitesmoke), color-stop(1, gainsboro));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='whitesmoke', EndColorStr='gainsboro')";
 }
 .up .portlet-content .ui-btn-hover-a a.ui-link-inherit, .up .portlet-content .ui-btn-hover-b a.ui-link-inherit, .up .portlet-content .ui-btn-hover-c a.ui-link-inherit, .up .portlet-content .ui-btn-hover-d a.ui-link-inherit, .up .portlet-content .ui-btn-hover-e a.ui-link-inherit {
   color: #5c5c5c;
 }
 .up .portlet-content .ui-btn-down-a, .up .portlet-content .ui-btn-down-b, .up .portlet-content .ui-btn-down-c, .up .portlet-content .ui-btn-down-d, .up .portlet-content .ui-btn-down-e {
   border-color: #080000;
-  background: #dcdcdc;
+  background: gainsboro;
   color: #444444;
   text-shadow: 0 1px 1px white;
-  background-image: -moz-linear-gradient(top, #dcdcdc, white);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dcdcdc), color-stop(1, white));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#dcdcdc', EndColorStr='white')";
+  background-image: -moz-linear-gradient(top, gainsboro, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, gainsboro), color-stop(1, white));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='gainsboro', EndColorStr='white')";
 }
 .up .portlet-content .ui-btn-down-a a.ui-link-inherit, .up .portlet-content .ui-btn-down-b a.ui-link-inherit, .up .portlet-content .ui-btn-down-c a.ui-link-inherit, .up .portlet-content .ui-btn-down-d a.ui-link-inherit, .up .portlet-content .ui-btn-down-e a.ui-link-inherit {
   color: #5c5c5c;
@@ -857,7 +857,7 @@ mathematical calculations. */
 .up .portlet-content .ui-li-divider {
   border-color: #c3c3c3;
   border-top: 1px solid #c3c3c3;
-  background: #a9a9a9;
+  background: darkgrey;
   text-shadow: none;
   background-image: -moz-linear-gradient(top, white, #f1f2f1);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #f1f2f1));
@@ -873,58 +873,45 @@ mathematical calculations. */
   text-align: right;
 }
 .up .portlet-content .ui-li-divider .up-tab-icon {
-  background: url("images/icon-default.png") no-repeat top left;
+  background: url("images/icon-default.png");
+  background-position: top left;
+  background-repeat: no-repeat;
   display: block;
   height: 72px;
   width: 72px;
   position: absolute;
-  top: 5px;
-  left: 10px;
+  top: 10px;
+  left: 15px;
 }
 .up .portlet-content .ui-li-divider.up-tab-Welcome .up-tab-icon {
-  background: url("images/icon-Welcome.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Welcome.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Advising .up-tab-icon {
-  background: url("images/icon-Advising.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Advising.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Teaching .up-tab-icon {
-  background: url("images/icon-Teaching.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Teaching.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Learning .up-tab-icon {
-  background: url("images/icon-Learning.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Learning.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Student-Services .up-tab-icon {
-  background: url("images/icon-Student-Services.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Student-Services.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Services .up-tab-icon {
-  background: url("images/icon-Services.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Services.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Work-Record .up-tab-icon {
-  background: url("images/icon-Work-Record.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Work-Record.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-News .up-tab-icon {
-  background: url("images/icon-News.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-News.png");
 }
 .up .portlet-content .ui-li-divider.up-tab-Research .up-tab-icon {
-  background: url("images/icon-Research.png") no-repeat top left;
-  top: 10px;
-  left: 15px;
+  background-image: url("images/icon-Research.png");
+}
+.up .portlet-content .ui-li-divider.up-tab-Academics .up-tab-icon {
+  background-image: url("images/icon-Learning.png");
 }
 .up .portlet-content .ui-li-heading {
   font-size: 14px;
@@ -933,12 +920,12 @@ mathematical calculations. */
 }
 .up .portlet-content .utilities .ui-btn-up-a, .up .portlet-content .utilities .ui-btn-up-b, .up .portlet-content .utilities .ui-btn-up-c, .up .portlet-content .utilities .ui-btn-up-d, .up .portlet-content .utilities .ui-btn-up-e {
   border-color: #767676;
-  background: #a9a9a9;
+  background: darkgrey;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #a9a9a9, #5c5c5c);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a9a9a9), color-stop(1, #5c5c5c));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a9a9a9', EndColorStr='#5c5c5c')";
+  background-image: -moz-linear-gradient(top, darkgrey, #5c5c5c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, darkgrey), color-stop(1, #5c5c5c));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='darkgrey', EndColorStr='#5c5c5c')";
 }
 .up .portlet-content .utilities .ui-btn-up-a a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-b a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-c a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-d a.ui-link-inherit, .up .portlet-content .utilities .ui-btn-up-e a.ui-link-inherit {
   color: white;
@@ -1117,10 +1104,10 @@ mathematical calculations. */
   margin: 0.7em 0 0.3em 0;
 }
 .up .ptl-calendar .upcal-event-list {
-  border-bottom: 1px solid #a9a9a9;
+  border-bottom: 1px solid darkgrey;
 }
 .up .ptl-calendar .upcal-event {
-  border-top: 1px solid #a9a9a9;
+  border-top: 1px solid darkgrey;
   background: white;
   padding: 5px;
   zoom: 1;
@@ -1140,7 +1127,7 @@ mathematical calculations. */
   padding: 0.5em 0;
   text-align: center;
   font-size: 13px;
-  color: #a9a9a9;
+  color: darkgrey;
 }
 .up .ptl-calendar .upcal-event .upcal-event-time span {
   font-size: 16px;
@@ -1154,7 +1141,7 @@ mathematical calculations. */
   border-width: 1px;
   border-style: solid;
   border-color: #8f8f8f;
-  background: #dcdcdc;
+  background: gainsboro;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;

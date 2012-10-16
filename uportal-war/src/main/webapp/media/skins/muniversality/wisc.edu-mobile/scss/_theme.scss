@@ -174,20 +174,23 @@
         }
       }
       .up-tab-icon { // default icon
-        background: url("images/icon-default.png") no-repeat top left;
+        background: url("images/icon-default.png");
+        background-position: top left;
+        background-repeat: no-repeat;
         display: block;
         height: 72px;
         width: 72px;
         position: absolute;
-        top: 5px;
-        left: 10px;
+        top: 10px;
+        left: 15px;
       }
       @each $tab in "Welcome", "Advising", "Teaching", "Learning", "Student-Services", "Services", "Work-Record", "News", "Research" { 
         &.up-tab-#{$tab} .up-tab-icon { // custom wisc icons
-            background: url("images/icon-#{$tab}.png") no-repeat top left;
-            top: 10px;
-            left: 15px;
+            background-image: url("images/icon-#{$tab}.png");
         }
+      }
+      &.up-tab-Academics .up-tab-icon {
+        background-image: url("images/icon-Learning.png");
       }
     }
 
