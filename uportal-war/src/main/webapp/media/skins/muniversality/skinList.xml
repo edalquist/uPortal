@@ -21,14 +21,125 @@
 -->
 
 <skins>
-  
-  <skin>
-    <skin-key>wisc.edu-mobile</skin-key>
-    <skin-name>UW Mobile</skin-name>
-    <skin-description>
-      Custom mobile skin for University of Wisconsin-Madison
-    </skin-description>
-  </skin>
-  
+    <!-- wisc.edu is not listed on purpose, skin picking will only be available for the system portal skins -->
+    <skin>
+        <skin-key>wisc.edu-mobile</skin-key>
+        <skin-name>My UW Madison</skin-name>
+        <skin-description>
+          My University of Wisconsin - Madison
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>wisconsin.edu-sys-mobile</skin-key>
+        <skin-name>My UW System</skin-name>
+        <skin-description>
+          My University of Wisconsin - System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwc.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Colleges</skin-name>
+        <skin-description>
+          My University of Wisconsin - Colleges System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwec.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Eau Claire</skin-name>
+        <skin-description>
+          My University of Wisconsin - Eau Claire System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwex.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Extension</skin-name>
+        <skin-description>
+          My University of Wisconsin - Extension System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwgb.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Green Bay</skin-name>
+        <skin-description>
+          My University of Wisconsin - Green Bay System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwlax.edu-sys-mobile</skin-key>
+        <skin-name>My UW-La Crosse</skin-name>
+        <skin-description>
+          My University of Wisconsin - La Crosse System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwm.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Milwaukee</skin-name>
+        <skin-description>
+          My University of Wisconsin - Milwaukee System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwosh.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Oshkosh</skin-name>
+        <skin-description>
+          My University of Wisconsin - Oshkosh System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwp.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Parkside</skin-name>
+        <skin-description>
+          My University of Wisconsin - Parkside System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwplatt.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Plattevile</skin-name>
+        <skin-description>
+          My University of Wisconsin - Plattevile System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwrf.edu-sys-mobile</skin-key>
+        <skin-name>My UW-River Falls</skin-name>
+        <skin-description>
+          My University of Wisconsin - River Falls System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwsa.edu-sys-mobile</skin-key>
+        <skin-name>My UW-System Administration</skin-name>
+        <skin-description>
+          My University of Wisconsin - System Administration System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwsp.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Stevents Point</skin-name>
+        <skin-description>
+          My University of Wisconsin - Stevents Point System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwstout.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Stout</skin-name>
+        <skin-description>
+          My University of Wisconsin - Stout System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uwsuper.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Superior</skin-name>
+        <skin-description>
+          My University of Wisconsin - Superior System
+        </skin-description>
+    </skin>
+    <skin>
+        <skin-key>uww.edu-sys-mobile</skin-key>
+        <skin-name>My UW-Whitewater</skin-name>
+        <skin-description>
+          My University of Wisconsin - Whitewater System
+        </skin-description>
+    </skin>
 </skins>
 

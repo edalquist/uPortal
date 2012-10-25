@@ -11,6 +11,7 @@
           <name>width</name>
           <value>33%</value>
         </structure-attribute>
+        <channel fname="SkinPicker" unremovable="false" hidden="false" immutable="false" ID="n31"/>
       </folder>
       <folder ID="s6" hidden="false" immutable="false" name="Column" type="regular" unremovable="false">
         <structure-attribute>
