@@ -424,12 +424,6 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
         </dependency>
-            
-        <!-- UW Specific Dependencies -->
-        <dependency>
-            <groupId>org.jasig.service</groupId>
-            <artifactId>uportal-shibboleth-delegation-integration</artifactId>
-        </dependency>
         
         <dependency>
             <groupId>edu.wisc</groupId>
@@ -637,6 +631,13 @@
                     <exclude>properties/security.properties</exclude>
                     <exclude>properties/contexts/userContext.xml</exclude>
                 </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/webapp/WEB-INF</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>log4j.properties</include>
+                </includes>
             </resource>
         </resources>
         <plugins>
