@@ -22,9 +22,6 @@
 <!--
     TCP based stack, with flow control and message bundling. This is usually used when IP
     multicasting cannot be used in a network, e.g. because it is disabled (routers discard multicast).
-    Note that TCP.bind_addr and TCPPING.initial_hosts should be set, possibly via system properties, e.g.
-    -Djgroups.bind_addr=192.168.5.2 and -Djgroups.tcpping.initial_hosts=192.168.5.2[7800]
-    author: Bela Ban
 -->
 <config xmlns="urn:org:jgroups"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -65,7 +62,7 @@
     <MERGE2  min_interval="10000"
              max_interval="30000"/>
     <FD_SOCK start_port="${uPortal.cacheManager.jgroups.fd_sock.start_port}"/>
-    <FD timeout="3000" max_tries="3" />
+    <FD timeout="60000" max_tries="3" />
     <VERIFY_SUSPECT timeout="1500"  />
     <BARRIER />
     <!-- <ENCRYPT encrypt_entire_message="false" sym_init="128" sym_algorithm="AES/ECB/PKCS5Padding" asym_init="512" asym_algorithm="RSA"/> -->
