@@ -36,6 +36,7 @@ import org.hibernate.engine.jdbc.internal.FormatStyle;
 import org.hibernate.engine.jdbc.internal.Formatter;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.tool.hbm2ddl.DatabaseMetadata;
+import org.hibernate.tool.hbm2ddl.FixedDatabaseMetadata;
 import org.jasig.portal.hibernate.DelegatingHibernateIntegrator.HibernateConfiguration;
 import org.jasig.portal.hibernate.HibernateConfigurationAware;
 import org.slf4j.Logger;
@@ -107,7 +108,7 @@ public class DataSourceSchemaExport implements ISchemaExport, HibernateConfigura
         final DatabaseMetadata databaseMetadata = this.jdbcOperations.execute(new ConnectionCallback<DatabaseMetadata>() {
             @Override
             public DatabaseMetadata doInConnection(Connection con) throws SQLException, DataAccessException {
-                return new DatabaseMetadata( con, dialect );
+                return new FixedDatabaseMetadata( con, dialect );
             }
         });
         
