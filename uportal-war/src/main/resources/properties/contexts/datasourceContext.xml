@@ -76,6 +76,8 @@
         <property name="url" value="${RawEventsJdbcUrl}" />
         <property name="username" value="${RawEventsJdbcUser}" />
         <property name="password" value="${RawEventsJdbcPassword}" />
+        
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=300000;oracle.jdbc.ReadTimeout=300000" />
     </bean>    
     <!-- 
      | DataSource used to store aggregated portal event data, wrapper is used instead of alias so that Spring treats each
@@ -87,6 +89,8 @@
         <property name="url" value="${AggrEventsJdbcUrl}" />
         <property name="username" value="${AggrEventsJdbcUser}" />
         <property name="password" value="${AggrEventsJdbcPassword}" />
+        
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=300000;oracle.jdbc.ReadTimeout=300000" />
     </bean>    
     
     
