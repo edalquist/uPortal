@@ -88,7 +88,7 @@
 
     <properties>
         <!-- The final name of the uPortal web-application -->
-        <uportal.docbase>uPortal</uportal.docbase>
+        <uportal.docbase>portal</uportal.docbase>
         <project-site-path>/uportal/${project.version}</project-site-path>
         
         <!-- The JDBC Driver used by uPortal -->
