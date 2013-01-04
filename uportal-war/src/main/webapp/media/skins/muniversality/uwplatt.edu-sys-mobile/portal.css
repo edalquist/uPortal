@@ -47,4 +47,58 @@
  * Note: This campus skin inherits styles from the wisconsin.edu-sys-mobile skin.
  * Use this file to override style definitions.
  */
-
+::-moz-selection {
+  background: #003399;
+}
+::selection {
+  background: #003399;
+}
+/* j.mp/webkit-tap-highlight-color */
+a:link {
+  -webkit-tap-highlight-color: #003399;
+}
+a, a:active, a:visited {
+  color: #003399;
+}
+.up .badge.new-item {
+  background: #cc0000;
+  background-image: -moz-linear-gradient(top, red, #4066B3);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, red), color-stop(1, #4066B3));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='#4066B3')";
+}
+.up .badge.unread-item,
+.up .portlet-content .ui-listview .ui-li-count {
+  background: #003399;
+  background-image: -moz-linear-gradient(top, #a10000, #3b0000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a10000), color-stop(1, #3b0000));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a10000', EndColorStr='#3b0000')";
+}
+.up .dashboard .ui-li-divider {
+  color: #003399;
+}
+.up .uw-crest a {
+  background: url("images/uwplatt-logo.png") no-repeat top left;
+  background-size:100%;
+  height: 56px;
+  width: 56px;
+}
+.up .secondary-titlebar {
+  background: #4066B3;
+  border-top: 1px solid #F57B22;
+  border-bottom: 1px solid #002471;
+}
+.up .portlet-wrapper-titlebar {
+  background-color: #003399;
+  border-bottom: 1px solid #002471;
+}
+.up .portlet-content .ui-li-heading {
+  color: #003399;
+}
+.up .ui-footer {
+  background: #003399;
+}
+.up .ptl-calendar .upcal-color-2 .upcal-event-link {
+  background: rgba(0, 51, 153, 0.25);
+  border-color: #4066B3;
+  color: #660000;
+}

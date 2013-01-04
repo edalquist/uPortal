@@ -289,20 +289,20 @@ input:invalid, textarea:invalid {
    No text-shadow: twitter.com/miketaylr/status/12228805301
    Also: hot pink! */
 ::-moz-selection {
-  background: #FF5E99;
+  background: #CC6600;
   color: #fff;
   text-shadow: none;
 }
 
 ::selection {
-  background: #FF5E99;
+  background: #CC6600;
   color: #fff;
   text-shadow: none;
 }
 
 /* j.mp/webkit-tap-highlight-color */
 a:link {
-  -webkit-tap-highlight-color: #FF5E99;
+  -webkit-tap-highlight-color: #CC6600;
 }
 
 /* Make buttons play nice in IE:
@@ -351,7 +351,7 @@ h4, h5, h6 {
 }
 
 a, a:active, a:visited {
-  color: #900;
+  color: #990033;
 }
 
 /*====================================*/
@@ -601,18 +601,18 @@ mathematical calculations. */
   background: #cc0000;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, red, #990000);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, red), color-stop(1, #990000));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='#990000')";
+  background-image: -moz-linear-gradient(top, red, #DD0048);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, red), color-stop(1,#DD0048));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='#DD0048')";
 }
 .up .badge.unread-item,
 .up .portlet-content .ui-listview .ui-li-count {
-  background: #6e0000;
+  background: #990033;
   color: white;
   text-shadow: 0 -1px 1px black;
-  background-image: -moz-linear-gradient(top, #a10000, #3b0000);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a10000), color-stop(1, #3b0000));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a10000', EndColorStr='#3b0000')";
+  background-image: -moz-linear-gradient(top, #88002D, #640021);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #88002D), color-stop(1, #640021));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#88002D', EndColorStr='#640021')";
 }
 .up .badge.read-item {
   /* Uses default badge style. */
@@ -657,7 +657,7 @@ mathematical calculations. */
   text-shadow: none;
   font-size: 16px;
   font-weight: normal;
-  color: #831E24;
+  color: #990033;
 }
 .up .focused {
   color: #444444;
@@ -668,10 +668,10 @@ mathematical calculations. */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='whitesmoke', EndColorStr='gainsboro')";
 }
 .up .secondary-titlebar {
-  background: #990000;
+  background: #b23f65;
   position: relative;
-  border-top: 1px solid #8D2D2E;
-  border-bottom: 1px solid #6B3C42;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid #999;
   height: 40px;
 }
 .up .secondary-titlebar h2.portlet-title {
@@ -694,15 +694,15 @@ mathematical calculations. */
 .up .uw-crest a {
   display: block;
   text-indent: -5000px;
-  background: url("images/uw_crest.png") no-repeat top left;
+  background: url("images/system_logo.png") no-repeat top left;
   height: 47px;
-  width: 31px;
+  width: 56px;
 }
 .up .portlet-wrapper-titlebar {
-  background-color: #6E0000;
+  background-color: #990033;
   color: white;
   text-shadow: 0 -1px 1px black;
-  border-bottom: 1px solid #662423;
+  border-bottom: 1px solid #999;
 }
 .up .portlet-wrapper-titlebar .ui-btn-up-a, .up .portlet-wrapper-titlebar .ui-btn-up-b, .up .portlet-wrapper-titlebar .ui-btn-up-c, .up .portlet-wrapper-titlebar .ui-btn-up-d, .up .portlet-wrapper-titlebar .ui-btn-up-e {
   border-color: #143f27;
@@ -916,7 +916,7 @@ mathematical calculations. */
 .up .portlet-content .ui-li-heading {
   font-size: 14px;
   font-weight: normal;
-  color: #831E24;
+  color: #990033;
 }
 .up .portlet-content .utilities .ui-btn-up-a, .up .portlet-content .utilities .ui-btn-up-b, .up .portlet-content .utilities .ui-btn-up-c, .up .portlet-content .utilities .ui-btn-up-d, .up .portlet-content .utilities .ui-btn-up-e {
   border-color: #767676;
@@ -971,7 +971,7 @@ mathematical calculations. */
   background-image: url(images/icons/phone-18x18.png);
 }
 .up .ui-footer {
-  background: #6E0000;
+  background: #990033;
   text-align: center;
   padding: 5px 0;
   position: absolute;
@@ -1160,8 +1160,8 @@ mathematical calculations. */
   color: #284000;
 }
 .up .ptl-calendar .upcal-color-2 .upcal-event-link {
-  background: rgba(153, 0, 0, 0.25);
-  border-color: #990000;
+  background: rgba(153, 0, 51, 0.25);
+  border-color: #b23f65;
   color: #660000;
 }
 .up .ptl-calendar .upcal-color-3 .upcal-event-link {

@@ -200,24 +200,22 @@
                             </property>
                             <property name="groupToSkinMap">
                                 <map>
-                                <!-- 
-                                    <entry key="pags.uw-sys-colleges" value="uwc.edu-sys" />
-                                    <entry key="pags.uw-sys-eau-claire" value="uwec.edu-sys" />
-                                    <entry key="pags.uw-sys-extension" value="uwex.edu-sys" />
-                                    <entry key="pags.uw-sys-green-bay" value="uwgb.edu-sys" />
-                                    <entry key="pags.uw-sys-la-crosse" value="uwlax.edu-sys" />
-                                    <entry key="pags.uw-sys-milwaukee" value="uwm.edu-sys" />
-                                    <entry key="pags.uw-sys-oshkosh" value="uwosh.edu-sys" />
-                                    <entry key="pags.uw-sys-parkside" value="uwp.edu-sys" />
-                                    <entry key="pags.uw-sys-plattevile" value="uwplatt.edu-sys" />
-                                    <entry key="pags.uw-sys-river-falls" value="uwrf.edu-sys" />
-                                    <entry key="pags.uw-sys-system-administration" value="uwsa.edu-sys" />
-                                    <entry key="pags.uw-sys-stevens-point" value="uwsp.edu-sys" />
-                                    <entry key="pags.uw-sys-stout" value="uwstout.edu-sys" />
-                                    <entry key="pags.uw-sys-superior" value="uwsuper.edu-sys" />
-                                    <entry key="pags.uw-sys-whitewater" value="uww.edu-sys" />
-                                     -->
-                                    <entry key="pags.uw-sys-madison" value="wisc.edu-mobile" />
+                                    <entry key="pags.uw-sys-colleges" value="uwc.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-eau-claire" value="uwec.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-extension" value="uwex.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-green-bay" value="uwgb.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-la-crosse" value="uwlax.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-milwaukee" value="uwm.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-oshkosh" value="uwosh.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-parkside" value="uwp.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-plattevile" value="uwplatt.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-river-falls" value="uwrf.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-system-administration" value="uwsa.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-stevens-point" value="uwsp.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-stout" value="uwstout.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-superior" value="uwsuper.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-whitewater" value="uww.edu-sys-mobile" />
+                                    <entry key="pags.uw-sys-madison" value="wisc.edu-sys-mobile" />
                                     <entry key="pags.uw-madison" value="wisc.edu-mobile" />
                                 </map>
                             </property>

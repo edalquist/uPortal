@@ -47,4 +47,61 @@
  * Note: This campus skin inherits styles from the wisconsin.edu-sys-mobile skin.
  * Use this file to override style definitions.
  */
-
+::-moz-selection {
+  background: #004990;
+}
+::selection {
+  background: #004990;
+}
+/* j.mp/webkit-tap-highlight-color */
+a:link {
+  -webkit-tap-highlight-color: #004990;
+}
+a, a:active, a:visited {
+  color: #004990;
+}
+.up .badge.new-item {
+  background: #cc0000;
+  background-image: -moz-linear-gradient(top, red, #4077AC);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, red), color-stop(1, #4077AC));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='#4077AC')";
+}
+.up .badge.unread-item,
+.up .portlet-content .ui-listview .ui-li-count {
+  background: #004990;
+  background-image: -moz-linear-gradient(top, #a10000, #3b0000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a10000), color-stop(1, #3b0000));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a10000', EndColorStr='#3b0000')";
+}
+.up .dashboard .ui-li-divider {
+  color: #004990;
+}
+.up .uw-crest {
+  left: 10px;
+  top: -38px;
+}
+.up .uw-crest a {
+  background: url("images/stout-logo.png") no-repeat top left;
+  height: 32px;
+  width: 56px;
+}
+.up .secondary-titlebar {
+  background: #4077AC;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #00376F;
+}
+.up .portlet-wrapper-titlebar {
+  background-color: #004990;
+  border-bottom: 1px solid #00376F;
+}
+.up .portlet-content .ui-li-heading {
+  color: #004990;
+}
+.up .ui-footer {
+  background: #004990;
+}
+.up .ptl-calendar .upcal-color-2 .upcal-event-link {
+  background: rgba(0, 73, 144, 0.25);
+  border-color: #4077AC;
+  color: #660000;
+}
