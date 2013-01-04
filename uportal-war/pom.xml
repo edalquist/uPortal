@@ -4,7 +4,7 @@
     <parent>
         <groupId>edu.wisc.my.portal</groupId>
         <artifactId>uportal-parent</artifactId>
-        <version>4.0.7.9-SNAPSHOT</version>
+        <version>4.0.9.1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -263,6 +263,11 @@
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jasig.portlet.utils</groupId>
+            <artifactId>portlet-jdbc-util</artifactId>
         </dependency>
         
         <dependency>
@@ -783,7 +788,7 @@
             <plugin>
                 <groupId>org.jasig.maven</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
                 <configuration>
                     <baseOutputDirectory>${basedir}/src/main/webapp</baseOutputDirectory>
                 </configuration>

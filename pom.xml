@@ -14,7 +14,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.wisc.my.portal</groupId>
     <artifactId>uportal-parent</artifactId>
-    <version>4.0.7.9-SNAPSHOT</version>
+    <version>4.0.9.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>uPortal Parent</name>
@@ -88,7 +88,7 @@
 
     <properties>
         <!-- The final name of the uPortal web-application -->
-        <uportal.docbase>portal</uportal.docbase>
+        <uportal.docbase>uPortal</uportal.docbase>
         <project-site-path>/uportal/${project.version}</project-site-path>
         
         <!-- The JDBC Driver used by uPortal -->
@@ -144,37 +144,38 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-pool.version>1.6</commons-pool.version>
-        <commons-math3.version>3.0</commons-math3.version>
+        <commons-math3.version>3.1</commons-math3.version>
         <dom4j.version>1.6.1</dom4j.version>
         <easymock.version>3.1</easymock.version>
         <ejb3-persistence.version>1.0.1.GA</ejb3-persistence.version>
-        <ehcache.version>2.6.0</ehcache.version>
+        <ehcache.version>2.6.2</ehcache.version>
         <ehcache-jgroups3replication.version>1.7.4</ehcache-jgroups3replication.version>
         <ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
         <ehcache-web.version>2.0.4</ehcache-web.version>
         <google-visualization.version>1.1.1</google-visualization.version>
         <guava.version>13.0.1</guava.version>
-        <groovy.version>2.0.5</groovy.version>
+        <groovy.version>2.0.6</groovy.version>
         <grouperClient.version>1.6.3</grouperClient.version>
-        <hibernate.version>4.1.8.Final</hibernate.version>
+        <hibernate.version>4.1.9.Final</hibernate.version>
         <hibernate-jpamodelgen.version>1.2.0.Final</hibernate-jpamodelgen.version>
         <hibernate-jpa-api.version>1.0.1.Final</hibernate-jpa-api.version>
         <hsqldb.version>2.2.9</hsqldb.version>
-        <icu4j.version>4.0.1</icu4j.version>
+        <icu4j.version>50.1.1</icu4j.version>
         <jackson.version>1.9.11</jackson.version>
         <jansi.version>1.8</jansi.version>
-        <javassist.version>3.16.1-GA</javassist.version> 
+        <javassist.version>3.17.1-GA</javassist.version>
+        <jasig-portlet-utils.version>1.0.1</jasig-portlet-utils.version> 
         <jasypt.version>1.9.0</jasypt.version>
         <jaxb2basics.version>0.6.4</jaxb2basics.version>
         <jdom.version>1.0</jdom.version>
-        <jgroups.version>3.2.0.Final</jgroups.version>
+        <jgroups.version>3.2.5.Final</jgroups.version>
         <jline.version>1.0</jline.version>
         <joda-time.version>2.1</joda-time.version>
         <json-lib-ext-spring.version>1.0.2</json-lib-ext-spring.version>
         <jsp-api.version>2.1.1</jsp-api.version>
         <jstl.version>1.1.2</jstl.version>
         <jtidy.version>4aug2000r7-dev</jtidy.version>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.11</junit.version>
         <logback.version>1.0.7</logback.version>
         <mail.version>1.4.5</mail.version>
         <mockito.version>1.9.5</mockito.version>
@@ -744,6 +745,17 @@
                 <groupId>org.jasig.portal</groupId>
                 <artifactId>uportal-ear-deployer</artifactId>
                 <version>${uportal-ear-deployer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasig.portlet.utils</groupId>
+                <artifactId>portlet-jdbc-util</artifactId>
+                <version>${jasig-portlet-utils.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jasig.resourceserver</groupId>
