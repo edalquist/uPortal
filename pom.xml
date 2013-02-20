@@ -1112,7 +1112,7 @@
             <dependency>
                 <groupId>com.oracle</groupId>
                 <artifactId>ojdbc6</artifactId>
-                <version>${ojdbc6.version}11.2.0.3</version>
+                <version>${ojdbc6.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jasig.service</groupId>
