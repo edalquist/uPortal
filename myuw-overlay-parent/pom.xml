@@ -16,125 +16,6 @@
     <description>The root project definition for the MyUW Overlay project.</description>
     <url>${jasig-site-base}/uportal/${project.version}</url>
 
-    <repositories>
-        <repository>
-            <id>jasig-3rd-party</id>
-            <url>http://developer.jasig.org/repo/content/repositories/3rd-party/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-uw-releases</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-releases/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-uw-3rd-party</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-3rd-party/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-public-releases</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-releases/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-public-3rd-party</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-3rd-party/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-uw-snapshots</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-snapshots/</url>
-            <releases>
-              <enabled>false</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-              <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-public-snapshots</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-snapshots/</url>
-            <releases>
-              <enabled>false</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-              <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>code.doit-uw-releases</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-releases/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>code.doit-public-releases</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-releases/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>code.doit-uw-snapshots</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-snapshots/</url>
-            <releases>
-              <enabled>false</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-              <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>code.doit-public-snapshots</id>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-snapshots/</url>
-            <releases>
-              <enabled>false</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-              <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
         <log.base>/my/up/logs</log.base>
     </properties>
@@ -144,7 +25,6 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
                     <configuration>
                         <mavenFilteringHints>
                             <mavenFilteringHint>custom</mavenFilteringHint>
@@ -160,12 +40,10 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.4</version>
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <tagNameFormat>myuw-overlay-parent-@{project.version}</tagNameFormat>
                         <localCheckout>false</localCheckout>
                         <arguments>-PDOESNOTEXIST</arguments>
                         <preparationGoals>clean</preparationGoals>
