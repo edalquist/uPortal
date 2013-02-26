@@ -8,3 +8,6 @@
 *.sass-cache
 /uportal-impl
 /assembly/.ant-targets-build.xml
+.idea/
+*.iml
+*/*.iml
