@@ -299,7 +299,7 @@
   </xsl:variable>
     
   <div class="ui-footer" data-role="footer">
-    <p>&#169; 2012 UW System Board of Regents</p>
+    <p>&#169; 2013 UW System Board of Regents</p>
     <p>
       <a href="{$feedbackUrl}">Feedback</a> 
       <xsl:if test="$AUTHENTICATED='true'">

@@ -982,7 +982,7 @@
 
     <!-- Footer Links -->
     <div id="portalPageFooterLinks">
-      <span>&#169; 2012, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
+      <span>&#169; 2013, Board of Regents of the <a href="http://www.wisconsin.edu/">University of Wisconsin System</a></span><br />
       <span>
         <a href="{$feedbackUrl}"><span>Feedback</span></a>
         <span> - </span>
