@@ -66,7 +66,7 @@
     <xsl:call-template name="mobile.auth.link"/>
   </div>
   <div class="secondary-titlebar">
-    <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
+    <div class="uw-crest"><a href="{$basePortalUrl}" /></div>
   </div>
 </xsl:template>
     
@@ -237,7 +237,7 @@
         <h1 class="title"><xsl:value-of select="upMsg:getMessage(concat($INSTITUTION, '_portal.name'), $USER_LANG)" /></h1>
     </div>
     <div class="secondary-titlebar">
-      <div class="uw-crest"><a href="{$basePortalUrl}">Back to Home</a></div>
+      <div class="uw-crest"><a href="{$basePortalUrl}" /></div>
       <h2 class="portlet-title"><xsl:value-of select="//content/focused/channel/@title" /></h2>
     </div>
   </xsl:if>

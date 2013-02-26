@@ -276,7 +276,7 @@
       <xsl:variable name="homeUrl">
         <xsl:call-template name="portalUrl"/>
       </xsl:variable>
-      <a href="{$homeUrl}" title="{upMsg:getMessage('go.to.home', $USER_LANG)}">
+      <a href="{$homeUrl}">
         <xsl:choose>
           <xsl:when test="//focused">
             <!-- ****** LOGO FOCUSED BLOCK ****** -->
@@ -554,7 +554,7 @@
       <xsl:variable name="basePortalUrl">
         <xsl:call-template name="portalUrl"/>
       </xsl:variable>
-      <a href="{$basePortalUrl}" title="{upMsg:getMessage('go.to.home', $USER_LANG)}"><xsl:value-of select="upMsg:getMessage('home', $USER_LANG)"/></a>
+      <a href="{$basePortalUrl}"><xsl:value-of select="upMsg:getMessage('home', $USER_LANG)"/></a>
       <span class="breadcrumb-separator">&gt;</span>
       <xsl:for-each select="/layout/navigation/tab">
         <xsl:if test="@activeTab='true'">
