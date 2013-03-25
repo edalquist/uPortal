@@ -4,7 +4,7 @@
     <parent>
         <groupId>edu.wisc.my.portal</groupId>
         <artifactId>uportal-parent</artifactId>
-        <version>4.0.9.4-SNAPSHOT</version>
+        <version>4.0.11.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -17,6 +17,7 @@
 
     <modules>
         <module>BookmarksPortlet</module>
+        <module>CalendarPortlet</module>
         <module>email-preview</module>
         <module>FunctionalTestsPortlet</module>
         <module>jasig-widget-portlets</module>
