@@ -8,24 +8,36 @@
 <!--    http://www.qos.ch/shop/products/professionalSupport         -->
 <!--                                                                -->
 <configuration scan="true" scanPeriod="30 seconds">
-  <contextName>uPortal</contextName>
- 
+  <contextName>portal</contextName>
+
+  <!-- 
+   | Propagate log levels to java.util.logging 
+   +-->
   <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
     <resetJUL>true</resetJUL>
   </contextListener>
-  
+
+  <!-- 
+   | Expose the logback configuration via JMX 
+   +-->
   <jmxConfigurator />
-  
+
+  <!-- 
+   | Specify a local property that sets up the logging directory
+   +-->
+  <property scope="local" name="LOG_DIR" value="${mumstatus.webapp.root}/../../logs/${CONTEXT_NAME}" />
+
   <appender name="PORTAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
     <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
     <!--for further documentation-->
-    <File>${catalina.base}/logs/portal/portal.log</File>
+    <File>${LOG_DIR}/${CONTEXT_NAME}.log</File>
     <encoder>
       <pattern>%-5level [%thread] %logger{36} %d{ISO8601} - %msg%n</pattern>
     </encoder>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.base}/logs/portal/portal.log.%d{yyyy-MM-dd-HH}</fileNamePattern>
+      <fileNamePattern>${LOG_DIR}/${CONTEXT_NAME}.log.%d{yyyy-MM-dd-HH}.gz</fileNamePattern>
+      <maxHistory>28</maxHistory>
     </rollingPolicy>
   </appender>
   
@@ -33,12 +45,13 @@
     <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
     <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
     <!--for further documentation-->
-    <File>${catalina.base}/logs/portal/portal-events.log</File>
+    <File>${LOG_DIR}/${CONTEXT_NAME}-events.log</File>
     <encoder>
       <pattern>%-5level [%thread] %logger{36} %d{ISO8601} - %msg%n</pattern>
     </encoder>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.base}/logs/portal/portal-events.log.%d{yyyy-MM-dd-HH}</fileNamePattern>
+      <fileNamePattern>${LOG_DIR}/${CONTEXT_NAME}-events.log.%d{yyyy-MM-dd-HH}.gz</fileNamePattern>
+      <maxHistory>28</maxHistory>
     </rollingPolicy>
   </appender>
   
@@ -46,12 +59,12 @@
     <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
     <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
     <!--for further documentation-->
-    <File>${catalina.base}/logs/audit/portal.audit.log</File>
+    <File>${LOG_DIR}/${CONTEXT_NAME}.audit.log</File>
     <encoder>
       <pattern>%-5level [%thread] %logger{36} %d{ISO8601} - %msg%n</pattern>
     </encoder>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.base}/logs/audit/portal.audit.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <fileNamePattern>${LOG_DIR}/${CONTEXT_NAME}.audit.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
     </rollingPolicy>
   </appender>
   
