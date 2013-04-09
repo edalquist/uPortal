@@ -445,11 +445,6 @@
             <artifactId>xstream</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>edu.wisc</groupId>
-            <artifactId>authhub-client</artifactId>
-        </dependency>
-
         
         <!-- ===== Provided Dependencies ====================================== -->
         <dependency>
@@ -707,7 +702,7 @@
             <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
-                <version>2.0.5</version>
+                <version>2.1.1</version>
                 <executions>
                     <execution>
                         <id>process</id>
@@ -728,6 +723,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.7</version>
                 <executions>
                     <execution>
                         <id>add-source</id>

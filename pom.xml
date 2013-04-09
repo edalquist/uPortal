@@ -166,7 +166,6 @@
         <commons-math3.version>3.1.1</commons-math3.version>
         <dom4j.version>1.6.1</dom4j.version>
         <easymock.version>3.1</easymock.version>
-        <ejb3-persistence.version>1.0.1.GA</ejb3-persistence.version>
         <ehcache.version>2.6.5</ehcache.version>
         <ehcache-jgroups3replication.version>1.7.4</ehcache-jgroups3replication.version>
         <ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
@@ -226,8 +225,6 @@
         <xstream.version>1.4.4</xstream.version>
         
         <!-- UW specific deps -->
-        <uportal-shibboleth-delegation-integration.version>1.1.0</uportal-shibboleth-delegation-integration.version>
-        <authhub-client>0.0.2</authhub-client>
         <portal-abstraction-api.version>1.1.2</portal-abstraction-api.version>
         <ojdbc6.version>11.2.0.3</ojdbc6.version>
         
@@ -1144,22 +1141,6 @@
                 <groupId>com.oracle</groupId>
                 <artifactId>ojdbc6</artifactId>
                 <version>${ojdbc6.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jasig.service</groupId>
-                <artifactId>uportal-shibboleth-delegation-integration</artifactId>
-                <version>${uportal-shibboleth-delegation-integration.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>edu.wisc</groupId>
-                <artifactId>authhub-client</artifactId>
-                <version>${authhub-client}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>edu.wisc.my.service</groupId>
