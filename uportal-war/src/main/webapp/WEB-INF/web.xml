@@ -43,6 +43,14 @@
         <param-value>9001</param-value>
     </context-param>  
     
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>uPortal.webapp.root</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+    </listener>
+    
     <listener>
         <listener-class>org.jasig.portal.jmx.JavaManagementServerListener</listener-class>
     </listener>
