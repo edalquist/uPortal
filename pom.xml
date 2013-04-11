@@ -14,7 +14,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.wisc.my.portal</groupId>
     <artifactId>uportal-parent</artifactId>
-    <version>4.0.11.5</version>
+    <version>4.0.11.6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>uPortal Parent</name>
@@ -25,7 +25,7 @@
         <connection>scm:git:git@github.com:UW-Madison-DoIT/uPortal.git</connection>
         <developerConnection>scm:git:git@github.com:UW-Madison-DoIT/uPortal.git</developerConnection>
         <url>https://github.com/Jasig/uPortal</url>
-      <tag>myuw-4.0.11.5</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>
