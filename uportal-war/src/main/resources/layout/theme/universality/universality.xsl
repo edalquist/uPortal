@@ -515,6 +515,7 @@
               <xsl:with-param name="url">
                   <url:portal-url>
                       <url:fname>myuw-system-help</url:fname>
+                      <url:portlet-url state="MAXIMIZED" />
                   </url:portal-url>
               </xsl:with-param>
           </xsl:call-template>
@@ -546,14 +547,8 @@
             <xsl:call-template name="portalUrl">
                 <xsl:with-param name="url">
                     <url:portal-url>
-                      <xsl:choose>
-                        <xsl:when test="$INSTITUTION='madison'">
-                          <url:fname>myuw-help</url:fname>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <url:fname>myuw-system-help</url:fname>
-                        </xsl:otherwise>
-                      </xsl:choose>
+                      <url:fname>myuw-help</url:fname>
+                      <url:portlet-url state="MAXIMIZED" />
                     </url:portal-url>
                 </xsl:with-param>
             </xsl:call-template>
