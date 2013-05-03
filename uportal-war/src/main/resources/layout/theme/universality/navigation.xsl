@@ -479,7 +479,7 @@
         // initialize the flyout menus and add onmouseover and onmouseout events to 
         // all the navigation elements with subnavigation flyouts
         var flyouts = new Array();
-        var flyoutOptions = { flyoutMenu: '.portal-flyout-container' };
+        var flyoutOptions = { flyoutMenu: '.portal-flyout-container', offset: 1 };
         up.jQuery("ul.fl-tabs li.portal-navigation").each( function() {
           flyouts.push(uportal.flyoutmenu(this, flyoutOptions));
         });
