@@ -31,8 +31,8 @@
     <portlet-preference>
         <name>locationCodes</name>
         <readOnly>false</readOnly>
-        <value>2459115</value>
-        <value>1118370</value>
+        <value>New York, New York, United States Of America</value>
+        <value>Tokyo, Tokyo, Japan</value>
     </portlet-preference>
     <portlet-preference>
         <name>locations</name>
